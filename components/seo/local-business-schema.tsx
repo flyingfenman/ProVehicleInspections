@@ -5,7 +5,6 @@ const localBusinessSchema = {
   name: "Pro Vehicle Inspections",
   url: "https://www.provehicleinspections.com",
   logo: "https://www.provehicleinspections.com/apple-touch-icon.png",
-  email: "henry@eppingcarbuyer.com",
   telephone: "+441992245660",
   image: "https://www.provehicleinspections.com/images/inspection-car.jpg",
   description:
