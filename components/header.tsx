@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, Phone, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Header() {
@@ -17,9 +17,6 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-4">
-            <a href="tel:+441992245660" className="hidden lg:inline-flex items-center gap-2 text-base font-semibold text-primary hover:underline">
-              <Phone className="h-5 w-5" aria-hidden="true" /> 01992 245660
-            </a>
             <Button
               asChild
               size="lg"
@@ -44,25 +41,16 @@ export function Header() {
             </Button>
           </nav>
 
-          <div className="flex items-center gap-1 md:hidden">
-            <a
-              href="tel:+441992245660"
-              className="flex h-11 w-11 items-center justify-center rounded-md text-primary"
-              aria-label="Call 01992 245660"
-            >
-              <Phone className="h-6 w-6" aria-hidden="true" />
-            </a>
-            <button
-              type="button"
-              className="-mr-2 flex h-11 w-11 items-center justify-center rounded-md"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          <button
+            type="button"
+            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-md md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
         {isMenuOpen && (
@@ -81,11 +69,6 @@ export function Header() {
               <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
                 Contact Us
               </Link>
-            </Button>
-            <Button asChild variant="outline" className="flex h-12 w-full font-semibold text-primary" size="lg">
-              <a href="tel:+441992245660">
-                <Phone className="h-5 w-5" aria-hidden="true" /> Call 01992 245660
-              </a>
             </Button>
           </nav>
         )}
