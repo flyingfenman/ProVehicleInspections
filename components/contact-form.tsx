@@ -6,7 +6,7 @@ import { CheckCircle2, Loader2, MessageCircle, Send } from "lucide-react"
 import { parseContactDetail } from "@/lib/contact"
 import { getTrafficSource } from "@/lib/traffic-source"
 
-const WHATSAPP_URL = "https://wa.me/441992367909"
+const WHATSAPP_URL = "https://wa.me/441992245660"
 
 const inputClass =
   "block w-full rounded-xl border-2 border-border bg-white px-4 text-lg text-foreground focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/15 aria-[invalid=true]:border-red-600"
