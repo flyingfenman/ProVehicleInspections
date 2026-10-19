@@ -8,7 +8,7 @@ export function ContactSection() {
         <div className="mb-8 space-y-3 text-center sm:mb-12 sm:space-y-4">
           <h2 className="text-4xl font-bold sm:text-5xl">Get In Touch</h2>
           <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-            Questions about a car inspection or Market &amp; Sell? Send us a message or a WhatsApp.
+            Questions about a car inspection? Send us a message or a WhatsApp.
           </p>
         </div>
 
