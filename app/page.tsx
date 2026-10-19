@@ -13,7 +13,7 @@ import { FinalCta } from "@/components/vehicle-inspections/sections/final-cta"
 export const metadata: Metadata = {
   title: "Mobile Car Inspection Service | Pro Vehicle Inspections",
   description:
-    "Independent mobile pre-purchase car inspections from £149.99. Diagnostics, road test, video review and buying advice across Essex, Herts and London.",
+    "Independent mobile pre-purchase car inspections from £149.99. Diagnostics, road test, video review and buying advice across London, Essex, East Anglia and the Midlands.",
   alternates: {
     canonical: "/",
   },

@@ -171,7 +171,7 @@ export function InspectionsBookingCalendar() {
         ev: data.slotsByPackage?.ev || [],
       })
     } catch {
-      setError("Couldn't load available times — please WhatsApp us and we'll arrange it with you.")
+      setError("Couldn't load available times. Please WhatsApp us and we'll arrange it with you.")
     } finally {
       setLoadingSlots(false)
     }
@@ -406,7 +406,7 @@ export function InspectionsBookingCalendar() {
           <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 sm:p-5">
             <div className="min-w-0">
               <p className="text-sm font-semibold text-muted-foreground">{selectedPackage.points}</p>
-              <p className="text-lg font-bold sm:text-xl">{selectedPackage.name} — {selectedPackage.price}</p>
+              <p className="text-lg font-bold sm:text-xl">{selectedPackage.name}: {selectedPackage.price}</p>
               <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-primary"><Check className="h-4 w-4" /> Selected</p>
             </div>
             <button type="button" onClick={() => setPackageChoicesOpen(true)} className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
@@ -491,7 +491,7 @@ export function InspectionsBookingCalendar() {
             <span className="h-2.5 w-2.5 rounded-full bg-primary" /> Book online
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-3 py-1.5 text-foreground">
-            <span className="h-2.5 w-2.5 rounded-full border-2 border-primary bg-white" /> Within 24 hours — message first
+            <span className="h-2.5 w-2.5 rounded-full border-2 border-primary bg-white" /> Within 24 hours, message first
           </span>
         </div>
 
@@ -760,7 +760,7 @@ export function InspectionsBookingCalendar() {
                     ? "Battery test and State of Health report, without an inspection"
                     : withEvSoh
                       ? "Includes EV Battery State of Health Report (+£49.99)"
-                      : "Inspection only — no optional battery State of Health report"}
+                      : "Inspection only, no optional battery State of Health report"}
                 </p>
                 {selectedSlot && shortNoticeConfirmed && isShortNotice(selectedSlot, nowMs) && (
                   <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
@@ -776,7 +776,7 @@ export function InspectionsBookingCalendar() {
             {submitting ? (
               <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Opening secure payment...</>
             ) : (
-              <>Reserve My {evOnly ? "Battery Check" : "Inspection"} — £{totalPrice.toFixed(2)} <ChevronRight className="ml-2 h-5 w-5" /></>
+              <>Reserve My {evOnly ? "Battery Check" : "Inspection"}: £{totalPrice.toFixed(2)} <ChevronRight className="ml-2 h-5 w-5" /></>
             )}
           </Button>
           <p className="text-center text-sm text-muted-foreground">

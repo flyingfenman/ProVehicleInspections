@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
       occupied.some((range) => rangesOverlap(slotStart, slotEnd, range.start, range.end)) ||
       !isFreeElsewhere(otherDiaries, packageKey, { start: slotStart, end: slotEnd })
     if (alreadyTaken) {
-      return NextResponse.json({ error: "That slot was just booked by someone else — please pick another." }, { status: 409 })
+      return NextResponse.json({ error: "That slot was just booked by someone else. Please pick another." }, { status: 409 })
     }
 
     const { name: packageName, amountPence } = PACKAGE_INFO[packageKey]
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
           currency: "gbp",
           unit_amount: amountPence,
           product_data: {
-            name: evOnly ? packageName : `${packageName} — Vehicle Inspection`,
+            name: evOnly ? packageName : `${packageName} Vehicle Inspection`,
             description: `${registration} · ${start.toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })}`,
           },
         },

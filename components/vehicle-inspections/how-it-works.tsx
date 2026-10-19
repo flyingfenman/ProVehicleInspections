@@ -1,19 +1,20 @@
 "use client"
 
 import { CalendarCheck, MapPin, ClipboardCheck, FileCheck2 } from "lucide-react"
+import { SERVICE_AREA } from "@/lib/areas/service-area"
 
 const steps = [
   {
     number: "01",
     icon: CalendarCheck,
     title: "Book online or by phone",
-    description: "Tell us the registration and where the car is — a dealer forecourt or a private seller's address.",
+    description: "Tell us the registration and where the car is: a dealer forecourt or a private seller's address.",
   },
   {
     number: "02",
     icon: MapPin,
     title: "We come to the car",
-    description: "Our inspector attends wherever it's being sold — across Essex, Hertfordshire, South Cambridgeshire, Greater London, and parts of Bedfordshire and Suffolk.",
+    description: `Our inspector attends wherever it's being sold, anywhere across ${SERVICE_AREA.long}.`,
   },
   {
     number: "03",

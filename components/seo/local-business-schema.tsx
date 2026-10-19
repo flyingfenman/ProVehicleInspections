@@ -1,3 +1,6 @@
+import { AREA_SERVED } from "@/lib/areas"
+import { SERVICE_AREA } from "@/lib/areas/service-area"
+
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "AutomotiveBusiness",
@@ -7,8 +10,7 @@ const localBusinessSchema = {
   logo: "https://www.provehicleinspections.com/apple-touch-icon.png",
   telephone: "+441992245660",
   image: "https://www.provehicleinspections.com/images/inspection-car.jpg",
-  description:
-    "Independent mobile pre-purchase vehicle inspections and EV battery State of Health checks across Essex, Hertfordshire, Greater London, South Cambridgeshire and surrounding areas.",
+  description: `Independent mobile pre-purchase vehicle inspections and EV battery State of Health checks across ${SERVICE_AREA.long}.`,
   priceRange: "££",
   address: {
     "@type": "PostalAddress",
@@ -16,7 +18,7 @@ const localBusinessSchema = {
     addressRegion: "Essex",
     addressCountry: "GB",
   },
-  areaServed: ["Essex", "Hertfordshire", "South Cambridgeshire", "Greater London", "Bedfordshire", "Suffolk"],
+  areaServed: AREA_SERVED,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

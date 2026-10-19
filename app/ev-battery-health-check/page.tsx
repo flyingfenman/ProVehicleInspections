@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { BatteryCharging, BadgeCheck, Gauge, FileCheck2, MapPin, ShieldCheck, ArrowRight, Info, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AREA_SERVED } from "@/lib/areas"
+import { SERVICE_AREA } from "@/lib/areas/service-area"
 
 export const metadata: Metadata = {
   title: "EV & Hybrid Battery Health Check | Pro Vehicle Inspections",
@@ -77,7 +79,7 @@ const serviceSchema = {
     url: "https://www.provehicleinspections.com",
     telephone: "+441992245660",
   },
-  areaServed: ["Essex", "Hertfordshire", "Greater London", "South Cambridgeshire", "Bedfordshire", "Suffolk"],
+  areaServed: AREA_SERVED,
   offers: [
     {
       "@type": "Offer",
@@ -146,7 +148,7 @@ export default function EvBatteryHealthCheckPage() {
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button asChild size="lg" className="h-14 w-full sm:w-auto px-8 bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
                 <Link href="/book?package=ev">
-                  Book the battery check — £99.99 <ArrowRight className="ml-2 w-5 h-5" />
+                  Book the battery check: £99.99 <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 w-full sm:w-auto px-8 bg-white font-bold">
@@ -154,7 +156,7 @@ export default function EvBatteryHealthCheckPage() {
               </Button>
             </div>
             <p className="mt-5 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4 text-primary" /> Essex, Hertfordshire, Greater London, South Cambridgeshire and surrounding areas
+              <MapPin className="w-4 h-4 text-primary" /> {SERVICE_AREA.short}, wherever the car is for sale
             </p>
           </div>
         </div>
@@ -293,7 +295,7 @@ export default function EvBatteryHealthCheckPage() {
       <section className="py-14 sm:py-20 border-t border-border bg-primary/5">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Inspect the whole car — and the EV battery.</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Inspect the whole car, and the EV battery.</h2>
             <p className="mt-4 text-muted-foreground text-lg">
               Choose a Standard or Premium inspection, then add the EV Battery State of Health Report for £49.99. Only need the battery checked? Book it on its own for £99.99.
             </p>
@@ -302,7 +304,7 @@ export default function EvBatteryHealthCheckPage() {
                 <Link href="/book">View inspection packages &amp; book</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 w-full sm:w-auto px-8 font-bold bg-white">
-                <Link href="/book?package=ev">Book the battery check — £99.99</Link>
+                <Link href="/book?package=ev">Book the battery check: £99.99</Link>
               </Button>
             </div>
           </div>

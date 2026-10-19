@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { CookieSettingsButton } from "@/components/cookie-settings-button"
+import { areaPath, areas } from "@/lib/areas"
+import { SERVICE_AREA } from "@/lib/areas/service-area"
 
 // The bottom padding grows while the cookie banner is open (it sets --cookie-banner-space), so the footer can still be
 // scrolled clear of it.
@@ -33,8 +35,21 @@ export function Footer() {
             <CookieSettingsButton className="inline-flex min-h-11 items-center text-sm hover:underline" />
           </nav>
           <p className="text-sm text-muted-foreground">
-            Independent mobile pre-purchase vehicle inspections across Essex, Hertfordshire, London and surrounding areas.
+            Independent mobile pre-purchase vehicle inspections across {SERVICE_AREA.short}.
           </p>
+          <nav aria-label="Areas we cover" className="max-w-4xl">
+            <p className="text-sm font-bold">Areas we cover</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              {areas.map((area, index) => (
+                <span key={area.slug}>
+                  {index > 0 && " · "}
+                  <Link href={areaPath(area)} className="inline-block py-1 hover:underline">
+                    {area.name}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          </nav>
           <p className="text-sm text-muted-foreground">© 2026 Pro Vehicle Inspections. All rights reserved.</p>
         </div>
       </div>
