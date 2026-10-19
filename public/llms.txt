@@ -37,6 +37,40 @@ One page per area, each saying where we inspect there, the route and time from o
 - [Bedfordshire](https://www.provehicleinspections.com/vehicle-inspection-bedfordshire): Bedford, Kempston, Luton, Leighton Buzzard, Biggleswade and Sandy; BCA Bedford ex-fleet stock
 - [West Midlands (Birmingham and Coventry)](https://www.provehicleinspections.com/vehicle-inspection-west-midlands): Birmingham, Coventry, Solihull, Wolverhampton, Walsall and Dudley; Motorpoint Coventry and Oldbury; only Birmingham charges a Clean Air Zone
 
+## Guides
+
+Used car buying guides written by Henry, each answering one question with sourced figures. Index: https://www.provehicleinspections.com/guides
+
+- [How much does a pre-purchase car inspection cost in the UK?](https://www.provehicleinspections.com/guides/pre-purchase-car-inspection-cost-uk): AA, RAC, ClickMechanic, CarExamer and independent prices as published on 19 October 2026, what the 'from' means, what is left out
+- [AA vs RAC vs independent: which car inspection should you book?](https://www.provehicleinspections.com/guides/aa-vs-rac-vs-independent-car-inspection): side-by-side table of price, points, road test, scan, history check, who turns up, turnaround and the cars each refuses
+- [Is a pre-purchase car inspection worth it?](https://www.provehicleinspections.com/guides/is-a-pre-purchase-car-inspection-worth-it): the arithmetic, the 2026 data, three real October 2026 cases, when it is most and least worth it
+- [What does a pre-purchase car inspection check?](https://www.provehicleinspections.com/guides/what-does-a-pre-purchase-car-inspection-check): mechanical, exterior, interior, the full diagnostic scan, the road test, the history check, what Premium adds, what no inspection can do
+- [How do you check an electric car's battery health before you buy?](https://www.provehicleinspections.com/guides/how-to-check-ev-battery-health-before-you-buy): five methods from the dashboard to a full discharge test, normal State of Health by age, red flags, what the £99.99 test reads
+- [How long do electric car batteries last?](https://www.provehicleinspections.com/guides/how-long-do-electric-car-batteries-last): Geotab 2026 data (2.3% a year, 81.6% at eight years), replacement rates, what shortens a pack, every major warranty, replacement costs
+- [Should you buy a Cat S or Cat N write-off?](https://www.provehicleinspections.com/guides/cat-s-and-cat-n-write-offs): what the categories mean, how often write-offs turn up, what a cheap repair hides, price and insurance, what we check
+- [HPI check vs car inspection: do you need both?](https://www.provehicleinspections.com/guides/hpi-check-vs-car-inspection): what a history check covers and cannot see, 2026 prices, which inspection services include one, two real examples
+- [Dealer or private seller: which is safer when buying a used car?](https://www.provehicleinspections.com/guides/buying-a-used-car-from-a-dealer-vs-private-seller): Consumer Rights Act 2015 rights, what a private seller owes you, traders posing as private, what to do in each case
+- [Buying an imported car: what should you check?](https://www.provehicleinspections.com/guides/imported-cars-what-to-check-before-you-buy): why UK history checks are blind on imports, IVA and registration paperwork, the UK conversion, which services refuse imports, a real £5,000 to £8,500 example
+
+## EV battery notes by model
+
+For each model: battery sizes and official range by version, the UK battery warranty, whether the car shows its own State of Health, known issues and DVSA recalls, what we check, FAQs and sources. Last checked 19 October 2026.
+
+- [Tesla Model 3](https://www.provehicleinspections.com/ev-battery-health-check/tesla-model-3)
+- [Tesla Model Y](https://www.provehicleinspections.com/ev-battery-health-check/tesla-model-y)
+- [Nissan Leaf](https://www.provehicleinspections.com/ev-battery-health-check/nissan-leaf)
+- [Kia e-Niro and Niro EV](https://www.provehicleinspections.com/ev-battery-health-check/kia-e-niro)
+- [Hyundai Kona Electric](https://www.provehicleinspections.com/ev-battery-health-check/hyundai-kona-electric)
+- [Volkswagen ID.3](https://www.provehicleinspections.com/ev-battery-health-check/volkswagen-id3)
+- [Renault Zoe](https://www.provehicleinspections.com/ev-battery-health-check/renault-zoe)
+- [MG4](https://www.provehicleinspections.com/ev-battery-health-check/mg4)
+- [MG ZS EV](https://www.provehicleinspections.com/ev-battery-health-check/mg-zs-ev)
+- [BMW i3](https://www.provehicleinspections.com/ev-battery-health-check/bmw-i3)
+- [Peugeot e-208](https://www.provehicleinspections.com/ev-battery-health-check/peugeot-e-208)
+- [Vauxhall Corsa-e and Corsa Electric](https://www.provehicleinspections.com/ev-battery-health-check/vauxhall-corsa-e)
+- [Jaguar I-Pace](https://www.provehicleinspections.com/ev-battery-health-check/jaguar-i-pace)
+- [Polestar 2](https://www.provehicleinspections.com/ev-battery-health-check/polestar-2)
+
 ## Contact
 
 - [Contact us](https://www.provehicleinspections.com/contact)

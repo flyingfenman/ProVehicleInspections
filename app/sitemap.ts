@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next"
 import { areaPath, areas } from "@/lib/areas"
+import { evModelPath, evModels } from "@/lib/ev-models"
+import { guidePath, guides } from "@/lib/guides"
 
 const BASE_URL = "https://www.provehicleinspections.com"
 
@@ -12,6 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/what-we-inspect", 0.85],
     ["/sample-report", 0.8],
     ["/ev-battery-health-check", 0.9],
+    ...evModels.map((model): [string, number, string] => [evModelPath(model), 0.8, model.updated]),
+    ["/guides", 0.8],
+    ...guides.map((guide): [string, number, string] => [guidePath(guide), 0.8, guide.updated]),
     ...areas.map((area): [string, number, string] => [areaPath(area), 0.9, area.updated]),
     ["/contact", 0.6],
   ]

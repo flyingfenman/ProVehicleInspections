@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { BatteryCharging, BadgeCheck, Gauge, FileCheck2, MapPin, ShieldCheck, ArrowRight, Info, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { EvHubLinks } from "@/components/ev/ev-hub-links"
 import { AREA_SERVED } from "@/lib/areas"
 import { SERVICE_AREA } from "@/lib/areas/service-area"
 
@@ -272,6 +273,8 @@ export default function EvBatteryHealthCheckPage() {
           </div>
         </div>
       </section>
+
+      <EvHubLinks />
 
       <section className="py-14 sm:py-20 bg-white">
         <div className="container mx-auto px-4">

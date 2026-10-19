@@ -23,6 +23,9 @@ export function Footer() {
             <Link href="/ev-battery-health-check" className="inline-flex min-h-11 items-center text-sm hover:underline">
               EV &amp; Hybrid Battery Health Check
             </Link>
+            <Link href="/guides" className="inline-flex min-h-11 items-center text-sm hover:underline">
+              Buying Guides
+            </Link>
             <Link href="/contact" className="inline-flex min-h-11 items-center text-sm hover:underline">
               Contact Us
             </Link>
