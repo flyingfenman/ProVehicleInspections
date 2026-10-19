@@ -1,0 +1,790 @@
+"use client"
+
+import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import {
+  Loader2,
+  ChevronRight,
+  ChevronLeft,
+  Clock,
+  TriangleAlert,
+  Phone,
+  MessageCircle,
+  BatteryCharging,
+  BadgeCheck,
+  Check,
+  Wrench,
+  CalendarDays,
+} from "lucide-react"
+import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
+import { INSPECTION_PACKAGES as PACKAGES } from "@/lib/inspection-packages"
+import { trackWhatsAppClick } from "@/lib/tracking"
+import { getTrafficSource } from "@/lib/traffic-source"
+import { scrollToAnchorWhileLoading } from "@/lib/scroll-to-anchor"
+
+function toWhatsAppNumber(phone: string): string {
+  const cleaned = phone.replace(/[^\d+]/g, "")
+  if (cleaned.startsWith("+")) return cleaned.slice(1)
+  if (cleaned.startsWith("0")) return "44" + cleaned.slice(1)
+  return cleaned
+}
+
+const PHONE_FEATURE_LIMIT = 4
+
+const EV_SOH_PRICE = 49.99
+const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+const SHORT_NOTICE_MS = MIN_BOOKING_NOTICE_HOURS * 60 * 60 * 1000
+const DEFAULT_CALENDAR_START_HOURS = 25
+
+function dateKey(isoString: string) {
+  return isoString.slice(0, 10)
+}
+
+function getMonthGrid(year: number, month: number): (Date | null)[] {
+  const firstDay = new Date(year, month, 1)
+  const startWeekday = (firstDay.getDay() + 6) % 7
+  const daysInMonth = new Date(year, month + 1, 0).getDate()
+
+  const cells: (Date | null)[] = []
+  for (let i = 0; i < startWeekday; i++) cells.push(null)
+  for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d))
+  while (cells.length % 7 !== 0) cells.push(null)
+  return cells
+}
+
+function toDateKey(date: Date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+}
+
+function setViewFromDateKey(key: string) {
+  const [year, month] = key.split("-").map(Number)
+  return { year, month: month - 1 }
+}
+
+function isShortNotice(slot: Slot, nowMs: number) {
+  return new Date(slot.start).getTime() < nowMs + SHORT_NOTICE_MS
+}
+
+function shortNoticeWhatsAppUrl(slot: Slot, packageName: string) {
+  const when = new Date(slot.start).toLocaleString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/London",
+  })
+  const message = `Hi Henry, I can see the ${packageName} slot at ${when}. Is this short-notice appointment still available?`
+  return `https://wa.me/441992367909?text=${encodeURIComponent(message)}`
+}
+
+function formatSlotTime(slot: Slot) {
+  return new Date(slot.start).toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/London",
+  })
+}
+
+export function InspectionsBookingCalendar() {
+  const timeRef = useRef<HTMLDivElement>(null)
+  const detailsRef = useRef<HTMLDivElement>(null)
+  const [packageKey, setPackageKey] = useState<PackageKey>("standard")
+  const [includeEvSoh, setIncludeEvSoh] = useState(false)
+  const [slotsByPackage, setSlotsByPackage] = useState<Record<PackageKey, Slot[]>>({ standard: [], premium: [], ev: [] })
+  const [loadingSlots, setLoadingSlots] = useState(true)
+  const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null)
+  const [shortNoticeCandidate, setShortNoticeCandidate] = useState<Slot | null>(null)
+  const [shortNoticeConfirmed, setShortNoticeConfirmed] = useState(false)
+  const [packageChoicesOpen, setPackageChoicesOpen] = useState(true)
+  const [detailsUnlocked, setDetailsUnlocked] = useState(false)
+  const [viewDate, setViewDate] = useState(() => {
+    const d = new Date()
+    return { year: d.getFullYear(), month: d.getMonth() }
+  })
+  const [nowMs] = useState(() => Date.now())
+  const [form, setForm] = useState({
+    registration: "",
+    location: "",
+    sellerName: "",
+    sellerPhone: "",
+    advertUrl: "",
+    name: "",
+    phone: "",
+    email: "",
+    notes: "",
+  })
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState("")
+  const [formError, setFormError] = useState("")
+  const [prefilledReg, setPrefilledReg] = useState("")
+  // A link Henry sends for one appointment: ?date=2026-10-13&time=09:00 (London time).
+  const scrollToDetailsOnOpen = useRef(false)
+  const [requestedSlot, setRequestedSlot] = useState<{ date: string; time: string } | null>(null)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    // Links such as the EV page's can choose the package: /book?package=ev
+    const requestedPackage = params.get("package")
+    if (isPackageKey(requestedPackage)) {
+      setPackageKey(requestedPackage)
+      setPackageChoicesOpen(false)
+    }
+    // The battery add-on box on the inspections page comes here with ?battery=1, with the report already ticked.
+    if (params.get("battery") === "1") setIncludeEvSoh(true)
+    const requestedDate = params.get("date")
+    const requestedTime = params.get("time")
+    if (requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate) && requestedTime && /^\d{1,2}:\d{2}$/.test(requestedTime)) {
+      setRequestedSlot({ date: requestedDate, time: requestedTime.padStart(5, "0") })
+    }
+    const registration = params.get("reg")?.trim().toUpperCase()
+    if (registration) {
+      setPrefilledReg(registration)
+      setForm((current) => ({ ...current, registration: current.registration || registration }))
+    }
+    // Arriving on a #book link: the browser's own jump gets undone during page load, so retry briefly
+    // until the section is in view.
+    if (window.location.hash === "#book") return scrollToAnchorWhileLoading("book")
+  }, [])
+
+  const selectedPackage = PACKAGES.find((p) => p.key === packageKey) || PACKAGES[0]
+  // The battery check on its own already is the battery report, so the add-on only goes with an inspection.
+  const evOnly = packageKey === "ev"
+  const withEvSoh = includeEvSoh && !evOnly
+  const totalPrice = selectedPackage.amount + (withEvSoh ? EV_SOH_PRICE : 0)
+  const slots = slotsByPackage[packageKey]
+
+  const loadAvailability = useCallback(async () => {
+    setLoadingSlots(true)
+    setError("")
+    try {
+      const res = await fetch("/api/inspection-slots?package=all", { cache: "no-store" })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || "Couldn't load availability")
+      setSlotsByPackage({
+        standard: data.slotsByPackage?.standard || [],
+        premium: data.slotsByPackage?.premium || [],
+        ev: data.slotsByPackage?.ev || [],
+      })
+    } catch {
+      setError("Couldn't load available times — please WhatsApp us and we'll arrange it with you.")
+    } finally {
+      setLoadingSlots(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    void loadAvailability()
+  }, [loadAvailability])
+
+  useEffect(() => {
+    if (loadingSlots || requestedSlot || selectedDate || slots.length === 0) return
+    const defaultStartMs = nowMs + DEFAULT_CALENDAR_START_HOURS * 60 * 60 * 1000
+    const firstDefaultSlot = slots.find((slot) => new Date(slot.start).getTime() >= defaultStartMs) || slots[0]
+    const firstDate = dateKey(firstDefaultSlot.start)
+    setSelectedDate(firstDate)
+    setViewDate(setViewFromDateKey(firstDate))
+  }, [loadingSlots, nowMs, requestedSlot, selectedDate, slots])
+
+  const slotsByDate = useMemo(() => {
+    const map = new Map<string, Slot[]>()
+    for (const slot of slots) {
+      const key = dateKey(slot.start)
+      if (!map.has(key)) map.set(key, [])
+      map.get(key)!.push(slot)
+    }
+    return map
+  }, [slots])
+
+  const monthGrid = useMemo(() => getMonthGrid(viewDate.year, viewDate.month), [viewDate])
+  const monthLabel = new Date(viewDate.year, viewDate.month, 1).toLocaleDateString("en-GB", {
+    month: "long",
+    year: "numeric",
+  })
+
+  const set = (field: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [field]: e.target.value }))
+
+  const resetShortNotice = () => {
+    setShortNoticeCandidate(null)
+    setShortNoticeConfirmed(false)
+  }
+
+  const choosePackage = (key: PackageKey) => {
+    setPackageKey(key)
+    setPackageChoicesOpen(false)
+    setSelectedDate(null)
+    setSelectedSlot(null)
+    setDetailsUnlocked(false)
+    resetShortNotice()
+    setError("")
+  }
+
+  const chooseDate = (key: string) => {
+    setSelectedDate(key)
+    setSelectedSlot(null)
+    setDetailsUnlocked(false)
+    resetShortNotice()
+  }
+
+  const handleSlotClick = (slot: Slot) => {
+    setSelectedSlot(null)
+    setDetailsUnlocked(false)
+    setError("")
+    if (isShortNotice(slot, nowMs)) {
+      setShortNoticeCandidate(slot)
+      setShortNoticeConfirmed(false)
+      return
+    }
+    resetShortNotice()
+    setSelectedSlot(slot)
+  }
+
+  // The details stay hidden until the customer has chosen a valid appointment and presses Continue.
+  const goToDetails = () => {
+    if (!selectedSlot) return
+    setDetailsUnlocked(true)
+    requestAnimationFrame(() => {
+      const details = detailsRef.current
+      if (!details) return
+      details.scrollIntoView({ behavior: "smooth", block: "start" })
+      details.focus({ preventScroll: true })
+    })
+  }
+
+  // A link for one appointment opens with that time chosen and the details form showing. Henry sends
+  // these himself, so a time inside 24 hours counts as already confirmed with him.
+  useEffect(() => {
+    if (loadingSlots || !requestedSlot) return
+    setRequestedSlot(null)
+    const match = slots.find((slot) => dateKey(slot.start) === requestedSlot.date && formatSlotTime(slot) === requestedSlot.time)
+    if (!match) {
+      if (slots.some((slot) => dateKey(slot.start) === requestedSlot.date)) {
+        setSelectedDate(requestedSlot.date)
+        setViewDate(setViewFromDateKey(requestedSlot.date))
+      }
+      setError("Sorry, that time isn't available any more. Please pick another below, or WhatsApp us.")
+      return
+    }
+    setSelectedDate(requestedSlot.date)
+    setViewDate(setViewFromDateKey(requestedSlot.date))
+    if (isShortNotice(match, nowMs)) {
+      setShortNoticeCandidate(match)
+      setShortNoticeConfirmed(true)
+    }
+    setSelectedSlot(match)
+    setDetailsUnlocked(true)
+    scrollToDetailsOnOpen.current = true
+  }, [loadingSlots, requestedSlot, slots, nowMs])
+
+  useEffect(() => {
+    if (!detailsUnlocked || !scrollToDetailsOnOpen.current) return
+    scrollToDetailsOnOpen.current = false
+    detailsRef.current?.scrollIntoView({ block: "start" })
+  }, [detailsUnlocked])
+
+  const showTimes = () => timeRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    if (!selectedSlot) {
+      setError(shortNoticeCandidate
+        ? "That time is within 24 hours. Message Henry first, then tick the box once he's confirmed it."
+        : "Please choose a date and time for your appointment.")
+      showTimes()
+      return
+    }
+    setSubmitting(true)
+    setError("")
+    setFormError("")
+
+    try {
+      const res = await fetch("/api/create-inspection-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          packageKey,
+          includeEvSoh: withEvSoh,
+          shortNoticeConfirmed: isShortNotice(selectedSlot, nowMs) && shortNoticeConfirmed,
+          slotStart: selectedSlot.start,
+          slotEnd: selectedSlot.end,
+          trafficSource: getTrafficSource(),
+          ...form,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || "Something went wrong")
+      window.location.href = data.url
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again."
+      // The time has gone meanwhile: refresh the times and send the customer back up to pick another.
+      if (message.includes("just booked") || message.includes("confirmed")) {
+        setSelectedSlot(null)
+        resetShortNotice()
+        await loadAvailability()
+        setError(message)
+        showTimes()
+      } else {
+        setFormError(message)
+      }
+      setSubmitting(false)
+    }
+  }
+
+  const daySlots = selectedDate ? slotsByDate.get(selectedDate) || [] : []
+
+  return (
+    <div className="mx-auto max-w-5xl">
+      {prefilledReg && (
+        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-primary/20 bg-white p-4" role="status">
+          <span
+            className="rounded-md bg-[#ffd500] px-3 py-1 text-lg font-bold tracking-wider text-black"
+            style={{ fontFamily: "var(--font-charles-wright), monospace" }}
+          >
+            {prefilledReg}
+          </span>
+          <p className="text-sm font-semibold text-foreground">Added to your booking. You can change it below, with the rest of the details.</p>
+        </div>
+      )}
+      <div className="mb-7 hidden gap-3 sm:grid sm:grid-cols-3">
+        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
+          <BatteryCharging className="h-6 w-6 shrink-0 text-primary" />
+          <div><p className="text-sm font-bold">Specialists in EV</p><p className="text-xs text-muted-foreground">EV diagnostics &amp; optional battery health reports</p></div>
+        </div>
+        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
+          <Clock className="h-6 w-6 shrink-0 text-primary" />
+          <div><p className="text-sm font-bold">Short-notice availability</p><p className="text-xs text-muted-foreground">Message first inside 24 hours</p></div>
+        </div>
+        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
+          <Wrench className="h-6 w-6 shrink-0 text-primary" />
+          <div><p className="text-sm font-bold">Most thorough mechanical checks available</p><p className="text-xs text-muted-foreground">In-depth findings, video &amp; buying guidance</p></div>
+        </div>
+      </div>
+
+      <div className="mb-8">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">1</span>
+          <div>
+            <h3 className="text-xl font-bold">Your inspection</h3>
+            <p className="hidden text-sm text-muted-foreground sm:block">Both inspections include an in-depth mechanical inspection, video review, evidence and personal buying guidance, or you can book the EV battery check on its own.</p>
+          </div>
+        </div>
+
+        {packageChoicesOpen ? (
+          <div className="grid gap-4 md:grid-cols-2">
+            {PACKAGES.map((pkg) => {
+              const active = packageKey === pkg.key
+              return (
+                <button key={pkg.key} type="button" onClick={() => choosePackage(pkg.key)} aria-pressed={active} className={`relative rounded-2xl border-2 p-5 text-left transition-all ${pkg.key === "ev" ? "md:col-span-2" : ""} ${active ? "border-primary bg-primary/5 shadow-md" : "border-border bg-white hover:border-primary/40 hover:shadow-sm"}`}>
+                  {pkg.popular && <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">Most thorough</span>}
+                  <p className="text-sm font-semibold text-muted-foreground">{pkg.points}</p>
+                  <div className="mt-1 flex items-end gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <span aria-hidden="true" className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 bg-white ${active ? "border-primary" : "border-muted-foreground/40"}`}>
+                        {active && <span className="h-3 w-3 rounded-full bg-primary" />}
+                      </span>
+                      <h4 className="text-xl font-bold">{pkg.name}</h4>
+                    </div>
+                    <p className="ml-auto text-3xl font-bold">{pkg.price}</p>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">{pkg.strapline}</p>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {pkg.features.map((feature, i) => (
+                      <span key={feature} className={`${i >= PHONE_FEATURE_LIMIT ? "hidden sm:flex" : "flex"} items-center gap-2 text-sm font-medium sm:text-xs`}><Check className="h-4 w-4 shrink-0 text-emerald-600" /> {feature}</span>
+                    ))}
+                  </div>
+                  {active && <div className="mt-4 flex items-center gap-2 text-sm font-bold text-primary"><Check className="h-4 w-4" /> Selected</div>}
+                </button>
+              )
+            })}
+          </div>
+        ) : (
+          <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 sm:p-5">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-muted-foreground">{selectedPackage.points}</p>
+              <p className="text-lg font-bold sm:text-xl">{selectedPackage.name} — {selectedPackage.price}</p>
+              <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-primary"><Check className="h-4 w-4" /> Selected</p>
+            </div>
+            <button type="button" onClick={() => setPackageChoicesOpen(true)} className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
+              Change inspection
+            </button>
+          </div>
+        )}
+      </div>
+
+      {!evOnly && (
+        <div className="rounded-3xl border border-border bg-white p-4 shadow-sm sm:p-6">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground sm:h-12 sm:w-12">
+              <BatteryCharging className="h-6 w-6" />
+            </span>
+            <div>
+              <h3 className="text-xl font-bold leading-tight sm:text-2xl">Buying an electric or plug-in hybrid?</h3>
+              <p className="mt-1 text-lg font-bold sm:text-xl">
+                Add the battery report for <span className="whitespace-nowrap text-primary">+£49.99</span>
+              </p>
+            </div>
+          </div>
+
+          <ul className="mt-4 space-y-2">
+            <li className="flex items-start gap-2.5 font-semibold">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" strokeWidth={3} />
+              The battery&apos;s State of Health as a percentage, with its own report
+            </li>
+            <li className="flex items-start gap-2.5 font-semibold">
+              <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+              CARA Approved® Autel EV Battery Health Test
+            </li>
+          </ul>
+          <p className="mt-3 font-semibold">Not included in Standard or Premium.</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Both inspections already include electric and hybrid fault checks; this adds the battery health test. For fully electric and plug-in hybrid cars only, and compatibility varies by make and model.
+          </p>
+
+          <label
+            htmlFor="includeEvSoh"
+            className={`mt-4 flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 bg-white p-4 transition ${includeEvSoh ? "border-primary shadow-md" : "border-border hover:border-primary/50"}`}
+          >
+            <input id="includeEvSoh" type="checkbox" checked={includeEvSoh} onChange={(e) => setIncludeEvSoh(e.target.checked)} className="h-6 w-6 shrink-0 rounded border-border accent-primary" />
+            <span className="flex-1">
+              <span className="block text-lg font-bold leading-tight">{includeEvSoh ? "Battery report added" : "Add the battery report"}</span>
+              <span className="block text-sm text-muted-foreground">
+                {includeEvSoh
+                  ? `Your total is now £${totalPrice.toFixed(2)}`
+                  : `${selectedPackage.name} £${selectedPackage.amount.toFixed(2)}, or £${(selectedPackage.amount + EV_SOH_PRICE).toFixed(2)} with the report`}
+              </span>
+            </span>
+            <span className="text-xl font-bold text-primary">+£49.99</span>
+          </label>
+        </div>
+      )}
+
+      <div className="my-6 hidden items-center justify-between gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:flex" aria-live="polite">
+        <div>
+          <p className="font-bold">{selectedPackage.name}</p>
+          <p className="text-sm text-muted-foreground">
+            {evOnly
+              ? "Battery test and State of Health report, without an inspection"
+              : withEvSoh
+                ? "Includes EV Battery State of Health Report (+£49.99)"
+                : "No optional battery State of Health report selected"}
+          </p>
+        </div>
+        <p className="shrink-0 text-2xl font-bold">£{totalPrice.toFixed(2)}</p>
+      </div>
+
+      <div ref={timeRef} className="scroll-mt-24">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">2</span>
+          <div>
+            <h3 className="text-xl font-bold">Choose your appointment</h3>
+            <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
+          </div>
+        </div>
+
+        <div className="mb-4 flex flex-wrap gap-3 text-sm font-semibold sm:text-xs">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-primary">
+            <span className="h-2.5 w-2.5 rounded-full bg-primary" /> Book online
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-3 py-1.5 text-foreground">
+            <span className="h-2.5 w-2.5 rounded-full border-2 border-primary bg-white" /> Within 24 hours — message first
+          </span>
+        </div>
+
+        {loadingSlots ? (
+          <div className="grid gap-4 md:grid-cols-[1.25fr_.75fr]">
+            <div className="h-80 animate-pulse rounded-2xl border bg-muted/40" />
+            <div className="h-80 animate-pulse rounded-2xl border bg-muted/30" />
+          </div>
+        ) : slots.length === 0 ? (
+          <div className="rounded-2xl border bg-white p-8 text-center">
+            <CalendarDays className="mx-auto h-8 w-8 text-primary" />
+            <p className="mt-3 font-bold">No availability showing for this package.</p>
+            <p className="mt-1 text-sm text-muted-foreground">Message us and we&apos;ll see what we can arrange.</p>
+          </div>
+        ) : (
+          <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
+            <div className="grid md:h-[430px] md:grid-cols-[1.25fr_.75fr]">
+              <div className="border-b border-border p-5 md:h-full md:overflow-hidden md:border-b-0 md:border-r sm:p-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <button type="button" onClick={() => setViewDate((v) => (v.month === 0 ? { year: v.year - 1, month: 11 } : { year: v.year, month: v.month - 1 }))} className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-muted" aria-label="Previous month">
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                  <p className="font-bold">{monthLabel}</p>
+                  <button type="button" onClick={() => setViewDate((v) => (v.month === 11 ? { year: v.year + 1, month: 0 } : { year: v.year, month: v.month + 1 }))} className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-muted" aria-label="Next month">
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="mb-2 grid grid-cols-7 gap-1">
+                  {WEEKDAY_LABELS.map((w) => <div key={w} className="py-1 text-center text-sm font-semibold text-muted-foreground sm:text-xs">{w}</div>)}
+                </div>
+
+                <div className="grid grid-cols-7 gap-1">
+                  {monthGrid.map((date, i) => {
+                    if (!date) return <div key={i} />
+                    const key = toDateKey(date)
+                    const dateSlots = slotsByDate.get(key) || []
+                    const hasSlots = dateSlots.length > 0
+                    const onlyShortNotice = hasSlots && dateSlots.every((slot) => isShortNotice(slot, nowMs))
+                    const isSelected = key === selectedDate
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        disabled={!hasSlots}
+                        onClick={() => chooseDate(key)}
+                        className={`h-11 rounded-full text-sm font-semibold transition-colors ${
+                          isSelected
+                            ? "bg-primary text-primary-foreground"
+                            : onlyShortNotice
+                              ? "bg-primary/5 text-primary ring-1 ring-primary/25 hover:bg-primary/10"
+                              : hasSlots
+                                ? "text-foreground hover:bg-primary/10"
+                                : "cursor-not-allowed text-muted-foreground/25"
+                        }`}
+                      >
+                        {date.getDate()}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div className="bg-muted/20 p-5 sm:p-6 md:h-full md:overflow-y-auto md:overscroll-contain">
+                {selectedDate ? (
+                  <>
+                    <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-primary sm:text-xs">Available appointments</p>
+                    <p className="mb-4 font-bold">
+                      {new Date(selectedDate + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}
+                    </p>
+                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-1">
+                      {daySlots.map((slot) => {
+                        const shortNotice = isShortNotice(slot, nowMs)
+                        const isCandidate = shortNoticeCandidate?.start === slot.start
+                        const isSelected = selectedSlot?.start === slot.start
+                        const time = formatSlotTime(slot)
+                        return (
+                          <button
+                            key={slot.start}
+                            type="button"
+                            onClick={() => handleSlotClick(slot)}
+                            aria-pressed={isSelected}
+                            className={`rounded-xl border px-2 py-2.5 text-sm font-bold transition-all hover:shadow-sm md:px-4 md:py-3 ${
+                              isSelected
+                                ? "border-primary bg-primary text-primary-foreground"
+                                : shortNotice
+                                ? isCandidate
+                                  ? "border-primary bg-primary/10 text-primary"
+                                  : "border-primary/25 bg-white text-foreground hover:border-primary/50 hover:bg-primary/5"
+                                : "border-primary bg-white text-primary hover:bg-primary hover:text-primary-foreground"
+                            }`}
+                          >
+                            <span className="block text-base">{time}</span>
+                            {/* On phones only short-notice times carry a label; the legend above explains the rest. */}
+                            <span className={`mt-0.5 text-[12px] font-semibold md:text-[11px] ${shortNotice ? "block text-muted-foreground" : "hidden opacity-70 md:block"}`}>
+                              {shortNotice ? "Message first" : "Book online"}
+                            </span>
+                          </button>
+                        )
+                      })}
+                    </div>
+                    {shortNoticeCandidate && dateKey(shortNoticeCandidate.start) === selectedDate && (
+                      <div className="mt-4 rounded-2xl border-2 border-primary/20 bg-white p-4">
+                        <p className="font-bold text-foreground">This appointment is within 24 hours</p>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          Please WhatsApp Henry to confirm availability before paying.
+                        </p>
+                        <Button asChild className="mt-3 w-full bg-[#25D366] font-bold text-white hover:bg-[#1da851]">
+                          <a href={shortNoticeWhatsAppUrl(shortNoticeCandidate, selectedPackage.name)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick("short_notice_slot")}>
+                            <MessageCircle className="mr-2 h-4 w-4" /> Message Henry on WhatsApp
+                          </a>
+                        </Button>
+                        <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-xl border border-primary/15 bg-primary/5 p-3">
+                          <input
+                            type="checkbox"
+                            checked={shortNoticeConfirmed}
+                            onChange={(e) => {
+                              const confirmed = e.target.checked
+                              setShortNoticeConfirmed(confirmed)
+                              setSelectedSlot(confirmed ? shortNoticeCandidate : null)
+                              setDetailsUnlocked(false)
+                            }}
+                            className="mt-0.5 h-5 w-5 rounded border-border accent-primary"
+                          />
+                          <span className="text-sm font-semibold text-foreground">Henry has confirmed this appointment.</span>
+                        </label>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <div className="flex min-h-48 items-center justify-center text-center text-sm text-muted-foreground">Choose a highlighted date to see appointment times.</div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {error && <p className="mt-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
+      </div>
+      {/* Keep the selected appointment visible until the customer continues to their details. While the cookie banner is
+          open it sets --cookie-banner-space, so this bar sits just above it instead of underneath. */}
+      {selectedSlot && !detailsUnlocked && (
+        <div className="sticky bottom-[var(--cookie-banner-space,0px)] z-[45] -mx-4 mt-5 border-t border-primary/20 bg-white px-4 py-3 pb-[max(.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.10)] sm:mx-0 sm:rounded-2xl sm:border sm:px-6 sm:py-4">
+          <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 sm:gap-6">
+            <div role="status" aria-live="polite" className="min-w-0">
+              <p className="truncate text-sm font-bold sm:hidden">
+                {selectedPackage.name.replace(" Inspection", "")} · {new Date(selectedSlot.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" })} · {formatSlotTime(selectedSlot)} · £{totalPrice.toFixed(2)}
+              </p>
+              <div className="hidden sm:block">
+                <p className="font-semibold">
+                  {selectedPackage.name} · {new Date(selectedSlot.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" })} · {formatSlotTime(selectedSlot)}
+                </p>
+                <p className="text-sm text-muted-foreground">£{totalPrice.toFixed(2)} · Booking confirmed after payment.</p>
+              </div>
+            </div>
+            <Button type="button" onClick={goToDetails} className="h-11 shrink-0 bg-primary px-4 font-bold text-primary-foreground hover:bg-primary/90 sm:min-w-40">
+              Continue <ChevronRight className="ml-1 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {detailsUnlocked && selectedSlot && (
+        <form onSubmit={handleSubmit} className="mt-10 space-y-10">
+        <div ref={detailsRef} tabIndex={-1} aria-label="Tell us about the car" className="scroll-mt-24 outline-none">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">3</span>
+            <div>
+              <h3 className="text-xl font-bold">Tell us about the car</h3>
+              <p className="text-sm text-muted-foreground">This lets us prepare before we arrive.</p>
+            </div>
+          </div>
+          <div className="grid gap-4 rounded-3xl border border-border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-6">
+            <div className="space-y-1.5">
+              <Label htmlFor="registration">Registration *</Label>
+              <Input id="registration" value={form.registration} onChange={set("registration")} placeholder="e.g. AB12 CDE" required autoCapitalize="characters" autoCorrect="off" spellCheck={false} autoComplete="off" className="uk-numberplate text-center tracking-widest" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="location">Where is the car? *</Label>
+              <Input id="location" value={form.location} onChange={set("location")} placeholder="Postcode or dealer name" required />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="sellerName">Seller&apos;s name</Label>
+              <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Private seller or dealership" autoComplete="off" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="sellerPhone">Seller&apos;s contact number</Label>
+              <Input id="sellerPhone" type="tel" value={form.sellerPhone} onChange={set("sellerPhone")} placeholder="07700 900000" autoComplete="off" />
+            </div>
+
+            {form.sellerPhone.trim().length >= 10 && (
+              <div className="sm:col-span-2 flex flex-col gap-3 rounded-xl border border-amber-200 bg-amber-50 p-3 sm:flex-row sm:items-center">
+                <div className="flex flex-1 items-start gap-2">
+                  <TriangleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-700" />
+                  <p className="text-sm text-amber-900">
+                    Please make sure the seller can give us access to the vehicle at this time before you pay.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <a href={`tel:${form.sellerPhone.replace(/\s+/g, "")}`} className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-lg border border-amber-300 bg-white px-3 text-sm font-semibold text-amber-900 hover:bg-amber-100 sm:flex-initial">
+                    <Phone className="h-3.5 w-3.5" /> Call seller
+                  </a>
+                  <a href={`https://wa.me/${toWhatsAppNumber(form.sellerPhone)}`} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] px-3 text-sm font-semibold text-white hover:bg-[#1da851] sm:flex-initial">
+                    <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+                  </a>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-1.5 sm:col-span-2">
+              <Label htmlFor="advertUrl">Link to the advert</Label>
+              <Input id="advertUrl" type="text" value={form.advertUrl} onChange={set("advertUrl")} placeholder="AutoTrader, eBay, Facebook Marketplace, dealer advert..." />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">4</span>
+            <div>
+              <h3 className="text-xl font-bold">Your details</h3>
+              <p className="text-sm text-muted-foreground">We&apos;ll send the booking confirmation and report here.</p>
+            </div>
+          </div>
+          <div className="grid gap-4 rounded-3xl border border-border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-6">
+            <div className="space-y-1.5">
+              <Label htmlFor="name">Full name *</Label>
+              <Input id="name" value={form.name} onChange={set("name")} placeholder="Your name" required autoComplete="name" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="phone">Phone number *</Label>
+              <Input id="phone" type="tel" value={form.phone} onChange={set("phone")} placeholder="07700 900000" required autoComplete="tel" />
+            </div>
+            <div className="space-y-1.5 sm:col-span-2">
+              <Label htmlFor="email">Email address *</Label>
+              <Input id="email" type="email" value={form.email} onChange={set("email")} placeholder="you@example.com" required autoComplete="email" />
+            </div>
+            <div className="space-y-1.5 sm:col-span-2">
+              <Label htmlFor="notes">Anything you&apos;re already concerned about?</Label>
+              <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="Any noises, warning lights, seller comments or access details..." rows={2} maxLength={400} />
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {formError && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{formError}</p>}
+          <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-bold">{selectedPackage.name}</p>
+                {selectedSlot ? (
+                  <p className="text-sm font-semibold text-foreground">
+                    {new Date(selectedSlot.start).toLocaleString("en-GB", {
+                      dateStyle: "full",
+                      timeStyle: "short",
+                      timeZone: "Europe/London",
+                    })}
+                  </p>
+                ) : (
+                  <button type="button" onClick={showTimes} className="text-sm font-semibold text-primary underline underline-offset-4">
+                    Choose a date and time above
+                  </button>
+                )}
+                <p className="text-sm text-muted-foreground">
+                  {evOnly
+                    ? "Battery test and State of Health report, without an inspection"
+                    : withEvSoh
+                      ? "Includes EV Battery State of Health Report (+£49.99)"
+                      : "Inspection only — no optional battery State of Health report"}
+                </p>
+                {selectedSlot && shortNoticeConfirmed && isShortNotice(selectedSlot, nowMs) && (
+                  <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    <Check className="h-4 w-4" /> Short-notice slot confirmed with Henry
+                  </p>
+                )}
+              </div>
+              <p className="shrink-0 text-2xl font-bold">£{totalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+
+          <Button type="submit" size="lg" disabled={submitting} className="h-14 w-full text-lg font-bold bg-primary hover:bg-primary/90">
+            {submitting ? (
+              <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Opening secure payment...</>
+            ) : (
+              <>Reserve My {evOnly ? "Battery Check" : "Inspection"} — £{totalPrice.toFixed(2)} <ChevronRight className="ml-2 h-5 w-5" /></>
+            )}
+          </Button>
+          <p className="text-center text-sm text-muted-foreground">
+            Secure checkout via Stripe. Your appointment is confirmed once payment is complete.
+          </p>
+        </div>
+        </form>
+      )}
+    </div>
+  )
+}
