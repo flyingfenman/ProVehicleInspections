@@ -1,4 +1,4 @@
-import { MessageSquare, Phone } from "lucide-react"
+import { MessageSquare } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 
 export function ContactSection() {
@@ -30,12 +30,6 @@ export function ContactSection() {
               className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-lg font-bold text-white shadow-lg transition hover:bg-[#1da851]"
             >
               <MessageSquare className="h-5 w-5" aria-hidden="true" /> Message on WhatsApp
-            </a>
-            <a
-              href="tel:+441992245660"
-              className="mt-3 flex h-14 w-full items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white px-5 text-lg font-bold text-primary transition hover:bg-primary/5"
-            >
-              <Phone className="h-5 w-5" aria-hidden="true" /> Call 01992 245660
             </a>
           </div>
         </div>
