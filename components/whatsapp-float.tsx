@@ -30,7 +30,7 @@ export function WhatsAppFloat() {
   return (
     <div className="fixed bottom-[calc(1rem_+_var(--cookie-banner-space,0px))] right-4 z-40 h-14 w-14 transition-[bottom] duration-300 motion-reduce:transition-none sm:bottom-[calc(1.5rem_+_var(--cookie-banner-space,0px))] sm:right-6 [html[data-cookie-banner=settings]_&]:hidden">
       <a
-        href="https://wa.me/441992367909"
+        href="https://wa.me/441992245660"
         target="_blank"
         rel="noopener noreferrer"
         className="flex h-full w-full items-center justify-center bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#20BA55] transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-700 focus-visible:ring-offset-2"
@@ -54,7 +54,7 @@ export function WhatsAppFloat() {
             />
           </svg>
           <a
-            href="https://wa.me/441992367909"
+            href="https://wa.me/441992245660"
             target="_blank"
             rel="noopener noreferrer"
             className="relative block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
