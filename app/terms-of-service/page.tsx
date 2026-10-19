@@ -144,9 +144,9 @@ export default function TermsOfServicePage() {
             <p>If you have any questions about these Terms of Service, please contact us:</p>
             <ul className="list-none space-y-2">
               <li>
-                <strong>Email:</strong>{" "}
-                <a href="mailto:henry@eppingcarbuyer.com" className="text-primary hover:underline">
-                  henry@eppingcarbuyer.com
+                <strong>Contact form:</strong>{" "}
+                <a href="/contact" className="text-primary hover:underline">
+                  our Contact Us page
                 </a>
               </li>
               <li>
