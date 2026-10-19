@@ -13,14 +13,21 @@ Worker's name in the dashboard). It needs no database or storage bucket.
    - Build command: `pnpm run cf:build` (Cloudflare pre-fills `pnpm run build`; **change it**)
    - Deploy command: `pnpm run cf:deploy` (Cloudflare pre-fills `npx wrangler deploy`; **change it**)
 3. **Turn off preview builds** (Settings > Build > Branch control > untick *Enable Preview Builds*).
-4. **Runtime secrets** (the Worker's Settings > Variables and secrets, type **Secret**). Copy the values from the
-   eppingcarbuyer Worker:
-   - `STRIPE_SECRET_KEY`: the same key Epping uses, so bookings share one diary
-   - `RESEND_API_KEY`: for the contact form
+4. **Runtime secrets.** The Worker's Settings > Variables and Secrets > Add, type **Secret**, then Deploy. (The
+   environment variables under Settings > Build are a different thing: they only exist while the site is being built,
+   and the running site cannot read them.)
+   - `STRIPE_SECRET_KEY`: the live secret key of the Pro Vehicle Inspections Stripe account
+   - `STRIPE_WEBHOOK_SECRET`: the signing secret of the webhook in step 6
+   - `RESEND_API_KEY`: a send-only Resend key, for the contact form and booking emails
 5. **Domain.** Deploying adds `www.provehicleinspections.com` to the Worker (it is in `wrangler.jsonc`). Then add a
    redirect for the bare domain: the domain's Rules > Redirect Rules > Create rule > "Redirect from root to WWW"
    template, status 301. In DNS, the bare domain needs a proxied (orange cloud) record for the rule to catch it, for
    example `A @ 192.0.2.1` proxied.
+6. **Stripe webhook** (without it, paid bookings send no confirmation emails). In the Pro Vehicle Inspections Stripe
+   account: Developers > Webhooks > Add destination > tick the event `checkout.session.completed` > Continue >
+   Webhook endpoint > Endpoint URL `https://www.provehicleinspections.com/api/webhooks/stripe` > Create destination.
+   Open the new destination, reveal its **Signing secret** (starts `whsec_`) and add it to the Worker as the Secret
+   `STRIPE_WEBHOOK_SECRET` (step 4). Stripe's "Send test event" then shows whether the site accepts it.
 
 ## Tracking (when the ads move here)
 

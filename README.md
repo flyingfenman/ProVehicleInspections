@@ -17,14 +17,19 @@ WhatsApp catalogue links only need the domain changing.
 
 ## How booking works
 
-- Payments go to the same Stripe account as Epping and Stamford Car Buyer. The free appointment times are worked out
-  from the Stripe checkout sessions, so all three sites share one diary and a time booked on one disappears from the
-  others.
+- Payments go to Pro Vehicle Inspections' own Stripe account, separate from the one Epping and Stamford Car Buyer
+  share. The free appointment times are worked out from this account's checkout sessions (open or paid).
+- Henry is one person, so a time booked on any of his sites has to disappear from all of them. Each site publishes
+  the times its own bookings leave free at `/api/inspection-slots?package=all&diary=own`, and this site only offers,
+  and only sells, a time that Epping Car Buyer's diary (which includes Stamford's bookings) also has free. Epping and
+  Stamford check this site's diary the same way. If the other site cannot be reached, this site's own bookings decide
+  and the failure is logged (`lib/other-diaries.ts`).
 - Every checkout from this site is tagged `brand: Pro Vehicle Inspections` and `site: provehicleinspections` in the
   Stripe session's metadata.
-- Stripe sends paid bookings to Epping Car Buyer's webhook, which emails Henry and the customer. It reads the `brand`
-  tag to send a Pro Vehicle Inspections email. This site has no webhook of its own on purpose: two webhooks would send
-  every customer two emails.
+- When a booking is paid, Stripe calls `/api/webhooks/stripe`, which emails Henry the job details and the customer
+  their confirmation (through Resend, from noreply@eppingcarbuyer.com under the Pro Vehicle Inspections name until
+  this domain is added to Resend). The webhook endpoint is registered in the Stripe account; see
+  [CLOUDFLARE.md](CLOUDFLARE.md).
 - The contact form emails henry@eppingcarbuyer.com through Resend.
 
 ## Deploying
