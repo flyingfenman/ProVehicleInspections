@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, MessageCircle } from "lucide-react"
+import { ArrowRight, MessageCircle, Phone } from "lucide-react"
 import { SITE } from "./site"
 
 // The last push to book, for anyone who has read this far.
@@ -18,6 +18,9 @@ export function FinalCta() {
             </Link>
             <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white px-8 text-lg font-bold text-primary transition hover:bg-primary/5">
               <MessageCircle className="h-5 w-5" /> Ask Henry a question
+            </a>
+            <a href={SITE.phoneHref} className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white px-8 text-lg font-bold text-primary transition hover:bg-primary/5">
+              <Phone className="h-5 w-5" /> {SITE.phone}
             </a>
           </div>
           <p className="mt-6 font-semibold text-muted-foreground">Standard £149.99 · Premium £199.99 · EV battery check £99.99</p>

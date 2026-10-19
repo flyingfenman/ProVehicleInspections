@@ -75,7 +75,7 @@ const serviceSchema = {
     "@type": "AutomotiveBusiness",
     name: "Pro Vehicle Inspections",
     url: "https://www.provehicleinspections.com",
-    telephone: "+441992367909",
+    telephone: "+441992245660",
   },
   areaServed: ["Essex", "Hertfordshire", "Greater London", "South Cambridgeshire", "Bedfordshire", "Suffolk"],
   offers: [
