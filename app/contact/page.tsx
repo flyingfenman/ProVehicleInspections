@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form"
 
 const title = "Contact Us — Pro Vehicle Inspections"
 const description =
-  "Call, message, WhatsApp or email us about a car inspection. Covering Essex, Herts, South Cambridgeshire and Greater London."
+  "Call, message or WhatsApp us about a car inspection. Covering Essex, Herts, South Cambridgeshire and Greater London."
 
 export const metadata: Metadata = {
   title,
@@ -24,8 +24,8 @@ export default function ContactPage() {
         <div className="mb-8 text-center sm:mb-10">
           <h1 className="text-4xl font-bold sm:text-5xl">Contact Us</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground sm:text-xl">
-            A question about a car inspection? Call us on 01992 245660, send a message below, or WhatsApp
-            or email if you prefer.
+            A question about a car inspection? Call us on 01992 245660, send a message below, or WhatsApp if
+            you prefer.
           </p>
         </div>
 
