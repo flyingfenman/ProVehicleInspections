@@ -221,6 +221,8 @@ ${hasEvSoh ? "\nYour EV battery health report will be supplied with your inspect
 Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
       `.trim()
 
+      // Set REVIEW_URL on the Worker to the Google Business Profile review link; until then the line is left out.
+      const reviewUrl = process.env.REVIEW_URL || ""
       const customerHtml = brandedEmail(
         evOnly ? "Your EV battery health check is confirmed" : "Your vehicle inspection is confirmed",
         `<div style="font-family:${FONT_STACK};font-size:16px;line-height:1.7;color:#342c38;">Hi ${escapeHtml(firstName)},</div>
@@ -235,6 +237,7 @@ Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
          ])}
          <div style="font-family:${FONT_STACK};font-size:15px;line-height:1.75;color:#342c38;">${escapeHtml(visitDetails)}</div>
          ${hasEvSoh ? `<div style="font-family:${FONT_STACK};font-size:15px;line-height:1.75;color:#342c38;margin-top:14px;">Your EV battery health report will be supplied with your inspection findings.</div>` : ""}
+         ${reviewUrl ? `<div style="font-family:${FONT_STACK};font-size:14px;line-height:1.7;color:#6f6575;margin-top:18px;">Once you have your report, a short Google review helps other buyers find an independent inspector: <a href="${escapeHtml(reviewUrl)}" style="color:#6711a4;font-weight:700;text-decoration:none;">leave a review</a>.</div>` : ""}
          ${whatsappButton("WhatsApp Henry")}`,
       )
 

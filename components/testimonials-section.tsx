@@ -116,9 +116,12 @@ export function TestimonialsSection({ className = "bg-gray-50" }: { className?: 
             )}
           </div>
 
-          <p className="mt-6 text-center">
+          <p className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-1 text-center">
             <Link href="/sample-report" className="-my-2.5 inline-flex items-center gap-1 py-2.5 font-bold text-primary hover:underline">
               See a sample inspection report <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link href="/inspection-notes" className="-my-2.5 inline-flex items-center gap-1 py-2.5 font-bold text-primary hover:underline">
+              Read our inspection notes <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </p>
         </div>

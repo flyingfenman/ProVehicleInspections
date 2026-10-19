@@ -71,6 +71,12 @@ For each model: battery sizes and official range by version, the UK battery warr
 - [Jaguar I-Pace](https://www.provehicleinspections.com/ev-battery-health-check/jaguar-i-pace)
 - [Polestar 2](https://www.provehicleinspections.com/ev-battery-health-check/polestar-2)
 
+## Inspection notes
+
+Write-ups of real inspections, published with the customer's agreement and with plates blurred. Index: https://www.provehicleinspections.com/inspection-notes
+
+- [Land Rover Discovery, Wickford: oil leak and coolant error found before purchase](https://www.provehicleinspections.com/inspection-notes/land-rover-discovery-wickford-oil-leak-coolant-error): Premium inspection with EV battery health check at a prestige dealer in Essex, September 2026
+
 ## Contact
 
 - [Contact us](https://www.provehicleinspections.com/contact)
