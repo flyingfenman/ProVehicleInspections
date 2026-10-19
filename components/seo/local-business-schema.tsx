@@ -6,6 +6,7 @@ const localBusinessSchema = {
   url: "https://www.provehicleinspections.com",
   logo: "https://www.provehicleinspections.com/apple-touch-icon.png",
   email: "henry@eppingcarbuyer.com",
+  telephone: "+441992245660",
   image: "https://www.provehicleinspections.com/images/inspection-car.jpg",
   description:
     "Independent mobile pre-purchase vehicle inspections and EV battery State of Health checks across Essex, Hertfordshire, Greater London, South Cambridgeshire and surrounding areas.",

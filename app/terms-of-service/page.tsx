@@ -150,6 +150,12 @@ export default function TermsOfServicePage() {
                 </a>
               </li>
               <li>
+                <strong>Phone:</strong>{" "}
+                <a href="tel:+441992245660" className="text-primary hover:underline">
+                  01992 245660
+                </a>
+              </li>
+              <li>
                 <strong>WhatsApp:</strong>{" "}
                 <a
                   href="https://wa.me/441992367909"

@@ -1,10 +1,10 @@
 import { Metadata } from "next"
-import { CalendarDays, Clock, Mail, MapPin, MessageCircle } from "lucide-react"
+import { CalendarDays, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 
 const title = "Contact Us — Pro Vehicle Inspections"
 const description =
-  "Message, WhatsApp or email us about a car inspection or our Market & Sell service. Covering Essex, Herts, South Cambridgeshire and Greater London."
+  "Call, message, WhatsApp or email us about a car inspection or our Market & Sell service. Covering Essex, Herts, South Cambridgeshire and Greater London."
 
 export const metadata: Metadata = {
   title,
@@ -24,8 +24,8 @@ export default function ContactPage() {
         <div className="mb-8 text-center sm:mb-10">
           <h1 className="text-4xl font-bold sm:text-5xl">Contact Us</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground sm:text-xl">
-            A question about a car inspection or Market &amp; Sell? Send us a message below, or WhatsApp or email if you
-            prefer.
+            A question about a car inspection or Market &amp; Sell? Call us on 01992 245660, send a message below, or WhatsApp
+            or email if you prefer.
           </p>
         </div>
 
@@ -34,8 +34,14 @@ export default function ContactPage() {
 
           <aside className="space-y-4" aria-label="Other ways to contact us">
             <div className="rounded-3xl border border-border bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-bold">Prefer to message directly?</h2>
+              <h2 className="text-xl font-bold">Prefer to call or message directly?</h2>
               <div className="mt-4 space-y-3">
+                <a
+                  href="tel:+441992245660"
+                  className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-lg font-bold text-primary-foreground transition hover:bg-primary/90"
+                >
+                  <Phone className="h-5 w-5" aria-hidden="true" /> Call 01992 245660
+                </a>
                 <a
                   href="https://wa.me/441992367909"
                   target="_blank"
