@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the Worker's name in the Cloudflare dashboard, or Cloudflare's build fails.
+  "name": "provehicleinspections",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "provehicleinspections"
+    }
+  ],
+  // www.provehicleinspections.com is served by this Worker. The bare domain is redirected to www by a Cloudflare
+  // redirect rule (see CLOUDFLARE.md), the same way Epping Car Buyer works.
+  "routes": [
+    { "pattern": "www.provehicleinspections.com", "custom_domain": true }
+  ],
+  // Keep variables added in the Cloudflare dashboard when Cloudflare deploys (otherwise each deploy wipes them).
+  "keep_vars": true,
+  "observability": {
+    "enabled": true
+  }
+}
