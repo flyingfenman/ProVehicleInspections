@@ -236,17 +236,17 @@ export function GuidePage({ guide }: { guide: Guide }) {
         </div>
       </article>
 
-      <section className="border-t border-border bg-primary py-12 text-primary-foreground sm:py-16">
-        <div className="container mx-auto px-4 text-center">
+      <section className="border-t border-border py-12 sm:py-16">
+        <div className="container mx-auto max-w-4xl rounded-3xl border border-primary/15 bg-primary/5 px-4 py-10 text-center sm:px-10">
           <h2 className="text-balance text-3xl font-bold sm:text-4xl">Found the car? Have it inspected before you pay.</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-primary-foreground/85">
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-muted-foreground">
             Standard £149.99, Premium £199.99, EV battery check £99.99. We come to the car anywhere in our area and you get the video, photos and report the same day.
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/book" className="inline-flex min-h-12 items-center rounded-xl bg-white px-7 text-base font-bold text-primary hover:bg-white/90">
+            <Link href="/book" className="inline-flex min-h-12 items-center rounded-xl bg-primary px-7 text-base font-bold text-white hover:bg-primary/90">
               Book an inspection <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-            <Link href="/sample-report" className="inline-flex min-h-12 items-center rounded-xl border border-white/40 px-7 text-base font-bold text-white hover:bg-white/10">
+            <Link href="/sample-report" className="inline-flex min-h-12 items-center rounded-xl border border-primary/30 px-7 text-base font-bold text-primary hover:bg-primary/10">
               See a sample report
             </Link>
           </div>

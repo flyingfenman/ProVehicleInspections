@@ -10,15 +10,15 @@ export const leicester: Area = {
     "Mobile pre-purchase car inspections in Leicester from £149.99, on Welford Road, Narborough Road, Melton Road, at Meridian or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Leicester? The city's dealers run along three roads, Welford Road, Narborough Road and Melton Road, with Sytner's BMW and MINI centres at Meridian by junction 21. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Leicester? The city's dealers run along three roads, Welford Road, Narborough Road and Melton Road, with Sytner's BMW and MINI centres at Meridian by junction 21. We inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M1 to junction 21: about an hour and forty minutes from our base",
+    summary: "Covering Leicester and the surrounding towns at one price with no mileage charge",
     detail:
-      "Leicester is roughly 100 miles from Waltham Abbey: round the M25 to junction 21A and up the M1 to junction 21 for Fosse Park, Meridian and Narborough Road, or 21A and the A46 for Melton Road and the north of the city. Call it an hour and forty minutes off peak. The price is the same as an inspection in Essex, and we normally pair a Leicester inspection with Loughborough, Market Harborough or Castle Donington on the same day.",
+      "The price is the same in Leicester as anywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the dealer or the seller. We inspect on the forecourt or the driveway, road test where the seller allows it, and send you the video, the photos and the written report the same day.",
   },
   local: [
-    "Leicester's used cars are sold along its arterial roads. Welford Road has Vertu Toyota and Sandicliffe Ford and Mazda; Narborough Road has Marshall Jaguar and the Audi centre; Melton Road has TMS Kia, which is spending £11m on a bigger Kia and Volvo site there; and Meridian Business Park by junction 21 has Sytner BMW and MINI, with Sytner's head office round the corner. Polestar has opened its largest European retail site at Freemen's Common. The city has no Motorpoint, Big Motoring World or Arnold Clark; the nearest car supermarket is Available Car at Castle Donington, 20 miles up the M1.",
-    "With De Montfort and the University of Leicester adding more than 40,000 students, Leicester also has a big market in cheap first cars, sold privately or by small independents around Belgrave, Beaumont Leys and Braunstone. A £3,000 car with a hidden fault is the one that hurts most, and it is where an independent inspection earns its money fastest.",
+    "Leicester's used cars are sold along its arterial roads. Welford Road has Vertu Toyota and Sandicliffe Ford and Mazda. Narborough Road has Marshall Jaguar and the Audi centre. Melton Road has TMS Kia, which is spending £11m on a bigger Kia and Volvo site there, and Meridian Business Park by junction 21 has Sytner BMW and MINI, with Sytner's head office round the corner. Polestar has opened its largest European retail site at Freemen's Common. The nearest car supermarket is Available Car at Castle Donington, 20 miles up the M1, and we cover that too.",
+    "With De Montfort and the University of Leicester adding more than 40,000 students, Leicester also has a big market in cheap first cars, sold privately or by small independents around Belgrave, Beaumont Leys and Braunstone. A £3,000 car with a hidden fault is the one that hurts most, and it is where an independent inspection earns its money fastest. Whatever the price of the car, you get the scan, the road test, the history check and the report before you pay, so you decide and negotiate on what the car actually is.",
   ],
   places: [
     {
@@ -31,7 +31,7 @@ export const leicester: Area = {
     },
     {
       name: "Melton Road, Belgrave",
-      note: "TMS Kia and the independents along the A607. The north of the city, reached from the A46.",
+      note: "TMS Kia and the independents along the A607 in the north of the city. Newer franchised stock and cheaper cars side by side.",
     },
     {
       name: "Available Car, Castle Donington, and BCA Donington Park",
@@ -78,9 +78,9 @@ export const leicester: Area = {
         "On a cheap car the inspection is a bigger share of the price, but the repairs it finds are the same size as on a dear one: a clutch is £600 to £1,000, a head gasket more. The history check alone, for finance and write-offs, has saved buyers from losing the whole car.",
     },
     {
-      question: "Can you check a car at Sytner on Meridian and one on Melton Road on the same visit?",
+      question: "Can you check a car at Sytner on Meridian and one on Melton Road on the same day?",
       answer:
-        "Yes. Book two inspections for the same day and tell us both addresses. Standard takes about an hour at the car and Premium about an hour and a half, and we allow for the drive across the city between them.",
+        "Yes. Book two inspections for the same day and give us both addresses. Standard takes about an hour at the car and Premium about an hour and a half, and you get a separate video and report for each car.",
     },
     {
       question: "Will you inspect a car bought at BCA Donington Park or Measham before I drive it home?",
@@ -89,5 +89,5 @@ export const leicester: Area = {
     },
   ],
   related: ["vehicle-inspection-leicestershire", "vehicle-inspection-nottingham", "vehicle-inspection-northamptonshire", "vehicle-inspection-west-midlands"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

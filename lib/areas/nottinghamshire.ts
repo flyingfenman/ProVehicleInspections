@@ -10,15 +10,15 @@ export const nottinghamshire: Area = {
     "Independent mobile car inspections across Nottinghamshire from £149.99: Nottingham, Mansfield, Sutton-in-Ashfield, Newark, Worksop, Retford and Hucknall. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Nottinghamshire? From Available Car's supermarket at Sutton-in-Ashfield and the Southwell Road West dealers in Mansfield to Newark, Worksop and Retford, we drive to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Nottinghamshire? From Available Car's supermarket at Sutton-in-Ashfield and the Southwell Road West dealers in Mansfield to Newark, Worksop and Retford, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M1 for Nottingham and Mansfield, A1 for Newark, Retford and Worksop: two to two and a half hours",
+    summary: "Covering the whole county, from Nottingham to Retford, at one price with no mileage charge",
     detail:
-      "Nottingham is about 125 miles from Waltham Abbey up the M25 and M1, around two hours off peak; Mansfield and Sutton-in-Ashfield are a further half hour up the M1 and A38 or A617. For Newark, Southwell, Retford and Worksop we come up the A1 instead, from the M25 at junction 23 or via the M11 and A14. The price is the same anywhere in the county, with no mileage charge, and we pair the north of the county with Nottingham, Lincoln or Grantham jobs on the same day.",
+      "We inspect anywhere in Nottinghamshire, from the city to Bassetlaw, for the same price as everywhere else we cover, with no mileage or call-out charge. Book online, give us the address of the car and we arrange the time with the seller or dealer. The video, photos and written report reach you the same day.",
   },
   local: [
-    "Nottinghamshire's biggest used-car site is Available Car at Calladine Business Park in Sutton-in-Ashfield, with around 900 cars listed at fixed prices. Mansfield's franchised dealers line Southwell Road West: Bristol Street Motors Renault and Dacia, Vertu Hyundai and the Evans Halshaw Nissan site with its used-car centre. Worksop has Stoneacre on Turner Road with Fiat, Jeep and Nissan; Newark has Pratt and Gelsthorpe for Peugeot, Harrisons on Brunel Drive and independents such as Taylor Motor Group. Nottingham itself has the Lenton Lane estate, covered on its own page. There is no Motorpoint or Big Motoring World in the county.",
-    "The county's trade stock comes from BCA Nottingham, which sells up to five days a week, John Pye's Radford Road sales and BCA Donington Park over the border. With around 70,000 students in Nottingham and a lot of ex-fleet stock defleeted locally, the market runs from £1,500 runabouts to approved-used prestige, and we inspect all of it to the same checklist.",
+    "Nottinghamshire's biggest used-car site is Available Car at Calladine Business Park in Sutton-in-Ashfield, with around 900 cars listed at fixed prices. Mansfield's franchised dealers line Southwell Road West: Bristol Street Motors Renault and Dacia, Vertu Hyundai and the Evans Halshaw Nissan site with its used-car centre. Worksop has Stoneacre on Turner Road with Fiat, Jeep and Nissan. Newark has Pratt and Gelsthorpe for Peugeot, Harrisons on Brunel Drive and independents such as Taylor Motor Group. Nottingham itself has the Lenton Lane estate, covered on its own page.",
+    "The county's trade stock comes from BCA Nottingham, which sells up to five days a week, John Pye's Radford Road sales and BCA Donington Park over the border. With around 70,000 students in Nottingham and a lot of ex-fleet stock defleeted locally, the market runs from £1,500 runabouts to approved-used prestige. We inspect all of it to the same checklist, and you have the video and report before you hand over any money, so the price you pay reflects the car you are actually getting.",
   ],
   places: [
     {
@@ -27,7 +27,7 @@ export const nottinghamshire: Area = {
     },
     {
       name: "Southwell Road West, Mansfield",
-      note: "Bristol Street Motors, Vertu Hyundai and Evans Halshaw Nissan, all on the A6191. One visit can cover two dealers.",
+      note: "Bristol Street Motors, Vertu Hyundai and Evans Halshaw Nissan, all on the A6191. Reserve the car and we inspect on the dealer's forecourt before you sign.",
     },
     {
       name: "Newark and Southwell",
@@ -35,11 +35,11 @@ export const nottinghamshire: Area = {
     },
     {
       name: "Worksop and Retford",
-      note: "Stoneacre Worksop on Turner Road and the smaller forecourts around Bassetlaw. The far north of our area, booked with a Nottingham or Lincoln job.",
+      note: "Stoneacre Worksop on Turner Road and the smaller forecourts around Bassetlaw. Same price and same checklist as anywhere else in the county.",
     },
     {
       name: "Nottingham's Lenton Lane and the auctions",
-      note: "Arnold Clark, Sytner and Vertu on Lenton Lane; BCA Nottingham and John Pye for the trade. Covered in detail on our Nottingham page.",
+      note: "Arnold Clark, Sytner and Vertu on Lenton Lane, with BCA Nottingham and John Pye supplying the trade. Covered in detail on our Nottingham page.",
     },
   ],
   watchFor: [
@@ -68,14 +68,14 @@ export const nottinghamshire: Area = {
   postcodes: "NG1 to NG25, S80, S81 and DN22",
   faqs: [
     {
-      question: "Will you really come from Essex to Mansfield, Worksop or Retford, and is there a travel charge for the north of the county?",
+      question: "Is there a travel charge for Mansfield, Worksop or Retford?",
       answer:
-        "Yes, and there is no travel charge. The price is the same anywhere in our area. The north of the county is two and a half hours from us, so we ask for some flexibility on the time and pair it with another inspection nearby, usually in Nottingham, Lincoln or Grantham.",
+        "No. The price is the same anywhere in Nottinghamshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at Available Car in Sutton-in-Ashfield before I sign, and do they allow it?",
       answer:
-        "Yes. Reserve the car and tell the sales team an independent inspector is booked; supermarket sites are used to it. We inspect on their premises, road test where they allow it and send you the video, photos and report the same day.",
+        "Yes. Reserve the car and tell the sales team an independent inspector is booked. Supermarket sites are used to it. We inspect on their premises, road test where they allow it and send you the video, photos and report the same day.",
     },
     {
       question: "The car is at a dealer on Southwell Road West in Mansfield. Can you fit the inspection and a test drive into one visit?",
@@ -89,5 +89,5 @@ export const nottinghamshire: Area = {
     },
   ],
   related: ["vehicle-inspection-nottingham", "vehicle-inspection-leicestershire", "vehicle-inspection-lincolnshire", "vehicle-inspection-leicester"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

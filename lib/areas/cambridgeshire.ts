@@ -10,15 +10,15 @@ export const cambridgeshire: Area = {
     "Independent mobile car inspections across Cambridgeshire from £149.99: Cambridge, Ely, Huntingdon, St Neots, St Ives, March, Wisbech, Chatteris and Peterborough. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Cambridgeshire? From the Vindis dealers on Washingley Road in Huntingdon and Thurlow Nunn in Wisbech to the Cambridge main dealers and the Peterborough supermarkets, we drive to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report. And for cars from the Fens, we check for water as carefully as for rust.",
+    "Buying a used car in Cambridgeshire? From the Vindis dealers on Washingley Road in Huntingdon and Thurlow Nunn in Wisbech to the Cambridge main dealers and the Peterborough supermarkets, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day. On cars from the Fens, we check for water as carefully as for rust.",
   travel: {
-    summary: "M11 to Cambridge in under an hour, A14 to Huntingdon, A10 to Ely: no mileage charge anywhere in the county",
+    summary: "Covering the whole county, from Cambridge to Wisbech, at one price with no mileage charge",
     detail:
-      "Cambridge is about 42 miles from Waltham Abbey by the M25 and M11, under an hour off peak. Huntingdon and St Ives are about 51 miles by the M11 and A14, just over an hour; Ely and Littleport about 58 miles by the A10, an hour and twenty; St Neots by the A1 from M25 junction 23; March, Chatteris and Wisbech by the A141 or A1101 in about an hour and three quarters. Peterborough is an hour and a half. One price everywhere, with no mileage charge.",
+      "Huntingdon, Ely, St Neots, March or Wisbech, the price is the same as everywhere else we cover, with no mileage or call-out charge. Book online and tell us where the car is being sold. We arrange the time with the dealer or private seller, inspect it there, and the video, photos and written report are with you the same day.",
   },
   local: [
     "Cambridge has the Marshall row on Newmarket Road and Vindis on Milton Road and Babraham Road, covered on our Cambridge page, and Peterborough has Motorpoint, Big Motoring World and the Fengate and Boongate dealers, covered on our Peterborough page. In between, Huntingdon has Vindis Audi and Volkswagen at 1 and 4 Washingley Road, where the group has its head office, plus EMG Motor Group and The Car Edition at Stukeley Meadows. St Neots has GPR Cars on the A1 at Southoe. Ely has EMG Kia, Soham has Crown Garage, and Wisbech has Thurlow Nunn on Cromwell Road off the A47 and J S Holmes. March, Chatteris and St Ives have small forecourts and private sellers.",
-    "The county's trade stock runs through Peterborough: City Auction Group's indoor lanes at Orton Southgate, open since 2022, and Big Motoring World's Fengate supersite, which took all of its Peterborough stock in 2024. BCA Bedford serves the St Neots and Huntingdon trade. There is no Clean Air Zone anywhere in Cambridgeshire, and the Cambridge congestion charge was dropped in 2023. A third of the Fens lies below sea level, with the lowest point in Britain at Holme Fen south of Whittlesey, which matters for cars that have lived around March, Chatteris and Wisbech.",
+    "The county's trade stock runs through Peterborough: City Auction Group's indoor lanes at Orton Southgate, open since 2022, and Big Motoring World's Fengate supersite, which took all of its Peterborough stock in 2024. BCA Bedford serves the St Neots and Huntingdon trade. Those cars arrive on the forecourt with an auction grade or a supermarket check, not an inspection done for you, which is what ours is. Cambridgeshire has no Clean Air Zone and the Cambridge congestion charge was dropped in 2023, so there is nothing to pay to drive what you buy. A third of the Fens lies below sea level, with the lowest point in Britain at Holme Fen south of Whittlesey, which is why cars that have lived around March, Chatteris and Wisbech get our flood checks as standard.",
   ],
   places: [
     {
@@ -83,11 +83,11 @@ export const cambridgeshire: Area = {
         "Yes, as long as the vehicle can be parked somewhere reasonably level and firm for an hour or so, a concrete yard or a flat gravel area is fine, and a short road test is possible. Tell us the address and what the vehicle is when you book and we bring the right equipment.",
     },
     {
-      question: "Do you travel to Ely, Soham and Wisbech from Waltham Abbey, and is there a mileage surcharge for the far north of the county?",
+      question: "Do you charge extra for Wisbech, March or the far north of the county?",
       answer:
-        "Yes, and there is no surcharge. The price is the same anywhere in our area. Wisbech is the furthest corner, about an hour and three quarters, so we ask for some flexibility on the time and pair it with a Peterborough, King's Lynn or Ely inspection on the same day.",
+        "No. The price is the same anywhere in Cambridgeshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
   related: ["vehicle-inspection-cambridge", "vehicle-inspection-peterborough", "vehicle-inspection-lincolnshire", "vehicle-inspection-norfolk", "vehicle-inspection-bedfordshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

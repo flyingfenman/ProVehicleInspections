@@ -10,20 +10,20 @@ export const cambridge: Area = {
     "Mobile pre-purchase car inspections in Cambridge from £149.99, at the Marshall dealers on Newmarket Road, Vindis on Milton Road, Sawston or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Cambridge? Marshall's row of dealerships on Newmarket Road, Vindis on Milton Road and Babraham Road, John Banks on Swann Road and the Porsche, BMW and Nissan centres sell most of the city's used cars, and there is no car supermarket closer than Peterborough. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, under an hour up the M11 from our base.",
+    "Buying a used car in Cambridge? Marshall's row of dealerships on Newmarket Road, Vindis on Milton Road and Babraham Road, John Banks on Swann Road and the Porsche, BMW and Nissan centres sell most of the city's used cars. We inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M11: under an hour from our base",
+    summary: "Covering Cambridge and the surrounding villages at one price with no mileage charge",
     detail:
-      "Cambridge is around 42 miles from Waltham Abbey: M25 to junction 27, then the M11 to junction 11 for Trumpington and Addenbrooke's, 12 for Barton Road, 13 for Madingley Road or 14 and the A14 for Milton Road and Newmarket Road. Allow 55 minutes off peak. Sawston, Cambourne, Histon and Waterbeach are a few minutes further, and the price is the same wherever the car is.",
+      "Wherever the car is, in the city or in Sawston, Cambourne, Histon or Waterbeach, the price is the same as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is being sold, and we arrange a time with the dealer or seller that works around the city's traffic rules. Video, photos and the written report arrive the same day.",
   },
   local: [
-    "Cambridge's dealers sit on the ring of main roads around the city. Marshall's Newmarket Road site opposite Marshall Aerospace sells Ford, SEAT, Land Rover, Jaguar, Volvo and Peugeot in a row, with John Banks Renault, Dacia and Alpine on Swann Road nearby. Vindis sells Volkswagen and Skoda at 383 Milton Road and Audi at 83 Babraham Road, and runs Auto Now, a used-car site on Sawston High Street. Murketts sells Vauxhall at Stapleford, Group 1 BMW and MINI is at Cambourne, and the Porsche Centre and EMG Nissan complete the list. There is no Motorpoint, Big Motoring World or Arnold Clark; the nearest supermarkets are in Peterborough.",
-    "Cambridge is a student city, with nearly 25,000 at the University and around 13,000 at Anglia Ruskin, so there is a steady market in cheap first cars sold privately in Chesterton, Cherry Hinton and Mill Road. It also has a licensed taxi fleet of nearly 400 vehicles, most of them hackney carriages, which turn up for sale with very high mileage. The city centre is closed to non-permit traffic from 10am to 4pm Monday to Saturday, with rising bollards and instant penalties, and much of the inner city is resident parking, so where the inspection happens needs a little planning.",
+    "Cambridge's dealers sit on the ring of main roads around the city. Marshall's Newmarket Road site opposite Marshall Aerospace sells Ford, SEAT, Land Rover, Jaguar, Volvo and Peugeot in a row, with John Banks Renault, Dacia and Alpine on Swann Road nearby. Vindis sells Volkswagen and Skoda at 383 Milton Road and Audi at 83 Babraham Road, and runs Auto Now, a used-car site on Sawston High Street. Murketts sells Vauxhall at Stapleford, Group 1 BMW and MINI is at Cambourne, and the Porsche Centre and EMG Nissan complete the list. The nearest car supermarkets, Motorpoint and Big Motoring World, are in Peterborough, covered on our Peterborough page.",
+    "Cambridge is a student city, with nearly 25,000 at the University and around 13,000 at Anglia Ruskin, so there is a steady market in cheap first cars sold privately in Chesterton, Cherry Hinton and Mill Road. It also has a licensed taxi fleet of nearly 400 vehicles, most of them hackney carriages, which come up for sale young with very high mileage. Whichever end of the market you are buying at, the inspection tells you what the car is really like before you pay, and the report gives you the list to negotiate with. The city centre is closed to non-permit traffic from 10am to 4pm Monday to Saturday, with rising bollards and resident parking across much of the inner city, so we agree where the inspection happens with the seller when we book.",
   ],
   places: [
     {
       name: "Marshall, Newmarket Road, CB5",
-      note: "Ford, SEAT, Land Rover, Jaguar, Volvo and Peugeot in one row, with John Banks Renault and Dacia on Swann Road. Two inspections on one road is a normal morning.",
+      note: "Ford, SEAT, Land Rover, Jaguar, Volvo and Peugeot in one row, with John Banks Renault and Dacia on Swann Road. Reserve the car, tell the dealer an inspector is coming and we inspect on site.",
     },
     {
       name: "Vindis: Milton Road, Babraham Road and Sawston",
@@ -89,5 +89,5 @@ export const cambridge: Area = {
     },
   ],
   related: ["vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough", "vehicle-inspection-suffolk", "vehicle-inspection-hertfordshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

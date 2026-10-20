@@ -10,15 +10,15 @@ export const norfolk: Area = {
     "Independent mobile car inspections across Norfolk from £149.99: Norwich, King's Lynn, Great Yarmouth, Thetford, Dereham, Wymondham, Cromer and North Walsham. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Norfolk? From Motorpoint in Norwich and the A140 dealers to Sandles and Anglia Car Auctions in King's Lynn and the Thurlow Nunn sites in Great Yarmouth, we drive to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report. And because most of Norfolk is within reach of the sea, we take the underside seriously.",
+    "Buying a used car in Norfolk? From Motorpoint in Norwich and the A140 dealers to Sandles and Anglia Car Auctions in King's Lynn and the Thurlow Nunn sites in Great Yarmouth, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day. And because most of Norfolk is within reach of the sea, we take the underside seriously.",
   travel: {
-    summary: "A11 to Norwich in two hours, A10 to King's Lynn, A47 to Yarmouth: no mileage charge anywhere in the county",
+    summary: "Covering all of Norfolk, King's Lynn to Great Yarmouth, at one price with no mileage charge",
     detail:
-      "Norwich is about 105 miles from Waltham Abbey by the M11 and A11, around two hours off peak, and Thetford and Attleborough are on the way. For King's Lynn and Downham Market we take the M11 and A10 through Ely; for Great Yarmouth the A47 beyond Norwich; for Cromer and North Walsham the A140 north. The far coast is a two-and-a-half-hour drive, so we pair it with another job in the county. One price everywhere, with no mileage charge.",
+      "Wherever the car is in Norfolk, the price is the same as everywhere else we cover, with no mileage or call-out charge, and that includes the north coast. Book online with the car's postcode and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day.",
   },
   local: [
-    "Norwich has the county's only car supermarket, Motorpoint on Turnpike Close, plus the Cromer Road and Hall Road dealer clusters and the Jaguar Land Rover centre at Postwick, covered on our Norwich page. King's Lynn has Sandles Car Supermarket, which has traded for more than forty years, Thurlow Nunn Vauxhall on Hardwick Road, and Holden's Renault and Dacia showroom, opened in 2025 in a former Volvo site; Group 1 closed its King's Lynn Land Rover dealership in May 2026. Great Yarmouth has Thurlow Nunn, and Thurlow Nunn's family-owned group runs twelve sites across East Anglia. Wymondham, Dereham, Fakenham and Diss have small independents.",
-    "Norfolk's trade stock passes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at the Cattlemarket in King's Lynn, which runs modern and classic sales. Lotus builds its cars at Hethel, and the county's long coastline from Hunstanton round to Great Yarmouth means a large share of its cars have lived in salt air.",
+    "Norwich has the county's car supermarket, Motorpoint on Turnpike Close, plus the Cromer Road and Hall Road dealer clusters and the Jaguar Land Rover centre at Postwick, all covered on our Norwich page. King's Lynn has Sandles Car Supermarket, which has traded for more than forty years, Thurlow Nunn Vauxhall on Hardwick Road, and Holden's Renault and Dacia showroom, opened in 2025 in a former Volvo site. Group 1 closed its King's Lynn Land Rover dealership in May 2026. Great Yarmouth has Thurlow Nunn, whose family-owned group runs twelve sites across East Anglia, and Wymondham, Dereham, Fakenham and Diss have small independents.",
+    "The county's trade stock passes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at the Cattlemarket in King's Lynn, which runs modern and classic sales, so plenty of forecourt cars were in an auction lane shortly before they were advertised. Lotus builds its cars at Hethel, and the long coastline from Hunstanton round to Great Yarmouth means a large share of Norfolk's cars have lived in salt air. We inspect the car before you pay, photograph the underside, read the MOT history for repeated corrosion advisories and tell you whether what we find is surface rust or structural, so you decide with the facts and negotiate from them.",
   ],
   places: [
     {
@@ -27,7 +27,7 @@ export const norfolk: Area = {
     },
     {
       name: "King's Lynn: Sandles, Hardwick Road and Anglia Car Auctions",
-      note: "Sandles Car Supermarket, Thurlow Nunn Vauxhall, Holden Renault and Dacia, and the public auction at Hardwick Narrows. Reached by the A10 through Ely.",
+      note: "Sandles Car Supermarket, Thurlow Nunn Vauxhall, Holden Renault and Dacia, and the public auction at Hardwick Narrows. Reserve the car, tell them an inspector is coming and we check it on site.",
     },
     {
       name: "Great Yarmouth and the east coast",
@@ -39,7 +39,7 @@ export const norfolk: Area = {
     },
     {
       name: "Thetford, Dereham, Fakenham, Cromer and the villages",
-      note: "Private sellers and small forecourts across the county. Give us the postcode when you book and we will tell you when we are next passing.",
+      note: "Private sellers and small forecourts across the county. Give us the postcode when you book and we arrange the time with the seller.",
     },
   ],
   watchFor: [
@@ -70,7 +70,7 @@ export const norfolk: Area = {
     {
       question: "Do you cover King's Lynn and Great Yarmouth or only Norwich?",
       answer:
-        "The whole county, at the same price. Norwich is two hours from us, King's Lynn a little under that by the A10, and Great Yarmouth and the north coast about two and a half hours. For the coast we ask for some flexibility on the time so we can pair it with another Norfolk inspection.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99. King's Lynn, Great Yarmouth, the north coast and the villages in between are all covered.",
     },
     {
       question: "Can you inspect a car bought at Anglia Car Auctions in King's Lynn before I collect it?",
@@ -78,9 +78,9 @@ export const norfolk: Area = {
         "Yes, by arrangement with the auction once the car is yours. Pre-sale inspections are rarely possible because viewing time is short and the cars are sold as seen, but once it is paid for we can check it at Hardwick Narrows or at your home and tell you what it needs before a long drive.",
     },
     {
-      question: "Is the drive from Waltham Abbey to Cromer or North Walsham too far for a same-week booking?",
+      question: "Can you inspect a car in Cromer or North Walsham, or is the north coast outside your area?",
       answer:
-        "No. It is about two and a half hours, and we are in Norfolk regularly. Book online and pick a time; if we need to move it an hour or two to pair it with another job in the county, we will tell you straight away. There is no mileage charge.",
+        "The north coast is covered like the rest of the county, at the same price with no mileage charge. Book online with the car's postcode and we arrange the time with the seller. Coastal cars get particular attention underneath, because salt air and winter gritting attack sills, subframes and brake lines.",
     },
     {
       question: "Will you check a Lotus from near Hethel differently from an ordinary hatchback?",
@@ -89,5 +89,5 @@ export const norfolk: Area = {
     },
   ],
   related: ["vehicle-inspection-norwich", "vehicle-inspection-suffolk", "vehicle-inspection-cambridgeshire", "vehicle-inspection-lincolnshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

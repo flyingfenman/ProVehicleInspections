@@ -10,24 +10,24 @@ export const suffolk: Area = {
     "Independent mobile car inspections across Suffolk from £149.99: Ipswich, Bury St Edmunds, Lowestoft, Felixstowe, Newmarket, Haverhill, Sudbury, Stowmarket and Woodbridge. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Suffolk? From the Ransomes Europark dealers in Ipswich and Holden and Hammond in Bury St Edmunds to Thurlow Nunn in Lowestoft and the independents of Woodbridge, Stowmarket and Sudbury, we drive to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report. The county has no car auction and, since October 2026, no car supermarket, which makes an independent inspection more useful here than most places.",
+    "Buying a used car in Suffolk? From the Ransomes Europark dealers in Ipswich and Holden and Hammond in Bury St Edmunds to Thurlow Nunn in Lowestoft and the independents of Woodbridge, Stowmarket and Sudbury, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "A12 to Ipswich in an hour and a half, M11 and A14 to Bury and Newmarket: no mileage charge anywhere in the county",
+    summary: "Covering the whole county, from Lowestoft to Haverhill, at one price with no mileage charge",
     detail:
-      "Ipswich is about 73 miles from Waltham Abbey by the M25 and A12, an hour and twenty to an hour and a half off peak. Newmarket, Bury St Edmunds and Haverhill come by the M11, A11 and A14 in about an hour and a quarter to an hour and a half; Sudbury by the A12 and A134; Felixstowe and Woodbridge a few minutes beyond Ipswich; Lowestoft and the north coast about two and a half hours up the A12. One price everywhere, with no mileage charge, and we pair the far coast with another Suffolk or Norfolk job.",
+      "Every part of Suffolk costs the same as everywhere else we cover, coast included, with no mileage or call-out charge. Book online, tell us where the car is and we arrange the time with the seller or dealer. You get the video, photos and written report the same day.",
   },
   local: [
-    "Ipswich has the franchised cluster on Ransomes Europark and The Havens, Group 1 BMW on Norwich Road and Hammond Cars on Bury Road, covered on our Ipswich page. Bury St Edmunds has Holden on Dettingen Way, the former Cecil and Larter business that Holden bought in 2023, and Hammond's Nissan dealership on Lamdin Road. Lowestoft has Thurlow Nunn Vauxhall on Waveney Drive and Thurlow Nunn's first BYD showroom. Hammond's home base is Halesworth, Mint Cars trades from the old Kerridge site at Needham Market, and Woodbridge, Eye, Saxmundham and Aldeburgh have small independents. Motorpoint closed its Ipswich store on 18 October 2026, and there is no Big Motoring World, Arnold Clark or Cargiant in the county.",
-    "Suffolk has no weekly car auction. Lacy Scott and Knight in Bury St Edmunds holds occasional classic sales, but the trade buys at Manheim Colchester and Aston Barclay Chelmsford in Essex, East Anglian Motor Auctions at Wymondham or Anglia Car Auctions at King's Lynn. There is no Clean Air Zone anywhere in the county. The Suffolk coast runs from Lowestoft down to Felixstowe, and salt air is the main thing it does to cars.",
+    "Ipswich has the franchised cluster on Ransomes Europark and The Havens, Group 1 BMW on Norwich Road and Hammond Cars on Bury Road, covered on our Ipswich page. Bury St Edmunds has Holden on Dettingen Way, the former Cecil and Larter business that Holden bought in 2023, and Hammond's Nissan dealership on Lamdin Road. Lowestoft has Thurlow Nunn Vauxhall on Waveney Drive and Thurlow Nunn's first BYD showroom. Hammond's home base is Halesworth, Mint Cars trades from the old Kerridge site at Needham Market, and Woodbridge, Eye, Saxmundham and Aldeburgh have small independents. Since Motorpoint closed its Ipswich store on 18 October 2026, Suffolk's used cars come from franchised dealers, independents and private sellers rather than a supermarket, so each car stands on its own condition and an independent check of it matters more, not less.",
+    "Much of the trade stock arrives from outside the county. Lacy Scott and Knight in Bury St Edmunds holds occasional classic sales, but Suffolk dealers buy at Manheim Colchester and Aston Barclay Chelmsford in Essex, East Anglian Motor Auctions at Wymondham or Anglia Car Auctions at King's Lynn, so a forecourt car here is often only days out of an auction lane. Nowhere in Suffolk charges a Clean Air Zone fee, so an older diesel costs nothing extra to run here. The coast runs from Lowestoft down to Felixstowe, and salt air is the main thing it does to cars, so the underside of a coastal car gets a close look on every inspection.",
   ],
   places: [
     {
       name: "Ipswich: Ransomes Europark, Norwich Road and Bury Road",
-      note: "Mercedes-Benz, Audi, Peugeot, Citroen and DS at Ransomes Europark; Group 1 BMW on Norwich Road; Hammond Cars on Bury Road. See our Ipswich page.",
+      note: "Mercedes-Benz, Audi, Peugeot, Citroen and DS at Ransomes Europark, Group 1 BMW on Norwich Road and Hammond Cars on Bury Road. See our Ipswich page.",
     },
     {
       name: "Bury St Edmunds: Dettingen Way and Lamdin Road",
-      note: "Holden's Volvo, SEAT and CUPRA site and Hammond Nissan, both off the A14. Newmarket and Haverhill are on the same trip.",
+      note: "Holden's Volvo, SEAT and CUPRA site and Hammond Nissan, both off the A14. Reserve the car and we inspect on the forecourt before you sign.",
     },
     {
       name: "Lowestoft and the north coast",
@@ -35,7 +35,7 @@ export const suffolk: Area = {
     },
     {
       name: "Felixstowe, Woodbridge and the Deben",
-      note: "Private sellers and small forecourts along the coast and the A12. A few minutes beyond Ipswich.",
+      note: "Private sellers and small forecourts along the coast and the A12. Coastal cars again, so we check the underside closely.",
     },
     {
       name: "Stowmarket, Needham Market, Sudbury and Hadleigh",
@@ -70,12 +70,12 @@ export const suffolk: Area = {
     {
       question: "Do you cover Lowestoft and the Suffolk coast, or just Ipswich and Bury St Edmunds?",
       answer:
-        "The whole county, at the same price. Ipswich and Bury are about an hour and a half from us; Lowestoft and Southwold about two and a half hours. For the north coast we ask for some flexibility on the time so we can pair it with another inspection in Suffolk or Norfolk.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99. Cars from Lowestoft, Southwold and Felixstowe get the full coastal corrosion check as part of it.",
     },
     {
-      question: "Can you inspect a car at a Newmarket or Haverhill dealer on the same trip as one in Bury St Edmunds?",
+      question: "Can you inspect a car at a Newmarket or Haverhill dealer on the same day as one in Bury St Edmunds?",
       answer:
-        "Yes. Book both for the same day and give us the two addresses. Newmarket is fifteen minutes from Bury on the A14 and Haverhill half an hour down the A143, so a morning in one and an afternoon in the other is a normal day.",
+        "Yes. Book both and give us the two addresses. Newmarket is fifteen minutes from Bury on the A14 and Haverhill half an hour down the A143, so both cars can be inspected and reported on the same day and you compare them side by side.",
     },
     {
       question: "Will you check a car from Felixstowe or Southwold for coastal rust?",
@@ -83,11 +83,11 @@ export const suffolk: Area = {
         "Yes, on every inspection. We photograph the underbody, probe the sills, floor and subframes, look at brake and fuel lines and the exhaust, and read the MOT history for repeated corrosion advisories. The report says whether it is surface rust or structural, and roughly what it would cost to put right.",
     },
     {
-      question: "There is no public car auction in Suffolk. Can you check a car I am buying through a trader at Manheim Colchester?",
+      question: "Can you check a car I am buying through a trader who bought it at Manheim Colchester?",
       answer:
         "Once the trader has bought it and it is on their premises or yours, yes, and the Premium inspection traces its auction history. A full inspection inside the auction before the sale is rarely possible: Manheim Colchester is trade only, viewing time is short and the cars are sold as seen.",
     },
   ],
   related: ["vehicle-inspection-ipswich", "pre-purchase-car-inspection-essex", "vehicle-inspection-norfolk", "vehicle-inspection-cambridgeshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

@@ -10,15 +10,15 @@ export const birmingham: Area = {
     "Mobile pre-purchase car inspections in Birmingham from £149.99, at Motorpoint on Lichfield Road, the Stratford Road and Coventry Road dealers, or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Birmingham? Between Motorpoint on Lichfield Road, Bristol Street Motors on Bristol Street, the dealer strips along the Stratford Road and the Coventry Road, and the ex-fleet stock pouring out of BCA at Perry Barr, the city has more used cars for sale than anywhere else in the Midlands. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, and we tell you whether it clears the Clean Air Zone.",
+    "Buying a used car in Birmingham? Between Motorpoint on Lichfield Road, Bristol Street Motors, the dealer strips along the Stratford Road and the Coventry Road and the ex-fleet stock coming out of BCA at Perry Barr, the city has more used cars for sale than anywhere else in the Midlands. We inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day, and we tell you whether it clears the Clean Air Zone.",
   travel: {
-    summary: "M25, M1 and M6: about two hours from our base, with no mileage charge",
+    summary: "Covering Birmingham, Solihull and Sutton Coldfield at one price with no mileage charge",
     detail:
-      "Birmingham is around 115 miles from Waltham Abbey: round the M25 to the M1, then the M6 into the city, or the M40 and M42 for Solihull and the south side. Allow two hours off peak. We book Birmingham inspections in pairs where we can, with Coventry, Solihull, the Black Country or Castle Donington on the same day, and the price is exactly the same as an inspection at home in Essex.",
+      "The price in Birmingham is the same as everywhere else we cover, with no mileage or call-out charge, whether the car is in Aston, Solihull or Sutton Coldfield. Book online, tell us where it is being sold, and we arrange the time with the dealer or seller. The video, photos and written report reach you the same day.",
   },
   local: [
-    "Birmingham's used cars are sold on a few well-known roads. Motorpoint's Birmingham store is at 2 Lichfield Road in Aston, by the Aston Expressway, with its Oldbury store on Churchbridge by M5 junction 2 for the Black Country side. Bristol Street Motors started on Bristol Street and still sells Ford there, just south of the city centre. The Stratford Road through Hall Green into Shirley is a long strip of franchised and independent forecourts, and the Coventry Road through Small Heath, Yardley and Sheldon is another. There is no Big Motoring World in the city (its nearest branch is Cannock), and Cargiant has closed, so the supermarkets are Motorpoint's two sites and Available Car at Castle Donington.",
-    "This is also the heart of the UK motor industry. JLR builds the Range Rover family at Lode Lane in Solihull with more than 10,000 staff, BMW's Hams Hall plant built over 400,000 engines in 2025, and around 1,000 automotive companies employ 46,000 people across the region. The result is a used market full of staff and ex-fleet cars, many of them sold through BCA's three-lane Perry Barr centre between M6 junctions 6 and 7 and retailed on local forecourts within days. Good paperwork, hard miles, and a lot of Land Rovers.",
+    "Birmingham's used cars are sold on a few well-known roads. Motorpoint's Birmingham store is at 2 Lichfield Road in Aston, by the Aston Expressway, with its Oldbury store on Churchbridge by M5 junction 2 for the Black Country side. Bristol Street Motors started on Bristol Street and still sells Ford there, just south of the city centre. The Stratford Road through Hall Green into Shirley is a long strip of franchised and independent forecourts, and the Coventry Road through Small Heath, Yardley and Sheldon is another. Big Motoring World's nearest branch is Cannock and Cargiant has closed, so the supermarket choice is Motorpoint's two sites and Available Car at Castle Donington.",
+    "This is also the heart of the UK motor industry. JLR builds the Range Rover family at Lode Lane in Solihull with more than 10,000 staff, BMW's Hams Hall plant built over 400,000 engines in 2025, and around 1,000 automotive companies employ 46,000 people across the region. The result is a used market full of staff and ex-fleet cars, many sold through BCA's three-lane Perry Barr centre between M6 junctions 6 and 7 and retailed on local forecourts within days. Good paperwork, hard miles and a lot of Land Rovers. We measure the wear the service book does not show, read every module and road test the car, so you decide with the facts in front of you and negotiate on them.",
   ],
   places: [
     {
@@ -27,11 +27,11 @@ export const birmingham: Area = {
     },
     {
       name: "Stratford Road, Hall Green and Shirley",
-      note: "The A34 strip of franchised dealers and independents running out towards Solihull, including Bristol Street Motors Ford in Shirley. Two inspections on one road is a normal morning.",
+      note: "The A34 strip of franchised dealers and independents running out towards Solihull, including Bristol Street Motors Ford in Shirley. Reserve the car and we inspect it on the forecourt before you sign.",
     },
     {
       name: "Coventry Road, Small Heath to Sheldon",
-      note: "The A45 strip: franchised sites around Small Heath Highway and independents through Yardley. Close to the airport and the M42.",
+      note: "The A45 strip: franchised sites around Small Heath Highway and independents through Yardley, close to the airport and the M42.",
     },
     {
       name: "BCA Birmingham, Perry Barr",
@@ -73,9 +73,9 @@ export const birmingham: Area = {
         "Yes. Diesels need Euro 6 to avoid the £8 daily charge inside the A4540, which in practice means most diesels registered from late 2015 on, but some earlier cars comply and some later ones do not. We check the car's actual emissions standard against the official checker and tell you in the report, before you pay.",
     },
     {
-      question: "Will you really drive from Essex to Motorpoint on Lichfield Road or a dealer on Stratford Road, and does that add to the fee?",
+      question: "Do you charge extra for Birmingham, Solihull or Sutton Coldfield?",
       answer:
-        "Yes, and no. Birmingham is about two hours from us and we are in the Midlands regularly. The price is the same as an inspection in Essex, with no mileage or call-out charge. We may ask for a little flexibility on the time so we can pair it with another job in the area.",
+        "No. The price is the same anywhere in Birmingham, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at BCA Perry Barr before I bid on it?",
@@ -89,5 +89,5 @@ export const birmingham: Area = {
     },
   ],
   related: ["vehicle-inspection-west-midlands", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

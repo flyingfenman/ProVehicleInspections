@@ -10,15 +10,15 @@ export const northampton: Area = {
     "Mobile pre-purchase car inspections in Northampton from £149.99, at the Riverside and Bedford Road dealers, Brackmills or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Northampton? Most of the town's dealers sit in two clusters, Riverside off the A45 and Bedford Road by the M1, and a lot of their stock has just come through the Manheim auction at Brackmills. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Northampton? Most of the town's dealers sit in two clusters, Riverside off the A45 and Bedford Road by the M1, and a lot of their stock has just come through the Manheim auction at Brackmills. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M1 to junction 15: about an hour and ten minutes from our base",
+    summary: "Covering Northampton and the surrounding towns at one price with no mileage charge",
     detail:
-      "Northampton is about 65 miles from Waltham Abbey: round the M25 to junction 21A, up the M1 to junction 15 for the town and Brackmills, or 15A for the west side and the A43. Call it an hour and ten minutes off peak. The price is the same as an inspection in Essex, with no mileage charge, and we often pair a Northampton job with Milton Keynes, Kettering or Wellingborough on the same day.",
+      "We inspect anywhere in Northampton and the villages around it for the same price as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the dealer or seller. The video, photos and written report are with you the same day.",
   },
   local: [
-    "Riverside Retail Park and Riverside Business Park on the A45 hold the franchised names: Listers U used-car centre on Museum Way, Allen Ford and Omoda on Fairground Way, Vertu Vauxhall on Carousel Way and the Peugeot and Hyundai sites on Fortune Close. Bedford Road, a couple of minutes from the M1, has Marshall Skoda and Wollaston BMW and MINI, and the big former car-supermarket plot that was Imperial, then CarShop, then Cazoo. Northampton has no Motorpoint or Big Motoring World of its own; Arnold Clark sends buyers to Milton Keynes.",
-    "What makes Northampton different is Manheim's Brackmills auction, which puts more than 20,000 trade and ex-fleet vehicles a year through its lanes on Tuesdays and Thursdays. A lot of the county's forecourt stock was in those lanes a week or two before it was advertised. That is not a problem in itself, but it means the car's recent history is short and the dealer's own knowledge of it is thin, so an independent inspection is doing the work nobody else has done.",
+    "Riverside Retail Park and Riverside Business Park on the A45 hold the franchised names: Listers U used-car centre on Museum Way, Allen Ford and Omoda on Fairground Way, Vertu Vauxhall on Carousel Way and the Peugeot and Hyundai sites on Fortune Close. Bedford Road, a couple of minutes from the M1, has Marshall Skoda and Wollaston BMW and MINI, and the big former car-supermarket plot that was Imperial, then CarShop, then Cazoo. The nearest car supermarkets are now in Milton Keynes and Peterborough, so most buyers here deal with the franchised sites, the independents and private sellers.",
+    "What makes Northampton different is Manheim's Brackmills auction, which puts more than 20,000 trade and ex-fleet vehicles a year through its lanes on Tuesdays and Thursdays. A lot of the county's forecourt stock was in those lanes a week or two before it was advertised. That is not a problem in itself, but it means the car's recent history is short and the dealer's own knowledge of it is thin, so an independent inspection is doing the work nobody else has done. You get the findings before you pay, and the price you agree reflects them.",
   ],
   places: [
     {
@@ -39,7 +39,7 @@ export const northampton: Area = {
     },
     {
       name: "Private sellers",
-      note: "Driveways from Brixworth to Wootton. Tell us the postcode and we will arrange a time with the seller if you cannot be there.",
+      note: "Driveways from Brixworth to Wootton. Tell us the postcode and we arrange a time with the seller if you cannot be there.",
     },
   ],
   watchFor: [
@@ -89,5 +89,5 @@ export const northampton: Area = {
     },
   ],
   related: ["vehicle-inspection-northamptonshire", "vehicle-inspection-bedfordshire", "vehicle-inspection-leicestershire", "vehicle-inspection-luton"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

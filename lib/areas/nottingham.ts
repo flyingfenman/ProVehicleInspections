@@ -10,20 +10,20 @@ export const nottingham: Area = {
     "Mobile pre-purchase car inspections in Nottingham from £149.99, at Arnold Clark and the Lenton Lane dealers, Sherwood, Basford or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Nottingham? Most of the city's stock sits in one place, the Lenton Lane estate off the A52, where Arnold Clark's Motorstore, Sytner BMW and Audi, Vertu Honda and Sandicliffe all trade. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, and the drive from Essex is included in the price.",
+    "Buying a used car in Nottingham? Most of the city's stock sits in one place, the Lenton Lane estate off the A52, where Arnold Clark's Motorstore, Sytner BMW and Audi, Vertu Honda and Sandicliffe all trade. We come to the car wherever it is for sale and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M1: about two hours from our base, with no mileage charge",
+    summary: "Covering Nottingham and the surrounding towns at one price with no mileage charge",
     detail:
-      "Nottingham is around 125 miles from Waltham Abbey: round the M25 to junction 21A and up the M1 to junctions 24, 25 or 26 depending on which side of the city the car is on. Allow two hours off peak. We book Nottingham inspections in pairs where we can, with Derby, Castle Donington, Loughborough or Mansfield on the same day, and the price is exactly the same as an inspection at home in Essex.",
+      "The price is the same in Nottingham as it is everywhere else we cover, with no mileage or call-out charge. Book online and tell us where the car is. We agree the time with the seller or dealer, inspect at the car and send you the video, photos and written report the same day.",
   },
   local: [
-    "Lenton Lane is Nottingham's car quarter. Arnold Clark's Nottingham Motorstore and Vanstore on Redfield Road lists several hundred cars; Sytner's BMW centre on Jockey Lane has one of the largest approved-used BMW displays in the Midlands, with Nottingham Audi and Graypaul Ferrari alongside; Vertu Honda and Sandicliffe are on the same estate. Elsewhere, Bristol Street Motors sells Renault and Dacia on Haydn Road in Sherwood and Stoneacre opened a Nissan dealership on Nottingham Road in Basford in 2025. The city has no Motorpoint or Big Motoring World; the car supermarkets are Available Car at Castle Donington and Sutton-in-Ashfield and Motorpoint Derby.",
-    "Nottingham's two universities have around 70,000 students between them, so the city also has one of the biggest cheap-first-car markets in the country, sold privately in Lenton, Beeston and Dunkirk or through small forecourts in Bulwell and Basford. And with BCA's Nottingham centre selling up to five days a week, a lot of local forecourt stock is a week or two out of the auction lanes.",
+    "Lenton Lane is Nottingham's car quarter. Arnold Clark's Nottingham Motorstore and Vanstore on Redfield Road lists several hundred cars. Sytner's BMW centre on Jockey Lane has one of the largest approved-used BMW displays in the Midlands, with Nottingham Audi and Graypaul Ferrari alongside, and Vertu Honda and Sandicliffe are on the same estate. Elsewhere, Bristol Street Motors sells Renault and Dacia on Haydn Road in Sherwood and Stoneacre opened a Nissan dealership on Nottingham Road in Basford in 2025. For supermarket stock, buyers head to Available Car at Castle Donington and Sutton-in-Ashfield or Motorpoint Derby.",
+    "Nottingham's two universities have around 70,000 students between them, so the city also has one of the biggest cheap-first-car markets in the country, sold privately in Lenton, Beeston and Dunkirk or through small forecourts in Bulwell and Basford. With BCA's Nottingham centre selling up to five days a week, a lot of local forecourt stock is a week or two out of the auction lanes. Whichever end of the market you are buying at, we inspect the car to the same checklist, read the fault memory, measure the paint and drive it, and you have the findings before you pay, not after.",
   ],
   places: [
     {
       name: "Lenton Lane Industrial Estate, NG7",
-      note: "Arnold Clark Motorstore on Redfield Road, Sytner BMW on Jockey Lane, Nottingham Audi and Sandicliffe on Abbeyfield Road, Vertu Honda and Graypaul Ferrari on Lenton Lane. We can inspect at two of them in one visit.",
+      note: "Arnold Clark Motorstore on Redfield Road, Sytner BMW on Jockey Lane, Nottingham Audi and Sandicliffe on Abbeyfield Road, Vertu Honda and Graypaul Ferrari on Lenton Lane. Reserve the car, tell the dealer an independent inspector is coming and we inspect on their forecourt.",
     },
     {
       name: "Sherwood, Basford and Bulwell",
@@ -31,7 +31,7 @@ export const nottingham: Area = {
     },
     {
       name: "BCA Nottingham and John Pye Auctions",
-      note: "BCA's remarketing centre sells fleet, lease and BMW Group stock up to five days a week; John Pye on Radford Road runs weekly sales including seized vehicles. Cars from both are retailed locally within days.",
+      note: "BCA's remarketing centre sells fleet, lease and BMW Group stock up to five days a week. John Pye on Radford Road runs weekly sales including seized vehicles. Cars from both are retailed locally within days.",
     },
     {
       name: "Available Car, Castle Donington and Sutton-in-Ashfield",
@@ -68,9 +68,9 @@ export const nottingham: Area = {
   postcodes: "NG1 to NG17",
   faqs: [
     {
-      question: "Will you really drive from Essex to inspect a car on Lenton Lane, and does the travel add to the price?",
+      question: "Is there a travel charge for Nottingham, or does the price change?",
       answer:
-        "Yes, and no. Nottingham is about two hours from us and we are in the East Midlands regularly. The price is the same as an inspection in Essex, with no mileage or call-out charge. We may ask for a little flexibility on the time so we can pair it with another job nearby.",
+        "No. The price is the same anywhere in Nottingham, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at Arnold Clark Nottingham or a Lenton Lane main dealer, and will they let you put it on a ramp?",
@@ -89,5 +89,5 @@ export const nottingham: Area = {
     },
   ],
   related: ["vehicle-inspection-nottinghamshire", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-lincolnshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

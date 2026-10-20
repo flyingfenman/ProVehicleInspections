@@ -1,6 +1,6 @@
-// One entry per area page (/vehicle-inspection-<place> and the two original pages). Each page is written for its
-// place: the dealers and auctions we actually drive to, the route from our base, what we look out for on cars sold
-// there and the questions buyers from there ask. Pages that only swap the town name get filtered out by Google and
+// One entry per area page (/vehicle-inspection-<place> and the two original pages). Each page is written for a buyer
+// in that place: where cars are sold there, what we look out for on cars sold there and the questions buyers from
+// there ask. Nothing about our own journey, mileage or scheduling: the buyer is the subject of every sentence. Pages that only swap the town name get filtered out by Google and
 // ignored by AI assistants, so there is no template text in these entries beyond the shared layout.
 
 export type AreaFaq = { question: string; answer: string }
@@ -26,7 +26,7 @@ export type Area = {
   schemaType: "City" | "AdministrativeArea"
   /** The sentence under the heading. */
   intro: string
-  /** How we get there from Waltham Abbey: a short chip ("M25 and M1, about an hour") and a fuller paragraph. */
+  /** Coverage, not route: a short chip ("Covering the whole county at one price, no mileage charge") and a short paragraph on how booking works. */
   travel: { summary: string; detail: string }
   /** Two or three paragraphs about buying a used car in this area and how the inspection fits. */
   local: string[]

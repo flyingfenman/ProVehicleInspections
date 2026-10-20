@@ -10,15 +10,15 @@ export const luton: Area = {
     "Mobile pre-purchase car inspections in Luton and Dunstable from £149.99, at Tenby Car Supermarket, the Dunstable Road dealers, Steven Eagell Toyota or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Luton or Dunstable? Tenby Car Supermarket on Camford Way, Luton AutoZone on Dunstable Road, Luton Trade Centre at Sundon Park and Steven Eagell Toyota on Latimer Road sell most of the town's used cars, with Bellevue Garage and the independents in Dunstable alongside. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, and Luton is only half an hour from our base.",
+    "Buying a used car in Luton or Dunstable? Tenby Car Supermarket on Camford Way, Luton AutoZone on Dunstable Road, Luton Trade Centre at Sundon Park and Steven Eagell Toyota on Latimer Road sell most of the town's used cars, with Bellevue Garage and the Dunstable independents alongside. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M1 to junction 10: about 35 minutes from our base",
+    summary: "Covering Luton, Dunstable and Houghton Regis at one price with no mileage charge",
     detail:
-      "Luton is around 30 miles from Waltham Abbey: anticlockwise round the M25 to junction 21, then the M1 to junction 10 for the town, the airport and Dunstable Road, or junction 11 for Sundon Park and Dunstable. Allow 35 minutes off peak. Leighton Buzzard, Harpenden and Hitchin are a few minutes further, and we often fit two Luton inspections into one morning.",
+      "We inspect anywhere in Luton, Dunstable and the towns around them for the same price as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the seller or dealer. The video, photos and written report reach you the same day.",
   },
   local: [
-    "Luton's used cars are sold by independents rather than big chains. Tenby Car Supermarket at 166 Camford Way keeps more than 100 cars and opens seven days; Luton Trade Centre on Dencora Way at Sundon Business Park holds up to 150; Luton AutoZone is on Dunstable Road. Steven Eagell sells Toyota at 2 Latimer Road and Thurlow Nunn sells Vauxhall, and in Dunstable Bellevue Garage on Luton Road has traded since 1966. The AA lists more than twenty partnered dealers in the town. There is no Motorpoint, Big Motoring World or Arnold Clark; the nearest supermarkets are Motorpoint Chingford and Big Motoring World's branch by M25 junction 25.",
-    "Two things shape the local market. London Luton Airport handled 17.5 million passengers in 2025 and its car hire centre has four rental concessions running to 2028, so ex-hire cars are common. And Luton Borough Council licenses private hire vehicles only when they are under five years old, with no cap on numbers, so ex-private-hire cars here are young with very high mileage. Vauxhall's van plant closed in 2025, ending more than a century of car and van building in the town.",
+    "Luton's used cars are sold by independents rather than big chains. Tenby Car Supermarket at 166 Camford Way keeps more than 100 cars and opens seven days, Luton Trade Centre on Dencora Way at Sundon Business Park holds up to 150, and Luton AutoZone is on Dunstable Road. Steven Eagell sells Toyota at 2 Latimer Road and Thurlow Nunn sells Vauxhall, and in Dunstable Bellevue Garage on Luton Road has traded since 1966. The AA lists more than twenty partnered dealers in the town. The nearest car supermarkets are Motorpoint Chingford and Big Motoring World by M25 junction 25, and we inspect at both. Vauxhall's van plant closed in 2025, ending more than a century of car and van building in the town.",
+    "Two things shape the local market, and both matter to a buyer. London Luton Airport handled 17.5 million passengers in 2025 and its car hire centre has four rental concessions running to 2028, so ex-hire cars are common. Luton Borough Council licenses private hire vehicles only when they are under five years old, with no cap on numbers, so ex-private-hire cars here are young with very high mileage. Neither is a reason not to buy if the price reflects the life the car has had. Our inspection tells you which life it has had, what that has done to the clutch, brakes, suspension and paint, and gives you the list to negotiate with before you pay.",
   ],
   places: [
     {
@@ -89,5 +89,5 @@ export const luton: Area = {
     },
   ],
   related: ["vehicle-inspection-bedfordshire", "vehicle-inspection-hertfordshire", "vehicle-inspection-london", "vehicle-inspection-northampton"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

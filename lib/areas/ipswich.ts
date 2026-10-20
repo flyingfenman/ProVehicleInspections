@@ -10,20 +10,20 @@ export const ipswich: Area = {
     "Mobile pre-purchase car inspections in Ipswich from £149.99, at the Ransomes Europark dealers, Norwich Road, Bury Road or a private seller in Kesgrave or Felixstowe. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Ipswich? With Motorpoint's West End Road store closed in October 2026, the town's used cars are now at the franchised dealers on Ransomes Europark and Norwich Road, the big independents like Hammond Cars on Bury Road, and private sellers across Kesgrave, Martlesham and Felixstowe. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, about an hour and a half up the A12 from our base.",
+    "Buying a used car in Ipswich? We come to the car wherever it is for sale, at the Ransomes Europark dealers, the Bury Road independents or a driveway in Kesgrave or Felixstowe, and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and A12: about an hour and a half from our base, with no mileage charge",
+    summary: "Covering Ipswich, Felixstowe and Woodbridge at one price with no mileage charge",
     detail:
-      "Ipswich is around 73 miles from Waltham Abbey: M25 clockwise to junction 28, then the A12 through Chelmsford, Witham and Colchester and the A14 or A1214 into town. Allow an hour and twenty to an hour and a half off peak, more while the A12 roadworks last. There are no tolls or charges on the way, and the price is the same as an inspection at home in Essex. Felixstowe, Woodbridge and Needham Market are a few minutes further.",
+      "The price is the same in Ipswich as anywhere else we cover, with no mileage or call-out charge, and Felixstowe, Woodbridge, Hadleigh and Needham Market are included. Book online and tell us where the car is. We arrange the appointment with the seller or dealer, inspect on their premises or the seller's driveway, and send you the video, the photos and the written report the same day.",
   },
   local: [
-    "Ipswich's franchised dealers cluster on the east side of town at Ransomes Europark and The Havens, off the A14: Mercedes-Benz of Ipswich at 30 The Havens, Ipswich Audi, and the Peugeot, Citroen and DS showroom. Group 1 BMW is at 667 Norwich Road on the north-west side, the Jaguar Land Rover centre is on Crane Boulevard, and Drive Vauxhall holds up to 100 used cars. The big independents are Hammond Cars at Anglia Retail Park on Bury Road, with around 250 cars, and Integrity Automotive on West End Road. Motorpoint closed its West End Road store on 18 October 2026 and now points Suffolk customers to Norwich and Peterborough, so Ipswich has no car supermarket.",
-    "There is no car auction in Ipswich. The trade buys at Manheim Colchester, Europe's largest car and commercial auction site, twenty minutes down the A12 at Frating, and at Aston Barclay Chelmsford, so a lot of Ipswich forecourt stock was in an Essex auction lane a week earlier. The town has no Clean Air Zone, and the council revoked its last air quality management area in January 2025.",
+    "Ipswich's franchised dealers cluster on the east side of town at Ransomes Europark and The Havens, off the A14. Mercedes-Benz of Ipswich is at 30 The Havens, alongside Ipswich Audi and the Peugeot, Citroen and DS showroom. Group 1 BMW is at 667 Norwich Road on the north-west side, the Jaguar Land Rover centre is on Crane Boulevard, and Drive Vauxhall holds up to 100 used cars. The big independents are Hammond Cars at Anglia Retail Park on Bury Road, with around 250 cars, and Integrity Automotive on West End Road. Motorpoint closed its West End Road store on 18 October 2026, so the ex-fleet and ex-lease cars it used to sell now sit with the franchised dealers and the big independents.",
+    "Ipswich dealers buy their stock at Manheim Colchester, Europe's largest car and commercial auction site at Frating, and at Aston Barclay Chelmsford, so a lot of forecourt stock was in an Essex auction lane a week earlier. An auction grade is a declaration, not an inspection, and a dealer's own check is done for the dealer. Ours is done for you: the scan, the paint readings, the road test and the history check, so you know what the car is before the deposit goes down and you negotiate on the findings rather than the advert. The town has no Clean Air Zone to worry about, and the council revoked its last air quality management area in January 2025.",
   ],
   places: [
     {
       name: "Ransomes Europark and The Havens, IP3",
-      note: "Mercedes-Benz of Ipswich, Ipswich Audi and the Peugeot, Citroen and DS showroom, all off the A14 at Nacton. Two inspections on one estate is a normal morning.",
+      note: "Mercedes-Benz of Ipswich, Ipswich Audi and the Peugeot, Citroen and DS showroom, all off the A14 at Nacton. Reserve the car, tell the dealer an independent inspector is coming and we inspect on their forecourt.",
     },
     {
       name: "Norwich Road and Crane Boulevard",
@@ -51,12 +51,12 @@ export const ipswich: Area = {
     {
       title: "Auction cars from Colchester and Chelmsford",
       detail:
-        "With no local auction, Ipswich dealers buy at Manheim Colchester and Aston Barclay Chelmsford and retail the cars within days. Auction grades are declarations, not inspections. We check paint depth, panel gaps and sealant for repairs the grade did not mention, and the Premium package searches auction and salvage records.",
+        "Ipswich dealers buy at Manheim Colchester and Aston Barclay Chelmsford and retail the cars within days. Auction grades are declarations, not inspections. We check paint depth, panel gaps and sealant for repairs the grade did not mention, and the Premium package searches auction and salvage records.",
     },
     {
       title: "Ex-fleet and ex-lease cars",
       detail:
-        "With the supermarket gone, the ex-fleet and ex-lease cars Ipswich buyers want now sit with the franchised dealers and the big independents. Good paperwork, high miles. We check the big-ticket items due at the mileage, brake and tyre wear, suspension bushes and how long since the fault memory was cleared.",
+        "Since Motorpoint closed, the ex-fleet and ex-lease cars Ipswich buyers want sit with the franchised dealers and the big independents. Good paperwork, high miles. We check the big-ticket items due at the mileage, brake and tyre wear, suspension bushes and how long since the fault memory was cleared.",
     },
     {
       title: "Approved-used preparation",
@@ -75,7 +75,7 @@ export const ipswich: Area = {
     {
       question: "Can you inspect a car in Ipswich on a Saturday morning before I travel from London?",
       answer:
-        "Yes, subject to the diary. Book a morning slot and you will have the video and report by the afternoon, so you only make the trip if the car is right. Ipswich is an hour and a half from our base and we are up the A12 regularly.",
+        "Yes, subject to the diary. Book a morning slot and you will have the video and report by the afternoon, so you only make the trip if the car is right.",
     },
     {
       question: "Will you check a Felixstowe car for salt corrosion underneath?",
@@ -85,9 +85,9 @@ export const ipswich: Area = {
     {
       question: "The seller is in Kesgrave but works in Colchester. Can you meet the car at either address?",
       answer:
-        "Yes. We inspect wherever the car is, at home, at work or at a dealer, as long as there is somewhere level to park it, the keys and documents are available and a short road test is possible. Colchester is on our route to Ipswich, so either address works.",
+        "Yes. We inspect wherever the car is, at home, at work or at a dealer, as long as there is somewhere level to park it, the keys and documents are available and a short road test is possible. Either address works at the same price.",
     },
   ],
   related: ["vehicle-inspection-suffolk", "pre-purchase-car-inspection-essex", "vehicle-inspection-norwich", "vehicle-inspection-norfolk"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }
