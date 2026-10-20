@@ -18,7 +18,7 @@ export const bedfordshire: Area = {
   },
   local: [
     "Bedford's franchised dealers run along the Ampthill Road and around Elstow and Kempston. Vindis sells Volkswagen at 332 Ampthill Road and Audi at Progress Park in Elstow. Motorvogue has Hyundai, SEAT, Fiat, Abarth, Alfa Romeo, Jeep, Renault and Dacia at Interchange Retail Park in Kempston by the A421, and Auto Trader lists more than a hundred dealers in the town, including Evans Halshaw Ford and Vauxhall, Mercedes-Benz of Bedford, Bells Kia and Volvo, Group 1 BMW and MINI, Marshall Land Rover and Steven Eagell Toyota. Luton has Tenby Car Supermarket and the Dunstable Road independents, covered on our Luton page. Leighton Buzzard has G1 Car Supermarket on Billington Road and Stanbridge Motors, Shefford has Beadlow Motors and Ampthill has Powerlease.",
-    "A lot of the county's forecourt stock starts at BCA Bedford, the 25-acre remarketing centre off M1 junction 13, where dealer groups and leasing companies defleet thousands of cars a year and local forecourts buy them back within days. Letchworth Motor Auctions, which Biggleswade and Luton traders once used, closed in July 2024. Ex-fleet cars have good paperwork and hard miles, and the difference between a good one and a tired one is in the wear, not the service book. We measure that wear, read the fault history and road test the car before you pay, so you decide with the facts in front of you and negotiate on them. Bedfordshire has no Clean Air Zone and sits outside the London ULEZ, so nothing you buy here will be charged to drive at home.",
+    "A lot of the county's forecourt stock starts at BCA Bedford, the remarketing centre off M1 junction 13. A service book shows what was done, not what the miles have worn. We measure that wear, read the fault history and road test the car before you pay, so you decide with the facts in front of you and negotiate on them. Bedfordshire has no Clean Air Zone and sits outside the London ULEZ.",
   ],
   places: [
     {
@@ -42,28 +42,6 @@ export const bedfordshire: Area = {
       note: "Small forecourts and private sellers along the A1 and in the villages. Tell us the postcode when you book.",
     },
   ],
-  watchFor: [
-    {
-      title: "Ex-fleet cars from BCA Bedford",
-      detail:
-        "Dealer groups and leasing companies put thousands of part exchanges and ex-lease cars through the Bedford lanes every year, and many are retailed in the county within a fortnight. Good paperwork, hard miles. We check the big-ticket items due at the mileage, brake and tyre wear, and how long since the fault memory was cleared.",
-    },
-    {
-      title: "Ex-hire and ex-private-hire cars from Luton",
-      detail:
-        "The airport's rental fleets and Luton's under-five-year private hire rule put a lot of young, high-mileage cars into the county's market. We look for the signs and check what the mileage has done to the clutch, gearbox, brakes and suspension.",
-    },
-    {
-      title: "Supermarket preparation",
-      detail:
-        "Tenby, G1 and the trade centres valet well and price to move. We measure what a valet does not change: paint depth across every panel in the Premium inspection, brake and tyre wear, tyre age and the diagnostic history.",
-    },
-    {
-      title: "Finance and write-off history",
-      detail:
-        "Cheaper cars that have passed through several owners and an auction are where undisclosed finance and repaired write-offs turn up. The history check in both packages covers finance, write-off category, theft and mileage before you pay.",
-    },
-  ],
   nearby: ["Bedford", "Kempston", "Elstow", "Wixams", "Luton", "Dunstable", "Houghton Regis", "Leighton Buzzard", "Biggleswade", "Sandy", "Flitwick", "Ampthill", "Shefford", "Cranfield"],
   postcodes: "MK40 to MK45, SG15 to SG19 and LU1 to LU7",
   faqs: [
@@ -75,7 +53,7 @@ export const bedfordshire: Area = {
     {
       question: "I am buying from a small independent in Leighton Buzzard or Sandy rather than a main dealer. Is your inspection the same?",
       answer:
-        "Exactly the same checklist, the same equipment and the same report. If anything it matters more at a small forecourt, because there is no manufacturer approved-used warranty behind the car and the history check is the only protection you have against finance or a hidden write-off.",
+        "Exactly the same checklist, the same equipment and the same report. A small forecourt has no manufacturer approved-used scheme behind the car, so the history check for finance and write-offs matters just as much.",
     },
     {
       question: "The car I want is an ex-fleet vehicle that came through BCA Bedford. Can you tell how hard it has been used?",

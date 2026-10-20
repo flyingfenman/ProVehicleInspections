@@ -18,7 +18,7 @@ export const nottinghamshire: Area = {
   },
   local: [
     "Nottinghamshire's biggest used-car site is Available Car at Calladine Business Park in Sutton-in-Ashfield, with around 900 cars listed at fixed prices. Mansfield's franchised dealers line Southwell Road West: Bristol Street Motors Renault and Dacia, Vertu Hyundai and the Evans Halshaw Nissan site with its used-car centre. Worksop has Stoneacre on Turner Road with Fiat, Jeep and Nissan. Newark has Pratt and Gelsthorpe for Peugeot, Harrisons on Brunel Drive and independents such as Taylor Motor Group. Nottingham itself has the Lenton Lane estate, covered on its own page.",
-    "The county's trade stock comes from BCA Nottingham, which sells up to five days a week, John Pye's Radford Road sales and BCA Donington Park over the border. With around 70,000 students in Nottingham and a lot of ex-fleet stock defleeted locally, the market runs from £1,500 runabouts to approved-used prestige. We inspect all of it to the same checklist, and you have the video and report before you hand over any money, so the price you pay reflects the car you are actually getting.",
+    "The county's trade stock comes from BCA Nottingham, which sells up to five days a week, John Pye's Radford Road sales and BCA Donington Park over the border. The market runs from £1,500 runabouts to approved-used prestige cars. We inspect all of it to the same checklist, and you have the video and report before you hand over any money, so the price you pay reflects the car you are actually getting.",
   ],
   places: [
     {
@@ -40,28 +40,6 @@ export const nottinghamshire: Area = {
     {
       name: "Nottingham's Lenton Lane and the auctions",
       note: "Arnold Clark, Sytner and Vertu on Lenton Lane, with BCA Nottingham and John Pye supplying the trade. Covered in detail on our Nottingham page.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Supermarket stock at Sutton-in-Ashfield",
-      detail:
-        "Fixed-price supermarket cars are valeted and ready to drive away. We measure what a valet does not change: paint depth across every panel in the Premium inspection, brake and tyre wear, tyre age and the diagnostic history, including how long since the fault memory was cleared.",
-    },
-    {
-      title: "Ex-fleet cars from BCA Nottingham",
-      detail:
-        "BCA defleets lease and company cars here in volume and many reach county forecourts within a fortnight. Full service books and hard miles. We check the big-ticket items due at the mileage and what is left on the consumables.",
-    },
-    {
-      title: "Older cars from the former coalfield towns",
-      detail:
-        "Mansfield, Sutton, Hucknall and Worksop have a lot of older, cheaper cars that have done short local journeys for years. Short trips are hard on diesel particulate filters, batteries and exhausts, and the road test and scan show it.",
-    },
-    {
-      title: "Finance and write-off history",
-      detail:
-        "Cheaper cars that have passed through several owners and an auction are where undisclosed finance and repaired write-offs turn up. The history check in both packages covers finance, write-off category, theft and mileage before you pay.",
     },
   ],
   nearby: ["Nottingham", "Mansfield", "Sutton-in-Ashfield", "Kirkby-in-Ashfield", "Hucknall", "Arnold", "West Bridgford", "Beeston", "Newark", "Southwell", "Worksop", "Retford"],

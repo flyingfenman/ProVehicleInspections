@@ -18,7 +18,7 @@ export const leicestershire: Area = {
   },
   local: [
     "Leicestershire has the East Midlands' biggest car supermarket, Available Car on Station Road in Castle Donington, a ten-acre site open since 2002, and its biggest auction, BCA Donington Park in the Engine Room at the circuit, which sells on Tuesdays and Thursdays. Loughborough has Motorline Direct with up to 500 cars on Belton Road West, Vertu Toyota and TMS Kia on Belton Road, and Sandicliffe Ford and BYD on Derby Road. Hinckley has V12 Sports and Classics, Market Harborough has Forest Gate Vauxhall and the former Audi dealer Protheroes, and Melton Mowbray has Marshall's approved-used site.",
-    "The county also sits in the logistics Golden Triangle. Magna Park at Lutterworth is Europe's largest dedicated logistics park, and with Loughborough University's 19,500 students on top of Leicester's 42,000, the county has both a large ex-fleet market and a large cheap-first-car market. Both reward an independent inspection: fleet cars for what the miles have worn, student cars for what previous owners skipped. Either way you see the scan, the road test and the history check before you pay, and you negotiate on the findings.",
+    "BCA Donington Park supplies much of the county's trade stock, so a forecourt car may have been in an auction lane a week before it was advertised. Whatever you are buying, from a supermarket car to a private sale, you see the scan, the road test and the history check before you pay, and you negotiate on the findings.",
   ],
   places: [
     {
@@ -35,33 +35,11 @@ export const leicestershire: Area = {
     },
     {
       name: "Hinckley, Market Harborough and Melton Mowbray",
-      note: "V12 Sports and Classics on Harrowbrook Road, Forest Gate Vauxhall and Protheroes in Market Harborough, Marshall Approved Used in Melton. Smaller towns, keener prices, histories worth checking.",
+      note: "V12 Sports and Classics on Harrowbrook Road, Forest Gate Vauxhall and Protheroes in Market Harborough, Marshall Approved Used in Melton. Reserve the car and we inspect it on the forecourt.",
     },
     {
       name: "Private sellers and small independents",
       note: "Coalville, Ashby, Lutterworth, Shepshed, Earl Shilton and the villages. Give us the postcode when you book.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Ex-fleet cars from Magna Park and the M1",
-      detail:
-        "Fleet and company cars from the logistics parks have full service books and hard motorway lives. We check the history against the mileage, the big-ticket items due at that mileage, and the brakes, tyres and suspension bushes that motorway miles wear first.",
-    },
-    {
-      title: "Supermarket preparation at Castle Donington",
-      detail:
-        "Volume sites valet and price to move. We measure what the valet cannot change: paint depth on every panel in the Premium inspection, brake and tyre wear, tyre age and the diagnostic history, including how long since the fault memory was cleared.",
-    },
-    {
-      title: "Student cars around Loughborough",
-      detail:
-        "Cheap older cars with several owners and gaps in the servicing. The history check for finance and write-offs, the road test and the scan catch the faults that matter at this price.",
-    },
-    {
-      title: "Auction cars sold on within days",
-      detail:
-        "With Donington Park on the doorstep, a lot of county forecourt stock was in the lanes a week earlier. Auction grades are declarations, not inspections. We check paint, panel gaps, sealant and the underbody for the repairs a grade does not mention.",
     },
   ],
   nearby: ["Loughborough", "Shepshed", "Hinckley", "Earl Shilton", "Market Harborough", "Melton Mowbray", "Coalville", "Ashby-de-la-Zouch", "Lutterworth", "Castle Donington", "Wigston", "Syston"],

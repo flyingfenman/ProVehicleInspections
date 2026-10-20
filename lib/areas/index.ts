@@ -21,7 +21,7 @@ import { leicestershire } from "./leicestershire"
 import { bedfordshire } from "./bedfordshire"
 import { westMidlands } from "./west-midlands"
 
-export type { Area, AreaFaq, AreaPlace, AreaWatch } from "./types"
+export type { Area, AreaFaq, AreaPlace } from "./types"
 
 // Cities first, then counties, in the order they are listed on the site.
 export const areas: Area[] = [

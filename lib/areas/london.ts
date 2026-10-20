@@ -17,7 +17,7 @@ export const london: Area = {
       "The price is the same anywhere inside the M25, with no mileage or call-out charge, and our own vehicle is ULEZ compliant, so nothing is added for an inspection inside the zone. Book online, tell us where the car is, and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day, and we call you to go through them.",
   },
   local: [
-    "London has the biggest choice of used cars in the country and the widest spread of quality: car supermarkets with thousands of cars on one site, main-dealer approved-used centres, long rows of independents on the North Circular and the A13, and a huge private market driven by three-year lease returns and ex-private-hire cars. Prices are keen and turnover is fast, which is why so many London buyers want an independent set of eyes on the car before the deposit goes down.",
+    "London has the biggest choice of used cars in the country: car supermarkets with thousands of cars on one site, main-dealer approved-used centres, long rows of independents on the North Circular and the A13, and a huge private market. Wherever the car is, we inspect it before the deposit goes down.",
     "We inspect petrol, diesel, hybrid and electric cars wherever they are for sale. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, followed by a call to go through it with you. You decide with the facts in front of you, and you negotiate on what the car is rather than what the advert says.",
   ],
   places: [
@@ -27,11 +27,11 @@ export const london: Area = {
     },
     {
       name: "Enfield, Edmonton and the Great Cambridge Road",
-      note: "A dense run of independents and larger used-car sites along the A10 and A406. The London postcodes we are sent to most.",
+      note: "A dense run of independents and larger used-car sites along the A10 and A406.",
     },
     {
       name: "Ilford, Romford and the A13",
-      note: "East London's dealer strips through Barking, Dagenham and Rainham, with plenty of cheaper stock and ex-fleet cars.",
+      note: "East London's dealer strips through Barking, Dagenham and Rainham.",
     },
     {
       name: "Main-dealer approved-used centres",
@@ -40,28 +40,6 @@ export const london: Area = {
     {
       name: "Private sellers across Greater London",
       note: "From Croydon to Barnet. Private sales carry no Consumer Rights Act protection, so the inspection is the only check you get.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Ex-private-hire and ex-fleet cars",
-      detail:
-        "London has more private-hire vehicles than anywhere in the country, and many are sold on as ordinary used cars. High urban mileage shows in the clutch, brakes, suspension bushes, seat bolsters and interior wear. The history check and the road test tell you whether you are looking at one.",
-    },
-    {
-      title: "ULEZ compliance",
-      detail:
-        "A diesel that is not Euro 6, or a petrol that is not Euro 4, costs £12.50 a day to drive inside the Ultra Low Emission Zone, which now covers all of Greater London. We confirm the emissions standard from the car's data, not the advert.",
-    },
-    {
-      title: "Kerbed wheels, scuffs and hidden parking damage",
-      detail:
-        "City cars collect dents, scrapes and alloy damage. Each one is minor, but together they are a negotiating point, and a repaint on one panel can hide a bigger repair. Paint-depth readings on every panel are part of the Premium inspection.",
-    },
-    {
-      title: "Three-year lease returns",
-      detail:
-        "Lease cars are often well serviced but can be returned with worn tyres, brakes close to the limit and unreported bodywork. We check the service history against the mileage and measure what is left on the consumables.",
     },
   ],
   nearby: ["Enfield", "Chingford", "Walthamstow", "Ilford", "Romford", "Barnet", "Stratford", "Barking", "Croydon", "Watford border", "Wembley", "Bromley"],

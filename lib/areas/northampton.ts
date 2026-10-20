@@ -17,8 +17,8 @@ export const northampton: Area = {
       "We inspect anywhere in Northampton and the villages around it for the same price as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the dealer or seller. The video, photos and written report are with you the same day.",
   },
   local: [
-    "Riverside Retail Park and Riverside Business Park on the A45 hold the franchised names: Listers U used-car centre on Museum Way, Allen Ford and Omoda on Fairground Way, Vertu Vauxhall on Carousel Way and the Peugeot and Hyundai sites on Fortune Close. Bedford Road, a couple of minutes from the M1, has Marshall Skoda and Wollaston BMW and MINI, and the big former car-supermarket plot that was Imperial, then CarShop, then Cazoo. The nearest car supermarkets are now in Milton Keynes and Peterborough, so most buyers here deal with the franchised sites, the independents and private sellers.",
-    "What makes Northampton different is Manheim's Brackmills auction, which puts more than 20,000 trade and ex-fleet vehicles a year through its lanes on Tuesdays and Thursdays. A lot of the county's forecourt stock was in those lanes a week or two before it was advertised. That is not a problem in itself, but it means the car's recent history is short and the dealer's own knowledge of it is thin, so an independent inspection is doing the work nobody else has done. You get the findings before you pay, and the price you agree reflects them.",
+    "Riverside Retail Park and Riverside Business Park on the A45 hold the franchised names: Listers U used-car centre on Museum Way, Allen Ford and Omoda on Fairground Way, Vertu Vauxhall on Carousel Way and the Peugeot and Hyundai sites on Fortune Close. Bedford Road, a couple of minutes from the M1, has Marshall Skoda and Wollaston BMW and MINI, and the big former car-supermarket plot that was Imperial, then CarShop, then Cazoo.",
+    "Manheim's Brackmills auction puts more than 20,000 trade and ex-fleet vehicles a year through its lanes on Tuesdays and Thursdays, and a lot of local forecourt stock was in those lanes a week or two before it was advertised. A dealer who bought a car last week knows little about it. Our inspection tells you what it is before you pay, and the price you agree reflects it.",
   ],
   places: [
     {
@@ -35,33 +35,11 @@ export const northampton: Area = {
     },
     {
       name: "Independents in Kingsthorpe, Duston and Weston Favell",
-      note: "Smaller forecourts across the town where prices are keener and histories shorter. We treat the history check as seriously as the mechanical one.",
+      note: "Smaller forecourts across the town. Reserve the car and we inspect it on site.",
     },
     {
       name: "Private sellers",
       note: "Driveways from Brixworth to Wootton. Tell us the postcode and we arrange a time with the seller if you cannot be there.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Recent auction stock",
-      detail:
-        "With Manheim on the doorstep, many local cars are retailed within days of being sold in the lanes. Auction entries are declared by grade, not inspected for you. We check paint depth across every panel in the Premium inspection, panel gaps and sealant, and trace the auction history where records allow.",
-    },
-    {
-      title: "Ex-fleet cars from Brackmills and the M1 corridor",
-      detail:
-        "Brackmills employs around 11,500 people across DHL, John Lewis, Wickes and others, and the M1 and A45 fleets feed the local used market. Fleet cars have good paper histories and hard motorway lives; we check the brakes, suspension bushes, tyres and the timing of the major services against the mileage.",
-    },
-    {
-      title: "Part exchanges with a story",
-      detail:
-        "A car traded in at a franchised dealer and sold on through a smaller forecourt may have been rejected by the first dealer for a reason. The diagnostic scan, including how long since the fault memory was cleared, usually tells us why.",
-    },
-    {
-      title: "Finance repossessions",
-      detail:
-        "A noticeable share of the auction stock here is finance repossessions. The history check confirms any outstanding finance has been settled before you pay; a car with finance still attached can be taken back from you.",
     },
   ],
   nearby: ["Kingsthorpe", "Weston Favell", "Riverside", "Brackmills", "Hunsbury", "Wootton", "Duston", "Sixfields", "Moulton", "Brixworth", "Roade", "Earls Barton"],

@@ -8,7 +8,6 @@ import {
   Car,
   Check,
   ChevronDown,
-  CircleAlert,
   FileText,
   MapPin,
   Route,
@@ -170,7 +169,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
           <div className="mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold">Where we inspect in {area.name}</h2>
             <p className="mt-2 text-muted-foreground">
-              Any dealer forecourt, car supermarket, auction collection or private seller&apos;s driveway. These are the places buyers in {area.name} send us to most.
+              Any dealer forecourt, car supermarket, auction collection or private seller&apos;s driveway. These are the main places people in {area.name} buy from.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {area.places.map((place) => (
@@ -179,28 +178,6 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
                   <div>
                     <h3 className="font-bold">{place.name}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{place.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 sm:py-14">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold">What we pay extra attention to around {area.name}</h2>
-            <p className="mt-2 text-muted-foreground">
-              Every car gets the full checklist. These are the things that come up more often on cars sold in this area, so they get a second look.
-            </p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {area.watchFor.map((item) => (
-                <div key={item.title} className="flex gap-3 rounded-2xl border border-border bg-white p-4 shadow-sm sm:p-5">
-                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
-                  <div>
-                    <h3 className="font-bold">{item.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
                   </div>
                 </div>
               ))}

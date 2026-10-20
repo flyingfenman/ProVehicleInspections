@@ -10,7 +10,7 @@ export const norfolk: Area = {
     "Independent mobile car inspections across Norfolk from £149.99: Norwich, King's Lynn, Great Yarmouth, Thetford, Dereham, Wymondham, Cromer and North Walsham. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Norfolk? From Motorpoint in Norwich and the A140 dealers to Sandles and Anglia Car Auctions in King's Lynn and the Thurlow Nunn sites in Great Yarmouth, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day. And because most of Norfolk is within reach of the sea, we take the underside seriously.",
+    "Buying a used car in Norfolk? From Motorpoint in Norwich and the A140 dealers to Sandles and Anglia Car Auctions in King's Lynn and the Thurlow Nunn sites in Great Yarmouth, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
     summary: "Covering all of Norfolk, King's Lynn to Great Yarmouth, at one price with no mileage charge",
     detail:
@@ -18,7 +18,7 @@ export const norfolk: Area = {
   },
   local: [
     "Norwich has the county's car supermarket, Motorpoint on Turnpike Close, plus the Cromer Road and Hall Road dealer clusters and the Jaguar Land Rover centre at Postwick, all covered on our Norwich page. King's Lynn has Sandles Car Supermarket, which has traded for more than forty years, Thurlow Nunn Vauxhall on Hardwick Road, and Holden's Renault and Dacia showroom, opened in 2025 in a former Volvo site. Group 1 closed its King's Lynn Land Rover dealership in May 2026. Great Yarmouth has Thurlow Nunn, whose family-owned group runs twelve sites across East Anglia, and Wymondham, Dereham, Fakenham and Diss have small independents.",
-    "The county's trade stock passes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at the Cattlemarket in King's Lynn, which runs modern and classic sales, so plenty of forecourt cars were in an auction lane shortly before they were advertised. Lotus builds its cars at Hethel, and the long coastline from Hunstanton round to Great Yarmouth means a large share of Norfolk's cars have lived in salt air. We inspect the car before you pay, photograph the underside, read the MOT history for repeated corrosion advisories and tell you whether what we find is surface rust or structural, so you decide with the facts and negotiate from them.",
+    "The county's trade stock passes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at the Cattlemarket in King's Lynn, which runs modern and classic sales, so plenty of forecourt cars were in an auction lane shortly before they were advertised. We inspect the car before you pay and tell you what the advert leaves out, so you decide with the facts and negotiate from them.",
   ],
   places: [
     {
@@ -31,7 +31,7 @@ export const norfolk: Area = {
     },
     {
       name: "Great Yarmouth and the east coast",
-      note: "Thurlow Nunn Vauxhall and the independents of Yarmouth, Gorleston and Caister. Coastal cars, so the underside matters.",
+      note: "Thurlow Nunn Vauxhall and the independents of Yarmouth, Gorleston and Caister. Inspected on the forecourt or at the seller's home.",
     },
     {
       name: "East Anglian Motor Auctions, Wymondham",
@@ -40,28 +40,6 @@ export const norfolk: Area = {
     {
       name: "Thetford, Dereham, Fakenham, Cromer and the villages",
       note: "Private sellers and small forecourts across the county. Give us the postcode when you book and we arrange the time with the seller.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Salt corrosion on coastal cars",
-      detail:
-        "Hunstanton, Wells, Cromer, Great Yarmouth and the Broads: salt-laden air settles on exposed metal and attacks sills, subframes, brake lines and exhausts, and winter gritting adds to it. We photograph the underbody, probe the structural areas and read the MOT history for repeated corrosion advisories, then tell you whether it is surface or structural.",
-    },
-    {
-      title: "Supermarket and auction stock",
-      detail:
-        "Cars at Motorpoint or Sandles have been valeted and priced to move; cars fresh from Wymondham or King's Lynn have an auction grade, not an inspection. We measure paint depth, check panel gaps and sealant, read the diagnostic history and, in the Premium package, search auction and salvage records.",
-    },
-    {
-      title: "Rural cars with long gaps in servicing",
-      detail:
-        "Cars from the villages often have low mileage but long intervals between services, perished tyres and brake discs corroded from standing. Low miles is not the same as well looked after, and the road test and brake measurements show the difference.",
-    },
-    {
-      title: "Lotus and specialist cars from Hethel",
-      detail:
-        "The county has an unusual number of Lotus cars for sale. Bonded chassis repairs, clamshell damage, track use and patchy specialist servicing are what we look for, alongside the usual mechanical checks.",
     },
   ],
   nearby: ["Norwich", "Great Yarmouth", "Gorleston", "King's Lynn", "Downham Market", "Thetford", "Attleborough", "Wymondham", "Dereham", "Fakenham", "Cromer", "North Walsham", "Diss", "Swaffham"],
@@ -80,12 +58,12 @@ export const norfolk: Area = {
     {
       question: "Can you inspect a car in Cromer or North Walsham, or is the north coast outside your area?",
       answer:
-        "The north coast is covered like the rest of the county, at the same price with no mileage charge. Book online with the car's postcode and we arrange the time with the seller. Coastal cars get particular attention underneath, because salt air and winter gritting attack sills, subframes and brake lines.",
+        "The north coast is covered like the rest of the county, at the same price with no mileage charge. Book online with the car's postcode and we arrange the time with the seller.",
     },
     {
-      question: "Will you check a Lotus from near Hethel differently from an ordinary hatchback?",
+      question: "Can you inspect a car at Sandles Car Supermarket in King's Lynn before I collect it?",
       answer:
-        "Yes. The checklist is the same but the emphasis changes: bonded aluminium chassis repairs, clamshell cracks and repaints, signs of track use, cooling and clutch condition, and whether the servicing was done by someone who knows the cars. The Premium inspection's paint-depth readings on every panel matter more on a Lotus than on most cars.",
+        "Yes. Reserve the car, tell them an independent inspector is coming and we inspect on site, with a road test where they allow it. You get the video, photos and report the same day, before you pay the balance.",
     },
   ],
   related: ["vehicle-inspection-norwich", "vehicle-inspection-suffolk", "vehicle-inspection-cambridgeshire", "vehicle-inspection-lincolnshire"],

@@ -18,7 +18,7 @@ export const lincolnshire: Area = {
   },
   local: [
     "Used cars in South Lincolnshire are spread across a big county. Grantham's franchised dealers sit together at Spittlegate Level just off the A1, with Stoneacre, Drayton Motors Kia and Evans Halshaw, which now sells MG. Boston's are on Marsh Lane, including Vertu Honda and JCT600 Audi. Around Spalding and Pinchbeck there is EMG's BYD site and a run of independents, and Stamford has T C Harrison, now a KGM dealer, Sycamore and the independents that serve the Deepings and Bourne. Between the towns, plenty of good cars change hands privately.",
-    "Buyers here often travel a long way for one car, so the car you want may be an hour from home before you have seen it. We go first. You get the video and the full report before you make the trip, so you only travel for a car that is right, and you negotiate with the facts in front of you. On cars from the low-lying parts of the county we also check specifically for flood damage, a risk the Fens carry and most of the country does not.",
+    "Buyers here often travel a long way for one car, so the car you want may be an hour from home before you have seen it. We go first. You get the video and the full report before you make the trip, so you only travel for a car that is right, and you negotiate with the facts in front of you.",
   ],
   places: [
     {
@@ -31,7 +31,7 @@ export const lincolnshire: Area = {
     },
     {
       name: "Spalding and Pinchbeck",
-      note: "EMG's BYD dealership, plus independents such as Spalding Car Sales and 1Stop on Pinchbeck Road. Newer EVs and cheaper stock side by side, and the EV battery check covers the EVs.",
+      note: "EMG's BYD dealership, plus independents such as Spalding Car Sales and 1Stop on Pinchbeck Road. For an EV, add the battery health check.",
     },
     {
       name: "Stamford and the Deepings",
@@ -40,28 +40,6 @@ export const lincolnshire: Area = {
     {
       name: "City Auction Group, Peterborough, and BCA Nottingham",
       note: "The two auction centres that supply the county's traders. If the car you are looking at has just been through a sale, the Premium inspection traces it.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Flood damage from the Fens",
-      detail:
-        "The January 2025 floods put water into dozens of homes around Boston and overtopped defences near Dunsby, Quadring and Wyberton, and around 15,000 South Holland homes sit in high flood-risk areas. A car that has stood in water shows it in the carpet underlay, seat runners, wiring connectors and the smell. We check all of them on cars from the low-lying parts of the county.",
-    },
-    {
-      title: "Agricultural and food-industry use",
-      detail:
-        "Food processing is the biggest employer around Spalding and Holbeach, and a lot of cars have lived on farm tracks and in factory car parks. Underbody corrosion, stone-chipped sills and suspension wear from rough roads get a careful look.",
-    },
-    {
-      title: "Long-distance buyers and sight-unseen deals",
-      detail:
-        "Buyers here regularly travel from Lincoln, Nottingham or Peterborough for one car. Our video review and report arrive the same day as the inspection, so you can decide before you drive.",
-    },
-    {
-      title: "Dealer rebrands and orphaned franchises",
-      detail:
-        "Several local dealers have changed brands recently, Evans Halshaw Grantham from Ford to MG and T C Harrison Stamford from Ford to KGM. Approved-used cars from a brand a dealer no longer holds are still fine cars, but the warranty and the preparation standard behind them may have changed. We check the car, not the badge on the building.",
     },
   ],
   nearby: ["Stamford", "Market Deeping", "Bourne", "Spalding", "Pinchbeck", "Holbeach", "Long Sutton", "Boston", "Kirton", "Sleaford", "Grantham", "Crowland"],
@@ -78,9 +56,9 @@ export const lincolnshire: Area = {
         "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
-      question: "Can you check for flood or water damage on a car that has lived in Spalding or Boston?",
+      question: "Can you inspect a car at a private seller's house in one of the villages?",
       answer:
-        "Yes, and we do it on every car from the low-lying parts of the county. Water leaves silt under the carpets and in the boot well, corrosion on seat runners and connector pins, misted lights and a smell that a valet cannot shift. The history check also shows any insurance write-off.",
+        "Yes. We inspect on driveways as well as forecourts. Ask the seller to have the keys, the V5C and any service history ready, somewhere level to park and permission for a short road test. We can arrange it with them directly if you give us their number.",
     },
     {
       question: "Will you inspect a car at Vertu Honda on Marsh Lane in Boston before I sign the finance?",
