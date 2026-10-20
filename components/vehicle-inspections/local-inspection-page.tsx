@@ -369,11 +369,11 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
 
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl rounded-3xl bg-slate-950 p-7 text-center text-white sm:p-10">
-            <ShieldCheck className="mx-auto h-9 w-9 text-emerald-400" />
+          <div className="mx-auto max-w-4xl rounded-3xl border border-primary/15 bg-primary/5 p-7 text-center sm:p-10">
+            <ShieldCheck className="mx-auto h-9 w-9 text-emerald-600" />
             <h2 className="mt-4 text-3xl font-bold">Inspect it before you buy it.</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-slate-300">Independent pre-purchase vehicle inspections in {area.name} from £149.99.</p>
-            <Link href="/book" className="mt-6 inline-flex items-center rounded-xl bg-white px-6 py-3 font-bold text-slate-950 transition hover:bg-slate-100">
+            <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Independent pre-purchase vehicle inspections in {area.name} from £149.99.</p>
+            <Link href="/book" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-primary/90">
               Book an Inspection <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>

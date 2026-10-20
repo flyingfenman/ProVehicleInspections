@@ -87,14 +87,14 @@ export default function InspectionNotesPage() {
             .
           </p>
 
-          <div className="mx-auto mt-10 max-w-3xl rounded-3xl bg-slate-950 p-7 text-center text-white sm:p-10">
+          <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/15 bg-primary/5 p-7 text-center sm:p-10">
             <h2 className="text-2xl font-bold sm:text-3xl">Buying a used car?</h2>
-            <p className="mx-auto mt-3 max-w-xl text-slate-300">
+            <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
               Get it inspected before you hand over your money. Book online and we come to the car.
             </p>
             <Link
               href="/book"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-950 transition hover:bg-slate-100"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-primary/90"
             >
               <CalendarCheck className="h-5 w-5" aria-hidden="true" /> Book an inspection
             </Link>
