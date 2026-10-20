@@ -1,25 +1,27 @@
 import { Check, ShieldCheck } from "lucide-react"
 import { BookNowButton } from "../book-now-button"
+import { Reviews } from "./reviews"
 
 const IN_BOTH = ["We come to the car", "History check", "Full diagnostics", "Road test", "Video review", "Same-day report"]
 
-// The title, the prices, what both inspections include and the first Book Now.
+// The title, the prices, what both inspections include and the first Book Now, with what customers say
+// beside it on a laptop and straight after it on a phone or tablet.
 export function InspectionsHero() {
   return (
     <section className="border-b bg-white">
-      <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-16">
-        <div className="mx-auto max-w-4xl">
+      <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-10 xl:py-14">
+        <div className="mx-auto max-w-4xl lg:grid lg:max-w-none lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10 xl:gap-14">
           <div>
             <div className="hidden items-center gap-2 rounded-full border border-primary/30 bg-white px-4 py-2 text-sm font-bold text-primary sm:inline-flex">
               <ShieldCheck className="h-4 w-4" />
               Independent pre-purchase car inspection service
             </div>
 
-            <h1 className="text-4xl font-bold leading-[1.06] sm:mt-5 sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.06] sm:mt-5 sm:text-5xl xl:text-6xl">
               We inspect the car like <span className="text-primary">our own money is on the line.</span>
             </h1>
 
-            <p className="mt-5 hidden max-w-2xl text-xl leading-relaxed text-muted-foreground sm:block">
+            <p className="mt-5 hidden max-w-2xl text-xl leading-relaxed text-muted-foreground sm:block lg:text-lg xl:text-xl">
               Years of buying cars with our own money shape how we inspect yours. We combine a detailed physical inspection, advanced diagnostics, road testing, vehicle history and clear video evidence so you understand the car before you commit.
             </p>
 
@@ -38,6 +40,8 @@ export function InspectionsHero() {
               <BookNowButton />
             </div>
           </div>
+
+          <Reviews />
         </div>
       </div>
     </section>
