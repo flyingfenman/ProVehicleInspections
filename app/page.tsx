@@ -37,11 +37,13 @@ export default function HomePage() {
       <WhatWeCheck />
       <ReportStrip />
       <MeetHenry />
+      <section className="border-t bg-white py-12 sm:py-16">
+        <div className="container mx-auto max-w-6xl px-4">
+          <LocalAreaLinks />
+        </div>
+      </section>
       <InspectionsFAQ />
       <FinalCta />
-      <div className="container mx-auto max-w-6xl px-4 pb-12">
-        <LocalAreaLinks />
-      </div>
     </div>
   )
 }
