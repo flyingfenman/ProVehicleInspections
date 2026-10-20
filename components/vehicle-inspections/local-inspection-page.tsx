@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { AreaMap } from "@/components/vehicle-inspections/area-map"
 import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
@@ -322,7 +323,8 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-2xl font-bold">Nearby areas we cover</h2>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <AreaMap highlight={area.slug} className="mt-5" />
+              <div className="mt-6 flex flex-wrap gap-2">
                 {related.map((other) => (
                   <Link
                     key={other.slug}
