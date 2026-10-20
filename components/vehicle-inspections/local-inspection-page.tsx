@@ -287,7 +287,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
             <div className="mt-7 space-y-3">
               {[
                 ["1", "Choose a package and appointment", "Book online, pick your time and tell us where the car is being sold."],
-                ["2", "We drive to the car", `We come to the seller or dealer anywhere in ${area.name}. ${area.travel.summary}.`],
+                ["2", "We drive to the car", `We come to the seller or dealer anywhere in ${area.name}, at the same price with no mileage or call-out charge.`],
                 ["3", "We inspect and test", "We carry out the physical, diagnostic, history and road-test checks, and film the video review at the car."],
                 ["4", "Understand before you decide", "You get the video review, photos and digital report the same day, then we talk through the findings and the buying decision with you. Keep the evidence for future reference."],
               ].map(([number, title, text]) => (

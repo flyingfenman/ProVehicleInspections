@@ -10,32 +10,32 @@ export const lincolnshire: Area = {
     "Independent mobile car inspections across South Lincolnshire from £149.99: Stamford, Spalding, Bourne, Grantham, Boston, Sleaford and the Deepings. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Stamford, Spalding, Grantham, Boston or Sleaford? South Lincolnshire has no car supermarket of its own, so buyers here deal with franchised dealers, small independents and private sellers spread across a big, flat county. We drive to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Stamford, Spalding, Grantham, Boston or Sleaford? We come to the car wherever it is in South Lincolnshire and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "A1 to Stamford in about an hour and a half; Spalding, Grantham and Boston about two hours",
+    summary: "Covering the whole county, from Stamford to Boston, at one price with no mileage charge",
     detail:
-      "We come up the M25 and A1(M) or the M11 and A14 to the A1. Stamford is about 80 miles from Waltham Abbey, an hour and a half off peak. Spalding and Grantham are around 90 to 100 miles and Boston about 105, so allow two hours. The price is the same as an inspection in Essex, with no mileage charge, and we usually pair a Fens job with Peterborough or Stamford on the same day.",
+      "We inspect anywhere in South Lincolnshire for the same price as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the seller or dealer directly. You get the video, the photos and the written report the same day.",
   },
   local: [
-    "There is no Motorpoint, Big Motoring World, Available Car or Arnold Clark anywhere in South Lincolnshire; the nearest supermarkets are in Peterborough. What the county has instead is a franchised cluster at Spittlegate Level in Grantham, with Stoneacre and Drayton Motors Kia, and Evans Halshaw now selling MG where it used to sell Ford; the Marsh Lane dealers in Boston, including Vertu Honda and JCT600 Audi; EMG's BYD site and a run of independents around Spalding and Pinchbeck; and the Stamford dealers, where T C Harrison switched from Ford to KGM in April 2026.",
-    "Distances are long and buyers often travel a fair way for one car, which makes an inspection before the trip worth more here than almost anywhere. We check the car at the seller and send you the video and report the same day, so you only make the journey if it is right. The Fens also carry a flood risk that the rest of our area does not, and a flooded car is something we check for specifically.",
+    "Used cars in South Lincolnshire are spread across a big county. Grantham's franchised dealers sit together at Spittlegate Level just off the A1, with Stoneacre, Drayton Motors Kia and Evans Halshaw, which now sells MG. Boston's are on Marsh Lane, including Vertu Honda and JCT600 Audi. Around Spalding and Pinchbeck there is EMG's BYD site and a run of independents, and Stamford has T C Harrison, now a KGM dealer, Sycamore and the independents that serve the Deepings and Bourne. Between the towns, plenty of good cars change hands privately.",
+    "Buyers here often travel a long way for one car, so the car you want may be an hour from home before you have seen it. We go first. You get the video and the full report before you make the trip, so you only travel for a car that is right, and you negotiate with the facts in front of you. On cars from the low-lying parts of the county we also check specifically for flood damage, a risk the Fens carry and most of the country does not.",
   ],
   places: [
     {
       name: "Spittlegate Level, Grantham",
-      note: "Stoneacre and Drayton Motors Kia on Tollemache Road South, and Evans Halshaw's MG site. The county's main franchised cluster, just off the A1.",
+      note: "Stoneacre and Drayton Motors Kia on Tollemache Road South, and Evans Halshaw's MG site. The county's main franchised cluster. Reserve the car, tell the dealer an independent inspector is coming and we inspect on their forecourt.",
     },
     {
       name: "Marsh Lane, Boston",
-      note: "Vertu Honda and JCT600 Audi, with the town's other franchised dealers nearby. About two hours from us; we book Boston inspections with a Spalding or Peterborough job.",
+      note: "Vertu Honda, JCT600 Audi and the town's other franchised dealers. An approved-used car comes with the dealer's own check. Ours is the one on your side.",
     },
     {
       name: "Spalding and Pinchbeck",
-      note: "EMG's BYD dealership, plus independents such as Spalding Car Sales and 1Stop on Pinchbeck Road. A mix of newer EVs and cheaper stock.",
+      note: "EMG's BYD dealership, plus independents such as Spalding Car Sales and 1Stop on Pinchbeck Road. Newer EVs and cheaper stock side by side, and the EV battery check covers the EVs.",
     },
     {
       name: "Stamford and the Deepings",
-      note: "The T C Harrison site, Sycamore and the independents around Stamford, Market Deeping and Bourne. An hour and a half from us, often same-week.",
+      note: "T C Harrison, Sycamore and the independents around Stamford, Market Deeping and Bourne. Inspected on site, with a road test where the dealer allows it.",
     },
     {
       name: "City Auction Group, Peterborough, and BCA Nottingham",
@@ -70,12 +70,12 @@ export const lincolnshire: Area = {
     {
       question: "Can you inspect a car at the Spittlegate Level dealers in Grantham?",
       answer:
-        "Yes. Ask the dealer to hold the car for an independent inspection and we arrange the time with them. Grantham is about an hour and three quarters from us up the A1, so we usually book it for a morning and fit a Stamford or Newark job in afterwards.",
+        "Yes. Reserve the car and tell the dealer an independent inspector is coming. We arrange the time with them, inspect on their site, road test where they allow it, and send you the video, photos and report the same day.",
     },
     {
-      question: "The car is in Boston or Holbeach, a long way from the A1. Do you charge extra for the Fens?",
+      question: "Do you charge extra for Boston, Holbeach or the Fens?",
       answer:
-        "No. The price is the same anywhere in our area, with no mileage or call-out charge. Boston is about two hours from us, so we ask for a little flexibility on the time and pair it with another job in the county.",
+        "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you check for flood or water damage on a car that has lived in Spalding or Boston?",
@@ -89,5 +89,5 @@ export const lincolnshire: Area = {
     },
   ],
   related: ["vehicle-inspection-peterborough", "vehicle-inspection-cambridgeshire", "vehicle-inspection-nottinghamshire", "vehicle-inspection-leicestershire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }
