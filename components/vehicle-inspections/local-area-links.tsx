@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { MapPin } from "lucide-react"
 import { areaPath, cityAreas, countyAreas } from "@/lib/areas"
+import { AreaMap } from "@/components/vehicle-inspections/area-map"
 
-// Every area page, grouped, at the foot of the home page. Each one is written for its place (lib/areas).
+// Every area page at the foot of the home page: the clickable map, then the same pages as plain links, grouped.
 export function LocalAreaLinks() {
   const groups = [
     ["Cities", cityAreas],
@@ -16,8 +17,9 @@ export function LocalAreaLinks() {
         <h3 className="font-bold">Areas we cover</h3>
       </div>
       <p className="mt-2 text-sm text-muted-foreground">
-        We drive to the car wherever it is for sale. Each page says where we go in that area, how we get there and what we look out for on cars sold locally.
+        Tap your county or city to see where we inspect there. Same price everywhere we cover, with no mileage or call-out charge.
       </p>
+      <AreaMap className="mt-5" />
       {groups.map(([label, group]) => (
         <div key={label} className="mt-4">
           <p className="text-sm font-bold uppercase tracking-wide text-primary">{label}</p>
