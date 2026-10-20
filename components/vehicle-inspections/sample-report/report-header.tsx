@@ -15,7 +15,7 @@ export function ReportHeader() {
           <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-lg border-2 border-white">
             <FlaskConical className="w-5 h-5 text-primary" />
             <span className="text-sm font-extrabold tracking-wide text-primary uppercase">
-              Sample Report — Fictional Vehicle, For Illustration Only
+              Sample Report: Fictional Vehicle, For Illustration Only
             </span>
           </div>
 
@@ -24,7 +24,7 @@ export function ReportHeader() {
               2022 Hyundai Ioniq 5 Premium
             </h1>
             <p className="text-white/80 text-lg">
-              This is a made-up example report so you can see exactly what you get — not a real customer&apos;s vehicle.
+              This is a made-up example report so you can see exactly what you get, not a real customer&apos;s vehicle.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export function ReportHeader() {
 
           <div className="mt-6 pt-6 border-t border-border flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Ban className="w-4 h-4 flex-shrink-0" />
-            <span>Sample only — not downloadable</span>
+            <span>Sample only, not downloadable</span>
           </div>
         </div>
       </div>

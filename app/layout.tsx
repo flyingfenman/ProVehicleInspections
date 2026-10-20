@@ -31,7 +31,7 @@ const charlesWright = localFont({
 export const metadata: Metadata = {
   title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
   description:
-    "Independent pre-purchase vehicle inspections across London, Essex, Hertfordshire and surrounding areas, with diagnostics, road testing, video evidence and EV and hybrid checks.",
+    "Mobile pre-purchase car inspections from £149.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     siteName: "Pro Vehicle Inspections",
     title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
     description:
-      "Independent pre-purchase vehicle inspections across London, Essex, Hertfordshire and surrounding areas, with diagnostics, road testing, video evidence and EV and hybrid checks.",
+      "Mobile pre-purchase car inspections from £149.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
     images: ["/images/inspection-car.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
     description:
-      "Independent pre-purchase vehicle inspections across London, Essex, Hertfordshire and surrounding areas, with diagnostics, road testing, video evidence and EV and hybrid checks.",
+      "Mobile pre-purchase car inspections from £149.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
     images: ["/images/inspection-car.jpg"],
   },
 }

@@ -10,7 +10,7 @@ import { ReportTerms } from "@/components/vehicle-inspections/sample-report/term
 export const metadata: Metadata = {
   title: "Sample Inspection Report - Pro Vehicle Inspections",
   description:
-    "See exactly what you get with a Pro Vehicle Inspections inspection — a sample report for a fictional example vehicle.",
+    "See exactly what you get with a Pro Vehicle Inspections inspection: a sample report for a fictional example vehicle.",
   robots: { index: false, follow: true },
 }
 

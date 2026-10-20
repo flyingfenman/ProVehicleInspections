@@ -6,7 +6,7 @@ const vehicleDetails = [
   { label: "Model", value: "IONIQ 5 PREMIUM" },
   { label: "Body Type", value: "SUV" },
   { label: "Fuel Type", value: "Electric" },
-  { label: "Transmission", value: "Automatic — single-speed reduction gear" },
+  { label: "Transmission", value: "Automatic, single-speed reduction gear" },
   { label: "Registration (VRM)", value: "RK22 UCJ" },
   { label: "VIN", value: "KMHLN81CXNU214477" },
   { label: "Colour", value: "Cyberspace Grey" },
@@ -60,7 +60,7 @@ export function VehicleCheckReport() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Vehicle Check Report</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Every inspection from Pro Vehicle Inspections includes a full AutoTrader-verified vehicle history check as
-            standard — it&apos;s the very first thing you&apos;ll find in your report.
+            standard. It&apos;s the very first thing you&apos;ll find in your report.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ export function VehicleCheckReport() {
             <SearchCheck className="w-4 h-4 text-primary flex-shrink-0" />
             <span>
               This vehicle has been checked 6 times by other trade buyers and finance companies in the past 12
-              months — a sign of a well-documented, actively verified history.
+              months, a sign of a well-documented, actively verified history.
             </span>
           </div>
 
@@ -184,7 +184,7 @@ export function VehicleCheckReport() {
               </p>
               <p className="text-sm text-muted-foreground">
                 Final part-exchange figures are always confirmed in person after a physical inspection of the
-                vehicle being traded in — this figure is illustrative only, as with the rest of this sample
+                vehicle being traded in. This figure is illustrative only, as with the rest of this sample
                 report.
               </p>
             </CardContent>

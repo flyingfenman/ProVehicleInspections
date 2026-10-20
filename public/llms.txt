@@ -1,6 +1,6 @@
 # Pro Vehicle Inspections
 
-> Independent mobile pre-purchase car inspections and EV and plug-in hybrid battery health checks. We travel to the car wherever it is for sale, across Essex, Hertfordshire, Greater London, South Cambridgeshire, Bedfordshire and Suffolk.
+> Independent mobile pre-purchase car inspections and EV and plug-in hybrid battery health checks. We travel to the car wherever it is for sale, from our base in Waltham Abbey, Essex, across Greater London, Essex, Hertfordshire, Bedfordshire, Cambridgeshire, Suffolk, Norfolk, Northamptonshire, Leicestershire, Nottinghamshire, South Lincolnshire and the West Midlands (Birmingham and Coventry). Prices are the same everywhere in that area, with no call-out or mileage charge.
 
 Pro Vehicle Inspections is run by Henry. Open Monday to Friday 08:00 to 18:00, Saturday and Sunday 10:00 to 16:00. Phone and WhatsApp: 01992 245660. Written enquiries: the contact form at https://www.provehicleinspections.com/contact. Website: https://www.provehicleinspections.com
 
@@ -13,8 +13,63 @@ Pro Vehicle Inspections is run by Henry. Open Monday to Friday 08:00 to 18:00, S
 
 ## Areas
 
-- [Vehicle inspection London](https://www.provehicleinspections.com/vehicle-inspection-london)
-- [Pre-purchase car inspection Essex](https://www.provehicleinspections.com/pre-purchase-car-inspection-essex)
+One page per area, each saying where we inspect there, the route and time from our base and what we look out for on cars sold locally.
+
+- [Vehicle inspection London](https://www.provehicleinspections.com/vehicle-inspection-london): all of Greater London; North and East London in 20 to 40 minutes
+- [Pre-purchase car inspection Essex](https://www.provehicleinspections.com/pre-purchase-car-inspection-essex): our home county, most of it under an hour away
+- [Luton and Dunstable](https://www.provehicleinspections.com/vehicle-inspection-luton): Tenby Car Supermarket, the Dunstable Road dealers and Dunstable; about 35 minutes away; ex-hire and ex-private-hire cars
+- [Cambridge](https://www.provehicleinspections.com/vehicle-inspection-cambridge): Marshall on Newmarket Road, Vindis on Milton Road, student cars and the city-centre bollards; under an hour away
+- [Peterborough](https://www.provehicleinspections.com/vehicle-inspection-peterborough): Motorpoint, Big Motoring World and the Fengate dealers, City Auction Group; about an hour and a half
+- [Leicester](https://www.provehicleinspections.com/vehicle-inspection-leicester): Welford Road, Narborough Road, Melton Road and Sytner at Meridian; about an hour and forty minutes
+- [Nottingham](https://www.provehicleinspections.com/vehicle-inspection-nottingham): the Lenton Lane dealer estate, Arnold Clark and BCA Nottingham; about two hours
+- [Birmingham](https://www.provehicleinspections.com/vehicle-inspection-birmingham): Motorpoint Lichfield Road, the Stratford Road and Coventry Road strips, BCA Perry Barr and the Clean Air Zone; about two hours
+- [Northampton](https://www.provehicleinspections.com/vehicle-inspection-northampton): Riverside and Bedford Road dealers, Manheim Northampton at Brackmills; about an hour and ten minutes
+- [Norwich](https://www.provehicleinspections.com/vehicle-inspection-norwich): Motorpoint Turnpike Close, the Cromer Road and Hall Road dealers, Postwick; coastal corrosion checks; about two hours
+- [Ipswich](https://www.provehicleinspections.com/vehicle-inspection-ipswich): Ransomes Europark and Norwich Road dealers, Hammond Cars; no supermarket since Motorpoint closed in October 2026; about an hour and a half
+- [Hertfordshire](https://www.provehicleinspections.com/vehicle-inspection-hertfordshire): Cheshunt, Hoddesdon and Hertford minutes away, Watford, St Albans and Stevenage under an hour; the ULEZ edge at the M25; our base is on the county line
+- [Cambridgeshire](https://www.provehicleinspections.com/vehicle-inspection-cambridgeshire): Huntingdon, Ely, St Neots, March and Wisbech; Fenland flood and damp checks
+- [Suffolk](https://www.provehicleinspections.com/vehicle-inspection-suffolk): Ipswich, Bury St Edmunds, Lowestoft and the coast; no car auction in the county
+- [Norfolk](https://www.provehicleinspections.com/vehicle-inspection-norfolk): Norwich, King's Lynn, Great Yarmouth and the coast; Sandles, Anglia Car Auctions and EAMA Wymondham
+- [South Lincolnshire](https://www.provehicleinspections.com/vehicle-inspection-lincolnshire): Grantham, Stamford, Spalding, Boston and the Fens; about two hours
+- [Nottinghamshire](https://www.provehicleinspections.com/vehicle-inspection-nottinghamshire): Mansfield, Sutton-in-Ashfield, Newark, Worksop and Retford; Available Car and the Southwell Road West dealers
+- [Northamptonshire](https://www.provehicleinspections.com/vehicle-inspection-northamptonshire): Kettering, Corby, Wellingborough, Rushden, Daventry and Towcester; Premier Car Supermarket
+- [Leicestershire](https://www.provehicleinspections.com/vehicle-inspection-leicestershire): Loughborough, Hinckley, Market Harborough, Melton Mowbray and Castle Donington; Available Car and BCA Donington Park
+- [Bedfordshire](https://www.provehicleinspections.com/vehicle-inspection-bedfordshire): Bedford, Kempston, Luton, Leighton Buzzard, Biggleswade and Sandy; BCA Bedford ex-fleet stock
+- [West Midlands (Birmingham and Coventry)](https://www.provehicleinspections.com/vehicle-inspection-west-midlands): Birmingham, Coventry, Solihull, Wolverhampton, Walsall and Dudley; Motorpoint Coventry and Oldbury; only Birmingham charges a Clean Air Zone
+
+## Guides
+
+Used car buying guides written by Henry, each answering one question with sourced figures. Index: https://www.provehicleinspections.com/guides
+
+- [How much does a pre-purchase car inspection cost in the UK?](https://www.provehicleinspections.com/guides/pre-purchase-car-inspection-cost-uk): AA, RAC, ClickMechanic, CarExamer and independent prices as published on 19 October 2026, what the 'from' means, what is left out
+- [AA vs RAC vs independent: which car inspection should you book?](https://www.provehicleinspections.com/guides/aa-vs-rac-vs-independent-car-inspection): side-by-side table of price, points, road test, scan, history check, who turns up, turnaround and the cars each refuses
+- [Is a pre-purchase car inspection worth it?](https://www.provehicleinspections.com/guides/is-a-pre-purchase-car-inspection-worth-it): the arithmetic, the 2026 data, three real October 2026 cases, when it is most and least worth it
+- [What does a pre-purchase car inspection check?](https://www.provehicleinspections.com/guides/what-does-a-pre-purchase-car-inspection-check): mechanical, exterior, interior, the full diagnostic scan, the road test, the history check, what Premium adds, what no inspection can do
+- [How do you check an electric car's battery health before you buy?](https://www.provehicleinspections.com/guides/how-to-check-ev-battery-health-before-you-buy): five methods from the dashboard to a full discharge test, normal State of Health by age, red flags, what the £99.99 test reads
+- [How long do electric car batteries last?](https://www.provehicleinspections.com/guides/how-long-do-electric-car-batteries-last): Geotab 2026 data (2.3% a year, 81.6% at eight years), replacement rates, what shortens a pack, every major warranty, replacement costs
+- [Should you buy a Cat S or Cat N write-off?](https://www.provehicleinspections.com/guides/cat-s-and-cat-n-write-offs): what the categories mean, how often write-offs turn up, what a cheap repair hides, price and insurance, what we check
+- [HPI check vs car inspection: do you need both?](https://www.provehicleinspections.com/guides/hpi-check-vs-car-inspection): what a history check covers and cannot see, 2026 prices, which inspection services include one, two real examples
+- [Dealer or private seller: which is safer when buying a used car?](https://www.provehicleinspections.com/guides/buying-a-used-car-from-a-dealer-vs-private-seller): Consumer Rights Act 2015 rights, what a private seller owes you, traders posing as private, what to do in each case
+- [Buying an imported car: what should you check?](https://www.provehicleinspections.com/guides/imported-cars-what-to-check-before-you-buy): why UK history checks are blind on imports, IVA and registration paperwork, the UK conversion, which services refuse imports, a real £5,000 to £8,500 example
+
+## EV battery notes by model
+
+For each model: battery sizes and official range by version, the UK battery warranty, whether the car shows its own State of Health, known issues and DVSA recalls, what we check, FAQs and sources. Last checked 19 October 2026.
+
+- [Tesla Model 3](https://www.provehicleinspections.com/ev-battery-health-check/tesla-model-3)
+- [Tesla Model Y](https://www.provehicleinspections.com/ev-battery-health-check/tesla-model-y)
+- [Nissan Leaf](https://www.provehicleinspections.com/ev-battery-health-check/nissan-leaf)
+- [Kia e-Niro and Niro EV](https://www.provehicleinspections.com/ev-battery-health-check/kia-e-niro)
+- [Hyundai Kona Electric](https://www.provehicleinspections.com/ev-battery-health-check/hyundai-kona-electric)
+- [Volkswagen ID.3](https://www.provehicleinspections.com/ev-battery-health-check/volkswagen-id3)
+- [Renault Zoe](https://www.provehicleinspections.com/ev-battery-health-check/renault-zoe)
+- [MG4](https://www.provehicleinspections.com/ev-battery-health-check/mg4)
+- [MG ZS EV](https://www.provehicleinspections.com/ev-battery-health-check/mg-zs-ev)
+- [BMW i3](https://www.provehicleinspections.com/ev-battery-health-check/bmw-i3)
+- [Peugeot e-208](https://www.provehicleinspections.com/ev-battery-health-check/peugeot-e-208)
+- [Vauxhall Corsa-e and Corsa Electric](https://www.provehicleinspections.com/ev-battery-health-check/vauxhall-corsa-e)
+- [Jaguar I-Pace](https://www.provehicleinspections.com/ev-battery-health-check/jaguar-i-pace)
+- [Polestar 2](https://www.provehicleinspections.com/ev-battery-health-check/polestar-2)
 
 ## Contact
 

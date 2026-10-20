@@ -22,7 +22,7 @@ export function InspectionsCta() {
           </p>
 
           <p className="mt-7 text-center text-sm text-muted-foreground">
-            You&apos;ll deal directly with Henry from booking through to your inspection findings — no call centre and no sales commission from the car.
+            You&apos;ll deal directly with Henry from booking through to your inspection findings, with no call centre and no sales commission from the car.
           </p>
         </div>
       </div>

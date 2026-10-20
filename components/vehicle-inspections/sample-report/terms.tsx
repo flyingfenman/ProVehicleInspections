@@ -8,11 +8,11 @@ export function ReportTerms() {
           <Info className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
           <div className="space-y-2">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-              Sample report — terms &amp; limitations
+              Sample report: terms &amp; limitations
             </p>
             <p className="text-xs text-muted-foreground leading-relaxed">
               This is a sample report for a fictional vehicle, shown to illustrate the format and level of detail
-              you receive — it is not a real inspection record. On a genuine inspection, our checks are visual and
+              you receive. It is not a real inspection record. On a genuine inspection, our checks are visual and
               non-invasive: we assess what is visible and accessible on the day, without dismantling the vehicle or
               its mechanical components, so items hidden from view or inspection aren't covered. The report is not
               a roadworthiness certificate and does not constitute a warranty or guarantee of the vehicle's

@@ -5,7 +5,7 @@ const photos = [
   { file: "rk22ucj-ins-2.jpg", label: "Front exterior" },
   { file: "rk22ucj-ins-3.jpg", label: "Side profile" },
   { file: "rk22ucj-ins-12.jpg", label: "Front three-quarter view" },
-  { file: "rk22ucj-ins-13.jpg", label: "Front detail — lights & bumper" },
+  { file: "rk22ucj-ins-13.jpg", label: "Front detail: lights & bumper" },
   { file: "rk22ucj-ins-1.jpg", label: "Front wing & wheel arch" },
   { file: "rk22ucj-ins-4.jpg", label: "Front tyre tread" },
   { file: "rk22ucj-ins-5.jpg", label: "Front wheel condition" },
@@ -52,7 +52,7 @@ export function ReportPhotoGallery() {
           <div className="mt-8 flex items-center justify-center gap-2 text-center">
             <Images className="w-5 h-5 text-primary flex-shrink-0" />
             <p className="text-sm text-muted-foreground">
-              Full inspections include 30–40+ photos like these, covering every area of the vehicle.
+              Full inspections include 30 to 40 or more photos like these, covering every area of the vehicle.
             </p>
           </div>
         </div>

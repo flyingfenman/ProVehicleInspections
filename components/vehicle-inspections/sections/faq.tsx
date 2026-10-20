@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "How long does it take and when do I get the report?",
     answer:
-      "Around 40–60 minutes on site for Standard and 70–90 minutes for Premium. You get the video review, photos and written report the same day, plus a personal call to talk it through.",
+      "Around 40 to 60 minutes on site for Standard and 70 to 90 minutes for Premium. You get the video review, photos and written report the same day, plus a personal call to talk it through.",
   },
   {
     question: "Is it worth paying for an inspection before buying a used car?",

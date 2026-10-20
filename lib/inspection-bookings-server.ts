@@ -8,7 +8,7 @@ export interface OccupiedRange {
   end: string
 }
 
-// Fetches every inspection-booking Checkout Session created in the lookback window that isn't expired —
+// Fetches every inspection-booking Checkout Session created in the lookback window that isn't expired,
 // i.e. still open (customer is mid-checkout) or already paid. Both count as "occupying" their slot, so a
 // slot becomes unavailable to other customers the moment someone starts paying for it, not only once they
 // finish. Paginates fully rather than trusting a single page, since Stripe caps each page at 100.
@@ -18,7 +18,7 @@ export async function getOccupiedRanges(lookbackDays: number): Promise<OccupiedR
 
   let startingAfter: string | undefined
   for (let page = 0; page < 20; page++) {
-    // 20 pages (2,000 sessions) is a generous ceiling for a small business — stops a runaway loop if
+    // 20 pages (2,000 sessions) is a generous ceiling for a small business, stops a runaway loop if
     // something upstream ever misbehaves, without silently truncating any realistic volume of bookings.
     const response: Stripe.ApiList<Stripe.Checkout.Session> = await getStripe().checkout.sessions.list({
       created: { gte: windowStart },

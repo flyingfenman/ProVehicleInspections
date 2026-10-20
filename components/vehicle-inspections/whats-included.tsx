@@ -7,7 +7,7 @@ export type Item = { label: string; note?: string }
 
 // The inspections page's price cards list these too.
 export const IN_BOTH: Item[] = [
-  { label: "We come to the car", note: "At the dealer, the seller's home or yours, across Essex, Hertfordshire, London and nearby" },
+  { label: "We come to the car", note: "At the dealer, the seller's home or yours, across London, Essex, East Anglia and the Midlands" },
   { label: "History check", note: "Outstanding finance, insurance write-off, stolen and mileage records" },
   { label: "Full diagnostic scan" },
   { label: "Engine, gearbox, brakes, steering, suspension and tyres" },

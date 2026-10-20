@@ -31,7 +31,7 @@ const ratingIcons: Record<Rating, LucideIcon> = {
   "N/A": MinusCircle,
 }
 
-// Same 3 categories and items as the "What We Inspect" section, but here shown as a completed report —
+// Same 3 categories and items as the "What We Inspect" section, but here shown as a completed report,
 // every single item carries an actual finding (Good/Fair/Poor/N-A), matching the level of detail a real
 // finished report has, not a trimmed-down preview.
 const categories: ChecklistCategory[] = [
@@ -40,35 +40,35 @@ const categories: ChecklistCategory[] = [
     icon: Cog,
     score: 82,
     items: [
-      { label: "Oil condition & level", rating: "N/A", note: "Battery-electric vehicle — no internal combustion engine, no engine oil to check" },
+      { label: "Oil condition & level", rating: "N/A", note: "Battery-electric vehicle: no internal combustion engine, no engine oil to check" },
       { label: "Coolant condition & level", rating: "Good" },
       { label: "Drive belts & hoses", rating: "N/A", note: "No accessory drive belts on this electric powertrain" },
       { label: "Battery condition & charging system", rating: "Good", note: "12V auxiliary battery and charging system tested in good condition" },
-      { label: "EV & hybrid traction battery health check", rating: "Good", note: "State of health 97% — no signs of degradation" },
-      { label: "Alternator output", rating: "N/A", note: "Electric vehicle — no alternator, 12V system maintained via DC-DC converter" },
-      { label: "Exhaust system & emissions", rating: "N/A", note: "Battery-electric vehicle — no exhaust system" },
+      { label: "EV & hybrid traction battery health check", rating: "Good", note: "State of health 97%, no signs of degradation" },
+      { label: "Alternator output", rating: "N/A", note: "Electric vehicle: no alternator, 12V system maintained via DC-DC converter" },
+      { label: "Exhaust system & emissions", rating: "N/A", note: "Battery-electric vehicle: no exhaust system" },
       { label: "Motor & drive unit mounts", rating: "Good" },
-      { label: "Fluid leaks — coolant, gear oil, brake fluid", rating: "Good" },
+      { label: "Fluid leaks: coolant, gear oil, brake fluid", rating: "Good" },
       { label: "CV joints & driveshafts", rating: "Good" },
-      { label: "Timing chain/belt noise check", rating: "N/A", note: "No timing chain — single-speed EV drivetrain" },
+      { label: "Timing chain/belt noise check", rating: "N/A", note: "No timing chain: single-speed EV drivetrain" },
       { label: "Front & rear suspension components", rating: "Good" },
       { label: "Shock absorbers / struts", rating: "Fair", note: "Rear dampers showing early signs of wear" },
       { label: "Ball joints & tie rod ends", rating: "Good" },
       { label: "Suspension bushings", rating: "Good" },
-      { label: "Steering rack & power steering", rating: "Good", note: "Electric power steering — no hydraulic fluid to check" },
-      { label: "Brake pads & discs, front and rear", rating: "Fair", note: "Rear discs showing light surface corrosion from low usage — common on EVs due to regenerative braking, not a safety concern" },
+      { label: "Steering rack & power steering", rating: "Good", note: "Electric power steering: no hydraulic fluid to check" },
+      { label: "Brake pads & discs, front and rear", rating: "Fair", note: "Rear discs showing light surface corrosion from low usage, common on EVs due to regenerative braking, not a safety concern" },
       { label: "Brake calipers & lines", rating: "Good" },
       { label: "Electronic parking brake operation", rating: "Good" },
       {
-        label: "OBD fault code scan — stored and cleared history",
+        label: "OBD fault code scan: stored and cleared history",
         rating: "Fair",
         note: "One historic charging-system fault code logged and cleared, no recurrence during testing",
       },
       { label: "Motor performance under load", rating: "Good" },
-      { label: "Gearbox / clutch operation", rating: "N/A", note: "No multi-speed gearbox or clutch — power runs through a single-speed reduction gear instead" },
+      { label: "Gearbox / clutch operation", rating: "N/A", note: "No multi-speed gearbox or clutch: power runs through a single-speed reduction gear instead" },
       { label: "Braking response", rating: "Good" },
       { label: "Steering & handling", rating: "Good" },
-      { label: "Noise, vibration & harshness check", rating: "Poor", note: "Noticeable wind noise from the driver's door seal — needs attention" },
+      { label: "Noise, vibration & harshness check", rating: "Poor", note: "Noticeable wind noise from the driver's door seal, needs attention" },
     ],
   },
   {
@@ -80,10 +80,10 @@ const categories: ChecklistCategory[] = [
       {
         label: "Evidence of accident repair or respray",
         rating: "Fair",
-        note: "Slight colour and texture mismatch on the nearside rear wing, consistent with a minor repair — nothing structural",
+        note: "Slight colour and texture mismatch on the nearside rear wing, consistent with a minor repair, nothing structural",
       },
       { label: "Rust & corrosion check", rating: "Good" },
-      { label: "All lights — head, tail, fog, indicators, reverse, number plate", rating: "Good" },
+      { label: "All lights: head, tail, fog, indicators, reverse, number plate", rating: "Good" },
       { label: "Glass & windscreen condition", rating: "Fair", note: "Small stone chip, outside the driver's line of sight" },
       { label: "Doors, boot & bonnet operation", rating: "Good" },
       {

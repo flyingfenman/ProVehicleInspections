@@ -1,10 +1,11 @@
 import { Metadata } from "next"
+import { SERVICE_AREA } from "@/lib/areas/service-area"
 import { CalendarDays, Clock, MapPin, MessageCircle, Phone } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 
-const title = "Contact Us — Pro Vehicle Inspections"
+const title = "Contact Us | Pro Vehicle Inspections"
 const description =
-  "Call, message or WhatsApp us about a car inspection. Covering Essex, Herts, South Cambridgeshire and Greater London."
+  "Call, message or WhatsApp us about a car inspection. Covering London, Essex, Hertfordshire, East Anglia and the Midlands."
 
 export const metadata: Metadata = {
   title,
@@ -74,7 +75,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-bold">Where we cover</p>
                   <p className="text-base text-muted-foreground">
-                    Essex, Hertfordshire, South Cambridgeshire, Greater London, and parts of Bedfordshire and Suffolk
+                    {SERVICE_AREA.long}
                   </p>
                 </div>
               </li>
