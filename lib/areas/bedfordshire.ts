@@ -10,20 +10,20 @@ export const bedfordshire: Area = {
     "Independent mobile car inspections across Bedfordshire from £149.99: Bedford, Kempston, Luton, Dunstable, Leighton Buzzard, Biggleswade, Sandy, Flitwick and Ampthill. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Bedfordshire? From the Ampthill Road dealers and Motorvogue at Interchange Retail Park in Bedford to Tenby Car Supermarket in Luton and the independents of Leighton Buzzard, Biggleswade and Sandy, we come to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report. And with BCA Bedford off M1 junction 13, we know where a lot of the county's forecourt stock came from.",
+    "Buying a used car in Bedford, Luton, Leighton Buzzard or Biggleswade? We come to the car wherever it is in Bedfordshire and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M25 and M1: half an hour to Luton, about an hour to Bedford, with no mileage charge",
+    summary: "Covering all of Bedfordshire, from Luton to Bedford, at one price with no mileage charge",
     detail:
-      "Luton is around 30 miles from Waltham Abbey by the M25 and M1, about 35 minutes off peak; Bedford and Kempston about 44 miles and an hour, by the M1 to junction 13 and the A421. Biggleswade and Sandy come by the M25 to junction 23 and the A1. Leighton Buzzard, Flitwick, Ampthill and Shefford are all within the hour. One price across the county, with no mileage charge.",
+      "Wherever the car is in Bedfordshire, the price is the same as everywhere else we cover, with no mileage or call-out charge. Book online and tell us where the car is being sold. We arrange the time with the dealer or private seller, inspect it there, and send you the video, the photos and the written report the same day.",
   },
   local: [
-    "Bedford's franchised dealers run along the Ampthill Road and around Elstow and Kempston: Vindis sells Volkswagen at 332 Ampthill Road and Audi at Progress Park in Elstow, Motorvogue has Hyundai, SEAT, Fiat, Abarth, Alfa Romeo, Jeep, Renault and Dacia at Interchange Retail Park in Kempston by the A421, and Auto Trader lists more than a hundred dealers in the town including Evans Halshaw Ford and Vauxhall, Mercedes-Benz of Bedford, Bells Kia and Volvo, Group 1 BMW and MINI, Marshall Land Rover and Steven Eagell Toyota. Luton has Tenby Car Supermarket and the Dunstable Road independents, covered on our Luton page. Leighton Buzzard has G1 Car Supermarket on Billington Road and Stanbridge Motors; Shefford has Beadlow Motors and Ampthill has Powerlease. There is no Motorpoint, Big Motoring World or Arnold Clark in the county.",
-    "BCA Bedford, the 25-acre remarketing centre off M1 junction 13, is where a lot of the county's stock comes from: dealer groups and leasing companies defleet thousands of cars a year there, and local forecourts buy them back within days. Letchworth Motor Auctions, which Biggleswade and Luton traders used, closed in July 2024. There is no Clean Air Zone anywhere in Bedfordshire and the county is outside the London ULEZ.",
+    "Bedford's franchised dealers run along the Ampthill Road and around Elstow and Kempston. Vindis sells Volkswagen at 332 Ampthill Road and Audi at Progress Park in Elstow. Motorvogue has Hyundai, SEAT, Fiat, Abarth, Alfa Romeo, Jeep, Renault and Dacia at Interchange Retail Park in Kempston by the A421, and Auto Trader lists more than a hundred dealers in the town, including Evans Halshaw Ford and Vauxhall, Mercedes-Benz of Bedford, Bells Kia and Volvo, Group 1 BMW and MINI, Marshall Land Rover and Steven Eagell Toyota. Luton has Tenby Car Supermarket and the Dunstable Road independents, covered on our Luton page. Leighton Buzzard has G1 Car Supermarket on Billington Road and Stanbridge Motors, Shefford has Beadlow Motors and Ampthill has Powerlease.",
+    "A lot of the county's forecourt stock starts at BCA Bedford, the 25-acre remarketing centre off M1 junction 13, where dealer groups and leasing companies defleet thousands of cars a year and local forecourts buy them back within days. Letchworth Motor Auctions, which Biggleswade and Luton traders once used, closed in July 2024. Ex-fleet cars have good paperwork and hard miles, and the difference between a good one and a tired one is in the wear, not the service book. We measure that wear, read the fault history and road test the car before you pay, so you decide with the facts in front of you and negotiate on them. Bedfordshire has no Clean Air Zone and sits outside the London ULEZ, so nothing you buy here will be charged to drive at home.",
   ],
   places: [
     {
       name: "Bedford: Ampthill Road, Elstow and Kempston",
-      note: "Vindis Volkswagen and Audi, Motorvogue at Interchange Retail Park, Evans Halshaw, Mercedes-Benz, Bells, Group 1 BMW and Steven Eagell Toyota. Two inspections in one visit is easy here.",
+      note: "Vindis Volkswagen and Audi, Motorvogue at Interchange Retail Park, Evans Halshaw, Mercedes-Benz, Bells, Group 1 BMW and Steven Eagell Toyota. Reserve the car, tell the dealer an independent inspector is coming and we inspect on their forecourt.",
     },
     {
       name: "Luton and Dunstable",
@@ -39,7 +39,7 @@ export const bedfordshire: Area = {
     },
     {
       name: "Biggleswade, Sandy and the A1 corridor",
-      note: "Small forecourts and private sellers along the A1 and in the villages. Reached from the M25 at junction 23 in about an hour.",
+      note: "Small forecourts and private sellers along the A1 and in the villages. Tell us the postcode when you book.",
     },
   ],
   watchFor: [
@@ -83,11 +83,11 @@ export const bedfordshire: Area = {
         "Yes. The service record tells us what was done; the car tells us what the miles have worn. We measure brake discs and pads and tyre depth, check suspension bushes and steering for play, read every module for stored faults and check how long since the memory was cleared, and compare it all with what is due at that mileage.",
     },
     {
-      question: "Do you cover Biggleswade, Flitwick and Ampthill, and how far ahead do I need to book?",
+      question: "Do you charge extra for Biggleswade, Sandy or the far side of the county?",
       answer:
-        "Yes, all three at the same price. Book online and pick a time; we are usually able to inspect within a few days, and often sooner for Bedfordshire because it is close to our base. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
+        "No. The price is the same anywhere in Bedfordshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99. Book online and pick a time. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
     },
   ],
   related: ["vehicle-inspection-luton", "vehicle-inspection-hertfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-northamptonshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

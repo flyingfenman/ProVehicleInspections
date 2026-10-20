@@ -10,15 +10,15 @@ export const norwich: Area = {
     "Mobile pre-purchase car inspections in Norwich from £149.99, at Motorpoint on Turnpike Close, the Cromer Road and Hall Road dealers, Postwick or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Norwich? Motorpoint opened on Turnpike Close in December 2024, the Cromer Road and Hall Road stretches of the A140 carry most of the franchised dealers, and the new Jaguar Land Rover centre is out at Postwick. We inspect the car where it is for sale, with diagnostics, a road test, a history check and a same-day video report, and we check the underside properly, because this is a coastal county.",
+    "Buying a used car in Norwich? Motorpoint opened on Turnpike Close in December 2024, the Cromer Road and Hall Road stretches of the A140 carry most of the franchised dealers, and the new Jaguar Land Rover centre is out at Postwick. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day. And we check the underside properly, because this is a coastal county.",
   travel: {
-    summary: "M11 and A11: about two hours from our base, with no mileage charge",
+    summary: "Covering Norwich and the surrounding towns at one price with no mileage charge",
     detail:
-      "Norwich is around 105 miles from Waltham Abbey: M25 to junction 27, M11 to junction 9 and the A11 through Thetford, Attleborough and Wymondham into the city. Allow two hours off peak, with no tolls or charges on the way. The price is the same as an inspection in Essex, and we pair Norwich with Wymondham, Great Yarmouth, King's Lynn or a Suffolk job on the same day where we can.",
+      "Norwich and everywhere around it, from Wymondham to Brundall, is inspected at the same price as the rest of our area, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the dealer or seller. The video, photos and written report arrive the same day.",
   },
   local: [
-    "Norwich's used cars sit along the A140. North of the city on Cromer Road are Motorvogue's Hyundai, Fiat, Jeep, Abarth and Alfa Romeo showrooms, with Motorpoint's new store round the corner on Turnpike Close, which took over the former CarStore site and holds more than 200 cars. South on Hall Road are Busseys, selling Ford, BYD and Ineos Grenadier. Heigham Street in the west has Desira's Chrysler and Jeep site and Holden's Renault and Dacia showroom, and the Jaguar Land Rover centre has moved from Cromer Road to Maple Way at Postwick, off the A47, where Duckworth took it over in June 2026. There is no Big Motoring World, Arnold Clark or Cargiant.",
-    "Norfolk's trade stock comes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at King's Lynn. Lotus builds its sports cars at Hethel, ten miles south, so Norwich has an unusual number of Elises, Exiges and Emiras for sale, and because the coast is twenty miles in three directions, a lot of ordinary cars have spent their lives in salt air.",
+    "Norwich's used cars sit along the A140. North of the city on Cromer Road are Motorvogue's Hyundai, Fiat, Jeep, Abarth and Alfa Romeo showrooms, with Motorpoint's new store round the corner on Turnpike Close, which took over the former CarStore site and holds more than 200 cars. South on Hall Road are Busseys, selling Ford, BYD and Ineos Grenadier. Heigham Street in the west has Desira's Chrysler and Jeep site and Holden's Renault and Dacia showroom, and the Jaguar Land Rover centre has moved from Cromer Road to Maple Way at Postwick, off the A47, where Duckworth took it over in June 2026.",
+    "Norfolk's trade stock comes through East Anglian Motor Auctions at Wymondham, which welcomes private buyers, and Anglia Car Auctions at King's Lynn. Lotus builds its sports cars at Hethel, ten miles south, so Norwich has an unusual number of Elises, Exiges and Emiras for sale, and because the coast is twenty miles in three directions, a lot of ordinary cars have spent their lives in salt air. We inspect the car where it is for sale and tell you what the shine and the advert leave out, so you decide before you pay and negotiate with the findings in hand.",
   ],
   places: [
     {
@@ -89,5 +89,5 @@ export const norwich: Area = {
     },
   ],
   related: ["vehicle-inspection-norfolk", "vehicle-inspection-suffolk", "vehicle-inspection-ipswich", "vehicle-inspection-cambridgeshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

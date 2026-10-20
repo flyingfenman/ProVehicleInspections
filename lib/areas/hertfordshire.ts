@@ -7,18 +7,18 @@ export const hertfordshire: Area = {
   h1: "Mobile Car Inspection Hertfordshire",
   title: "Mobile Car Inspection Hertfordshire",
   description:
-    "Independent mobile car inspections across Hertfordshire from £149.99. Based on the Herts and Essex border: diagnostics, road test, history check and a same-day video report.",
+    "Independent mobile car inspections across Hertfordshire from £149.99, from Cheshunt and Hertford to Watford, St Albans and Stevenage. Diagnostics, road test and a same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Hertfordshire? Our base in Waltham Abbey sits on the county line, so Cheshunt, Hoddesdon, Hertford and Harlow are a few minutes away and Watford, St Albans and Stevenage are well under an hour. We inspect the car at the seller before you commit.",
+    "Buying a used car in Hertfordshire? We come to the car wherever it is for sale, from Cheshunt and Hertford to Watford, St Albans and Stevenage, and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "On the Herts border: Cheshunt in 10 minutes, Watford and Stevenage in about 45",
+    summary: "Covering the whole county, Cheshunt to Royston, at one price with no mileage charge",
     detail:
-      "Waltham Abbey is on the A121 between the M25 and the Lea Valley, so the whole of the county is close. The A10 takes us to Cheshunt, Ware and Royston, the A1(M) to Hatfield, Welwyn, Stevenage, Hitchin and Letchworth, and the M25 to Watford, Rickmansworth, Borehamwood and Hemel Hempstead. Next-day appointments are usually possible anywhere in Hertfordshire.",
+      "The price is the same anywhere in Hertfordshire, with no mileage or call-out charge. Book online, where the calendar shows times from 9am to 6pm for the next 30 days, tell us where the car is and we arrange the appointment with the seller or dealer. The video, the photos and the written report reach you the same day, and we call you to go through them.",
   },
   local: [
-    "Hertfordshire's used-car market is dominated by the franchised dealer groups around Watford, St Albans, Hatfield, Stevenage and Borehamwood, with approved-used BMW, Mercedes, Audi, Land Rover and Tesla stock that is priced at the top of the market. Prestige dealers prepare cars well, which is exactly why an independent scan and paint-depth readings matter: the things that remain are the ones a valet cannot hide.",
-    "We inspect petrol, diesel, hybrid and electric cars wherever they are for sale. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, followed by a call to go through it.",
+    "Hertfordshire's used-car market is led by the franchised dealer groups around Watford, St Albans, Hatfield, Stevenage and Borehamwood, with approved-used BMW, Mercedes, Audi, Land Rover and Tesla stock priced at the top of the market. Along the A10 and the Lea Valley, Cheshunt, Hoddesdon, Ware and Hertford have independent dealers and a busy private market, and the A120 and M11 around Bishop's Stortford carry a steady supply of ex-hire and ex-fleet cars from Stansted.",
+    "Prestige dealers prepare cars well, which is exactly why an independent scan and paint-depth readings matter: what remains is what a valet cannot hide. We inspect petrol, diesel, hybrid and electric cars wherever they are for sale. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, so you decide, and negotiate, with the facts in front of you.",
   ],
   places: [
     {
@@ -27,11 +27,11 @@ export const hertfordshire: Area = {
     },
     {
       name: "Hatfield, Welwyn Garden City and Stevenage",
-      note: "A cluster of main dealers and large used-car sites off the A1(M), all about 35 to 45 minutes from us.",
+      note: "A cluster of main dealers and large used-car sites off the A1(M). Reserve the car, tell the dealer an independent inspector is coming and we inspect on their forecourt.",
     },
     {
       name: "Cheshunt, Hoddesdon, Ware and Hertford",
-      note: "Independent dealers and private sellers along the A10 and the Lea Valley, ten to twenty minutes from our base. The quickest inspections we do.",
+      note: "Independent dealers and private sellers along the A10 and the Lea Valley. Smaller forecourts and driveways, where the history check and the road test earn their keep.",
     },
     {
       name: "Bishop's Stortford and the Stansted corridor",
@@ -73,9 +73,9 @@ export const hertfordshire: Area = {
         "Yes. Most dealers are happy for an independent inspector to attend once the car is reserved or a viewing is booked. We arrange the time with the sales team, inspect without you and send the video, photos and report the same day, then call you to talk it through.",
     },
     {
-      question: "How quickly can you get to Cheshunt, Hoddesdon or Hertford?",
+      question: "The car is an ex-hire car from a dealer near Stansted. Is that a problem?",
       answer:
-        "They are 10 to 20 minutes from our base in Waltham Abbey, so these are the easiest appointments to fit in. The calendar shows times from 9am to 6pm for the next 30 days, and anything within 24 hours just needs a quick WhatsApp to confirm.",
+        "Not on its own. Fleet and hire cars are usually serviced on time and can be excellent value. We check that the service history matches the mileage, measure what the miles have worn in the brakes, tyres and suspension, and read how long since the fault memory was cleared, so you know what you are paying for.",
     },
     {
       question: "Does a prestige dealer's approved-used check make yours unnecessary?",
@@ -83,11 +83,11 @@ export const hertfordshire: Area = {
         "No. An approved-used check is the dealer's own process on its own stock. It does not take paint-depth readings for you, it does not tell you how long ago the fault memory was cleared, and the report is not yours. We work for you alone.",
     },
     {
-      question: "Do you cover the north of the county, Royston, Baldock and Letchworth?",
+      question: "Do you cover the north of the county, Royston, Baldock and Letchworth, at the same price?",
       answer:
-        "Yes, the whole county. Royston is about 45 minutes up the A10 and Letchworth about the same via the A1(M). The price is the same as an inspection in Cheshunt, with no call-out charge.",
+        "Yes, the whole county. The price is the same anywhere in Hertfordshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
   related: ["pre-purchase-car-inspection-essex", "vehicle-inspection-london", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-luton"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

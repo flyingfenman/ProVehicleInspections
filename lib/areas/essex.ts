@@ -7,14 +7,14 @@ export const essex: Area = {
   h1: "Pre Purchase Car Inspection Essex",
   title: "Pre Purchase Car Inspection Essex",
   description:
-    "Mobile pre-purchase car inspections across Essex from £149.99. We are based in Waltham Abbey: diagnostics, road test, history check and a same-day video report.",
+    "Mobile pre-purchase car inspections across Essex from £149.99, our home county. Diagnostics, road test, history check and a same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Essex? We are based here, so an inspection at a dealer in Chelmsford, a car supermarket on the A127 or a private seller in Colchester is a short drive. We check the car's condition, diagnostics, road behaviour and history before you pay.",
+    "Buying a used car in Essex? This is our home county, so a dealer in Chelmsford, a car supermarket on the A127 or a private seller in Colchester is familiar ground. We check the car's condition, diagnostics, road behaviour and history before you pay, with a video report the same day.",
   travel: {
-    summary: "Based in Waltham Abbey, so most of Essex is under an hour away",
+    summary: "Covering the whole of Essex, from Epping to Clacton, at one price with no mileage charge",
     detail:
-      "We are based in Waltham Abbey, by junction 26 of the M25. Epping, Loughton, Harlow and Brentwood are minutes away, Chelmsford and Basildon are about 40 minutes down the A12 and A127, and Southend, Colchester and Clacton are around an hour. Essex is where most of our inspections happen, so same-week and often next-day appointments are usually possible.",
+      "Essex is where most of our inspections happen, so appointments are often available at short notice. Epping, Harlow, Brentwood, Chelmsford, Basildon, Southend, Colchester and Clacton are all the same price, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day.",
   },
   local: [
     "Essex has everything from main-dealer approved-used centres to the long dealer strips along the A127 Southend Arterial Road and the A13, and a lot of small independents and driveway sellers in between. The same car can be priced very differently from one end of the county to the other, which is exactly when an independent look pays for itself.",
@@ -23,7 +23,7 @@ export const essex: Area = {
   places: [
     {
       name: "The A127 and A13 dealer strips",
-      note: "The Southend Arterial Road through Basildon, Wickford and Rayleigh, and the A13 through Grays and Stanford-le-Hope, carry dozens of used-car dealers. We can be at any of them within the hour.",
+      note: "The Southend Arterial Road through Basildon, Wickford and Rayleigh, and the A13 through Grays and Stanford-le-Hope, carry dozens of used-car dealers. Reserve the car, tell them an independent inspector is coming and we inspect it on the forecourt.",
     },
     {
       name: "Prestige and approved-used dealers",
@@ -85,10 +85,10 @@ export const essex: Area = {
     {
       question: "Do you cover the whole county, including Colchester, Clacton and Harwich?",
       answer:
-        "Yes. The far east of the county is about an hour and a quarter from us and the price is the same as an inspection in Epping. There is no call-out or mileage charge.",
+        "Yes. The price is the same anywhere in Essex, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
   related: ["vehicle-inspection-london", "vehicle-inspection-hertfordshire", "vehicle-inspection-suffolk", "vehicle-inspection-cambridgeshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
   showTestimonials: true,
 }

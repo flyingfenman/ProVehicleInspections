@@ -10,15 +10,15 @@ export const leicestershire: Area = {
     "Independent mobile car inspections across Leicestershire from £149.99: Loughborough, Hinckley, Market Harborough, Melton Mowbray, Coalville, Lutterworth and Castle Donington.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Leicestershire? From Available Car at Castle Donington and Motorline Direct in Loughborough to the dealers in Hinckley, Market Harborough, Melton Mowbray and Coalville, we come to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Leicestershire? From Available Car at Castle Donington and Motorline Direct in Loughborough to the dealers in Hinckley, Market Harborough, Melton Mowbray and Coalville, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M1 junctions 20 to 24: an hour and forty minutes to Leicester, two hours to Castle Donington",
+    summary: "Covering the whole county, Hinckley to Castle Donington, at one price with no mileage charge",
     detail:
-      "We come round the M25 and up the M1. Lutterworth and Magna Park are off junction 20, Leicester and Hinckley off 21, Coalville off 22, Loughborough off 23 and Castle Donington and East Midlands Airport off 23A and 24. Leicester is about 100 miles and an hour and forty minutes from Waltham Abbey; Castle Donington about 115 miles and two hours. Market Harborough and Melton Mowbray come via the A14 and A6 or the A46 and A607. One price across the county, with no mileage charge.",
+      "One price across Leicestershire, with no mileage or call-out charge, whether the car is at a supermarket by the M1 or on a driveway in Melton Mowbray. Book online and tell us where the car is. We arrange the time with the seller or dealer, inspect on their premises, and you have the video, the photos and the written report the same day.",
   },
   local: [
-    "Leicestershire has the East Midlands' biggest car supermarket, Available Car on Station Road in Castle Donington, a ten-acre site open since 2002, and its biggest auction, BCA Donington Park in the Engine Room at the circuit, which sells on Tuesdays and Thursdays. Loughborough has Motorline Direct with up to 500 cars on Belton Road West, plus Vertu Toyota and TMS Kia on Belton Road and Sandicliffe Ford and BYD on Derby Road. Hinckley has V12 Sports and Classics, Market Harborough has Forest Gate Vauxhall and the former Audi dealer Protheroes, and Melton Mowbray has Marshall's approved-used site.",
-    "The county also sits in the logistics Golden Triangle. Magna Park at Lutterworth is Europe's largest dedicated logistics park, and with Loughborough University's 19,500 students on top of Leicester's 42,000, the county has both a large ex-fleet market and a large cheap-first-car market. Both reward an independent inspection: fleet cars for what the miles have worn, student cars for what previous owners skipped.",
+    "Leicestershire has the East Midlands' biggest car supermarket, Available Car on Station Road in Castle Donington, a ten-acre site open since 2002, and its biggest auction, BCA Donington Park in the Engine Room at the circuit, which sells on Tuesdays and Thursdays. Loughborough has Motorline Direct with up to 500 cars on Belton Road West, Vertu Toyota and TMS Kia on Belton Road, and Sandicliffe Ford and BYD on Derby Road. Hinckley has V12 Sports and Classics, Market Harborough has Forest Gate Vauxhall and the former Audi dealer Protheroes, and Melton Mowbray has Marshall's approved-used site.",
+    "The county also sits in the logistics Golden Triangle. Magna Park at Lutterworth is Europe's largest dedicated logistics park, and with Loughborough University's 19,500 students on top of Leicester's 42,000, the county has both a large ex-fleet market and a large cheap-first-car market. Both reward an independent inspection: fleet cars for what the miles have worn, student cars for what previous owners skipped. Either way you see the scan, the road test and the history check before you pay, and you negotiate on the findings.",
   ],
   places: [
     {
@@ -31,7 +31,7 @@ export const leicestershire: Area = {
     },
     {
       name: "Loughborough: Belton Road and Derby Road",
-      note: "Motorline Direct, Vertu Toyota, TMS Kia, Sandicliffe Ford and BYD. Off the A6 by junction 23.",
+      note: "Motorline Direct, Vertu Toyota, TMS Kia, Sandicliffe Ford and BYD, off the A6 by junction 23. Reserve the car, tell the dealer an inspector is coming and we inspect on site.",
     },
     {
       name: "Hinckley, Market Harborough and Melton Mowbray",
@@ -78,16 +78,16 @@ export const leicestershire: Area = {
         "Auction cars are sold as seen and the viewing window is short, so a full inspection before the hammer is rarely possible. Once the car is yours, we can inspect it at the site by arrangement or at your home, and if a dealer has just bought it from the sale we inspect it on their forecourt.",
     },
     {
-      question: "Can you look at a car in Loughborough on the same trip as one in Leicester?",
+      question: "Can you look at a car in Loughborough and one in Leicester on the same day?",
       answer:
-        "Yes. Book both for the same day and give us the two addresses. Loughborough is 15 minutes up the M1 from Leicester, so a morning at Belton Road and an afternoon on Welford Road is a normal day.",
+        "Yes. Book both for the same day and give us the two addresses. Each car gets its own inspection, video and report, and you have both the same day.",
     },
     {
       question: "Do you cover Market Harborough, Melton Mowbray and Hinckley at the same price as Leicester?",
       answer:
-        "Yes. The price is the same anywhere in our area, with no call-out or mileage charge. Market Harborough and Melton are a little further off the motorway, so we ask for some flexibility on the time and pair them with another job in the county.",
+        "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
   related: ["vehicle-inspection-leicester", "vehicle-inspection-nottinghamshire", "vehicle-inspection-northamptonshire", "vehicle-inspection-west-midlands", "vehicle-inspection-lincolnshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

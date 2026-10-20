@@ -10,15 +10,15 @@ export const london: Area = {
     "Independent mobile vehicle inspections across London from £149.99. Diagnostic scan, road test, history check, same-day video report and EV battery health checks.",
   schemaType: "City",
   intro:
-    "Buying a used car in London? We inspect it at the dealer, the car supermarket or the seller's door before you commit, with diagnostics, a road test, a history check and a same-day video report. North and East London are on our doorstep; we cover all of Greater London.",
+    "Buying a used car in London? We inspect it at the dealer, the car supermarket or the seller's door before you commit, with full diagnostics, a road test, a history check and a video report the same day. We cover all of Greater London.",
   travel: {
-    summary: "North and East London in 20 to 40 minutes, anywhere inside the M25 within about an hour",
+    summary: "Covering all of Greater London, from Enfield to Croydon, at one price with no mileage charge",
     detail:
-      "Our base in Waltham Abbey is just outside the M25 at junction 26, so Enfield, Chingford, Walthamstow, Ilford and Romford are a short drive down the A10, A406 or M11. The rest of Greater London is reached around the M25 and in on the A1, A40, A2 or A3. We plan London inspections around the traffic and the ULEZ, which our own vehicle is compliant with, so the price is the same anywhere in the capital.",
+      "The price is the same anywhere inside the M25, with no mileage or call-out charge, and our own vehicle is ULEZ compliant, so nothing is added for an inspection inside the zone. Book online, tell us where the car is, and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day, and we call you to go through them.",
   },
   local: [
     "London has the biggest choice of used cars in the country and the widest spread of quality: car supermarkets with thousands of cars on one site, main-dealer approved-used centres, long rows of independents on the North Circular and the A13, and a huge private market driven by three-year lease returns and ex-private-hire cars. Prices are keen and turnover is fast, which is why so many London buyers want an independent set of eyes on the car before the deposit goes down.",
-    "We inspect petrol, diesel, hybrid and electric cars wherever they are for sale. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, followed by a call to go through it with you.",
+    "We inspect petrol, diesel, hybrid and electric cars wherever they are for sale. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, followed by a call to go through it with you. You decide with the facts in front of you, and you negotiate on what the car is rather than what the advert says.",
   ],
   places: [
     {
@@ -27,7 +27,7 @@ export const london: Area = {
     },
     {
       name: "Enfield, Edmonton and the Great Cambridge Road",
-      note: "A dense run of independents and larger used-car sites along the A10 and A406, 20 minutes from our base. The most common London postcode we are sent to.",
+      note: "A dense run of independents and larger used-car sites along the A10 and A406. The London postcodes we are sent to most.",
     },
     {
       name: "Ilford, Romford and the A13",
@@ -78,9 +78,9 @@ export const london: Area = {
         "We read the emissions standard from the car's own data and the V5C details during the inspection, so you are not relying on the advert. As a rule petrol cars from about 2006 and diesels from about September 2015 comply, but there are exceptions both ways.",
     },
     {
-      question: "The seller is in South London. Is that too far from Essex?",
+      question: "Do you charge extra for South London, Croydon, Bromley or Kingston?",
       answer:
-        "No. Croydon, Bromley and Kingston are about an hour round the M25, and the price is the same as Enfield. We cover the whole of Greater London with no call-out charge.",
+        "No. The price is the same anywhere in Greater London, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you do an EV battery check on a used Tesla in London?",
@@ -89,5 +89,5 @@ export const london: Area = {
     },
   ],
   related: ["pre-purchase-car-inspection-essex", "vehicle-inspection-hertfordshire", "vehicle-inspection-luton"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

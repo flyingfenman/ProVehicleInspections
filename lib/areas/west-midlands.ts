@@ -10,15 +10,15 @@ export const westMidlands: Area = {
     "Independent mobile car inspections across the West Midlands from £149.99: Birmingham, Coventry, Solihull, Wolverhampton, Walsall, Dudley and West Bromwich. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in the West Midlands? From Motorpoint's stores in Birmingham, Coventry and Oldbury to the franchised dealers of Solihull, Wolverhampton and Walsall, and the ex-fleet stock from JLR, BMW and the Black Country dealer groups, we come to the car and inspect it before you commit, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in the West Midlands? From Motorpoint's stores in Birmingham, Coventry and Oldbury to the franchised dealers of Solihull, Wolverhampton and Walsall, and the ex-fleet stock from JLR, BMW and the Black Country dealer groups, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M1 and M6, or M40 and M42: an hour and three quarters to Coventry, two hours to Birmingham and Wolverhampton",
+    summary: "Covering Birmingham, Coventry and the Black Country at one price with no mileage charge",
     detail:
-      "Coventry is about 95 miles from Waltham Abbey, round the M25 and up the M1 and the M45 or M6, around an hour and three quarters off peak. Birmingham is about 115 miles and two hours by the M6, or the M40 and M42 for Solihull. Wolverhampton, Walsall and Dudley are a little over two hours. One price across the county, with no mileage charge, and we pair West Midlands inspections with each other or with Leicester and Castle Donington on the same day.",
+      "From Coventry to Wolverhampton, an inspection costs the same as everywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is and we set the time with the seller or dealer. The video, photos and written report arrive the same day.",
   },
   local: [
-    "Coventry has Motorpoint's store on Meto Lakha Close off the A444 at Foleshill, Listers' Audi centre on the Fletchamstead Highway and the dealers along the A45. Birmingham has Motorpoint on Lichfield Road, Bristol Street Motors on Bristol Street and the Stratford Road and Coventry Road strips, covered on its own page. On the Black Country side, Motorpoint Oldbury sits on Churchbridge by M5 junction 2, Evans Halshaw sells Ford on Birmingham Road and BYD on Bilston Road in Wolverhampton, Brindley runs thirteen dealerships across Wolverhampton, West Bromwich and Tipton from its Featherstone preparation centre, and Walsall and Dudley have long rows of independents. Big Motoring World's nearest branch is Cannock and Cargiant has closed.",
-    "The county is the UK motor industry. JLR is headquartered at Whitley in Coventry with around 33,000 staff, builds the Range Rover family at Lode Lane in Solihull and engines at the i54 near Wolverhampton; LEVC builds the electric London taxi at Ansty Park; BMW's Hams Hall plant built over 400,000 engines in 2025. Around 1,000 automotive companies employ 46,000 people here, and their staff and fleet cars flow through BCA's centres at Perry Barr and Wolverhampton onto local forecourts in volume. Brindley's fleet department alone supplies more than 4,000 cars a year.",
+    "Coventry has Motorpoint's store on Meto Lakha Close off the A444 at Foleshill, Listers' Audi centre on the Fletchamstead Highway and the dealers along the A45. Birmingham has Motorpoint on Lichfield Road, Bristol Street Motors on Bristol Street and the Stratford Road and Coventry Road strips, covered on its own page. On the Black Country side, Motorpoint Oldbury sits on Churchbridge by M5 junction 2, Evans Halshaw sells Ford on Birmingham Road and BYD on Bilston Road in Wolverhampton, Brindley runs thirteen dealerships across Wolverhampton, West Bromwich and Tipton from its Featherstone preparation centre, and Walsall and Dudley have long rows of independents. Big Motoring World's nearest branch is Cannock, and Cargiant has closed.",
+    "The county is the UK motor industry. JLR is headquartered at Whitley in Coventry with around 33,000 staff, builds the Range Rover family at Lode Lane in Solihull and engines at the i54 near Wolverhampton. LEVC builds the electric London taxi at Ansty Park, and BMW's Hams Hall plant built over 400,000 engines in 2025. Around 1,000 automotive companies employ 46,000 people here, and their staff and fleet cars flow through BCA's centres at Perry Barr and Wolverhampton onto local forecourts in volume. Brindley's fleet department alone supplies more than 4,000 cars a year. That puts a lot of well-documented, high-mileage cars on local forecourts, and the inspection tells you what the miles have worn before the price is agreed.",
   ],
   places: [
     {
@@ -68,9 +68,9 @@ export const westMidlands: Area = {
   postcodes: "B1 to B98, CV1 to CV8, WV1 to WV14, WS1 to WS9 and DY1 to DY9",
   faqs: [
     {
-      question: "Will you really come from Essex to inspect a car in Coventry, Wolverhampton or Dudley, and is the price the same across the county?",
+      question: "Is the price the same in Coventry, Wolverhampton or Dudley as it is in Birmingham?",
       answer:
-        "Yes to both. Coventry is about an hour and three quarters from us and the Black Country a little over two hours, and we are in the Midlands regularly. The price is the same anywhere in our area, with no mileage or call-out charge. We may ask for some flexibility on the time so we can pair it with another job nearby.",
+        "Yes. The price is the same anywhere in the West Midlands, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
       question: "The car is inside the Birmingham Clean Air Zone. Do you pay the charge to get to it, and does that affect the fee?",
@@ -89,5 +89,5 @@ export const westMidlands: Area = {
     },
   ],
   related: ["vehicle-inspection-birmingham", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }

@@ -10,11 +10,11 @@ export const peterborough: Area = {
     "Mobile pre-purchase car inspections in Peterborough from £149.99, at Motorpoint, Big Motoring World, the Fengate dealers or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
-    "Buying a used car in Peterborough? Motorpoint and Big Motoring World hold around a thousand cars between them within a mile of each other at Fengate, and buyers from all over the east of England collect from there. We inspect the car on site before you drive it away, with diagnostics, a road test, a history check and a same-day video report.",
+    "Buying a used car in Peterborough? Motorpoint and Big Motoring World hold around a thousand cars between them within a mile of each other at Fengate, and buyers from all over the east of England collect from there. We inspect the car on site before you drive it away: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "M11 and A14 or the A1(M): about an hour and a half from our base",
+    summary: "Covering Peterborough and the surrounding towns at one price with no mileage charge",
     detail:
-      "Peterborough is roughly 72 miles from Waltham Abbey. We come up the M11 to the A14 and then the A1 to the Fletton Parkway, or straight up the A1(M) from the M25, about an hour and a half off peak. That makes a morning inspection at Fengate followed by an afternoon one in Huntingdon, Stamford or Market Deeping a normal day for us, and the price is the same as an inspection at home in Essex.",
+      "An inspection in Peterborough costs the same as everywhere else we cover, with no mileage or call-out charge. Book online, tell us which site or address the car is at, and we fix the time with the seller or dealer. You get the video, the photos and the written report the same day, so even a collection-day inspection leaves you time to decide.",
   },
   local: [
     "Peterborough is a car-supermarket city. Motorpoint's site on Edgerley Drain Road lists around 600 cars and Big Motoring World's Fengate supersite holds up to 450, and both sell on volume: the cars are prepared to a standard, priced keenly and collected by buyers who have often only seen them online. The Fengate and Boongate strip around them has the franchised dealers for Land Rover, Jaguar, Volvo, Volkswagen, Honda, Kia, Fiat and Suzuki, plus independents such as Car Nation and AMG Autos.",
@@ -83,11 +83,11 @@ export const peterborough: Area = {
         "Auction cars are sold as seen and viewing time is short, so a full inspection before the sale is rarely possible. If you have bought one and have it at home, or if you are buying it from a dealer who has just had it through the sale, we inspect it in full and the Premium package traces its auction history.",
     },
     {
-      question: "Is Peterborough really not too far for you?",
+      question: "Do you charge extra for Peterborough, Whittlesey or the villages?",
       answer:
-        "It is about an hour and a half from us and we are there often, usually combining it with Huntingdon, Stamford or the Deepings. The price is the same as an inspection in Essex, with no mileage or call-out charge.",
+        "No. The price is the same anywhere in and around Peterborough, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
   related: ["vehicle-inspection-cambridgeshire", "vehicle-inspection-lincolnshire", "vehicle-inspection-cambridge", "vehicle-inspection-northamptonshire"],
-  updated: "2026-10-19",
+  updated: "2026-10-20",
 }
