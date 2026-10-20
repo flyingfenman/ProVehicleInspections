@@ -35,6 +35,7 @@ const COVERED = {
   "vehicle-inspection-nottinghamshire": [range("E07000", 170, 176), "E06000018"],
   "vehicle-inspection-lincolnshire": ["E07000136", "E07000139", "E07000140", "E07000141"],
   "vehicle-inspection-west-midlands": [range("E08000", 25, 31)],
+  "vehicle-inspection-warwickshire": [range("E07000", 218, 222)],
 }
 
 // Neighbouring counties drawn for context only, no links.
@@ -42,7 +43,6 @@ const CONTEXT = {
   Lincolnshire: ["E07000137", "E07000138", "E07000142", "E06000012", "E06000013"],
   Derbyshire: [range("E07000", 32, 39), "E06000015"],
   Staffordshire: [range("E07000", 192, 199), "E06000021"],
-  Warwickshire: [range("E07000", 218, 222)],
   Worcestershire: [range("E07000", 234, 239)],
   Shropshire: ["E06000051", "E06000020"],
   Gloucestershire: [range("E07000", 78, 83)],
@@ -72,6 +72,7 @@ const LABELS = {
   "vehicle-inspection-lincolnshire": { text: "S. Lincs", at: [-0.25, 52.92] },
   // On phones the label sits above the county so Birmingham's name can go above its pin, clear of Coventry.
   "vehicle-inspection-west-midlands": { text: "W. Midlands", at: [-1.85, 52.6], phoneAt: [-1.86, 52.74] },
+  "vehicle-inspection-warwickshire": { text: "Warks", at: [-1.7, 52.17] },
 }
 
 // Smaller names for places inside a region that buyers look for by name, drawn in the region's colour.

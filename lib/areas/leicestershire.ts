@@ -66,6 +66,6 @@ export const leicestershire: Area = {
         "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
   ],
-  related: ["vehicle-inspection-leicester", "vehicle-inspection-nottinghamshire", "vehicle-inspection-northamptonshire", "vehicle-inspection-west-midlands", "vehicle-inspection-lincolnshire"],
+  related: ["vehicle-inspection-leicester", "vehicle-inspection-nottinghamshire", "vehicle-inspection-northamptonshire", "vehicle-inspection-warwickshire", "vehicle-inspection-west-midlands", "vehicle-inspection-lincolnshire"],
   updated: "2026-10-20",
 }

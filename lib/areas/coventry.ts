@@ -66,6 +66,6 @@ export const coventry: Area = {
         "Yes. We inspect on driveways as well as forecourts. Ask the seller to have the keys, the V5C and any service history ready, somewhere level to park and permission for a short road test. We can arrange it with them directly if you give us their number.",
     },
   ],
-  related: ["vehicle-inspection-birmingham", "vehicle-inspection-west-midlands", "vehicle-inspection-leicestershire", "vehicle-inspection-northamptonshire"],
+  related: ["vehicle-inspection-warwickshire", "vehicle-inspection-birmingham", "vehicle-inspection-west-midlands", "vehicle-inspection-leicestershire", "vehicle-inspection-northamptonshire"],
   updated: "2026-10-20",
 }

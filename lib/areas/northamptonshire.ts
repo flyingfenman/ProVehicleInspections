@@ -66,6 +66,6 @@ export const northamptonshire: Area = {
         "Yes. Saturday and Sunday appointments run from 9am to 6pm and book up first, so the calendar is worth checking as soon as you have agreed the viewing. If you want to be there yourself, pick a time that suits you and the seller and we fit around it.",
     },
   ],
-  related: ["vehicle-inspection-northampton", "vehicle-inspection-leicestershire", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough"],
+  related: ["vehicle-inspection-northampton", "vehicle-inspection-leicestershire", "vehicle-inspection-warwickshire", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough"],
   updated: "2026-10-20",
 }

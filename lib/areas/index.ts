@@ -21,6 +21,7 @@ import { northamptonshire } from "./northamptonshire"
 import { leicestershire } from "./leicestershire"
 import { bedfordshire } from "./bedfordshire"
 import { westMidlands } from "./west-midlands"
+import { warwickshire } from "./warwickshire"
 
 export type { Area, AreaFaq, AreaPlace } from "./types"
 
@@ -48,6 +49,7 @@ export const areas: Area[] = [
   leicestershire,
   bedfordshire,
   westMidlands,
+  warwickshire,
 ]
 
 export const cityAreas = areas.filter((area) => area.kind === "city")
