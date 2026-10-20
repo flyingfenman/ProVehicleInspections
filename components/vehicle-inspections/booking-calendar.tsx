@@ -78,7 +78,7 @@ function shortNoticeWhatsAppUrl(slot: Slot, packageName: string) {
     timeZone: "Europe/London",
   })
   const message = `Hi Henry, I can see the ${packageName} slot at ${when}. Is this short-notice appointment still available?`
-  return `https://wa.me/441992367909?text=${encodeURIComponent(message)}`
+  return `https://wa.me/441992245660?text=${encodeURIComponent(message)}`
 }
 
 function formatSlotTime(slot: Slot) {

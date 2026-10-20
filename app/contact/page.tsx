@@ -44,7 +44,7 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5" aria-hidden="true" /> Call 01992 245660
                 </a>
                 <a
-                  href="https://wa.me/441992367909"
+                  href="https://wa.me/441992245660"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-lg font-bold text-white transition hover:bg-[#1da851]"

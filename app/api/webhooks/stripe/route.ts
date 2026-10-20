@@ -18,8 +18,8 @@ const BRAND = {
   from: "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
   replyTo: "henry@eppingcarbuyer.com",
   inbox: "henry@eppingcarbuyer.com",
-  whatsappLink: "441992367909",
-  whatsappDisplay: "+44 1992 367909",
+  whatsappLink: "441992245660",
+  whatsappDisplay: "+44 1992 245660",
   site: "www.provehicleinspections.com",
 }
 

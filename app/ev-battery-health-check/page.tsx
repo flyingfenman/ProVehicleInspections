@@ -252,7 +252,7 @@ export default function EvBatteryHealthCheckPage() {
                 </Button>
                 <Button asChild variant="outline" size="lg" className="h-14 px-7 font-bold bg-white">
                   <a
-                    href={`https://wa.me/441992367909?text=${encodeURIComponent("Hi, I'm looking at a used Tesla and would like to check the EV Battery SOH report works on it. Model and year: ")}`}
+                    href={`https://wa.me/441992245660?text=${encodeURIComponent("Hi, I'm looking at a used Tesla and would like to check the EV Battery SOH report works on it. Model and year: ")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

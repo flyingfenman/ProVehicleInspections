@@ -24,7 +24,7 @@ export function ContactSection() {
               Send us photos and details of the vehicle for a quick response.
             </p>
             <a
-              href="https://wa.me/441992367909"
+              href="https://wa.me/441992245660"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-lg font-bold text-white shadow-lg transition hover:bg-[#1da851]"

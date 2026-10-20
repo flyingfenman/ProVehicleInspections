@@ -102,7 +102,7 @@ export function getTrafficSource(): TrafficSource | null {
 // Messages to Henry's WhatsApp from any link on the site start with a note of where the visitor came from, so each chat
 // shows which advert or search brought it in. It uses the source above and stores nothing new. The visitor sees the note
 // and can delete it before sending.
-const OWN_WHATSAPP = /^https:\/\/wa\.me\/441992367909\/?(\?|$)/
+const OWN_WHATSAPP = /^https:\/\/wa\.me\/441992245660\/?(\?|$)/
 // The WhatsApp number is shared with Epping Car Buyer, whose notes start "(Ref: website", so this site names itself.
 const NOTE_START = "(Ref: Pro Vehicle Inspections"
 
