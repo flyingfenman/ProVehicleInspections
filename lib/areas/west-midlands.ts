@@ -66,6 +66,6 @@ export const westMidlands: Area = {
         "We do not use a ramp at all: the underbody checks are done from the ground with our own equipment, at the dealer or on a driveway. A full company history tells you the servicing was done, not what the miles have worn, so we still check brakes, tyres, suspension and the fault memory, and what is due next at that mileage.",
     },
   ],
-  related: ["vehicle-inspection-birmingham", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
+  related: ["vehicle-inspection-coventry", "vehicle-inspection-birmingham", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
   updated: "2026-10-20",
 }

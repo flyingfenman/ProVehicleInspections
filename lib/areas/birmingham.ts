@@ -66,6 +66,6 @@ export const birmingham: Area = {
         "Usually a young car that has done a lifetime of work. Expect worn rear seats and door cards, a tired clutch or gearbox, brakes and suspension at the end of their life, and possibly holes from a roof sign or plate. None of that is a reason not to buy if the price reflects it, and the report gives you the list to negotiate with.",
     },
   ],
-  related: ["vehicle-inspection-west-midlands", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
+  related: ["vehicle-inspection-coventry", "vehicle-inspection-west-midlands", "vehicle-inspection-leicestershire", "vehicle-inspection-leicester", "vehicle-inspection-northamptonshire"],
   updated: "2026-10-20",
 }

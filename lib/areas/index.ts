@@ -7,6 +7,7 @@ import { peterborough } from "./peterborough"
 import { leicester } from "./leicester"
 import { nottingham } from "./nottingham"
 import { birmingham } from "./birmingham"
+import { coventry } from "./coventry"
 import { northampton } from "./northampton"
 import { norwich } from "./norwich"
 import { ipswich } from "./ipswich"
@@ -33,6 +34,7 @@ export const areas: Area[] = [
   leicester,
   nottingham,
   birmingham,
+  coventry,
   northampton,
   norwich,
   ipswich,
@@ -65,6 +67,6 @@ export { SERVICE_AREA } from "./service-area"
 // Google Business Profile list match.
 export const AREA_SERVED = [
   ...countyAreas.map((area) => ({ "@type": "AdministrativeArea", name: area.name })),
+  { "@type": "AdministrativeArea", name: "Rutland" },
   ...cityAreas.map((area) => ({ "@type": "City", name: area.name })),
-  { "@type": "City", name: "Coventry" },
 ]

@@ -1,5 +1,5 @@
 import { areaPath, getArea } from "@/lib/areas"
-import { CITY_PINS, CONTEXT_PATHS, MAP_VIEWBOX, REGION_LABELS, REGION_PATHS } from "@/lib/areas/map-shapes"
+import { CITY_PINS, CONTEXT_PATHS, MAP_VIEWBOX, MINOR_LABELS, REGION_LABELS, REGION_PATHS } from "@/lib/areas/map-shapes"
 import { cn } from "@/lib/utils"
 
 // The areas we cover as a map: every county and city page is a link. Plain server-rendered SVG built from ONS
@@ -57,15 +57,22 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
 
         {/* Labels sit above every outline and let the pointer through, so hovering a label still lights its region. */}
         <g className="pointer-events-none" aria-hidden="true">
-          {regions.map(({ slug }) => {
+          {regions.flatMap(({ slug }) => {
             const label = REGION_LABELS[slug]
-            if (!label) return null
+            if (!label) return []
             const on = slug === highlight
-            return (
+            const spots =
+              label.phoneX !== undefined && label.phoneY !== undefined
+                ? [
+                    { key: "phone", x: label.phoneX, y: label.phoneY, show: "sm:hidden" },
+                    { key: "wide", x: label.x, y: label.y, show: "hidden sm:inline" },
+                  ]
+                : [{ key: "all", x: label.x, y: label.y, show: "" }]
+            return spots.map((spot) => (
               <text
-                key={slug}
-                x={label.x}
-                y={label.y}
+                key={`${slug}-${spot.key}`}
+                x={spot.x}
+                y={spot.y}
                 textAnchor="middle"
                 dominantBaseline="central"
                 strokeWidth={on ? 0 : 6}
@@ -74,17 +81,39 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
                 className={cn(
                   "text-[38px] font-bold sm:text-[25px]",
                   on ? "fill-white" : "fill-slate-900 stroke-white",
+                  spot.show,
                 )}
               >
                 {label.text}
               </text>
-            )
+            ))
           })}
+          {MINOR_LABELS.map((label) => (
+            <text
+              key={label.text}
+              x={label.x}
+              y={label.y}
+              textAnchor="middle"
+              dominantBaseline="central"
+              strokeWidth={5}
+              strokeLinejoin="round"
+              paintOrder="stroke"
+              className="hidden fill-slate-700 stroke-white text-[16px] font-semibold sm:inline"
+            >
+              {label.text}
+            </text>
+          ))}
         </g>
 
         {pins.map(({ slug, pin, area }) => {
           const on = slug === highlight
-          const label = PIN_LABEL[pin.side]
+          const sides =
+            pin.phoneSide && pin.phoneSide !== pin.side
+              ? [
+                  { key: "phone", label: PIN_LABEL[pin.phoneSide], show: "sm:hidden" },
+                  { key: "wide", label: PIN_LABEL[pin.side], show: "hidden sm:inline" },
+                ]
+              : [{ key: "all", label: PIN_LABEL[pin.side], show: "" }]
           return (
             <a key={slug} href={areaPath(area)} aria-label={`Car inspections in ${area.name}`} className="group cursor-pointer outline-none">
               <title>{area.name}</title>
@@ -96,7 +125,9 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
                 strokeWidth={3}
                 className="origin-center fill-primary stroke-white transition-transform duration-200 [transform-box:fill-box] group-hover:scale-125 group-focus-visible:scale-125"
               />
+              {sides.map(({ key, label, show }) => (
               <text
+                key={key}
                 x={pin.x + label.dx}
                 y={pin.y}
                 dy={label.dy}
@@ -108,10 +139,12 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
                 className={cn(
                   "fill-slate-900 stroke-white text-[31px] group-hover:fill-primary group-focus-visible:fill-primary sm:text-[20px]",
                   on ? "font-bold" : "font-semibold",
+                  show,
                 )}
               >
                 {pin.text}
               </text>
+              ))}
             </a>
           )
         })}

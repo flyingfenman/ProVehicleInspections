@@ -4,17 +4,17 @@ export const leicestershire: Area = {
   slug: "vehicle-inspection-leicestershire",
   kind: "county",
   name: "Leicestershire",
-  h1: "Mobile Car Inspection Leicestershire",
-  title: "Mobile Car Inspection Leicestershire",
+  h1: "Mobile Car Inspection Leicestershire and Rutland",
+  title: "Mobile Car Inspection Leicestershire and Rutland",
   description:
-    "Independent mobile car inspections across Leicestershire from £149.99: Loughborough, Hinckley, Market Harborough, Melton Mowbray, Coalville, Lutterworth and Castle Donington.",
+    "Independent mobile car inspections across Leicestershire and Rutland from £149.99: Loughborough, Hinckley, Market Harborough, Melton Mowbray, Oakham, Uppingham and Castle Donington.",
   schemaType: "AdministrativeArea",
   intro:
-    "Buying a used car in Leicestershire? From Available Car at Castle Donington and Motorline Direct in Loughborough to the dealers in Hinckley, Market Harborough, Melton Mowbray and Coalville, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
+    "Buying a used car in Leicestershire or Rutland? From Available Car at Castle Donington and Motorline Direct in Loughborough to the dealers in Hinckley, Market Harborough and Melton Mowbray and private sellers across Rutland, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
   travel: {
-    summary: "Covering the whole county, Hinckley to Castle Donington, at one price with no mileage charge",
+    summary: "Covering Leicestershire and Rutland, Hinckley to Oakham, at one price with no mileage charge",
     detail:
-      "One price across Leicestershire, with no mileage or call-out charge, whether the car is at a supermarket by the M1 or on a driveway in Melton Mowbray. Book online and tell us where the car is. We arrange the time with the seller or dealer, inspect on their premises, and you have the video, the photos and the written report the same day.",
+      "One price across Leicestershire and Rutland, with no mileage or call-out charge, whether the car is at a supermarket by the M1 or on a driveway in Melton Mowbray. Book online and tell us where the car is. We arrange the time with the seller or dealer, inspect on their premises, and you have the video, the photos and the written report the same day.",
   },
   local: [
     "Leicestershire has the East Midlands' biggest car supermarket, Available Car on Station Road in Castle Donington, a ten-acre site open since 2002, and its biggest auction, BCA Donington Park in the Engine Room at the circuit, which sells on Tuesdays and Thursdays. Loughborough has Motorline Direct with up to 500 cars on Belton Road West, Vertu Toyota and TMS Kia on Belton Road, and Sandicliffe Ford and BYD on Derby Road. Hinckley has V12 Sports and Classics, Market Harborough has Forest Gate Vauxhall and the former Audi dealer Protheroes, and Melton Mowbray has Marshall's approved-used site.",
@@ -42,7 +42,7 @@ export const leicestershire: Area = {
       note: "Coalville, Ashby, Lutterworth, Shepshed, Earl Shilton and the villages. Give us the postcode when you book.",
     },
   ],
-  nearby: ["Loughborough", "Shepshed", "Hinckley", "Earl Shilton", "Market Harborough", "Melton Mowbray", "Coalville", "Ashby-de-la-Zouch", "Lutterworth", "Castle Donington", "Wigston", "Syston"],
+  nearby: ["Loughborough", "Shepshed", "Hinckley", "Earl Shilton", "Market Harborough", "Melton Mowbray", "Coalville", "Ashby-de-la-Zouch", "Lutterworth", "Castle Donington", "Oakham", "Uppingham"],
   postcodes: "LE1 to LE19, LE65, LE67 and DE74",
   faqs: [
     {
