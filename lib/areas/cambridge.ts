@@ -18,7 +18,7 @@ export const cambridge: Area = {
   },
   local: [
     "Cambridge's dealers sit on the ring of main roads around the city. Marshall's Newmarket Road site opposite Marshall Aerospace sells Ford, SEAT, Land Rover, Jaguar, Volvo and Peugeot in a row, with John Banks Renault, Dacia and Alpine on Swann Road nearby. Vindis sells Volkswagen and Skoda at 383 Milton Road and Audi at 83 Babraham Road, and runs Auto Now, a used-car site on Sawston High Street. Murketts sells Vauxhall at Stapleford, Group 1 BMW and MINI is at Cambourne, and the Porsche Centre and EMG Nissan complete the list. The nearest car supermarkets, Motorpoint and Big Motoring World, are in Peterborough, covered on our Peterborough page.",
-    "Cambridge is a student city, with nearly 25,000 at the University and around 13,000 at Anglia Ruskin, so there is a steady market in cheap first cars sold privately in Chesterton, Cherry Hinton and Mill Road. It also has a licensed taxi fleet of nearly 400 vehicles, most of them hackney carriages, which come up for sale young with very high mileage. Whichever end of the market you are buying at, the inspection tells you what the car is really like before you pay, and the report gives you the list to negotiate with. The city centre is closed to non-permit traffic from 10am to 4pm Monday to Saturday, with rising bollards and resident parking across much of the inner city, so we agree where the inspection happens with the seller when we book.",
+    "Cheaper cars change hands privately in Chesterton, Cherry Hinton and around Mill Road. Whichever end of the market you are buying at, the inspection tells you what the car is really like before you pay, and the report gives you the list to negotiate with. The city centre is closed to non-permit traffic from 10am to 4pm Monday to Saturday, with rising bollards and resident parking across much of the inner city, so we agree where the inspection happens with the seller when we book.",
   ],
   places: [
     {
@@ -42,28 +42,6 @@ export const cambridge: Area = {
       note: "Sawston, Cambourne, Waterbeach, Fulbourn, Linton, Cottenham and Bar Hill. Tell us the postcode when you book.",
     },
   ],
-  watchFor: [
-    {
-      title: "Student cars with several owners",
-      detail:
-        "Cheap first cars sold around Mill Road, Chesterton and Cherry Hinton often have a long list of keepers and gaps in the servicing. The history check for finance and write-offs, the road test and the diagnostic scan find the faults that matter at £2,000 to £5,000: clutch, cooling system, rust and electrical gremlins.",
-    },
-    {
-      title: "Ex-taxi cars",
-      detail:
-        "Cambridge licenses nearly 400 taxis and private hire cars, and they come up for sale young with enormous mileages. We look for plate holes, roof-sign fixings, worn rear seats and door cards and mileage out of step with the age, then check what the miles have done to the clutch, gearbox, brakes and suspension.",
-    },
-    {
-      title: "Where the inspection can happen",
-      detail:
-        "Inside the city centre the rising bollards and the 10am to 4pm restriction mean we cannot drive to most central addresses in the working day, and resident parking covers much of the inner city. We ask the seller for a spot outside the zone or arrange a time that works, and the road test runs on the ring roads rather than through the bollards.",
-    },
-    {
-      title: "Approved-used preparation",
-      detail:
-        "A main dealer's approved-used badge is a warranty with exclusions, not an independent inspection. The scan reads every module, the road test finds what a forecourt cannot, and the Premium inspection's paint-depth readings on every panel find the accident repairs a valet hides.",
-    },
-  ],
   nearby: ["Chesterton", "Cherry Hinton", "Trumpington", "Girton", "Histon", "Impington", "Milton", "Great Shelford", "Sawston", "Cambourne", "Waterbeach", "Fulbourn"],
   postcodes: "CB1 to CB5 and CB21 to CB25",
   faqs: [
@@ -78,14 +56,14 @@ export const cambridge: Area = {
         "Usually, yes, with a little planning. We need the car somewhere level where we can work round it for an hour or so; a visitor permit, a driveway or a nearby car park all work. The road test runs on the ring roads and out towards the M11 rather than through the bollards, and if the address is inside the 10am to 4pm restriction we arrange a time outside it.",
     },
     {
-      question: "I am a student without a car. Can you inspect and road test a car in Cambridge on my behalf and send the report before I travel up?",
+      question: "I live away from Cambridge. Can you inspect and road test a car there on my behalf and send the report before I travel?",
       answer:
         "Yes, that is most of what we do. You do not need to be there. We arrange the time with the seller, inspect and road test the car, and send you the video, photos and report the same day. You decide from your phone and only travel if the car is right.",
     },
     {
       question: "Do you also cover Cambourne, Sawston, Histon and Waterbeach, or only the city itself?",
       answer:
-        "All of them, at the same price. They are a few minutes from the city and we treat them as part of Cambridge. Ely, Huntingdon, St Neots, March and Wisbech are covered on our Cambridgeshire page.",
+        "All of them, at the same price as the city. Ely, Huntingdon, St Neots, March and Wisbech are covered on our Cambridgeshire page.",
     },
   ],
   related: ["vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough", "vehicle-inspection-suffolk", "vehicle-inspection-hertfordshire"],

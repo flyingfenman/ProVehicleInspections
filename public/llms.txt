@@ -1,6 +1,6 @@
 # Pro Vehicle Inspections
 
-> Independent mobile pre-purchase car inspections and EV and plug-in hybrid battery health checks. We travel to the car wherever it is for sale, from our base in Waltham Abbey, Essex, across Greater London, Essex, Hertfordshire, Bedfordshire, Cambridgeshire, Suffolk, Norfolk, Northamptonshire, Leicestershire, Nottinghamshire, South Lincolnshire and the West Midlands (Birmingham and Coventry). Prices are the same everywhere in that area, with no call-out or mileage charge.
+> Independent mobile pre-purchase car inspections and EV and plug-in hybrid battery health checks. We travel to the car wherever it is for sale across Greater London, Essex, Hertfordshire, Bedfordshire, Cambridgeshire, Suffolk, Norfolk, Northamptonshire, Leicestershire, Rutland, Nottinghamshire, South Lincolnshire, the West Midlands and Warwickshire, including Birmingham and Coventry. Prices are the same everywhere in that area, with no call-out or mileage charge.
 
 Pro Vehicle Inspections is run by Henry. Open Monday to Friday 08:00 to 18:00, Saturday and Sunday 10:00 to 16:00. Phone and WhatsApp: 01992 245660. Written enquiries: the contact form at https://www.provehicleinspections.com/contact. Website: https://www.provehicleinspections.com
 
@@ -13,29 +13,31 @@ Pro Vehicle Inspections is run by Henry. Open Monday to Friday 08:00 to 18:00, S
 
 ## Areas
 
-One page per area, each saying where we inspect there, the route and time from our base and what we look out for on cars sold locally.
+One page per area, each saying where buyers there get their cars and how we inspect them. The price is the same everywhere we cover.
 
-- [Vehicle inspection London](https://www.provehicleinspections.com/vehicle-inspection-london): all of Greater London; North and East London in 20 to 40 minutes
-- [Pre-purchase car inspection Essex](https://www.provehicleinspections.com/pre-purchase-car-inspection-essex): our home county, most of it under an hour away
-- [Luton and Dunstable](https://www.provehicleinspections.com/vehicle-inspection-luton): Tenby Car Supermarket, the Dunstable Road dealers and Dunstable; about 35 minutes away; ex-hire and ex-private-hire cars
-- [Cambridge](https://www.provehicleinspections.com/vehicle-inspection-cambridge): Marshall on Newmarket Road, Vindis on Milton Road, student cars and the city-centre bollards; under an hour away
-- [Peterborough](https://www.provehicleinspections.com/vehicle-inspection-peterborough): Motorpoint, Big Motoring World and the Fengate dealers, City Auction Group; about an hour and a half
-- [Leicester](https://www.provehicleinspections.com/vehicle-inspection-leicester): Welford Road, Narborough Road, Melton Road and Sytner at Meridian; about an hour and forty minutes
-- [Nottingham](https://www.provehicleinspections.com/vehicle-inspection-nottingham): the Lenton Lane dealer estate, Arnold Clark and BCA Nottingham; about two hours
-- [Birmingham](https://www.provehicleinspections.com/vehicle-inspection-birmingham): Motorpoint Lichfield Road, the Stratford Road and Coventry Road strips, BCA Perry Barr and the Clean Air Zone; about two hours
-- [Northampton](https://www.provehicleinspections.com/vehicle-inspection-northampton): Riverside and Bedford Road dealers, Manheim Northampton at Brackmills; about an hour and ten minutes
-- [Norwich](https://www.provehicleinspections.com/vehicle-inspection-norwich): Motorpoint Turnpike Close, the Cromer Road and Hall Road dealers, Postwick; coastal corrosion checks; about two hours
-- [Ipswich](https://www.provehicleinspections.com/vehicle-inspection-ipswich): Ransomes Europark and Norwich Road dealers, Hammond Cars; no supermarket since Motorpoint closed in October 2026; about an hour and a half
-- [Hertfordshire](https://www.provehicleinspections.com/vehicle-inspection-hertfordshire): Cheshunt, Hoddesdon and Hertford minutes away, Watford, St Albans and Stevenage under an hour; the ULEZ edge at the M25; our base is on the county line
-- [Cambridgeshire](https://www.provehicleinspections.com/vehicle-inspection-cambridgeshire): Huntingdon, Ely, St Neots, March and Wisbech; Fenland flood and damp checks
-- [Suffolk](https://www.provehicleinspections.com/vehicle-inspection-suffolk): Ipswich, Bury St Edmunds, Lowestoft and the coast; no car auction in the county
+- [Vehicle inspection London](https://www.provehicleinspections.com/vehicle-inspection-london): all of Greater London; car supermarkets, the North Circular and A13 dealers, ULEZ checks
+- [Pre-purchase car inspection Essex](https://www.provehicleinspections.com/pre-purchase-car-inspection-essex): our home county; the A127 and A13 dealer strips, Chelmsford, Colchester and Southend
+- [Luton and Dunstable](https://www.provehicleinspections.com/vehicle-inspection-luton): Tenby Car Supermarket, the Dunstable Road dealers and Dunstable
+- [Cambridge](https://www.provehicleinspections.com/vehicle-inspection-cambridge): Marshall on Newmarket Road, Vindis on Milton Road and the city-centre bollards
+- [Peterborough](https://www.provehicleinspections.com/vehicle-inspection-peterborough): Motorpoint, Big Motoring World and the Fengate dealers, City Auction Group
+- [Leicester](https://www.provehicleinspections.com/vehicle-inspection-leicester): Welford Road, Narborough Road, Melton Road and Sytner at Meridian
+- [Nottingham](https://www.provehicleinspections.com/vehicle-inspection-nottingham): the Lenton Lane dealer estate, Arnold Clark and BCA Nottingham
+- [Birmingham](https://www.provehicleinspections.com/vehicle-inspection-birmingham): Motorpoint Lichfield Road, the Stratford Road and Coventry Road strips, BCA Perry Barr and the Clean Air Zone
+- [Coventry](https://www.provehicleinspections.com/vehicle-inspection-coventry): Motorpoint off Jimmy Hill Way, Sytner BMW on Holyhead Road, Listers Audi on the Fletchamstead Highway; no Clean Air Zone
+- [Northampton](https://www.provehicleinspections.com/vehicle-inspection-northampton): Riverside and Bedford Road dealers, Manheim Northampton at Brackmills
+- [Norwich](https://www.provehicleinspections.com/vehicle-inspection-norwich): Motorpoint Turnpike Close, the Cromer Road and Hall Road dealers, Postwick
+- [Ipswich](https://www.provehicleinspections.com/vehicle-inspection-ipswich): Ransomes Europark and Norwich Road dealers, Hammond Cars; Motorpoint closed in October 2026
+- [Hertfordshire](https://www.provehicleinspections.com/vehicle-inspection-hertfordshire): Cheshunt, Hoddesdon, Hertford, Watford, St Albans and Stevenage
+- [Cambridgeshire](https://www.provehicleinspections.com/vehicle-inspection-cambridgeshire): Huntingdon, Ely, St Neots, March and Wisbech
+- [Suffolk](https://www.provehicleinspections.com/vehicle-inspection-suffolk): Ipswich, Bury St Edmunds, Lowestoft and the coast
 - [Norfolk](https://www.provehicleinspections.com/vehicle-inspection-norfolk): Norwich, King's Lynn, Great Yarmouth and the coast; Sandles, Anglia Car Auctions and EAMA Wymondham
-- [South Lincolnshire](https://www.provehicleinspections.com/vehicle-inspection-lincolnshire): Grantham, Stamford, Spalding, Boston and the Fens; about two hours
+- [South Lincolnshire](https://www.provehicleinspections.com/vehicle-inspection-lincolnshire): Grantham, Stamford, Spalding, Boston and Sleaford
 - [Nottinghamshire](https://www.provehicleinspections.com/vehicle-inspection-nottinghamshire): Mansfield, Sutton-in-Ashfield, Newark, Worksop and Retford; Available Car and the Southwell Road West dealers
 - [Northamptonshire](https://www.provehicleinspections.com/vehicle-inspection-northamptonshire): Kettering, Corby, Wellingborough, Rushden, Daventry and Towcester; Premier Car Supermarket
-- [Leicestershire](https://www.provehicleinspections.com/vehicle-inspection-leicestershire): Loughborough, Hinckley, Market Harborough, Melton Mowbray and Castle Donington; Available Car and BCA Donington Park
-- [Bedfordshire](https://www.provehicleinspections.com/vehicle-inspection-bedfordshire): Bedford, Kempston, Luton, Leighton Buzzard, Biggleswade and Sandy; BCA Bedford ex-fleet stock
-- [West Midlands (Birmingham and Coventry)](https://www.provehicleinspections.com/vehicle-inspection-west-midlands): Birmingham, Coventry, Solihull, Wolverhampton, Walsall and Dudley; Motorpoint Coventry and Oldbury; only Birmingham charges a Clean Air Zone
+- [Leicestershire and Rutland](https://www.provehicleinspections.com/vehicle-inspection-leicestershire): Loughborough, Hinckley, Market Harborough, Melton Mowbray, Oakham and Uppingham; Available Car and BCA Donington Park
+- [Bedfordshire](https://www.provehicleinspections.com/vehicle-inspection-bedfordshire): Bedford, Kempston, Luton, Leighton Buzzard, Biggleswade and Sandy; BCA Bedford
+- [West Midlands](https://www.provehicleinspections.com/vehicle-inspection-west-midlands): Birmingham, Coventry, Solihull, Wolverhampton, Walsall and Dudley; only Birmingham charges a Clean Air Zone
+- [Warwickshire](https://www.provehicleinspections.com/vehicle-inspection-warwickshire): Nuneaton, Rugby, Warwick, Leamington Spa, Kenilworth and Stratford-upon-Avon; Nuneaton Car Sales, Allen Ford Rugby and the Listers dealers in Stratford
 
 ## Guides
 

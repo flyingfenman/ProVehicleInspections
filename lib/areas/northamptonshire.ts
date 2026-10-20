@@ -17,8 +17,8 @@ export const northamptonshire: Area = {
       "The price is the same anywhere in Northamptonshire, with no mileage or call-out charge, whether the car is in Northampton, Kettering, Corby, Daventry or a village in between. Book online with the car's postcode and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day.",
   },
   local: [
-    "Northamptonshire's used-car market runs along the M1 and A14. Northampton has the franchised clusters at Riverside and on Bedford Road. Kettering has Premier Car Supermarket's site at Cransley Park, a Leicester-based group that leans towards German cars, and independents along Wellingborough Road. Corby has the MG and Hyundai dealers that Thurlow Nunn took over, Rushden has Rockingham Cars on John Street, and Towcester has the Carsa store on Old Greens Norton Road. Premier at Kettering is the county's own supermarket-style site. For a Motorpoint or Big Motoring World, buyers travel to Peterborough or Milton Keynes.",
-    "The county is also one of the busiest logistics areas in the country. DIRFT at Daventry is one of Europe's largest inland freight hubs and Brackmills in Northampton employs around 11,500 people, and the fleets that serve them put a steady stream of ex-fleet cars and vans into the local market. Fleet cars can be excellent value when the history and the wear line up, and they are what the Manheim auction at Brackmills sells more than 20,000 of a year. Our inspection shows you whether this one lines up, before you pay for it.",
+    "Northamptonshire's used-car market runs along the M1 and A14. Northampton has the franchised clusters at Riverside and on Bedford Road. Kettering has Premier Car Supermarket's site at Cransley Park, and independents along Wellingborough Road. Corby has the MG and Hyundai dealers that Thurlow Nunn took over, Rushden has Rockingham Cars on John Street, and Towcester has the Carsa store on Old Greens Norton Road. Premier at Kettering is the county's own supermarket-style site. For a Motorpoint or Big Motoring World, buyers travel to Peterborough or Milton Keynes.",
+    "Much of the county's forecourt stock comes through Manheim's auction at Brackmills, which sells more than 20,000 part exchanges, repossessions and fleet cars a year. An auction grade or a dealer's own check is not done for you. Ours is, and you see the scan, the road test and the history check before you pay.",
   ],
   places: [
     {
@@ -35,33 +35,11 @@ export const northamptonshire: Area = {
     },
     {
       name: "Manheim Northampton, Brackmills",
-      note: "Tuesday and Thursday sales of part exchanges, repossessions and fleet cars from Wollaston, Vindis, Sytner, Allen and others. Much of the county's forecourt stock passed through here recently.",
+      note: "Tuesday and Thursday sales of part exchanges, repossessions and fleet cars from Wollaston, Vindis, Sytner, Allen and others. If the car you are looking at came through here, the Premium inspection traces its history.",
     },
     {
       name: "Private sellers county-wide",
       note: "Daventry, Towcester, Brackley, Desborough, Thrapston and the villages. Give us the postcode when you book.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "High-mileage fleet cars from DIRFT and Brackmills",
-      detail:
-        "Ex-fleet cars have full service histories and hard motorway miles. We check that the history matches the odometer, measure what is left on brakes and tyres, and listen for the suspension and driveline wear that 100,000 miles of M1 leaves behind.",
-    },
-    {
-      title: "Auction stock retailed within days",
-      detail:
-        "Cars bought at Brackmills on a Tuesday are often advertised in Kettering or Corby by the weekend. The dealer knows little about them. The Premium inspection's auction searches, paint-depth readings and underbody checks fill in what the advert leaves out.",
-    },
-    {
-      title: "Supermarket preparation",
-      detail:
-        "A supermarket forecourt car is valeted and priced to move. We look past the shine at paint depth, tyre age, brake wear and the diagnostic history, including how long ago the fault memory was last cleared.",
-    },
-    {
-      title: "Outstanding finance",
-      detail:
-        "Finance repossessions are a regular part of the local auction mix. The history check in both packages confirms no finance is still attached to the car before you hand over money.",
     },
   ],
   nearby: ["Northampton", "Kettering", "Corby", "Wellingborough", "Rushden", "Higham Ferrers", "Daventry", "Towcester", "Silverstone", "Brackley", "Desborough", "Thrapston"],
@@ -78,7 +56,7 @@ export const northamptonshire: Area = {
         "Yes to both. The price is the same anywhere in Northamptonshire, with no call-out or mileage charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
     },
     {
-      question: "The car is an ex-fleet car from one of the DIRFT or Brackmills operators. What do you check?",
+      question: "The car is an ex-fleet car. What do you check?",
       answer:
         "The service history against the mileage, the big-ticket items due by that mileage (timing belts or chains, clutch, dual-mass flywheel, diesel particulate filter), brake and tyre wear, suspension bushes and the diagnostic history. A well-kept fleet car is a good buy; one that skipped its services is not.",
     },
@@ -88,6 +66,6 @@ export const northamptonshire: Area = {
         "Yes. Saturday and Sunday appointments run from 9am to 6pm and book up first, so the calendar is worth checking as soon as you have agreed the viewing. If you want to be there yourself, pick a time that suits you and the seller and we fit around it.",
     },
   ],
-  related: ["vehicle-inspection-northampton", "vehicle-inspection-leicestershire", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough"],
+  related: ["vehicle-inspection-northampton", "vehicle-inspection-leicestershire", "vehicle-inspection-warwickshire", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-peterborough"],
   updated: "2026-10-20",
 }

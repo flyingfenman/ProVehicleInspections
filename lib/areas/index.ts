@@ -7,6 +7,7 @@ import { peterborough } from "./peterborough"
 import { leicester } from "./leicester"
 import { nottingham } from "./nottingham"
 import { birmingham } from "./birmingham"
+import { coventry } from "./coventry"
 import { northampton } from "./northampton"
 import { norwich } from "./norwich"
 import { ipswich } from "./ipswich"
@@ -20,8 +21,9 @@ import { northamptonshire } from "./northamptonshire"
 import { leicestershire } from "./leicestershire"
 import { bedfordshire } from "./bedfordshire"
 import { westMidlands } from "./west-midlands"
+import { warwickshire } from "./warwickshire"
 
-export type { Area, AreaFaq, AreaPlace, AreaWatch } from "./types"
+export type { Area, AreaFaq, AreaPlace } from "./types"
 
 // Cities first, then counties, in the order they are listed on the site.
 export const areas: Area[] = [
@@ -33,6 +35,7 @@ export const areas: Area[] = [
   leicester,
   nottingham,
   birmingham,
+  coventry,
   northampton,
   norwich,
   ipswich,
@@ -46,6 +49,7 @@ export const areas: Area[] = [
   leicestershire,
   bedfordshire,
   westMidlands,
+  warwickshire,
 ]
 
 export const cityAreas = areas.filter((area) => area.kind === "city")
@@ -65,6 +69,6 @@ export { SERVICE_AREA } from "./service-area"
 // Google Business Profile list match.
 export const AREA_SERVED = [
   ...countyAreas.map((area) => ({ "@type": "AdministrativeArea", name: area.name })),
+  { "@type": "AdministrativeArea", name: "Rutland" },
   ...cityAreas.map((area) => ({ "@type": "City", name: area.name })),
-  { "@type": "City", name: "Coventry" },
 ]

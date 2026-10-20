@@ -42,28 +42,6 @@ export const peterborough: Area = {
       note: "Werrington, Bretton, Hampton, Stanground, Whittlesey, Yaxley and the villages. Tell us the postcode when you book.",
     },
   ],
-  watchFor: [
-    {
-      title: "Supermarket preparation versus condition",
-      detail:
-        "Volume sites valet and polish well. We measure what a valet cannot change: paint depth on every panel in the Premium inspection, brake pad and disc wear, tyre age and depth, and the diagnostic history, including how long ago the fault memory was cleared.",
-    },
-    {
-      title: "Ex-fleet and ex-logistics cars",
-      detail:
-        "Peterborough has a large distribution economy, with Amazon's Kingston Park and Gateway sites among the biggest employers, and a lot of ex-fleet cars and vans come to market locally. Fleet cars are well serviced on paper; we check that the history matches the mileage and the wear.",
-    },
-    {
-      title: "Finance paperwork on collection day",
-      detail:
-        "Supermarket sales move fast and the finance is usually signed on the day you collect. An inspection the day before, or first thing on collection day, means you decide with the findings in hand rather than after you have signed.",
-    },
-    {
-      title: "Auction cars sold on quickly",
-      detail:
-        "Cars bought at auction and retailed within days can carry undisclosed damage. The history check shows write-off categories; the paint readings and underbody checks show repairs the paperwork does not.",
-    },
-  ],
   nearby: ["Fengate", "Boongate", "Werrington", "Bretton", "Hampton", "Orton", "Stanground", "Whittlesey", "Yaxley", "Market Deeping", "Oundle", "Huntingdon"],
   postcodes: "PE1 to PE8",
   faqs: [

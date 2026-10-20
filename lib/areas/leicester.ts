@@ -17,8 +17,8 @@ export const leicester: Area = {
       "The price is the same in Leicester as anywhere else we cover, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the dealer or the seller. We inspect on the forecourt or the driveway, road test where the seller allows it, and send you the video, the photos and the written report the same day.",
   },
   local: [
-    "Leicester's used cars are sold along its arterial roads. Welford Road has Vertu Toyota and Sandicliffe Ford and Mazda. Narborough Road has Marshall Jaguar and the Audi centre. Melton Road has TMS Kia, which is spending £11m on a bigger Kia and Volvo site there, and Meridian Business Park by junction 21 has Sytner BMW and MINI, with Sytner's head office round the corner. Polestar has opened its largest European retail site at Freemen's Common. The nearest car supermarket is Available Car at Castle Donington, 20 miles up the M1, and we cover that too.",
-    "With De Montfort and the University of Leicester adding more than 40,000 students, Leicester also has a big market in cheap first cars, sold privately or by small independents around Belgrave, Beaumont Leys and Braunstone. A £3,000 car with a hidden fault is the one that hurts most, and it is where an independent inspection earns its money fastest. Whatever the price of the car, you get the scan, the road test, the history check and the report before you pay, so you decide and negotiate on what the car actually is.",
+    "Leicester's used cars are sold along its arterial roads. Welford Road has Vertu Toyota and Sandicliffe Ford and Mazda. Narborough Road has Marshall Jaguar and the Audi centre. Melton Road has TMS Kia, and Meridian Business Park by junction 21 has Sytner BMW and MINI, with Sytner's head office round the corner. Polestar sells from Freemen's Common. Available Car at Castle Donington is the nearest car supermarket, and we inspect there too.",
+    "Cheaper cars change hands privately and through small independents around Belgrave, Beaumont Leys and Braunstone, and a £3,000 car with a hidden fault costs as much to put right as a dear one. Whatever the price of the car, you get the scan, the road test, the history check and the report before you pay, so you decide and negotiate on what the car actually is.",
   ],
   places: [
     {
@@ -31,7 +31,7 @@ export const leicester: Area = {
     },
     {
       name: "Melton Road, Belgrave",
-      note: "TMS Kia and the independents along the A607 in the north of the city. Newer franchised stock and cheaper cars side by side.",
+      note: "TMS Kia and the independents along the A607 in the north of the city. Reserve the car and we inspect it on site.",
     },
     {
       name: "Available Car, Castle Donington, and BCA Donington Park",
@@ -39,29 +39,7 @@ export const leicester: Area = {
     },
     {
       name: "Private sellers across the city",
-      note: "Oadby, Wigston, Glenfield, Hamilton, Syston and the student areas around the universities. Tell us the postcode when you book.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Cheap first cars for students",
-      detail:
-        "Older, cheaper cars sold around DMU and the University of Leicester have usually had several owners and patchy servicing. The road test, the diagnostic scan and the history check catch the problems that matter at this price: clutch, head gasket, rust in the sills and outstanding finance.",
-    },
-    {
-      title: "Prestige part exchanges",
-      detail:
-        "Sytner, the UK's largest prestige dealer group, is based here, and a lot of prestige part-exchange stock moves between its sites and the Manheim and BCA lanes before being retailed. A badge and a full valet are not an inspection. We read the fault memory, check how long since it was cleared and measure the paint.",
-    },
-    {
-      title: "Auction cars retailed quickly",
-      detail:
-        "Cars bought at BCA Donington Park on a Tuesday are often on a Leicester forecourt by the weekend. The Premium inspection's auction and salvage searches, paint-depth readings and underbody checks fill in the history the dealer does not have.",
-    },
-    {
-      title: "No Clean Air Zone, but check the emissions anyway",
-      detail:
-        "Leicester scrapped its planned Clean Air Zone in 2021, so there is no local charge to worry about. If you also drive into London or Birmingham, the ULEZ and the Birmingham zone still apply, and we confirm the car's emissions standard from its own data rather than the advert.",
+      note: "Oadby, Wigston, Glenfield, Hamilton and Syston. Tell us the postcode when you book.",
     },
   ],
   nearby: ["Oadby", "Wigston", "Belgrave", "Beaumont Leys", "Braunstone", "Fosse Park", "Glenfield", "Hamilton", "Syston", "Birstall", "Enderby", "Blaby"],
@@ -73,9 +51,9 @@ export const leicester: Area = {
         "Yes. Ask the dealer to hold the car for an independent inspection and we arrange the time with the sales team. You get the video, photos and report the same day, and the findings are usually the best negotiating tool you will have.",
     },
     {
-      question: "I am a student buying a £3,000 first car. Is an inspection worth £149.99 on a car that cheap?",
+      question: "Is an inspection worth £149.99 on a £3,000 car?",
       answer:
-        "On a cheap car the inspection is a bigger share of the price, but the repairs it finds are the same size as on a dear one: a clutch is £600 to £1,000, a head gasket more. The history check alone, for finance and write-offs, has saved buyers from losing the whole car.",
+        "On a cheap car the inspection is a bigger share of the price, but the repairs it finds cost the same as on a dear one: a clutch is £600 to £1,000, a head gasket more. The history check also shows outstanding finance and write-offs, either of which can cost you the whole car.",
     },
     {
       question: "Can you check a car at Sytner on Meridian and one on Melton Road on the same day?",

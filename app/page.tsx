@@ -2,7 +2,6 @@ import { Metadata } from "next"
 import { BookingLinkRedirect } from "@/components/vehicle-inspections/booking-link-redirect"
 import { LocalAreaLinks } from "@/components/vehicle-inspections/local-area-links"
 import { InspectionsHero } from "@/components/vehicle-inspections/sections/hero"
-import { Reviews } from "@/components/vehicle-inspections/sections/reviews"
 import { Pricing } from "@/components/vehicle-inspections/sections/pricing"
 import { WhatWeCheck } from "@/components/vehicle-inspections/sections/what-we-check"
 import { ReportStrip } from "@/components/vehicle-inspections/sections/report-strip"
@@ -27,14 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
-// Everything about the inspection on one page, with nothing to open: what customers say comes straight
-// after the hero. The booking itself is on /book. On this site it is the home page.
+// Everything about the inspection on one page, with nothing to open: what customers say is part of the
+// hero. The booking itself is on /book. On this site it is the home page.
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <BookingLinkRedirect />
       <InspectionsHero />
-      <Reviews />
       <Pricing />
       <WhatWeCheck />
       <ReportStrip />

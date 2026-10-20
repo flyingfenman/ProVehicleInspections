@@ -17,7 +17,7 @@ export const essex: Area = {
       "Essex is where most of our inspections happen, so appointments are often available at short notice. Epping, Harlow, Brentwood, Chelmsford, Basildon, Southend, Colchester and Clacton are all the same price, with no mileage or call-out charge. Book online, tell us where the car is, and we arrange the time with the seller or dealer. You get the video, the photos and the written report the same day.",
   },
   local: [
-    "Essex has everything from main-dealer approved-used centres to the long dealer strips along the A127 Southend Arterial Road and the A13, and a lot of small independents and driveway sellers in between. The same car can be priced very differently from one end of the county to the other, which is exactly when an independent look pays for itself.",
+    "Essex has everything from main-dealer approved-used centres to the long dealer strips along the A127 Southend Arterial Road and the A13, and a lot of small independents and driveway sellers in between.",
     "We inspect petrol, diesel, hybrid and electric cars at the seller's premises. Both packages include a full diagnostic scan, a road test, a history check for finance, write-offs, theft and mileage, a video review filmed at the car and a same-day written report with photos, followed by a call to talk it through.",
   ],
   places: [
@@ -31,7 +31,7 @@ export const essex: Area = {
     },
     {
       name: "Canvey Island and Southend independents",
-      note: "A high turnover of cheaper and imported cars. A recent Premium inspection on Canvey Island was on a UAE-import Dodge Charger with no UK registration: see what we found below.",
+      note: "Independent dealers on Canvey Island and around Southend. A recent Premium inspection on Canvey Island was on a UAE-import Dodge Charger with no UK registration: see what we found below.",
     },
     {
       name: "Auction cars",
@@ -40,28 +40,6 @@ export const essex: Area = {
     {
       name: "Private sellers",
       note: "Driveways from Epping to Clacton. Tell us the postcode when you book and we arrange a time with the seller if you cannot be there.",
-    },
-  ],
-  watchFor: [
-    {
-      title: "Body filler under fresh paint",
-      detail:
-        "On a UAE-import Dodge Charger at a dealer on Canvey Island the paint-depth readings on the front wing and rear quarter were consistent with a large amount of body filler, and the rear bumper had been replaced and painted badly enough to stop the parking sensors working. The dealer had told the buyer by phone that there were no issues. The verdict was not to proceed.",
-    },
-    {
-      title: "Fault memory cleared just before the viewing",
-      detail:
-        "The same Dodge showed about 1 km driven since its fault codes were last cleared, and it needed a jump start. A clean scan on a car that has just been reset proves nothing, so we read the distance since clear on every car and tell you what it means.",
-    },
-    {
-      title: "Leaks and warnings on prestige 4x4s",
-      detail:
-        "A 72-plate Land Rover Discovery at a prestige dealer in Wickford had oil spread across the underside and a coolant warning. Both were written up before Dave paid, and the dealer put them right: a gasket and a sensor.",
-    },
-    {
-      title: "Cat S and Cat N repairs",
-      detail:
-        "Written-off and repaired cars are common at the cheaper end of the Essex market. The history check shows the category; the inspection shows whether the repair was done properly, with paint readings, panel gaps and sealant checked.",
     },
   ],
   nearby: ["Epping", "Loughton", "Harlow", "Brentwood", "Romford", "Chelmsford", "Basildon", "Wickford", "Southend-on-Sea", "Colchester", "Braintree", "Clacton-on-Sea"],
