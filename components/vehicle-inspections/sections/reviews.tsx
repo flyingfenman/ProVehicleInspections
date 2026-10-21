@@ -1,6 +1,6 @@
-import Image from "next/image"
 import { Quote } from "lucide-react"
 import { testimonials } from "@/lib/testimonials"
+import { TestimonialMedia } from "@/components/testimonial-media"
 
 // "What our customers say about us": real customers, with photos of their own cars, all on show with
 // nothing to click. Rendered inside the hero: the right-hand column on a laptop, compact cards stacked
@@ -16,23 +16,14 @@ export function Reviews() {
             key={t.name}
             className="grid overflow-hidden rounded-3xl border border-border bg-white shadow-md md:grid-cols-[2fr_3fr] lg:grid-cols-[160px_1fr] lg:rounded-2xl xl:grid-cols-[200px_1fr]"
           >
-            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[320px] lg:min-h-[180px]">
-              <Image
-                src={t.image}
-                alt={t.imageAlt}
-                fill
-                sizes="(min-width: 1280px) 200px, (min-width: 1024px) 160px, (min-width: 768px) 40vw, 100vw"
-                className="object-cover"
-                style={{ objectPosition: t.imagePosition ?? "center" }}
-              />
-            </div>
+            <TestimonialMedia t={t} className="md:min-h-[320px] lg:min-h-[180px]" sizes="(min-width: 1280px) 200px, (min-width: 1024px) 160px, (min-width: 768px) 40vw, 100vw" />
             <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-5">
               <Quote className="h-9 w-9 text-primary lg:h-6 lg:w-6" aria-hidden="true" />
               <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-2xl lg:mt-2 lg:text-base xl:text-lg">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="mt-4 lg:mt-3">
                 <p className="text-lg font-bold text-primary lg:text-base">{t.name}</p>
                 <p className="text-sm text-muted-foreground">
-                  {t.vehicle} · {t.service}
+                  {[t.vehicle, t.service].filter(Boolean).join(" · ")}
                 </p>
               </figcaption>
             </div>
