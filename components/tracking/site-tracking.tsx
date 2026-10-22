@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { currentChoices, hasChosen, onChoicesSaved, onConsentReady } from "@/lib/cookie-consent"
 import { openAIPageView } from "@/lib/openai-pixel"
 import { addSourceNoteToWhatsAppLink, captureTrafficSource, syncTrafficSourceConsent } from "@/lib/traffic-source"
-import { trackWhatsAppClick } from "@/lib/tracking"
+import { trackPhoneClick, trackWhatsAppClick } from "@/lib/tracking"
 
 const WHATSAPP_LINK = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//
 
@@ -40,6 +40,7 @@ export function SiteTracking() {
     const onClick = (event: MouseEvent) => {
       const link = linkFrom(event)
       if (link && WHATSAPP_LINK.test(link.href)) trackWhatsAppClick(window.location.pathname)
+      else if (link && link.href.startsWith("tel:")) trackPhoneClick(window.location.pathname)
     }
     document.addEventListener("pointerdown", addNote, true)
     document.addEventListener("focusin", addNote, true)
