@@ -16,6 +16,7 @@ type ZarazWindow = Window & { zaraz?: { set?: (key: string, value: unknown) => u
 // Name set in Cloudflare Zaraz > Consent > "Consent cookie name". It only exists once the visitor has made a choice.
 const CONSENT_COOKIE = "zaraz-consent"
 const OPEN_SETTINGS_EVENT = "ecb:open-cookie-settings"
+const CHOICES_SAVED_EVENT = "ecb:cookie-choices-saved"
 
 // Cookies the tools leave on this site, cleared when their purpose is switched off. Zaraz's own copies are named
 // after the tool (google-analytics_v4, google-ads); the Meta pixel runs in the page and sets _fbp and _fbc.
@@ -90,6 +91,7 @@ export function saveChoices(choices: ConsentChoices) {
     if (!withdrawn.length) {
       // Sends this page's page view to the tools just allowed. After a first reject they stay off.
       consent.sendQueuedEvents()
+      window.dispatchEvent(new Event(CHOICES_SAVED_EVENT)) // The OpenAI pixel runs outside Zaraz and listens for this.
       return
     }
     // Switching something off: tags already running on this page (the Meta pixel counts page changes by itself) only
@@ -105,4 +107,9 @@ export const openCookieSettings = () => window.dispatchEvent(new Event(OPEN_SETT
 export function onOpenCookieSettings(callback: () => void) {
   window.addEventListener(OPEN_SETTINGS_EVENT, callback)
   return () => window.removeEventListener(OPEN_SETTINGS_EVENT, callback)
+}
+
+export function onChoicesSaved(callback: () => void) {
+  window.addEventListener(CHOICES_SAVED_EVENT, callback)
+  return () => window.removeEventListener(CHOICES_SAVED_EVENT, callback)
 }

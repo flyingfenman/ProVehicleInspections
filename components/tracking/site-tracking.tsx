@@ -1,13 +1,28 @@
 "use client"
 
 import { useEffect } from "react"
-import { currentChoices, hasChosen, onConsentReady } from "@/lib/cookie-consent"
+import { usePathname } from "next/navigation"
+import { currentChoices, hasChosen, onChoicesSaved, onConsentReady } from "@/lib/cookie-consent"
+import { openAIPageView } from "@/lib/openai-pixel"
 import { addSourceNoteToWhatsAppLink, captureTrafficSource, syncTrafficSourceConsent } from "@/lib/traffic-source"
 import { trackWhatsAppClick } from "@/lib/tracking"
 
 const WHATSAPP_LINK = /^https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\//
 
 export function SiteTracking() {
+  const pathname = usePathname()
+
+  // OpenAI (ChatGPT) Ads page views: once Zaraz knows the visitor's choice, after they accept, and on each page change.
+  useEffect(() => {
+    const pageView = () => openAIPageView(pathname)
+    const stopWaiting = onConsentReady(pageView)
+    const stopListening = onChoicesSaved(pageView)
+    return () => {
+      stopWaiting()
+      stopListening()
+    }
+  }, [pathname])
+
   useEffect(() => {
     captureTrafficSource()
     const stopWaiting = onConsentReady(() => {

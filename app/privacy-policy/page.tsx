@@ -131,9 +131,13 @@ export default function PrivacyPolicyPage() {
                 and to show our adverts to people who have visited this site. Google and Meta may also use this to
                 personalise the ads you see.
               </li>
+              <li>
+                The OpenAI (ChatGPT) Ads pixel, to measure whether our adverts in ChatGPT lead to bookings. It records
+                the pages you view and, if you book, the booking value.
+              </li>
             </ul>
             <p>
-              These tools are loaded through Cloudflare Zaraz. You can change or withdraw your choice at any time using
+              These tools, apart from the OpenAI pixel, are loaded through Cloudflare Zaraz. You can change or withdraw your choice at any time using
               &ldquo;Cookie settings&rdquo; at the bottom of any page, and you can also block cookies in your browser
               settings.
             </p>

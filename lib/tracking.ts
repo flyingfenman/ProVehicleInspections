@@ -3,7 +3,9 @@
 // (components/tracking/cookie-banner.tsx). The IDs, the Ads conversion labels (booking, WhatsApp click) and which tool
 // fires on which event below are configured in the Cloudflare dashboard (Zaraz > Tools / Triggers). This file only
 // sends the events: "purchase" (booking confirmed) and "contact" (WhatsApp click), the same event names Google
-// Analytics already used.
+// Analytics already used. The OpenAI (ChatGPT) Ads pixel is the exception: it runs in the page (lib/openai-pixel.ts).
+
+import { openAIOrder } from "@/lib/openai-pixel"
 
 type ZarazWindow = Window & {
   zaraz?: { track?: (eventName: string, eventProperties?: Record<string, unknown>) => unknown }
@@ -59,6 +61,7 @@ export function trackBookingComplete(booking: BookingConversionData) {
     price: booking.value,
     quantity: 1,
   })
+  openAIOrder(booking)
 }
 
 export function trackWhatsAppClick(clickLocation: string) {
