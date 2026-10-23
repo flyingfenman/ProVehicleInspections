@@ -32,8 +32,15 @@ export const metadata: Metadata = {
   title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
   description:
     "Mobile pre-purchase car inspections from £149.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
+  // Purple car, the same icon as Epping and Stamford. Google wants a square icon at a multiple of 48px.
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icon-96.png", type: "image/png", sizes: "96x96" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL("https://www.provehicleinspections.com"),
