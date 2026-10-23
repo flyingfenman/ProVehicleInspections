@@ -7,7 +7,7 @@ const localBusinessSchema = {
   "@id": "https://www.provehicleinspections.com/#business",
   name: "Pro Vehicle Inspections",
   url: "https://www.provehicleinspections.com",
-  logo: "https://www.provehicleinspections.com/apple-touch-icon.png",
+  logo: "https://www.provehicleinspections.com/images/pvi-logo-512.png",
   telephone: "+441992245660",
   image: "https://www.provehicleinspections.com/images/inspection-car.jpg",
   description: `Independent mobile pre-purchase vehicle inspections and EV battery State of Health checks across ${SERVICE_AREA.long}.`,
