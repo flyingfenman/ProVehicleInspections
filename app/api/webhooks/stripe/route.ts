@@ -137,6 +137,24 @@ async function sendEmail(to: string, subject: string, text: string, html?: strin
   return false
 }
 
+// The lead tool's inbound address (Lead Tool > Settings > Your inbound address), saved in Cloudflare as the secret
+// LEAD_TOOL_INBOUND_URL. Not set means bookings only go by email.
+async function sendToLeadTool(subject: string, text: string) {
+  const url = process.env.LEAD_TOOL_INBOUND_URL
+  if (!url) return
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ subject, text, from: "stripe-webhook" }),
+      signal: AbortSignal.timeout(15000),
+    })
+    console.log(`Lead tool booking "${subject}": ${res.status} ${(await res.text()).slice(0, 300)}`)
+  } catch (error) {
+    console.error(`Lead tool booking "${subject}" failed:`, error)
+  }
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.text()
   const signature = request.headers.get("stripe-signature")
@@ -242,11 +260,12 @@ Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
       )
 
       const subjectSuffix = hasEvSoh ? " + EV Battery SOH" : ""
+      // Henry's inbox also gets Epping's and Stamford's bookings, so the brand goes first in the subject.
+      const internalSubject = `Pro Vehicle Inspections: ${evOnly ? "EV battery health check" : "Vehicle inspection"} request: ${registration} (${packageName}${subjectSuffix}) PAID`
       const [internalOk, customerOk] = await Promise.all([
         sendEmail(
           BRAND.inbox,
-          // Henry's inbox also gets Epping's and Stamford's bookings, so the brand goes first in the subject.
-          `Pro Vehicle Inspections: ${evOnly ? "EV battery health check" : "Vehicle inspection"} request: ${registration} (${packageName}${subjectSuffix}) PAID`,
+          internalSubject,
           internalEmail,
         ),
         sendEmail(
@@ -256,6 +275,10 @@ Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
           customerHtml,
         ),
       ])
+
+      // Put the job straight into the lead tool, filled in from the booking, so it is ready on arrival. The lead tool
+      // reads the same text as the email and ignores a repeat (Stripe retries), so this needs no state of its own.
+      await sendToLeadTool(internalSubject, internalEmail)
 
       if (!internalOk || !customerOk) {
         return NextResponse.json({ error: "Failed to send confirmation email" }, { status: 502 })
