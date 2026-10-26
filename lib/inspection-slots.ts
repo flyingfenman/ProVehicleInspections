@@ -6,6 +6,8 @@ export const PACKAGE_DURATIONS_MIN = {
   premium: 90,
   // The EV battery health check on its own, without an inspection.
   ev: 60,
+  // An independent report on a fault after garage work: diagnostic scan with live data, photos and video.
+  mechanical: 90,
 } as const
 
 // Slots inside this window are still shown to customers, but must be confirmed by message first.

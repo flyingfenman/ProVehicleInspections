@@ -18,6 +18,7 @@ const PACKAGE_INFO: Record<PackageKey, { name: string; amountPence: number }> = 
   standard: { name: "Standard Inspection", amountPence: 14999 },
   premium: { name: "Premium Inspection", amountPence: 19999 },
   ev: { name: "EV Battery Health Check", amountPence: 9999 },
+  mechanical: { name: "Mechanical Inspection", amountPence: 34999 },
 }
 
 function cleanText(value: unknown, maxLength: number): string {
@@ -85,9 +86,11 @@ export async function POST(request: NextRequest) {
     }
 
     const { name: packageName, amountPence } = PACKAGE_INFO[packageKey]
-    // The battery check on its own is the whole booking, so the add-on doesn't apply to it.
+    // The battery check on its own is the whole booking, so the add-on doesn't apply to it, and the mechanical
+    // inspection is for a car already owned, not one being bought.
     const evOnly = packageKey === "ev"
-    const wantsEvSoh = !evOnly && includeEvSoh === true
+    const mechanical = packageKey === "mechanical"
+    const wantsEvSoh = !evOnly && !mechanical && includeEvSoh === true
     const origin = request.nextUrl.origin
     const trimmedNotes = (notes || "").slice(0, 400)
 
@@ -97,7 +100,7 @@ export async function POST(request: NextRequest) {
           currency: "gbp",
           unit_amount: amountPence,
           product_data: {
-            name: evOnly ? packageName : `${packageName} Vehicle Inspection`,
+            name: evOnly ? packageName : mechanical ? "Mechanical Inspection Report" : `${packageName} Vehicle Inspection`,
             description: `${registration} · ${start.toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })}`,
           },
         },
