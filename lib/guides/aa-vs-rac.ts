@@ -17,7 +17,7 @@ export const aaVsRac: Guide = {
       caption: "From each provider's website and terms, 19 October 2026",
       head: ["", "The AA", "RAC", "Pro Vehicle Inspections"],
       rows: [
-        ["Price", "Basic £110; Comprehensive from £199; Advanced from £279. Rises with the car's age and value.", "Basic from £132; Comprehensive from £225; Advanced from £290. Depends on age, value and model.", "Standard £149.99; Premium £199.99. Same for every car."],
+        ["Price", "Basic £110; Comprehensive from £199; Advanced from £279. Rises with the car's age and value.", "Basic from £132; Comprehensive from £225; Advanced from £290. Depends on age, value and model.", "Standard £199.99; Premium £249.99. Same for every car."],
         ["Points checked", "Up to 99, 214 or 221", "Basic not stated; Comprehensive and Advanced 307", "160 or 260"],
         ["Road test", "Short on Basic; up to 10 miles on the others", "Up to 3, 10 or 20 miles", "Every inspection; extended in Premium"],
         ["Diagnostic scan", "Advanced only (OBD scan)", "Advanced only (fault codes)", "Full scan of every module in both packages, with VCDS on Volkswagen group cars"],
@@ -66,7 +66,7 @@ export const aaVsRac: Guide = {
     },
     {
       type: "note",
-      text: "If the car is within our area, [book a Standard inspection](/book) for £149.99 or [a Premium](/book?package=premium) for £199.99. If it is not, we would rather you booked the AA or RAC than nobody.",
+      text: "If the car is within our area, [book a Standard inspection](/book) for £199.99 or [a Premium](/book?package=premium) for £249.99. If it is not, we would rather you booked the AA or RAC than nobody.",
     },
   ],
   faqs: [

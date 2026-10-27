@@ -7,7 +7,7 @@ export const peterborough: Area = {
   h1: "Pre-Purchase Car Inspection Peterborough",
   title: "Pre-Purchase Car Inspection Peterborough",
   description:
-    "Mobile pre-purchase car inspections in Peterborough from £149.99, at Motorpoint, Big Motoring World, the Fengate dealers or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Peterborough from £199.99, at Motorpoint, Big Motoring World, the Fengate dealers or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Peterborough? Motorpoint and Big Motoring World hold around a thousand cars between them within a mile of each other at Fengate, and buyers from all over the east of England collect from there. We inspect the car on site before you drive it away: full diagnostics, a road test, a history check and a video report the same day.",
@@ -63,7 +63,7 @@ export const peterborough: Area = {
     {
       question: "Do you charge extra for Peterborough, Whittlesey or the villages?",
       answer:
-        "No. The price is the same anywhere in and around Peterborough, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in and around Peterborough, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
   ],
   related: ["vehicle-inspection-cambridgeshire", "vehicle-inspection-lincolnshire", "vehicle-inspection-cambridge", "vehicle-inspection-northamptonshire"],

@@ -7,7 +7,7 @@ export const coventry: Area = {
   h1: "Pre-Purchase Car Inspection Coventry",
   title: "Pre-Purchase Car Inspection Coventry",
   description:
-    "Mobile pre-purchase car inspections in Coventry from £149.99, at Motorpoint, the Holyhead Road and Fletchamstead Highway dealers or a private seller.",
+    "Mobile pre-purchase car inspections in Coventry from £199.99, at Motorpoint, the Holyhead Road and Fletchamstead Highway dealers or a private seller.",
   schemaType: "City",
   intro:
     "Buying a used car in Coventry? Whether it is at Motorpoint off Jimmy Hill Way, a main dealer on the Holyhead Road or the Fletchamstead Highway, or on a private seller's driveway, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -58,7 +58,7 @@ export const coventry: Area = {
     {
       question: "Is there a travel charge for Coventry?",
       answer:
-        "No. The price is the same anywhere in Coventry, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Coventry, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at a private seller's house in Earlsdon or Tile Hill?",

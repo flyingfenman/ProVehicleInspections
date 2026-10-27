@@ -7,7 +7,7 @@ export const nottingham: Area = {
   h1: "Pre-Purchase Car Inspection Nottingham",
   title: "Pre-Purchase Car Inspection Nottingham",
   description:
-    "Mobile pre-purchase car inspections in Nottingham from £149.99, at Arnold Clark and the Lenton Lane dealers, Sherwood, Basford or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Nottingham from £199.99, at Arnold Clark and the Lenton Lane dealers, Sherwood, Basford or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Nottingham? Most of the city's stock sits in one place, the Lenton Lane estate off the A52, where Arnold Clark's Motorstore, Sytner BMW and Audi, Vertu Honda and Sandicliffe all trade. We come to the car wherever it is for sale and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -48,7 +48,7 @@ export const nottingham: Area = {
     {
       question: "Is there a travel charge for Nottingham, or does the price change?",
       answer:
-        "No. The price is the same anywhere in Nottingham, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Nottingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at Arnold Clark Nottingham or a Lenton Lane main dealer, and will they let you put it on a ramp?",

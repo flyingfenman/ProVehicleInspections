@@ -7,7 +7,7 @@ export const norfolk: Area = {
   h1: "Mobile Car Inspection Norfolk",
   title: "Mobile Car Inspection Norfolk",
   description:
-    "Independent mobile car inspections across Norfolk from £149.99: Norwich, King's Lynn, Great Yarmouth, Thetford, Dereham, Wymondham, Cromer and North Walsham. Same-day video report.",
+    "Independent mobile car inspections across Norfolk from £199.99: Norwich, King's Lynn, Great Yarmouth, Thetford, Dereham, Wymondham, Cromer and North Walsham. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Norfolk? From Motorpoint in Norwich and the A140 dealers to Sandles and Anglia Car Auctions in King's Lynn and the Thurlow Nunn sites in Great Yarmouth, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -48,7 +48,7 @@ export const norfolk: Area = {
     {
       question: "Do you cover King's Lynn and Great Yarmouth or only Norwich?",
       answer:
-        "The whole county, at the same price, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99. King's Lynn, Great Yarmouth, the north coast and the villages in between are all covered.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99. King's Lynn, Great Yarmouth, the north coast and the villages in between are all covered.",
     },
     {
       question: "Can you inspect a car bought at Anglia Car Auctions in King's Lynn before I collect it?",

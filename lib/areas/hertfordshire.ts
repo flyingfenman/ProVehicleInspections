@@ -7,7 +7,7 @@ export const hertfordshire: Area = {
   h1: "Mobile Car Inspection Hertfordshire",
   title: "Mobile Car Inspection Hertfordshire",
   description:
-    "Independent mobile car inspections across Hertfordshire from £149.99, from Cheshunt and Hertford to Watford, St Albans and Stevenage. Diagnostics, road test and a same-day video report.",
+    "Independent mobile car inspections across Hertfordshire from £199.99, from Cheshunt and Hertford to Watford, St Albans and Stevenage. Diagnostics, road test and a same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Hertfordshire? We come to the car wherever it is for sale, from Cheshunt and Hertford to Watford, St Albans and Stevenage, and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -63,7 +63,7 @@ export const hertfordshire: Area = {
     {
       question: "Do you cover the north of the county, Royston, Baldock and Letchworth, at the same price?",
       answer:
-        "Yes, the whole county. The price is the same anywhere in Hertfordshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes, the whole county. The price is the same anywhere in Hertfordshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
   ],
   related: ["pre-purchase-car-inspection-essex", "vehicle-inspection-london", "vehicle-inspection-bedfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-luton"],

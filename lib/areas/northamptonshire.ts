@@ -7,7 +7,7 @@ export const northamptonshire: Area = {
   h1: "Mobile Car Inspection Northamptonshire",
   title: "Mobile Car Inspection Northamptonshire",
   description:
-    "Independent mobile car inspections across Northamptonshire from £149.99: Northampton, Kettering, Corby, Wellingborough, Daventry, Rushden and Towcester. Same-day video report.",
+    "Independent mobile car inspections across Northamptonshire from £199.99: Northampton, Kettering, Corby, Wellingborough, Daventry, Rushden and Towcester. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Northamptonshire? From Premier Car Supermarket at Cransley Park in Kettering to the Riverside dealers in Northampton and the independents in Corby, Rushden and Daventry, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -53,7 +53,7 @@ export const northamptonshire: Area = {
     {
       question: "Do you cover Corby and Rushden as well as Northampton, and is the price the same?",
       answer:
-        "Yes to both. The price is the same anywhere in Northamptonshire, with no call-out or mileage charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes to both. The price is the same anywhere in Northamptonshire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "The car is an ex-fleet car. What do you check?",

@@ -7,7 +7,7 @@ export const suffolk: Area = {
   h1: "Mobile Car Inspection Suffolk",
   title: "Mobile Car Inspection Suffolk",
   description:
-    "Independent mobile car inspections across Suffolk from £149.99: Ipswich, Bury St Edmunds, Lowestoft, Felixstowe, Newmarket, Haverhill, Sudbury, Stowmarket and Woodbridge. Same-day video report.",
+    "Independent mobile car inspections across Suffolk from £199.99: Ipswich, Bury St Edmunds, Lowestoft, Felixstowe, Newmarket, Haverhill, Sudbury, Stowmarket and Woodbridge. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Suffolk? From the Ransomes Europark dealers in Ipswich and Holden and Hammond in Bury St Edmunds to Thurlow Nunn in Lowestoft and the independents of Woodbridge, Stowmarket and Sudbury, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -48,7 +48,7 @@ export const suffolk: Area = {
     {
       question: "Do you cover Lowestoft and the Suffolk coast, or just Ipswich and Bury St Edmunds?",
       answer:
-        "The whole county, at the same price, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at a Newmarket or Haverhill dealer on the same day as one in Bury St Edmunds?",

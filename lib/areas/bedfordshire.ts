@@ -7,7 +7,7 @@ export const bedfordshire: Area = {
   h1: "Mobile Car Inspection Bedfordshire",
   title: "Mobile Car Inspection Bedfordshire",
   description:
-    "Independent mobile car inspections across Bedfordshire from £149.99: Bedford, Kempston, Luton, Dunstable, Leighton Buzzard, Biggleswade, Sandy, Flitwick and Ampthill. Same-day video report.",
+    "Independent mobile car inspections across Bedfordshire from £199.99: Bedford, Kempston, Luton, Dunstable, Leighton Buzzard, Biggleswade, Sandy, Flitwick and Ampthill. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Bedford, Luton, Leighton Buzzard or Biggleswade? We come to the car wherever it is in Bedfordshire and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -63,7 +63,7 @@ export const bedfordshire: Area = {
     {
       question: "Do you charge extra for Biggleswade, Sandy or the far side of the county?",
       answer:
-        "No. The price is the same anywhere in Bedfordshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99. Book online and pick a time. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
+        "No. The price is the same anywhere in Bedfordshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99. Book online and pick a time. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
     },
   ],
   related: ["vehicle-inspection-luton", "vehicle-inspection-hertfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-northamptonshire"],

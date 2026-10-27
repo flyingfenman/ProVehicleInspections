@@ -7,7 +7,7 @@ export const lincolnshire: Area = {
   h1: "Mobile Car Inspection South Lincolnshire",
   title: "Mobile Car Inspection South Lincolnshire",
   description:
-    "Independent mobile car inspections across South Lincolnshire from £149.99: Stamford, Spalding, Bourne, Grantham, Boston, Sleaford and the Deepings. Same-day video report.",
+    "Independent mobile car inspections across South Lincolnshire from £199.99: Stamford, Spalding, Bourne, Grantham, Boston, Sleaford and the Deepings. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Stamford, Spalding, Grantham, Boston or Sleaford? We come to the car wherever it is in South Lincolnshire and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -53,7 +53,7 @@ export const lincolnshire: Area = {
     {
       question: "Do you charge extra for Boston, Holbeach or the Fens?",
       answer:
-        "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at a private seller's house in one of the villages?",

@@ -7,7 +7,7 @@ export const birmingham: Area = {
   h1: "Pre-Purchase Car Inspection Birmingham",
   title: "Pre-Purchase Car Inspection Birmingham",
   description:
-    "Mobile pre-purchase car inspections in Birmingham from £149.99, at Motorpoint on Lichfield Road, the Stratford Road and Coventry Road dealers, or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Birmingham from £199.99, at Motorpoint on Lichfield Road, the Stratford Road and Coventry Road dealers, or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Birmingham? From Motorpoint on Lichfield Road and Bristol Street Motors to the dealer strips along the Stratford Road and the Coventry Road, we inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day, and we tell you whether it clears the Clean Air Zone.",
@@ -53,7 +53,7 @@ export const birmingham: Area = {
     {
       question: "Do you charge extra for Birmingham, Solihull or Sutton Coldfield?",
       answer:
-        "No. The price is the same anywhere in Birmingham, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Birmingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a car at BCA Perry Barr before I bid on it?",

@@ -5,11 +5,11 @@ export const worthIt: Guide = {
   question: "Is a pre-purchase car inspection worth it?",
   title: "Is a Pre-Purchase Car Inspection Worth It?",
   description:
-    "The arithmetic on a £149.99 inspection against what inspections find, with the 2026 data and three real cases from October 2026, when it is most worth it, and the few times it is not.",
+    "The arithmetic on a £199.99 inspection against what inspections find, with the 2026 data and three real cases from October 2026, when it is most worth it, and the few times it is not.",
   published: "2026-10-19",
   updated: "2026-10-19",
   answer:
-    "For most used cars costing more than a couple of thousand pounds, yes. An inspection costs £149.99 to £199.99 here, and from about £80 to £290 nationally, while the problems it finds routinely run to thousands. CarExamer's index found 97.4% of cars inspected in 2026 had at least one item graded poor or fair. It is most worth it on an import, a write-off, a performance car, an electric car or a private sale, and least worth it on a very cheap car you already expect to have faults.",
+    "For most used cars costing more than a couple of thousand pounds, yes. An inspection costs £199.99 to £249.99 here, and from about £80 to £290 nationally, while the problems it finds routinely run to thousands. CarExamer's index found 97.4% of cars inspected in 2026 had at least one item graded poor or fair. It is most worth it on an import, a write-off, a performance car, an electric car or a private sale, and least worth it on a very cheap car you already expect to have faults.",
   blocks: [
     { type: "h2", text: "The arithmetic" },
     {
@@ -66,7 +66,7 @@ export const worthIt: Guide = {
     },
     {
       type: "note",
-      text: "[Book a Standard inspection](/book) for £149.99 or [a Premium](/book?package=premium) for £199.99. We come to the car, and the report is with you the same day.",
+      text: "[Book a Standard inspection](/book) for £199.99 or [a Premium](/book?package=premium) for £249.99. We come to the car, and the report is with you the same day.",
     },
   ],
   faqs: [

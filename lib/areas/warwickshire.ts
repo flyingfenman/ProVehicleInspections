@@ -7,7 +7,7 @@ export const warwickshire: Area = {
   h1: "Mobile Car Inspection Warwickshire",
   title: "Mobile Car Inspection Warwickshire",
   description:
-    "Independent mobile car inspections across Warwickshire from £149.99: Nuneaton, Rugby, Warwick, Leamington Spa, Kenilworth and Stratford-upon-Avon. Same-day video report.",
+    "Independent mobile car inspections across Warwickshire from £199.99: Nuneaton, Rugby, Warwick, Leamington Spa, Kenilworth and Stratford-upon-Avon. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Warwickshire? From the indoor showroom at Nuneaton Car Sales and the Leicester Road dealers in Rugby to the main dealers in Leamington, Warwick and Stratford-upon-Avon, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -53,7 +53,7 @@ export const warwickshire: Area = {
     {
       question: "Is the price the same in Stratford-upon-Avon as in Rugby or Nuneaton?",
       answer:
-        "Yes. The price is the same anywhere in Warwickshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Warwickshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you inspect a used Toyota or Volkswagen at Listers in Stratford?",

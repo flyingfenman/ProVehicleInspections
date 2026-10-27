@@ -51,8 +51,8 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
       areaServed: { "@type": area.schemaType, name: area.name },
       url,
       offers: [
-        { "@type": "Offer", name: "Standard Inspection", price: "149.99", priceCurrency: "GBP" },
-        { "@type": "Offer", name: "Premium Inspection", price: "199.99", priceCurrency: "GBP" },
+        { "@type": "Offer", name: "Standard Inspection", price: "199.99", priceCurrency: "GBP" },
+        { "@type": "Offer", name: "Premium Inspection", price: "249.99", priceCurrency: "GBP" },
         { "@type": "Offer", name: "EV Battery Health Check", price: "99.99", priceCurrency: "GBP" },
       ],
     },
@@ -89,8 +89,8 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
             <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{area.intro}</p>
 
             <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm font-semibold">
-              <span className="rounded-full border bg-white px-4 py-2">Standard £149.99</span>
-              <span className="rounded-full border bg-white px-4 py-2">Premium £199.99</span>
+              <span className="rounded-full border bg-white px-4 py-2">Standard £199.99</span>
+              <span className="rounded-full border bg-white px-4 py-2">Premium £249.99</span>
               <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-primary">EV battery check £99.99</span>
             </div>
             <p className="mx-auto mt-4 inline-flex max-w-2xl items-center gap-2 text-sm font-semibold text-muted-foreground">
@@ -202,7 +202,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
             <div className="mt-7 grid gap-4 md:grid-cols-2">
               <div className="rounded-3xl border border-border bg-white p-6 shadow-sm">
                 <p className="text-sm font-bold text-primary">Standard Inspection</p>
-                <p className="mt-2 text-4xl font-bold">£149.99</p>
+                <p className="mt-2 text-4xl font-bold">£199.99</p>
                 <p className="mt-2 font-semibold">160-point pre-purchase inspection</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   An in-depth mechanical inspection of the relevant engine and drivetrain, brakes, steering, suspension and diagnostics. Includes road test, vehicle history, a clear video review, photo evidence and personal buying guidance.
@@ -214,7 +214,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
 
               <div className="rounded-3xl border-2 border-primary/30 bg-white p-6 shadow-sm">
                 <p className="text-sm font-bold text-primary">Premium Inspection</p>
-                <p className="mt-2 text-4xl font-bold">£199.99</p>
+                <p className="mt-2 text-4xl font-bold">£249.99</p>
                 <p className="mt-2 font-semibold">260-point pre-purchase inspection</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Everything in Standard, including the video review, plus deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
@@ -351,7 +351,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
           <div className="mx-auto max-w-4xl rounded-3xl border border-primary/15 bg-primary/5 p-7 text-center sm:p-10">
             <ShieldCheck className="mx-auto h-9 w-9 text-emerald-600" />
             <h2 className="mt-4 text-3xl font-bold">Inspect it before you buy it.</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Independent pre-purchase vehicle inspections in {area.name} from £149.99.</p>
+            <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Independent pre-purchase vehicle inspections in {area.name} from £199.99.</p>
             <Link href="/book" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-primary/90">
               Book an Inspection <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

@@ -7,7 +7,7 @@ export const london: Area = {
   h1: "Pre-Purchase Vehicle Inspection London",
   title: "Pre-Purchase Vehicle Inspection London",
   description:
-    "Independent mobile vehicle inspections across London from £149.99. Diagnostic scan, road test, history check, same-day video report and EV battery health checks.",
+    "Independent mobile vehicle inspections across London from £199.99. Diagnostic scan, road test, history check, same-day video report and EV battery health checks.",
   schemaType: "City",
   intro:
     "Buying a used car in London? We inspect it at the dealer, the car supermarket or the seller's door before you commit, with full diagnostics, a road test, a history check and a video report the same day. We cover all of Greater London.",
@@ -58,7 +58,7 @@ export const london: Area = {
     {
       question: "Do you charge extra for South London, Croydon, Bromley or Kingston?",
       answer:
-        "No. The price is the same anywhere in Greater London, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Greater London, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
     },
     {
       question: "Can you do an EV battery check on a used Tesla in London?",
