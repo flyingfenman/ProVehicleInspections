@@ -113,3 +113,10 @@ await cust("447700900006", "Actually can we do Christmas Day?")
 await sleep(4500)
 page = await (await fetch(W + "/chat/447700900006?k=adminkey")).text()
 ok(page.includes("is not free") && page.includes("book?package=premium") && !page.includes("date=2026-12-25"), "a time that isn't free is left out of the link")
+
+// 12 a list or a long draft waits for Henry
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Hi, we check:\n- engine\n- brakes\n" + "word ".repeat(130) + "\nThanks, Henry", booking_link: null, write_off: false, needs_henry: false, note_for_henry: "" }) })
+await cust("447700900008", "what do you check?")
+await sleep(4500)
+page = await (await fetch(W + "/chat/447700900008?k=adminkey")).text()
+ok(page.includes("has a list") && page.includes("is long"), "lists and long drafts flagged for Henry")
