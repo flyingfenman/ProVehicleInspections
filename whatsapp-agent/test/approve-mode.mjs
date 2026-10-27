@@ -41,10 +41,9 @@ ok((await sends()).length === 0, "approve mode: nothing sent on its own")
 let page = await (await fetch(W + "/inbox?k=adminkey")).text()
 ok(page.includes("Waiting for you") && page.includes("Asha Patel"), "inbox lists the waiting draft")
 page = await (await fetch(W + "/chat/447700900001?k=adminkey")).text()
-const url = page.match(/http:\/\/127\.0\.0\.1:8788\/book\?[^<\s]+/)?.[0]?.replace(/&amp;/g, "&")
-ok(url?.includes("package=premium") && url.includes("battery=1") && url.includes("time=10%3A00") && url.includes("reg=AB12CDE"), "booking link built: " + url)
+ok(!page.includes("/book?") && page.includes("Booking link held back"), "no booking link in the first reply (Henry's build-up rule)")
 const draftId = page.match(/name="draft" value="([^"]+)"/)?.[1]
-const form = new URLSearchParams({ k: "adminkey", draft: draftId, text: "Hi Asha, Premium is £199.99.\n" + url + "\nThanks, Henry" })
+const form = new URLSearchParams({ k: "adminkey", draft: draftId, text: "Hi Asha, Premium is £199.99.\nThanks, Henry" })
 r = await fetch(W + "/chat/447700900001/send", { method: "POST", body: form, redirect: "manual" })
 ok(r.status === 303 && decodeURIComponent(r.headers.get("location")).includes("Sent"), "Henry presses Send: " + decodeURIComponent(r.headers.get("location") ?? ""))
 const s = await sends()
@@ -64,7 +63,7 @@ page = await (await fetch(W + "/chat/447700900002?k=adminkey")).text()
 ok(page.includes("Let the assistant answer again"), "page offers to hand the chat back")
 
 // 6 a thank you needs no reply
-await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: false, reply: "", booking_link: null, needs_henry: false, note_for_henry: "" }) })
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: false, reply: "", booking_link: null, write_off: false, needs_henry: false, note_for_henry: "" }) })
 await cust("447700900001", "Thanks!")
 await sleep(4500)
 ok((await claudeCalls()).length === 2, "thanks message still gets looked at")
@@ -73,16 +72,15 @@ page = await (await fetch(W + "/inbox?k=adminkey")).text()
 ok(page.includes("No reply needed"), "inbox shows no reply needed")
 
 // 7 rule checks in code
-await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Hi — we do a full HPI check, happy to give you a call", booking_link: { package: "standard", battery: false, date: "2026-12-25", time: "10:00", reg: null }, needs_henry: false, note_for_henry: "" }) })
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Hi — we do a full HPI check, happy to give you a call", booking_link: { package: "standard", battery: false, date: "2026-12-25", time: "10:00", reg: null }, write_off: false, needs_henry: false, note_for_henry: "" }) })
 await cust("447700900003", "Hi do you do history checks?")
 await sleep(4500)
 page = await (await fetch(W + "/chat/447700900003?k=adminkey")).text()
 ok(!page.includes("—") && page.includes("Hi, we do"), "em dash removed")
-ok(page.includes("names another company") && page.includes("mentions a call") && page.includes("is not free"), "rule slips flagged for Henry")
-ok(!page.includes("date=2026-12-25"), "a time that isn't free is left out of the link")
+ok(page.includes("names another company") && page.includes("mentions a call"), "rule slips flagged for Henry")
 
 // 8 photo goes to Claude
-await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Thanks for the photo.\nThanks, Henry", booking_link: null, needs_henry: false, note_for_henry: "" }) })
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Thanks for the photo.\nThanks, Henry", booking_link: null, write_off: false, needs_henry: false, note_for_henry: "" }) })
 await cust("447700900004", "", { type: "image", text: undefined, image: { id: "MEDIA1", caption: "this one" } })
 await sleep(4500)
 const last = (await claudeCalls()).at(-1).body
@@ -92,3 +90,26 @@ await cust("447700900005", "", { type: "audio", text: undefined, audio: { id: "A
 await sleep(4500)
 page = await (await fetch(W + "/chat/447700900005?k=adminkey")).text()
 ok(page.includes("can&#39;t hear or read"), "voice note flagged for Henry")
+
+// 10 after two messages from us, a write-off car's Standard link is switched to Premium and flagged
+const d = new Date(Date.now() + 2 * 864e5).toISOString().slice(0, 10)
+const echo = (to, id, body) => hook({ message_echoes: [{ from: "441992245660", to, id, timestamp: String(Math.floor(Date.now() / 1000)), type: "text", text: { body } }] }, "smb_message_echoes")
+await cust("447700900006", "Would you inspect a Cat S vehicle?")
+await echo("447700900006", "wamid.echo6a", "Yes I do, what is the car?")
+await cust("447700900006", "2019 Model 3, AB12 CDE")
+await echo("447700900006", "wamid.echo6b", "Premium is £249.98 with the battery report. I have Thursday 10:00 free.")
+await fetch(W + "/chat/447700900006/resume", { method: "POST", body: new URLSearchParams({ k: "adminkey" }), redirect: "manual" })
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Great, the Standard is £149.99.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "standard", battery: true, date: d, time: "10:00", reg: "ab12 cde" }, write_off: true, needs_henry: false, note_for_henry: "" }) })
+await cust("447700900006", "Thursday 10am please")
+await sleep(4500)
+page = await (await fetch(W + "/chat/447700900006?k=adminkey")).text()
+const url = page.match(/http:\/\/127\.0\.0\.1:8788\/book\?[^<\s]+/)?.[0]?.replace(/&amp;/g, "&")
+ok(url === `http://127.0.0.1:8788/book?package=premium&battery=1&date=${d}&time=10:00&reg=AB12CDE`, "link after two messages, switched to Premium: " + url)
+ok(page.includes("changed to Premium") && page.includes("quotes the Standard price"), "write-off slips flagged for Henry")
+
+// 11 a time that isn't free is left out of the link
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Christmas Day it is.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "premium", battery: false, date: "2026-12-25", time: "10:00", reg: null }, write_off: true, needs_henry: false, note_for_henry: "" }) })
+await cust("447700900006", "Actually can we do Christmas Day?")
+await sleep(4500)
+page = await (await fetch(W + "/chat/447700900006?k=adminkey")).text()
+ok(page.includes("is not free") && page.includes("book?package=premium") && !page.includes("date=2026-12-25"), "a time that isn't free is left out of the link")
