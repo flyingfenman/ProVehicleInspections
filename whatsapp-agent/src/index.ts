@@ -44,6 +44,10 @@ export default {
         images: new Map(),
         free,
         now: new Date(now),
+      }).catch((error) => {
+        console.error(error)
+        // Usually a missing or wrong ANTHROPIC_API_KEY.
+        return { shouldReply: true, text: "", needsHenry: true, note: `The assistant failed: ${error instanceof Error ? error.message : String(error)}` }
       })
       return tryPage(key, text, draft)
     }

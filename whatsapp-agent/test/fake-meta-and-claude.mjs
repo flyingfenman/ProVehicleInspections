@@ -15,7 +15,7 @@ http.createServer(async (req, res) => {
   res.setHeader("content-type", "application/json")
   if (req.url.startsWith("/api/inspection-slots")) return res.end(JSON.stringify({ slotsByPackage: { standard: slots(60), premium: slots(90), ev: slots(60) } }))
   if (req.url.startsWith("/v1/messages")) {
-    const answer = claudeReply ?? { should_reply: true, reply: "Hi, Premium is £199.99.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "premium", battery: true, date: d, time: "10:00", reg: "ab12 cde" }, needs_henry: false, note_for_henry: "" }
+    const answer = claudeReply ?? { should_reply: true, reply: "Hi, Premium is £199.99.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "premium", battery: true, date: d, time: "10:00", reg: "ab12 cde" }, write_off: false, needs_henry: false, note_for_henry: "" }
     return res.end(JSON.stringify({ id: "msg_1", type: "message", role: "assistant", model: "claude-opus-5-5", content: [{ type: "text", text: JSON.stringify(answer) }], stop_reason: "end_turn", stop_details: null, usage: { input_tokens: 1, output_tokens: 1 } }))
   }
   if (req.url.includes("/messages")) return res.end(JSON.stringify(entry.body?.status ? { success: true } : { messages: [{ id: "wamid.out" + log.length }] }))

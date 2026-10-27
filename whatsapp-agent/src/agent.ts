@@ -30,6 +30,7 @@ const Answer = z.object({
       reg: z.string().nullable().describe("the registration, if the customer gave it"),
     })
     .nullable(),
+  write_off: z.boolean().describe("true if the car is a Cat S, Cat N or other insurance write-off category"),
   needs_henry: z.boolean(),
   note_for_henry: z.string().describe("Why Henry should look, in one short line. Empty if nothing."),
 })
@@ -57,7 +58,7 @@ export function businessPrompt(siteUrl: string): string {
 
   return `You answer WhatsApp messages for Pro Vehicle Inspections, writing as Henry, who owns the business and does every inspection himself. People message 01992 245660, mostly from the website or a Google ad, usually because they are about to buy a used car and want it checked first.
 
-How Henry writes: friendly, direct, plain British English in full sentences. Short: usually two to six lines. No sales talk, no exclamation-mark gushing, no emojis unless the customer uses them. Answer what they asked first, then move them towards booking. End every reply with:
+How Henry writes: like a busy person texting back, not a brochure. Friendly, direct and a bit dry, plain British English in full sentences. Under 80 words, never more than 120 even if they asked several things. No bullet points or lists, no long technical run-downs, no sales talk, no exclamation-mark gushing, no emojis unless the customer uses them. A good answer in one plain line beats a paragraph: when a customer explains what worries them, Henry says something like "That's the exact gap we try to close." rather than listing every check. Give the price, not the list of what is included, unless they ask. End with one question at most. End every reply with:
 Thanks, Henry
 
 HENRY'S RULES, NEVER BREAK THEM
@@ -66,7 +67,7 @@ HENRY'S RULES, NEVER BREAK THEM
 - Never use em dashes or en dashes. Use commas or full stops.
 - Quote only the prices below. No discounts, no deals, no extras that are not listed.
 - Appointments start on the hour. Only offer times from the FREE TIMES list, and offer two or three, not the whole list. Never say a time is free unless it is in the list.
-- One price wherever the car is in the area. Never talk about miles, routes, journey times or being far away.
+- One price wherever the car is in the area. Never talk about miles, routes, journey times or being far away, and don't comment on where the car is ("that's in my area") unless they ask whether you cover it.
 - Never claim to be a person if someone sincerely asks whether they are talking to a bot or AI. Say: "I use an assistant to help me reply quickly, but I read every message and I do every inspection myself." and set needs_henry.
 - The first message of a chat may start with "(Ref: ...)". That is tracking for Henry, ignore it.
 
@@ -78,11 +79,20 @@ ${packages}
 - Area: ${SERVICE_AREA.long}.
 - Booking and paying is online. Cancellation: free up to 48 hours before the appointment with a full refund, no refund after that, or the booking can be moved to another date or another car. To cancel or move, they message on WhatsApp.
 
+WRITE-OFF CARS (Henry's rule)
+Yes, Henry inspects Cat S, Cat N and other insurance write-off category cars, but only with the Premium inspection: ${money(INSPECTION_PACKAGES.find((p) => p.key === "premium")!.amount)}, or ${money(INSPECTION_PACKAGES.find((p) => p.key === "premium")!.amount + EV_ADD_ON)} with the battery report for an electric or plug-in hybrid. Never offer, quote or link the Standard for these cars. If they ask why, the Premium's paint-depth readings and deeper bodywork checks are what show how well a repaired car was put back together. Set write_off to true whenever the customer says the car is a write-off category.
+
 BOOKING LINKS
 To send a booking link, put [BOOKING_LINK] in the reply on its own line and fill booking_link. The link opens ${siteUrl}/book with the package, battery report, date, time and registration already filled in, and they pay there to confirm. Only fill date and time when the customer has chosen one of the free times. For an electric or plug-in hybrid car, suggest the battery report.
 
-A GOOD FIRST REPLY
-Answer their question, give the price for what suits their car, offer two or three free times, and ask for anything missing: the registration, where the car is (postcode or town) and when suits them. Once they pick a time, send the booking link.
+HOW A CONVERSATION GOES (Henry's rule: build up, never rush to the booking link)
+The booking link never goes in your first or second message to a customer. Build up so they can see Henry understands their car first. Never write anything like "send me a date and time and I'll send the booking link".
+1. First reply: thank them, answer what they asked (give the price if they asked for it), and take an interest in the car: what it is (make, model, year or registration), where it is, why they like it, and whether anything about it worries them (history, warning lights, repairs, mileage, how the seller is). No times and no link yet.
+2. Second reply: in a sentence or two, say how the inspection covers what worries them and which package suits the car, with the price, then offer two or three free times.
+3. Once they have picked a time, send the booking link. The booking page asks for the address, seller and contact details, so don't ask for those as well.
+If they want to rush ("just send me the link"), still have that second exchange first: confirm the car, the package and the time.
+
+When something needs Henry, keep the reply short and natural, for example "Let me check that and come back to you shortly." Don't explain what is or isn't on a list.
 
 SET needs_henry TO TRUE (still write your best reply) WHEN
 - They ask about anything not covered above: vans, motorbikes, motorhomes, classic or modified cars, commercial vehicles, diagnosing a fault on their own car, repairs, selling a car, discounts.
@@ -149,7 +159,9 @@ export async function writeReply(opts: {
   if (response.stop_reason === "refusal" || !response.parsed_output) {
     return { shouldReply: true, text: "", needsHenry: true, note: "The assistant could not write a reply to this one." }
   }
-  return finishReply(response.parsed_output, opts.siteUrl, opts.free, opts.now)
+  // How many messages Henry or the assistant have already sent in this chat.
+  const repliesSoFar = opts.history.filter((h) => h.from !== "customer").length
+  return finishReply(response.parsed_output, opts.siteUrl, opts.free, opts.now, repliesSoFar)
 }
 
 // Words that would mean a rule slipped. A reply containing one always waits for Henry.
@@ -157,12 +169,25 @@ const OTHER_COMPANIES = /\b(hpi|motorcheck|carfax|car ?vertical|experian|the aa|
 const CALL_OFFER = /\b(call|ring|phone)\b/i
 
 // Builds the booking link, tidies the punctuation and double-checks Henry's rules in code.
-export function finishReply(answer: Answer, siteUrl: string, free: FreeTimes, now: Date): Draft {
+export function finishReply(answer: Answer, siteUrl: string, free: FreeTimes, now: Date, repliesSoFar: number): Draft {
   const notes = answer.note_for_henry ? [answer.note_for_henry] : []
   let needsHenry = answer.needs_henry
   let text = answer.reply
 
-  const link = answer.booking_link
+  // Henry's rule: the booking link only comes after at least two messages from us.
+  let link = answer.booking_link
+  if (link && repliesSoFar < 2) {
+    link = null
+    text = text.replace(/^.*\[BOOKING_LINK\].*$\n?/gm, "")
+    needsHenry = true
+    notes.push("Booking link held back: at least two messages before the link.")
+  }
+  // Henry's rule: write-off category cars get the Premium inspection only.
+  if (answer.write_off && link?.package === "standard") {
+    link.package = "premium"
+    needsHenry = true
+    notes.push("Write-off car, so the link was changed to Premium.")
+  }
   if (link) {
     const params = new URLSearchParams({ package: link.package })
     if (link.battery && link.package !== "ev") params.set("battery", "1")
@@ -196,6 +221,19 @@ export function finishReply(answer: Answer, siteUrl: string, free: FreeTimes, no
   if (OTHER_COMPANIES.test(text)) {
     needsHenry = true
     notes.push("The draft names another company, please edit.")
+  }
+  if (answer.write_off && text.includes(money(INSPECTION_PACKAGES.find((p) => p.key === "standard")!.amount))) {
+    needsHenry = true
+    notes.push("Write-off car but the draft quotes the Standard price, please edit.")
+  }
+  // Henry: "too much info... not too many words".
+  if (/^\s*([-*\u2022]|\d+[.)])\s/m.test(text)) {
+    needsHenry = true
+    notes.push("The draft has a list, please shorten.")
+  }
+  if (text.split(/\s+/).length > 120) {
+    needsHenry = true
+    notes.push("The draft is long, please shorten.")
   }
   if (CALL_OFFER.test(text)) {
     needsHenry = true
