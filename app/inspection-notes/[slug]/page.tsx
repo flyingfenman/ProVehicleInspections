@@ -62,7 +62,7 @@ export default async function InspectionNotePage({ params }: Props) {
         "@type": "Organization",
         name: BRAND,
         url: SITE_URL,
-        logo: { "@type": "ImageObject", url: `${SITE_URL}/apple-touch-icon.png` },
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/images/pvi-logo-512.png` },
       },
     },
     {
