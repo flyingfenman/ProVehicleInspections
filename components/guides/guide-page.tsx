@@ -240,7 +240,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
         <div className="container mx-auto max-w-4xl rounded-3xl border border-primary/15 bg-primary/5 px-4 py-10 text-center sm:px-10">
           <h2 className="text-balance text-3xl font-bold sm:text-4xl">Found the car? Have it inspected before you pay.</h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-muted-foreground">
-            Standard £149.99, Premium £199.99, EV battery check £99.99. We come to the car anywhere in our area and you get the video, photos and report the same day.
+            Standard £199.99, Premium £249.99, EV battery check £149.99. We come to the car anywhere in our area and you get the video, photos and report the same day.
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/book" className="inline-flex min-h-12 items-center rounded-xl bg-primary px-7 text-base font-bold text-white hover:bg-primary/90">

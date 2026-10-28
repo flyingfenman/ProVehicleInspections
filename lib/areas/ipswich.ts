@@ -7,7 +7,7 @@ export const ipswich: Area = {
   h1: "Pre-Purchase Car Inspection Ipswich",
   title: "Pre-Purchase Car Inspection Ipswich",
   description:
-    "Mobile pre-purchase car inspections in Ipswich from £149.99, at the Ransomes Europark dealers, Norwich Road, Bury Road or a private seller in Kesgrave or Felixstowe. Same-day video report.",
+    "Mobile pre-purchase car inspections in Ipswich from £199.99, at the Ransomes Europark dealers, Norwich Road, Bury Road or a private seller in Kesgrave or Felixstowe. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Ipswich? We come to the car wherever it is for sale, at the Ransomes Europark dealers, the Bury Road independents or a driveway in Kesgrave or Felixstowe, and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",

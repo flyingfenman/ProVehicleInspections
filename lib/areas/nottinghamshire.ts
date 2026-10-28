@@ -7,7 +7,7 @@ export const nottinghamshire: Area = {
   h1: "Mobile Car Inspection Nottinghamshire",
   title: "Mobile Car Inspection Nottinghamshire",
   description:
-    "Independent mobile car inspections across Nottinghamshire from £149.99: Nottingham, Mansfield, Sutton-in-Ashfield, Newark, Worksop, Retford and Hucknall. Same-day video report.",
+    "Independent mobile car inspections across Nottinghamshire from £199.99: Nottingham, Mansfield, Sutton-in-Ashfield, Newark, Worksop, Retford and Hucknall. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Nottinghamshire? From Available Car's supermarket at Sutton-in-Ashfield and the Southwell Road West dealers in Mansfield to Newark, Worksop and Retford, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -48,7 +48,7 @@ export const nottinghamshire: Area = {
     {
       question: "Is there a travel charge for Mansfield, Worksop or Retford?",
       answer:
-        "No. The price is the same anywhere in Nottinghamshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Nottinghamshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at Available Car in Sutton-in-Ashfield before I sign, and do they allow it?",

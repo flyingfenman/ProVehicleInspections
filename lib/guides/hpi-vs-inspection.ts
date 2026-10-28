@@ -63,7 +63,7 @@ export const hpiVsInspection: Guide = {
         ["ClickMechanic", "No. The page states inspections do not include any vehicle history checks."],
         ["WhoCanFixMyCar", "No."],
         ["CarExamer", "Free basic vehicle data only."],
-        ["Pro Vehicle Inspections", "Yes, in both the Standard (£149.99) and Premium (£199.99) packages. The Premium adds salvage auction, previous advert and seller checks on top."],
+        ["Pro Vehicle Inspections", "Yes, in both the Standard (£199.99) and Premium (£249.99) packages. The Premium adds salvage auction, previous advert and seller checks on top."],
       ],
     },
     { type: "h2", text: "Two real examples" },

@@ -7,7 +7,7 @@ export const northampton: Area = {
   h1: "Pre-Purchase Car Inspection Northampton",
   title: "Pre-Purchase Car Inspection Northampton",
   description:
-    "Mobile pre-purchase car inspections in Northampton from £149.99, at the Riverside and Bedford Road dealers, Brackmills or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Northampton from £199.99, at the Riverside and Bedford Road dealers, Brackmills or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Northampton? Most of the town's dealers sit in two clusters, Riverside off the A45 and Bedford Road by the M1, and a lot of their stock has just come through the Manheim auction at Brackmills. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day.",

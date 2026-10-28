@@ -6,10 +6,10 @@ Pro Vehicle Inspections is run by Henry. Open Monday to Friday 08:00 to 18:00, S
 
 ## Services
 
-- [Vehicle inspections](https://www.provehicleinspections.com/): Standard (£149.99, 160-point) and Premium (£199.99, 260-point) pre-purchase inspections with diagnostics, road test, history check, video review, photo evidence, same-day report and personal buying guidance.
+- [Vehicle inspections](https://www.provehicleinspections.com/): Standard (£199.99, 160-point) and Premium (£249.99, 260-point) pre-purchase inspections with diagnostics, road test, history check, video review, photo evidence, same-day report and personal buying guidance.
 - [Mechanical inspection](https://www.provehicleinspections.com/#mechanical-inspection): £399.99 independent report on a fault after garage work, such as a part failing soon after a cambelt change. Non-invasive: full diagnostic scan with live data, photos and video of the work, a written report on the findings and likely cause, and a signed statement of truth for a Small Claims case. Nothing is taken apart and we do not attend court.
 - [What we inspect](https://www.provehicleinspections.com/what-we-inspect): the full 260-point Premium checklist.
-- [EV and hybrid battery health check](https://www.provehicleinspections.com/ev-battery-health-check): CARA Approved Autel State of Health report for compatible electric and plug-in hybrid cars, £99.99 on its own or £49.99 with an inspection.
+- [EV and hybrid battery health check](https://www.provehicleinspections.com/ev-battery-health-check): CARA Approved Autel State of Health report for compatible electric and plug-in hybrid cars, £149.99 on its own or £49.99 with an inspection.
 - [Book an inspection](https://www.provehicleinspections.com/book): choose a package, pick a time and pay securely online.
 
 ## Areas
@@ -48,7 +48,7 @@ Used car buying guides written by Henry, each answering one question with source
 - [AA vs RAC vs independent: which car inspection should you book?](https://www.provehicleinspections.com/guides/aa-vs-rac-vs-independent-car-inspection): side-by-side table of price, points, road test, scan, history check, who turns up, turnaround and the cars each refuses
 - [Is a pre-purchase car inspection worth it?](https://www.provehicleinspections.com/guides/is-a-pre-purchase-car-inspection-worth-it): the arithmetic, the 2026 data, three real October 2026 cases, when it is most and least worth it
 - [What does a pre-purchase car inspection check?](https://www.provehicleinspections.com/guides/what-does-a-pre-purchase-car-inspection-check): mechanical, exterior, interior, the full diagnostic scan, the road test, the history check, what Premium adds, what no inspection can do
-- [How do you check an electric car's battery health before you buy?](https://www.provehicleinspections.com/guides/how-to-check-ev-battery-health-before-you-buy): five methods from the dashboard to a full discharge test, normal State of Health by age, red flags, what the £99.99 test reads
+- [How do you check an electric car's battery health before you buy?](https://www.provehicleinspections.com/guides/how-to-check-ev-battery-health-before-you-buy): five methods from the dashboard to a full discharge test, normal State of Health by age, red flags, what the £149.99 test reads
 - [How long do electric car batteries last?](https://www.provehicleinspections.com/guides/how-long-do-electric-car-batteries-last): Geotab 2026 data (2.3% a year, 81.6% at eight years), replacement rates, what shortens a pack, every major warranty, replacement costs
 - [Should you buy a Cat S or Cat N write-off?](https://www.provehicleinspections.com/guides/cat-s-and-cat-n-write-offs): what the categories mean, how often write-offs turn up, what a cheap repair hides, price and insurance, what we check
 - [HPI check vs car inspection: do you need both?](https://www.provehicleinspections.com/guides/hpi-check-vs-car-inspection): what a history check covers and cannot see, 2026 prices, which inspection services include one, two real examples

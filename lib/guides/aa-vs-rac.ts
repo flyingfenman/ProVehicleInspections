@@ -17,13 +17,13 @@ export const aaVsRac: Guide = {
       caption: "From each provider's website and terms, 19 October 2026",
       head: ["", "The AA", "RAC", "Pro Vehicle Inspections"],
       rows: [
-        ["Price", "Basic £110; Comprehensive from £199; Advanced from £279. Rises with the car's age and value.", "Basic from £132; Comprehensive from £225; Advanced from £290. Depends on age, value and model.", "Standard £149.99; Premium £199.99. Same for every car."],
+        ["Price", "Basic £110; Comprehensive from £199; Advanced from £279. Rises with the car's age and value.", "Basic from £132; Comprehensive from £225; Advanced from £290. Depends on age, value and model.", "Standard £199.99; Premium £249.99. Same for every car."],
         ["Points checked", "Up to 99, 214 or 221", "Basic not stated; Comprehensive and Advanced 307", "160 or 260"],
         ["Road test", "Short on Basic; up to 10 miles on the others", "Up to 3, 10 or 20 miles", "Every inspection; extended in Premium"],
         ["Diagnostic scan", "Advanced only (OBD scan)", "Advanced only (fault codes)", "Full scan of every module in both packages, with VCDS on Volkswagen group cars"],
         ["History check", "Not included; the terms exclude vehicle data checks", "Optional paid add-on", "Included in both packages"],
         ["Paint depth", "Not stated", "Not stated", "Premium"],
-        ["EV battery State of Health", "Not offered. Advanced lists a Digital Battery Test without saying which battery.", "Not offered", "Yes: CARA Approved Autel test, £99.99 alone or £49.99 added"],
+        ["EV battery State of Health", "Not offered. Advanced lists a Digital Battery Test without saying which battery.", "Not offered", "Yes: CARA Approved Autel test, £149.99 alone or £49.99 added"],
         ["Who turns up", "An AA engineer or a third party working on its behalf (terms, clause 3.1)", "The terms do not say whether inspectors are RAC employees", "Henry, every time"],
         ["When", "Aims to inspect within 2 to 4 working days of booking; weekdays 8:30 to 5", "Usually within 48 hours; verbal report by 7pm that day", "Usually within a day or two; report the same day"],
         ["Report", "Emailed; engineer talks it through by phone", "Emailed; verbal summary on Comprehensive and Advanced, none on Basic", "Same-day written report with video and photos, and a call"],
@@ -66,7 +66,7 @@ export const aaVsRac: Guide = {
     },
     {
       type: "note",
-      text: "If the car is within our area, [book a Standard inspection](/book) for £149.99 or [a Premium](/book?package=premium) for £199.99. If it is not, we would rather you booked the AA or RAC than nobody.",
+      text: "If the car is within our area, [book a Standard inspection](/book) for £199.99 or [a Premium](/book?package=premium) for £249.99. If it is not, we would rather you booked the AA or RAC than nobody.",
     },
   ],
   faqs: [

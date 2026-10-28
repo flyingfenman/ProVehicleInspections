@@ -7,7 +7,7 @@ export const cambridge: Area = {
   h1: "Pre-Purchase Car Inspection Cambridge",
   title: "Pre-Purchase Car Inspection Cambridge",
   description:
-    "Mobile pre-purchase car inspections in Cambridge from £149.99, at the Marshall dealers on Newmarket Road, Vindis on Milton Road, Sawston or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Cambridge from £199.99, at the Marshall dealers on Newmarket Road, Vindis on Milton Road, Sawston or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Cambridge? Marshall's row of dealerships on Newmarket Road, Vindis on Milton Road and Babraham Road, John Banks on Swann Road and the Porsche, BMW and Nissan centres sell most of the city's used cars. We inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day.",
