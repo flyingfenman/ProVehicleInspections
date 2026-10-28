@@ -82,6 +82,18 @@ const localBusinessSchema = {
       price: "49.99",
       priceCurrency: "GBP",
     },
+    {
+      "@type": "Offer",
+      url: "https://www.provehicleinspections.com/#mechanical-inspection",
+      itemOffered: {
+        "@type": "Service",
+        name: "Mechanical Inspection",
+        serviceType: "Independent vehicle fault inspection",
+        description: "Independent, non-invasive inspection of a fault after garage work: full diagnostic scan with live data, photos and video of the work, a written report on the findings and likely cause, and a signed statement of truth for a Small Claims case.",
+      },
+      price: "399.99",
+      priceCurrency: "GBP",
+    },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -109,6 +121,12 @@ const localBusinessSchema = {
         "@type": "Offer",
         name: "EV Battery State of Health Report Add-on",
         price: "49.99",
+        priceCurrency: "GBP",
+      },
+      {
+        "@type": "Offer",
+        name: "Mechanical Inspection",
+        price: "399.99",
         priceCurrency: "GBP",
       },
     ],
