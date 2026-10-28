@@ -157,7 +157,7 @@ function MechanicalInspection() {
           <h3 className="text-2xl font-bold">Mechanical Inspection</h3>
         </div>
         <p className="mt-1 text-sm font-semibold text-primary">Independent fault report after garage work</p>
-        <p className="mt-4 text-5xl font-bold tracking-tight">£349.99</p>
+        <p className="mt-4 text-5xl font-bold tracking-tight">£399.99</p>
         <p className="mt-3 text-muted-foreground">
           A garage has worked on your car and something has gone wrong since. We inspect it independently and write up what we find, so you have evidence to take back to the garage, or to a Small Claims case if it comes to that.
         </p>

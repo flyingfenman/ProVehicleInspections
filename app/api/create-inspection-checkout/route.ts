@@ -18,7 +18,7 @@ const PACKAGE_INFO: Record<PackageKey, { name: string; amountPence: number }> = 
   standard: { name: "Standard Inspection", amountPence: 14999 },
   premium: { name: "Premium Inspection", amountPence: 19999 },
   ev: { name: "EV Battery Health Check", amountPence: 9999 },
-  mechanical: { name: "Mechanical Inspection", amountPence: 34999 },
+  mechanical: { name: "Mechanical Inspection", amountPence: 39999 },
 }
 
 function cleanText(value: unknown, maxLength: number): string {
