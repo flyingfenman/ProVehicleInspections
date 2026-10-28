@@ -7,7 +7,7 @@ export const norwich: Area = {
   h1: "Pre-Purchase Car Inspection Norwich",
   title: "Pre-Purchase Car Inspection Norwich",
   description:
-    "Mobile pre-purchase car inspections in Norwich from £149.99, at Motorpoint on Turnpike Close, the Cromer Road and Hall Road dealers, Postwick or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Norwich from £199.99, at Motorpoint on Turnpike Close, the Cromer Road and Hall Road dealers, Postwick or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Norwich? Motorpoint opened on Turnpike Close in December 2024, the Cromer Road and Hall Road stretches of the A140 carry most of the franchised dealers, and the new Jaguar Land Rover centre is out at Postwick. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day.",

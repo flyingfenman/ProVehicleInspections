@@ -7,7 +7,7 @@ export const westMidlands: Area = {
   h1: "Mobile Car Inspection West Midlands",
   title: "Mobile Car Inspection West Midlands",
   description:
-    "Independent mobile car inspections across the West Midlands from £149.99: Birmingham, Coventry, Solihull, Wolverhampton, Walsall, Dudley and West Bromwich. Same-day video report.",
+    "Independent mobile car inspections across the West Midlands from £199.99: Birmingham, Coventry, Solihull, Wolverhampton, Walsall, Dudley and West Bromwich. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in the West Midlands? From Motorpoint's stores in Birmingham, Coventry and Oldbury to the franchised dealers of Solihull, Wolverhampton and Walsall, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -48,7 +48,7 @@ export const westMidlands: Area = {
     {
       question: "Is the price the same in Coventry, Wolverhampton or Dudley as it is in Birmingham?",
       answer:
-        "Yes. The price is the same anywhere in the West Midlands, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in the West Midlands, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "The car is inside the Birmingham Clean Air Zone. Do you pay the charge to get to it, and does that affect the fee?",

@@ -7,7 +7,7 @@ export const leicester: Area = {
   h1: "Pre-Purchase Car Inspection Leicester",
   title: "Pre-Purchase Car Inspection Leicester",
   description:
-    "Mobile pre-purchase car inspections in Leicester from £149.99, on Welford Road, Narborough Road, Melton Road, at Meridian or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Leicester from £199.99, on Welford Road, Narborough Road, Melton Road, at Meridian or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Leicester? The city's dealers run along three roads, Welford Road, Narborough Road and Melton Road, with Sytner's BMW and MINI centres at Meridian by junction 21. We inspect the car where it is for sale, with full diagnostics, a road test, a history check and a video report the same day.",
@@ -51,7 +51,7 @@ export const leicester: Area = {
         "Yes. Ask the dealer to hold the car for an independent inspection and we arrange the time with the sales team. You get the video, photos and report the same day, and the findings are usually the best negotiating tool you will have.",
     },
     {
-      question: "Is an inspection worth £149.99 on a £3,000 car?",
+      question: "Is an inspection worth £199.99 on a £3,000 car?",
       answer:
         "On a cheap car the inspection is a bigger share of the price, but the repairs it finds cost the same as on a dear one: a clutch is £600 to £1,000, a head gasket more. The history check also shows outstanding finance and write-offs, either of which can cost you the whole car.",
     },

@@ -65,7 +65,7 @@ export const dealerVsPrivate: Guide = {
     },
     {
       type: "note",
-      text: "Whoever is selling, the car is the same car. [A Standard inspection](/book) is £149.99 and [a Premium](/book?package=premium), with the seller and V5C checks, is £199.99. Same price at a main dealer in Birmingham or a driveway in Basildon.",
+      text: "Whoever is selling, the car is the same car. [A Standard inspection](/book) is £199.99 and [a Premium](/book?package=premium), with the seller and V5C checks, is £249.99. Same price at a main dealer in Birmingham or a driveway in Basildon.",
     },
   ],
   faqs: [

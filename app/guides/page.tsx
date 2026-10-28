@@ -71,7 +71,7 @@ export default function GuidesIndexPage() {
               <Link href="/ev-battery-health-check" className="font-semibold text-primary underline underline-offset-4">
                 EV battery health check page
               </Link>
-              : £99.99 on its own or £49.99 with an inspection.
+              : £149.99 on its own or £49.99 with an inspection.
             </p>
           </div>
         </div>

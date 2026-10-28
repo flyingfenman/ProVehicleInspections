@@ -5,11 +5,11 @@ export const inspectionCost: Guide = {
   question: "How much does a pre-purchase car inspection cost in the UK?",
   title: "Pre-Purchase Car Inspection Cost UK (October 2026 Prices)",
   description:
-    "Every national provider's pre-purchase inspection price as published on 19 October 2026: AA, RAC, ClickMechanic, CarExamer, WhoCanFixMyCar and independents, what the 'from' means, what is left out, and what £149.99 buys.",
+    "Every national provider's pre-purchase inspection price as published on 19 October 2026: AA, RAC, ClickMechanic, CarExamer, WhoCanFixMyCar and independents, what the 'from' means, what is left out, and what £199.99 buys.",
   published: "2026-10-19",
   updated: "2026-10-19",
   answer:
-    "Between about £80 and £300 in October 2026, depending on who does it and how much they look at. The AA charges £110 for a Basic inspection and from £199 to £279 for its fuller packages; the RAC from £132 to £290; ClickMechanic from £79 to £137 through its marketplace mechanics. Most of those are starting prices that rise with the car's age and value, and most do not include a history check. Our Standard inspection is £149.99 and our Premium £199.99, the same for every car, with the history check included.",
+    "Between about £80 and £300 in October 2026, depending on who does it and how much they look at. The AA charges £110 for a Basic inspection and from £199 to £279 for its fuller packages; the RAC from £132 to £290; ClickMechanic from £79 to £137 through its marketplace mechanics. Most of those are starting prices that rise with the car's age and value, and most do not include a history check. Our Standard inspection is £199.99 and our Premium £249.99, the same for every car, with the history check included.",
   blocks: [
     { type: "h2", text: "What the national services charge" },
     {
@@ -23,7 +23,7 @@ export const inspectionCost: Guide = {
         ["CarExamer (franchise network)", "Basic £142.99, 100+ checks", "Standard £189.99, 200+ checks", "Premium £256.99, 300+ checks", "Free basic data only"],
         ["WhoCanFixMyCar", "Quotes from local garages; the site's own average is £101.40", "", "", "Not included"],
         ["Pre-Purchase Inspections UK (London)", "From £95 plus VAT", "From £120 plus VAT, 105 points", "From £150 plus VAT, 143 points, diagnostics", "Not stated"],
-        ["Pro Vehicle Inspections", "Standard £149.99, 160 points, full diagnostic scan, road test", "Premium £199.99, 260 points, paint depth, extended road test, salvage and seller checks", "EV battery health report £99.99 alone or £49.99 added", "Included in both packages"],
+        ["Pro Vehicle Inspections", "Standard £199.99, 160 points, full diagnostic scan, road test", "Premium £249.99, 260 points, paint depth, extended road test, salvage and seller checks", "EV battery health report £149.99 alone or £49.99 added", "Included in both packages"],
       ],
     },
     {
@@ -47,16 +47,16 @@ export const inspectionCost: Guide = {
       items: [
         "A history check, on almost every national service. Outstanding finance, write-off status and mileage records are a separate purchase.",
         "Dismantling and compression tests. Every provider's inspection, ours included, is visual and diagnostic; nobody takes the engine apart on a forecourt.",
-        "A traction battery State of Health test on an electric car. No national provider offered one when we checked. Ours is £99.99 on its own or £49.99 with an inspection.",
+        "A traction battery State of Health test on an electric car. No national provider offered one when we checked. Ours is £149.99 on its own or £49.99 with an inspection.",
         "Cars the provider will not look at. The AA excludes recorded write-offs, American imports and cars over 20 years old; the RAC's Basic excludes cars over 10 years or 120,000 miles, hybrids, 4x4s and convertibles; ClickMechanic excludes write-offs and imports.",
       ],
     },
     { type: "h2", text: "What the inspection saves" },
     {
       type: "p",
-      text: "CarExamer's index of 2,767 inspections found that 97.4% of cars inspected in 2026 had at least one item graded poor or fair. ClickMechanic says one in six cars needs more than £500 in repairs. Our own October 2026 diary included an imported V8 with £5,000 to £8,500 of problems behind a dealer's assurance that it had none, a small hatchback whose history check turned up a Cat N write-off and whose scan found misfire codes, and a performance BMW whose clean generic scan hid eight intermittent fault codes. Against those, £149.99 is a rounding error.",
+      text: "CarExamer's index of 2,767 inspections found that 97.4% of cars inspected in 2026 had at least one item graded poor or fair. ClickMechanic says one in six cars needs more than £500 in repairs. Our own October 2026 diary included an imported V8 with £5,000 to £8,500 of problems behind a dealer's assurance that it had none, a small hatchback whose history check turned up a Cat N write-off and whose scan found misfire codes, and a performance BMW whose clean generic scan hid eight intermittent fault codes. Against those, £199.99 is a rounding error.",
     },
-    { type: "h2", text: "What £149.99 and £199.99 buy here" },
+    { type: "h2", text: "What £199.99 and £249.99 buy here" },
     {
       type: "p",
       text: "The [Standard inspection](/book) is 160 points: the engine, gearbox, brakes, steering, suspension and tyres, a full diagnostic scan of every module, the history check, a road test, and a same-day report with video and photos. The [Premium](/book?package=premium) is 260 points and adds paint depth readings, a deeper look at the bodywork, an extended road test, repair cost guidance, seller and V5C checks and searches of salvage auctions and previous adverts. Both take place at the car, wherever it is for sale.",
@@ -80,7 +80,7 @@ export const inspectionCost: Guide = {
     {
       question: "Do you charge more for prestige or performance cars?",
       answer:
-        "No. A Standard inspection is £149.99 and a Premium £199.99 whether the car is a Corsa or an M4. We do suggest the Premium for cars where paint and bodywork matter most.",
+        "No. A Standard inspection is £199.99 and a Premium £249.99 whether the car is a Corsa or an M4. We do suggest the Premium for cars where paint and bodywork matter most.",
     },
     {
       question: "Is there a travel charge?",

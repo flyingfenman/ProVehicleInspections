@@ -92,7 +92,7 @@ export const whatItChecks: Guide = {
     },
     {
       type: "note",
-      text: "[Book a Standard inspection](/book) for £149.99 or [a Premium](/book?package=premium) for £199.99. Add the EV battery State of Health report to either for £49.99.",
+      text: "[Book a Standard inspection](/book) for £199.99 or [a Premium](/book?package=premium) for £249.99. Add the EV battery State of Health report to either for £49.99.",
     },
   ],
   faqs: [

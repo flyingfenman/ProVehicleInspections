@@ -7,7 +7,7 @@ export const essex: Area = {
   h1: "Pre Purchase Car Inspection Essex",
   title: "Pre Purchase Car Inspection Essex",
   description:
-    "Mobile pre-purchase car inspections across Essex from £149.99, our home county. Diagnostics, road test, history check and a same-day video report.",
+    "Mobile pre-purchase car inspections across Essex from £199.99, our home county. Diagnostics, road test, history check and a same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Essex? This is our home county, so a dealer in Chelmsford, a car supermarket on the A127 or a private seller in Colchester is familiar ground. We check the car's condition, diagnostics, road behaviour and history before you pay, with a video report the same day.",
@@ -63,7 +63,7 @@ export const essex: Area = {
     {
       question: "Do you cover the whole county, including Colchester, Clacton and Harwich?",
       answer:
-        "Yes. The price is the same anywhere in Essex, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Essex, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-london", "vehicle-inspection-hertfordshire", "vehicle-inspection-suffolk", "vehicle-inspection-cambridgeshire"],

@@ -5,11 +5,11 @@ export const evBatteryHealthCheck: Guide = {
   question: "How do you check an electric car's battery health before you buy?",
   title: "How to Check EV Battery Health Before You Buy",
   description:
-    "Five ways to check a used electric car's battery, from the dashboard to a full discharge test, what State of Health is normal by age, the red flags, and what our £99.99 mobile test reads.",
+    "Five ways to check a used electric car's battery, from the dashboard to a full discharge test, what State of Health is normal by age, the red flags, and what our £149.99 mobile test reads.",
   published: "2026-10-19",
   updated: "2026-10-19",
   answer:
-    "Read the State of Health from the battery management system with a diagnostic tool, at the car, before you pay. The car's own display (Tesla's app, the Leaf's 12 bars) is a rough guide, and a seller's certificate may be months old. A healthy used EV reads in the high 80s to mid 90s depending on age; the warranty threshold on most cars is 70%. Our mobile test takes minutes and costs £99.99.",
+    "Read the State of Health from the battery management system with a diagnostic tool, at the car, before you pay. The car's own display (Tesla's app, the Leaf's 12 bars) is a rough guide, and a seller's certificate may be months old. A healthy used EV reads in the high 80s to mid 90s depending on age; the warranty threshold on most cars is 70%. Our mobile test takes minutes and costs £149.99.",
   blocks: [
     { type: "h2", text: "Five ways to check, from weakest to strongest" },
     {
@@ -69,7 +69,7 @@ export const evBatteryHealthCheck: Guide = {
     { type: "h2", text: "What our test includes" },
     {
       type: "p",
-      text: "We come to the car wherever it is for sale, run the Autel CARA Approved battery health test, and give you the State of Health with the module and cell data on a report you keep. We check the recall record against the VIN, the warranty dates, the charge port and cable, the 12V battery, and a live charge where there is a charger nearby. On its own the test is [£99.99](/book?package=ev). Added to a [Standard or Premium inspection](/book) of the whole car it is £49.99.",
+      text: "We come to the car wherever it is for sale, run the Autel CARA Approved battery health test, and give you the State of Health with the module and cell data on a report you keep. We check the recall record against the VIN, the warranty dates, the charge port and cable, the 12V battery, and a live charge where there is a charger nearby. On its own the test is [£149.99](/book?package=ev). Added to a [Standard or Premium inspection](/book) of the whole car it is £49.99.",
     },
     {
       type: "note",

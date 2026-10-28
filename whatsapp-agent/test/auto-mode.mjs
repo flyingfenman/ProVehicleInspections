@@ -8,7 +8,7 @@ const log = async () => (await fetch(M + "/__log")).json()
 const sends = async () => (await log()).filter((e) => e.url.includes("PHONEID/messages") && e.body?.type === "text")
 const before = (await sends()).length
 const d = new Date(Date.now() + 2 * 864e5).toISOString().slice(0, 10)
-await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Hi Ben, Standard is £149.99.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "standard", battery: false, date: d, time: "10:00", reg: null }, needs_henry: false, note_for_henry: "" }) })
+await fetch(M + "/__claude", { method: "POST", body: JSON.stringify({ should_reply: true, reply: "Hi Ben, Standard is £199.99.\n[BOOKING_LINK]\nThanks, Henry", booking_link: { package: "standard", battery: false, date: d, time: "10:00", reg: null }, needs_henry: false, note_for_henry: "" }) })
 const t0 = Date.now()
 await cust("447700900010", "price for a standard check?", "wamid.auto1")
 for (let i = 0; i < 60 && (await sends()).length === before; i++) await sleep(250)
