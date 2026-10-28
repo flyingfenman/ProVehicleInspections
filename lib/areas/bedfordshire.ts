@@ -63,7 +63,7 @@ export const bedfordshire: Area = {
     {
       question: "Do you charge extra for Biggleswade, Sandy or the far side of the county?",
       answer:
-        "No. The price is the same anywhere in Bedfordshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99. Book online and pick a time. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
+        "No. The price is the same anywhere in Bedfordshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99. Book online and pick a time. If the seller has other buyers waiting, message us and we will tell you the earliest slot.",
     },
   ],
   related: ["vehicle-inspection-luton", "vehicle-inspection-hertfordshire", "vehicle-inspection-cambridgeshire", "vehicle-inspection-northamptonshire"],

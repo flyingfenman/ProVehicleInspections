@@ -48,7 +48,7 @@ export const nottinghamshire: Area = {
     {
       question: "Is there a travel charge for Mansfield, Worksop or Retford?",
       answer:
-        "No. The price is the same anywhere in Nottinghamshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Nottinghamshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at Available Car in Sutton-in-Ashfield before I sign, and do they allow it?",

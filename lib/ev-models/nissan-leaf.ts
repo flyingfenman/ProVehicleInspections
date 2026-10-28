@@ -53,7 +53,7 @@ export const nissanLeaf: EvModel = {
     {
       question: "Can you test a Leaf's battery on its own without a full inspection?",
       answer:
-        "Yes. The battery check on its own is £99.99: we come to the car, run the Autel test and give you the report. If you want the whole car checked as well, add the report to a Standard or Premium inspection for £49.99.",
+        "Yes. The battery check on its own is £149.99: we come to the car, run the Autel test and give you the report. If you want the whole car checked as well, add the report to a Standard or Premium inspection for £49.99.",
     },
   ],
   related: ["renault-zoe", "bmw-i3", "hyundai-kona-electric", "kia-e-niro"],

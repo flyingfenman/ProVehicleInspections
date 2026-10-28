@@ -53,7 +53,7 @@ export const birmingham: Area = {
     {
       question: "Do you charge extra for Birmingham, Solihull or Sutton Coldfield?",
       answer:
-        "No. The price is the same anywhere in Birmingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Birmingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at BCA Perry Barr before I bid on it?",

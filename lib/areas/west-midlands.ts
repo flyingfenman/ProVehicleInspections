@@ -48,7 +48,7 @@ export const westMidlands: Area = {
     {
       question: "Is the price the same in Coventry, Wolverhampton or Dudley as it is in Birmingham?",
       answer:
-        "Yes. The price is the same anywhere in the West Midlands, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in the West Midlands, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "The car is inside the Birmingham Clean Air Zone. Do you pay the charge to get to it, and does that affect the fee?",

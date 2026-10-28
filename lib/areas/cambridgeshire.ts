@@ -63,7 +63,7 @@ export const cambridgeshire: Area = {
     {
       question: "Do you charge extra for Wisbech, March or the far north of the county?",
       answer:
-        "No. The price is the same anywhere in Cambridgeshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Cambridgeshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-cambridge", "vehicle-inspection-peterborough", "vehicle-inspection-lincolnshire", "vehicle-inspection-norfolk", "vehicle-inspection-bedfordshire"],

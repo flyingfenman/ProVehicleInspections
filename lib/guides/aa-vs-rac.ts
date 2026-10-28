@@ -23,7 +23,7 @@ export const aaVsRac: Guide = {
         ["Diagnostic scan", "Advanced only (OBD scan)", "Advanced only (fault codes)", "Full scan of every module in both packages, with VCDS on Volkswagen group cars"],
         ["History check", "Not included; the terms exclude vehicle data checks", "Optional paid add-on", "Included in both packages"],
         ["Paint depth", "Not stated", "Not stated", "Premium"],
-        ["EV battery State of Health", "Not offered. Advanced lists a Digital Battery Test without saying which battery.", "Not offered", "Yes: CARA Approved Autel test, £99.99 alone or £49.99 added"],
+        ["EV battery State of Health", "Not offered. Advanced lists a Digital Battery Test without saying which battery.", "Not offered", "Yes: CARA Approved Autel test, £149.99 alone or £49.99 added"],
         ["Who turns up", "An AA engineer or a third party working on its behalf (terms, clause 3.1)", "The terms do not say whether inspectors are RAC employees", "Henry, every time"],
         ["When", "Aims to inspect within 2 to 4 working days of booking; weekdays 8:30 to 5", "Usually within 48 hours; verbal report by 7pm that day", "Usually within a day or two; report the same day"],
         ["Report", "Emailed; engineer talks it through by phone", "Emailed; verbal summary on Comprehensive and Advanced, none on Basic", "Same-day written report with video and photos, and a call"],

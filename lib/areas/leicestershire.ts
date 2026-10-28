@@ -63,7 +63,7 @@ export const leicestershire: Area = {
     {
       question: "Do you cover Market Harborough, Melton Mowbray and Hinckley at the same price as Leicester?",
       answer:
-        "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-leicester", "vehicle-inspection-nottinghamshire", "vehicle-inspection-northamptonshire", "vehicle-inspection-warwickshire", "vehicle-inspection-west-midlands", "vehicle-inspection-lincolnshire"],

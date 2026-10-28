@@ -48,7 +48,7 @@ export const norfolk: Area = {
     {
       question: "Do you cover King's Lynn and Great Yarmouth or only Norwich?",
       answer:
-        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99. King's Lynn, Great Yarmouth, the north coast and the villages in between are all covered.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99. King's Lynn, Great Yarmouth, the north coast and the villages in between are all covered.",
     },
     {
       question: "Can you inspect a car bought at Anglia Car Auctions in King's Lynn before I collect it?",

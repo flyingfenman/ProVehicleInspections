@@ -23,7 +23,7 @@ export const inspectionCost: Guide = {
         ["CarExamer (franchise network)", "Basic £142.99, 100+ checks", "Standard £189.99, 200+ checks", "Premium £256.99, 300+ checks", "Free basic data only"],
         ["WhoCanFixMyCar", "Quotes from local garages; the site's own average is £101.40", "", "", "Not included"],
         ["Pre-Purchase Inspections UK (London)", "From £95 plus VAT", "From £120 plus VAT, 105 points", "From £150 plus VAT, 143 points, diagnostics", "Not stated"],
-        ["Pro Vehicle Inspections", "Standard £199.99, 160 points, full diagnostic scan, road test", "Premium £249.99, 260 points, paint depth, extended road test, salvage and seller checks", "EV battery health report £99.99 alone or £49.99 added", "Included in both packages"],
+        ["Pro Vehicle Inspections", "Standard £199.99, 160 points, full diagnostic scan, road test", "Premium £249.99, 260 points, paint depth, extended road test, salvage and seller checks", "EV battery health report £149.99 alone or £49.99 added", "Included in both packages"],
       ],
     },
     {
@@ -47,7 +47,7 @@ export const inspectionCost: Guide = {
       items: [
         "A history check, on almost every national service. Outstanding finance, write-off status and mileage records are a separate purchase.",
         "Dismantling and compression tests. Every provider's inspection, ours included, is visual and diagnostic; nobody takes the engine apart on a forecourt.",
-        "A traction battery State of Health test on an electric car. No national provider offered one when we checked. Ours is £99.99 on its own or £49.99 with an inspection.",
+        "A traction battery State of Health test on an electric car. No national provider offered one when we checked. Ours is £149.99 on its own or £49.99 with an inspection.",
         "Cars the provider will not look at. The AA excludes recorded write-offs, American imports and cars over 20 years old; the RAC's Basic excludes cars over 10 years or 120,000 miles, hybrids, 4x4s and convertibles; ClickMechanic excludes write-offs and imports.",
       ],
     },

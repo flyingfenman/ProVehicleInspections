@@ -63,7 +63,7 @@ export const peterborough: Area = {
     {
       question: "Do you charge extra for Peterborough, Whittlesey or the villages?",
       answer:
-        "No. The price is the same anywhere in and around Peterborough, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in and around Peterborough, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-cambridgeshire", "vehicle-inspection-lincolnshire", "vehicle-inspection-cambridge", "vehicle-inspection-northamptonshire"],

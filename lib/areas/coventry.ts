@@ -58,7 +58,7 @@ export const coventry: Area = {
     {
       question: "Is there a travel charge for Coventry?",
       answer:
-        "No. The price is the same anywhere in Coventry, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Coventry, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at a private seller's house in Earlsdon or Tile Hill?",

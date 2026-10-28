@@ -53,7 +53,7 @@ export const northamptonshire: Area = {
     {
       question: "Do you cover Corby and Rushden as well as Northampton, and is the price the same?",
       answer:
-        "Yes to both. The price is the same anywhere in Northamptonshire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "Yes to both. The price is the same anywhere in Northamptonshire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "The car is an ex-fleet car. What do you check?",

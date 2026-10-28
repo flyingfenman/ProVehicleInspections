@@ -58,12 +58,12 @@ export const london: Area = {
     {
       question: "Do you charge extra for South London, Croydon, Bromley or Kingston?",
       answer:
-        "No. The price is the same anywhere in Greater London, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Greater London, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you do an EV battery check on a used Tesla in London?",
       answer:
-        "Yes. The CARA Approved Autel State of Health test runs on compatible Teslas and most other EVs. Add it to an inspection for £49.99 or book it on its own for £99.99. Send us the model and year first and we will confirm it is compatible.",
+        "Yes. The CARA Approved Autel State of Health test runs on compatible Teslas and most other EVs. Add it to an inspection for £49.99 or book it on its own for £149.99. Send us the model and year first and we will confirm it is compatible.",
     },
   ],
   related: ["pre-purchase-car-inspection-essex", "vehicle-inspection-hertfordshire", "vehicle-inspection-luton"],

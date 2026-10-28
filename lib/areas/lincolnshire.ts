@@ -53,7 +53,7 @@ export const lincolnshire: Area = {
     {
       question: "Do you charge extra for Boston, Holbeach or the Fens?",
       answer:
-        "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in South Lincolnshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at a private seller's house in one of the villages?",

@@ -39,7 +39,7 @@ export const worthIt: Guide = {
         "A private sale. You have no Consumer Rights Act protection, so the inspection is the only protection you get. [Dealer vs private seller](/guides/buying-a-used-car-from-a-dealer-vs-private-seller) explains the difference.",
         "An import, a recorded write-off or a car with a thin history. The national services often refuse these; they are the cars that most need a look.",
         "A performance or prestige car, where a single component can cost what a small car costs, and where paint depth readings tell you whether it has been crashed.",
-        "An electric car, where the battery is the dearest part and only a test tells you its state. The [battery health check](/guides/how-to-check-ev-battery-health-before-you-buy) is £99.99.",
+        "An electric car, where the battery is the dearest part and only a test tells you its state. The [battery health check](/guides/how-to-check-ev-battery-health-before-you-buy) is £149.99.",
         "A car you are buying at a distance, unseen, or in a hurry because other buyers are waiting.",
         "Any car where the seller has told you by phone that there is nothing wrong with it.",
       ],

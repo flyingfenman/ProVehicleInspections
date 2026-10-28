@@ -63,7 +63,7 @@ export const essex: Area = {
     {
       question: "Do you cover the whole county, including Colchester, Clacton and Harwich?",
       answer:
-        "Yes. The price is the same anywhere in Essex, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Essex, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-london", "vehicle-inspection-hertfordshire", "vehicle-inspection-suffolk", "vehicle-inspection-cambridgeshire"],

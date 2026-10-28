@@ -53,7 +53,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
       offers: [
         { "@type": "Offer", name: "Standard Inspection", price: "199.99", priceCurrency: "GBP" },
         { "@type": "Offer", name: "Premium Inspection", price: "249.99", priceCurrency: "GBP" },
-        { "@type": "Offer", name: "EV Battery Health Check", price: "99.99", priceCurrency: "GBP" },
+        { "@type": "Offer", name: "EV Battery Health Check", price: "149.99", priceCurrency: "GBP" },
       ],
     },
     {
@@ -91,7 +91,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
             <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm font-semibold">
               <span className="rounded-full border bg-white px-4 py-2">Standard £199.99</span>
               <span className="rounded-full border bg-white px-4 py-2">Premium £249.99</span>
-              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-primary">EV battery check £99.99</span>
+              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-primary">EV battery check £149.99</span>
             </div>
             <p className="mx-auto mt-4 inline-flex max-w-2xl items-center gap-2 text-sm font-semibold text-muted-foreground">
               <Route className="h-4 w-4 shrink-0 text-primary" /> {area.travel.summary}
@@ -232,7 +232,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
                   <div>
                     <h3 className="font-bold">Buying an electric or plug-in hybrid car in {area.name}?</h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Add a CARA Approved® Autel EV Battery State of Health report to either inspection for £49.99, or book the battery check on its own for £99.99. It isn&apos;t included in Standard or Premium.
+                      Add a CARA Approved® Autel EV Battery State of Health report to either inspection for £49.99, or book the battery check on its own for £149.99. It isn&apos;t included in Standard or Premium.
                     </p>
                   </div>
                 </div>

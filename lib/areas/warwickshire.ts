@@ -53,7 +53,7 @@ export const warwickshire: Area = {
     {
       question: "Is the price the same in Stratford-upon-Avon as in Rugby or Nuneaton?",
       answer:
-        "Yes. The price is the same anywhere in Warwickshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Warwickshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a used Toyota or Volkswagen at Listers in Stratford?",

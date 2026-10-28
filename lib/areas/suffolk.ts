@@ -48,7 +48,7 @@ export const suffolk: Area = {
     {
       question: "Do you cover Lowestoft and the Suffolk coast, or just Ipswich and Bury St Edmunds?",
       answer:
-        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "The whole county, at the same price, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at a Newmarket or Haverhill dealer on the same day as one in Bury St Edmunds?",

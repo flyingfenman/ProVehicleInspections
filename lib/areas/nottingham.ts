@@ -48,7 +48,7 @@ export const nottingham: Area = {
     {
       question: "Is there a travel charge for Nottingham, or does the price change?",
       answer:
-        "No. The price is the same anywhere in Nottingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Nottingham, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
     {
       question: "Can you inspect a car at Arnold Clark Nottingham or a Lenton Lane main dealer, and will they let you put it on a ramp?",
