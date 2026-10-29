@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // A separate Worker from the website. It answers WhatsApp messages sent to 01992 245660.
+  "name": "pvi-whatsapp-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  // Meta's webhook and Henry's drafts page. Not linked from the website and not indexed.
+  "routes": [{ "pattern": "replies.provehicleinspections.com", "custom_domain": true }],
+  "durable_objects": {
+    "bindings": [
+      // One Chat per customer phone number: the conversation, the waiting reply and its one minute timer.
+      { "name": "CHAT", "class_name": "Chat" },
+      // A single Inbox listing the drafts waiting for Henry.
+      { "name": "INBOX", "class_name": "Inbox" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Chat", "Inbox"] }],
+  "vars": {
+    // approve: every reply waits for Henry. auto: simple replies send themselves, the rest wait for Henry. off: do nothing.
+    "MODE": "approve",
+    // The shortest wait after the customer's last message before a reply goes out, plus up to RANDOM_EXTRA_SECONDS.
+    "MIN_DELAY_SECONDS": "60",
+    "RANDOM_EXTRA_SECONDS": "30",
+    // When Henry replies himself from the WhatsApp Business app, the agent stays out of that chat for this long.
+    "HANDOVER_HOURS": "12",
+    "SITE_URL": "https://www.provehicleinspections.com",
+    "AGENT_URL": "https://replies.provehicleinspections.com",
+    "GRAPH_VERSION": "v23.0"
+  },
+  // Secrets, added in the dashboard (Settings > Variables and Secrets, type Secret), never here:
+  // WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_APP_SECRET, WHATSAPP_VERIFY_TOKEN,
+  // ANTHROPIC_API_KEY, RESEND_API_KEY, NOTIFY_EMAIL, ADMIN_KEY
+  "keep_vars": true,
+  "observability": { "enabled": true }
+}

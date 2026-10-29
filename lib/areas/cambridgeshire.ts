@@ -7,7 +7,7 @@ export const cambridgeshire: Area = {
   h1: "Mobile Car Inspection Cambridgeshire",
   title: "Mobile Car Inspection Cambridgeshire",
   description:
-    "Independent mobile car inspections across Cambridgeshire from £149.99: Cambridge, Ely, Huntingdon, St Neots, St Ives, March, Wisbech, Chatteris and Peterborough. Same-day video report.",
+    "Independent mobile car inspections across Cambridgeshire from £199.99: Cambridge, Ely, Huntingdon, St Neots, St Ives, March, Wisbech, Chatteris and Peterborough. Same-day video report.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Cambridgeshire? From the Vindis dealers on Washingley Road in Huntingdon and Thurlow Nunn in Wisbech to the Cambridge main dealers and the Peterborough supermarkets, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -63,7 +63,7 @@ export const cambridgeshire: Area = {
     {
       question: "Do you charge extra for Wisbech, March or the far north of the county?",
       answer:
-        "No. The price is the same anywhere in Cambridgeshire, with no mileage or call-out charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "No. The price is the same anywhere in Cambridgeshire, with no mileage or call-out charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-cambridge", "vehicle-inspection-peterborough", "vehicle-inspection-lincolnshire", "vehicle-inspection-norfolk", "vehicle-inspection-bedfordshire"],

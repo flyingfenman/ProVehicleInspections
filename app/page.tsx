@@ -10,16 +10,16 @@ import { InspectionsFAQ } from "@/components/vehicle-inspections/sections/faq"
 import { FinalCta } from "@/components/vehicle-inspections/sections/final-cta"
 
 export const metadata: Metadata = {
-  title: "Mobile Car Inspection Service | Pro Vehicle Inspections",
+  title: "Pre-Purchase Car Inspection Service | Pro Vehicle Inspections",
   description:
-    "Independent mobile pre-purchase car inspections from £149.99. Diagnostics, road test, video review and buying advice across London, Essex, East Anglia and the Midlands.",
+    "Independent mobile pre-purchase car inspections from £199.99. We come to the car: full diagnostics, road test, history check and a same-day video report across London, Essex, East Anglia and the Midlands.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Car Inspection Service | Pre-Purchase Vehicle Inspections",
+    title: "Pre-Purchase Car Inspection Service | Pro Vehicle Inspections",
     description:
-      "Understand the car before you commit. Both packages include a video review, documented findings and personal buying guidance. Inspections from £149.99.",
+      "Understand the car before you commit. Both packages include a video review, documented findings and personal buying guidance. Inspections from £199.99.",
     url: "/",
     type: "website",
     images: ["/images/inspection-car.jpg"],

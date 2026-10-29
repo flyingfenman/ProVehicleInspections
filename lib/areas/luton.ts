@@ -7,7 +7,7 @@ export const luton: Area = {
   h1: "Pre-Purchase Car Inspection Luton",
   title: "Pre-Purchase Car Inspection Luton",
   description:
-    "Mobile pre-purchase car inspections in Luton and Dunstable from £149.99, at Tenby Car Supermarket, the Dunstable Road dealers, Steven Eagell Toyota or a private seller. Same-day video report.",
+    "Mobile pre-purchase car inspections in Luton and Dunstable from £199.99, at Tenby Car Supermarket, the Dunstable Road dealers, Steven Eagell Toyota or a private seller. Same-day video report.",
   schemaType: "City",
   intro:
     "Buying a used car in Luton or Dunstable? Tenby Car Supermarket on Camford Way, Luton AutoZone on Dunstable Road, Luton Trade Centre at Sundon Park and Steven Eagell Toyota on Latimer Road sell most of the town's used cars, with Bellevue Garage and the Dunstable independents alongside. We inspect the car where it is for sale: full diagnostics, a road test, a history check and a video report the same day.",

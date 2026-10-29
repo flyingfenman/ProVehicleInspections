@@ -43,7 +43,7 @@ const localBusinessSchema = {
         serviceType: "Pre-purchase vehicle inspection",
         description: "In-depth 160-point mechanical and condition inspection with diagnostics, road test, history check, video review, photo evidence, same-day report and buying guidance.",
       },
-      price: "149.99",
+      price: "199.99",
       priceCurrency: "GBP",
     },
     {
@@ -55,7 +55,7 @@ const localBusinessSchema = {
         serviceType: "Pre-purchase vehicle inspection",
         description: "Everything in Standard, including video review, evidence and buying guidance, plus a deeper 260-point assessment, extended road test and additional vehicle and seller provenance searches subject to available records and cooperation.",
       },
-      price: "199.99",
+      price: "249.99",
       priceCurrency: "GBP",
     },
     {
@@ -67,7 +67,7 @@ const localBusinessSchema = {
         serviceType: "EV traction battery State of Health assessment",
         description: "The CARA Approved Autel EV Battery Health Test and end-customer battery health report on their own, without a vehicle inspection, on compatible electric and plug-in hybrid vehicles.",
       },
-      price: "99.99",
+      price: "149.99",
       priceCurrency: "GBP",
     },
     {
@@ -82,6 +82,18 @@ const localBusinessSchema = {
       price: "49.99",
       priceCurrency: "GBP",
     },
+    {
+      "@type": "Offer",
+      url: "https://www.provehicleinspections.com/#mechanical-inspection",
+      itemOffered: {
+        "@type": "Service",
+        name: "Mechanical Inspection",
+        serviceType: "Independent vehicle fault inspection",
+        description: "Independent, non-invasive inspection of a fault after garage work: full diagnostic scan with live data, photos and video of the work, a written report on the findings and likely cause, and a signed statement of truth for a Small Claims case.",
+      },
+      price: "399.99",
+      priceCurrency: "GBP",
+    },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -90,25 +102,31 @@ const localBusinessSchema = {
       {
         "@type": "Offer",
         name: "Standard Pre-Purchase Vehicle Inspection",
-        price: "149.99",
-        priceCurrency: "GBP",
-      },
-      {
-        "@type": "Offer",
-        name: "Premium Pre-Purchase Vehicle Inspection",
         price: "199.99",
         priceCurrency: "GBP",
       },
       {
         "@type": "Offer",
+        name: "Premium Pre-Purchase Vehicle Inspection",
+        price: "249.99",
+        priceCurrency: "GBP",
+      },
+      {
+        "@type": "Offer",
         name: "EV Battery Health Check",
-        price: "99.99",
+        price: "149.99",
         priceCurrency: "GBP",
       },
       {
         "@type": "Offer",
         name: "EV Battery State of Health Report Add-on",
         price: "49.99",
+        priceCurrency: "GBP",
+      },
+      {
+        "@type": "Offer",
+        name: "Mechanical Inspection",
+        price: "399.99",
         priceCurrency: "GBP",
       },
     ],

@@ -14,6 +14,10 @@ const OTHER_SITES = [{ name: "Epping Car Buyer", origin: "https://www.eppingcarb
 // calendar still loads if it is struggling.
 const TIMEOUT_MS = 8000
 
+// Packages the other sites don't sell are checked against one of theirs that takes the same length of time, so the
+// same times are free.
+const STAND_IN: Partial<Record<PackageKey, PackageKey>> = { mechanical: "premium" }
+
 // Another site's diary: the times it still has free, per package, keyed by slotKey.
 export interface OtherDiary {
   name: string
@@ -36,8 +40,9 @@ async function fetchDiary(site: { name: string; origin: string }): Promise<Other
     const body = (await response.json()) as { slotsByPackage?: Partial<Record<PackageKey, Slot[]>> }
     const free = {} as Record<PackageKey, Set<string>>
     for (const key of PACKAGE_KEYS) {
-      const slots = body.slotsByPackage?.[key]
-      if (!Array.isArray(slots)) throw new Error(`no ${key} slots in the response`)
+      const listed = STAND_IN[key] ?? key
+      const slots = body.slotsByPackage?.[listed]
+      if (!Array.isArray(slots)) throw new Error(`no ${listed} slots in the response`)
       free[key] = new Set(slots.map(slotKey))
     }
     return { name: site.name, free }

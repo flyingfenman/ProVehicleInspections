@@ -78,7 +78,7 @@ export const evBatteryLife: Guide = {
     { type: "h2", text: "What this means when you buy used" },
     {
       type: "p",
-      text: "The battery is the most expensive part of the car and the one part the seller cannot see either. Read its State of Health before you pay, compare it with the band for its age, check the warranty dates, and look at how it was charged. [Our guide to checking battery health](/guides/how-to-check-ev-battery-health-before-you-buy) covers the methods, and [the battery test](/book?package=ev) is £99.99 at the car.",
+      text: "The battery is the most expensive part of the car and the one part the seller cannot see either. Read its State of Health before you pay, compare it with the band for its age, check the warranty dates, and look at how it was charged. [Our guide to checking battery health](/guides/how-to-check-ev-battery-health-before-you-buy) covers the methods, and [the battery test](/book?package=ev) is £149.99 at the car.",
     },
   ],
   faqs: [

@@ -78,7 +78,7 @@ export function EvModelPage({ model }: { model: EvModel }) {
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link href="/book?package=ev" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 font-bold text-white hover:bg-primary/90">
-                Book the battery check: £99.99 <ArrowRight className="ml-2 h-5 w-5" />
+                Book the battery check: £149.99 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link href="/book" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-border bg-white px-6 font-bold hover:bg-muted/40">
                 Full inspection + battery report
@@ -146,7 +146,7 @@ export function EvModelPage({ model }: { model: EvModel }) {
               ))}
             </ul>
             <p className="mt-5 rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm leading-relaxed">
-              The battery State of Health test is the CARA Approved Autel procedure, which reads the battery management system and reports pack health as a percentage with module and cell data. It takes minutes at the car. It is not a full charge and discharge capacity test, and we say so on every report. £99.99 on its own, or £49.99 added to a{" "}
+              The battery State of Health test is the CARA Approved Autel procedure, which reads the battery management system and reports pack health as a percentage with module and cell data. It takes minutes at the car. It is not a full charge and discharge capacity test, and we say so on every report. £149.99 on its own, or £49.99 added to a{" "}
               <Link href="/book" className="font-semibold text-primary underline underline-offset-4">
                 Standard or Premium inspection
               </Link>

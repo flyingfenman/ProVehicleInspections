@@ -20,7 +20,7 @@ import {
   CalendarDays,
 } from "lucide-react"
 import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
-import { INSPECTION_PACKAGES as PACKAGES } from "@/lib/inspection-packages"
+import { INSPECTION_GROUPS, INSPECTION_PACKAGES as PACKAGES, type InspectionGroup } from "@/lib/inspection-packages"
 import { trackWhatsAppClick } from "@/lib/tracking"
 import { getTrafficSource } from "@/lib/traffic-source"
 import { scrollToAnchorWhileLoading } from "@/lib/scroll-to-anchor"
@@ -93,8 +93,10 @@ export function InspectionsBookingCalendar() {
   const timeRef = useRef<HTMLDivElement>(null)
   const detailsRef = useRef<HTMLDivElement>(null)
   const [packageKey, setPackageKey] = useState<PackageKey>("standard")
+  // The two tabs above the packages: buying a car, or a fault after garage work.
+  const [group, setGroup] = useState<InspectionGroup>("pre-purchase")
   const [includeEvSoh, setIncludeEvSoh] = useState(false)
-  const [slotsByPackage, setSlotsByPackage] = useState<Record<PackageKey, Slot[]>>({ standard: [], premium: [], ev: [] })
+  const [slotsByPackage, setSlotsByPackage] = useState<Record<PackageKey, Slot[]>>({ standard: [], premium: [], ev: [], mechanical: [] })
   const [loadingSlots, setLoadingSlots] = useState(true)
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null)
@@ -132,6 +134,7 @@ export function InspectionsBookingCalendar() {
     const requestedPackage = params.get("package")
     if (isPackageKey(requestedPackage)) {
       setPackageKey(requestedPackage)
+      setGroup(PACKAGES.find((p) => p.key === requestedPackage)?.group || "pre-purchase")
       setPackageChoicesOpen(false)
     }
     // The battery add-on box on the inspections page comes here with ?battery=1, with the report already ticked.
@@ -154,7 +157,9 @@ export function InspectionsBookingCalendar() {
   const selectedPackage = PACKAGES.find((p) => p.key === packageKey) || PACKAGES[0]
   // The battery check on its own already is the battery report, so the add-on only goes with an inspection.
   const evOnly = packageKey === "ev"
-  const withEvSoh = includeEvSoh && !evOnly
+  // A car the customer already owns, after garage work: no seller, no advert and no battery add-on.
+  const mechanical = packageKey === "mechanical"
+  const withEvSoh = includeEvSoh && !evOnly && !mechanical
   const totalPrice = selectedPackage.amount + (withEvSoh ? EV_SOH_PRICE : 0)
   const slots = slotsByPackage[packageKey]
 
@@ -169,6 +174,7 @@ export function InspectionsBookingCalendar() {
         standard: data.slotsByPackage?.standard || [],
         premium: data.slotsByPackage?.premium || [],
         ev: data.slotsByPackage?.ev || [],
+        mechanical: data.slotsByPackage?.mechanical || [],
       })
     } catch {
       setError("Couldn't load available times. Please WhatsApp us and we'll arrange it with you.")
@@ -217,6 +223,20 @@ export function InspectionsBookingCalendar() {
   const choosePackage = (key: PackageKey) => {
     setPackageKey(key)
     setPackageChoicesOpen(false)
+    setSelectedDate(null)
+    setSelectedSlot(null)
+    setDetailsUnlocked(false)
+    resetShortNotice()
+    setError("")
+  }
+
+  // Switching tab picks that tab's first package, so the calendar always matches what is showing.
+  const chooseGroup = (key: InspectionGroup) => {
+    setGroup(key)
+    if (selectedPackage.group === key) return
+    const first = PACKAGES.find((p) => p.group === key)
+    if (!first) return
+    setPackageKey(first.key)
     setSelectedDate(null)
     setSelectedSlot(null)
     setDetailsUnlocked(false)
@@ -370,16 +390,31 @@ export function InspectionsBookingCalendar() {
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">1</span>
           <div>
             <h3 className="text-xl font-bold">Your inspection</h3>
-            <p className="hidden text-sm text-muted-foreground sm:block">Both inspections include an in-depth mechanical inspection, video review, evidence and personal buying guidance, or you can book the EV battery check on its own.</p>
+            <p className="hidden text-sm text-muted-foreground sm:block">
+              {group === "mechanical"
+                ? "For a fault after garage work: an independent report on what has gone wrong, with the evidence to back it up."
+                : "Both inspections include an in-depth mechanical inspection, video review, evidence and personal buying guidance, or you can book the EV battery check on its own."}
+            </p>
           </div>
         </div>
 
         {packageChoicesOpen ? (
+          <>
+          <div role="tablist" aria-label="Type of inspection" className="mb-4 grid grid-cols-2 gap-1 rounded-2xl border border-primary/20 bg-primary/5 p-1">
+            {INSPECTION_GROUPS.map((tab) => {
+              const active = group === tab.key
+              return (
+                <button key={tab.key} type="button" role="tab" aria-selected={active} onClick={() => chooseGroup(tab.key)} className={`min-h-12 rounded-xl px-3 text-sm font-bold transition sm:text-base ${active ? "bg-primary text-primary-foreground shadow-md" : "text-primary hover:bg-white"}`}>
+                  {tab.name}
+                </button>
+              )
+            })}
+          </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {PACKAGES.map((pkg) => {
+            {PACKAGES.filter((pkg) => pkg.group === group).map((pkg) => {
               const active = packageKey === pkg.key
               return (
-                <button key={pkg.key} type="button" onClick={() => choosePackage(pkg.key)} aria-pressed={active} className={`relative rounded-2xl border-2 p-5 text-left transition-all ${pkg.key === "ev" ? "md:col-span-2" : ""} ${active ? "border-primary bg-primary/5 shadow-md" : "border-border bg-white hover:border-primary/40 hover:shadow-sm"}`}>
+                <button key={pkg.key} type="button" onClick={() => choosePackage(pkg.key)} aria-pressed={active} className={`relative rounded-2xl border-2 p-5 text-left transition-all ${pkg.key === "ev" || pkg.key === "mechanical" ? "md:col-span-2" : ""} ${active ? "border-primary bg-primary/5 shadow-md" : "border-border bg-white hover:border-primary/40 hover:shadow-sm"}`}>
                   {pkg.popular && <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">Most thorough</span>}
                   <p className="text-sm font-semibold text-muted-foreground">{pkg.points}</p>
                   <div className="mt-1 flex items-end gap-3">
@@ -402,6 +437,7 @@ export function InspectionsBookingCalendar() {
               )
             })}
           </div>
+          </>
         ) : (
           <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 sm:p-5">
             <div className="min-w-0">
@@ -416,7 +452,7 @@ export function InspectionsBookingCalendar() {
         )}
       </div>
 
-      {!evOnly && (
+      {!evOnly && !mechanical && (
         <div className="rounded-3xl border border-border bg-white p-4 shadow-sm sm:p-6">
           <div className="flex items-start gap-3 sm:gap-4">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground sm:h-12 sm:w-12">
@@ -469,6 +505,8 @@ export function InspectionsBookingCalendar() {
           <p className="text-sm text-muted-foreground">
             {evOnly
               ? "Battery test and State of Health report, without an inspection"
+              : mechanical
+                ? "Diagnostic scan with live data, photos, video and a written report"
               : withEvSoh
                 ? "Includes EV Battery State of Health Report (+£49.99)"
                 : "No optional battery State of Health report selected"}
@@ -661,7 +699,7 @@ export function InspectionsBookingCalendar() {
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">3</span>
             <div>
               <h3 className="text-xl font-bold">Tell us about the car</h3>
-              <p className="text-sm text-muted-foreground">This lets us prepare before we arrive.</p>
+              <p className="text-sm text-muted-foreground">{mechanical ? "Tell us what was done and what has happened since, so we know what to look for." : "This lets us prepare before we arrive."}</p>
             </div>
           </div>
           <div className="grid gap-4 rounded-3xl border border-border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-6">
@@ -671,8 +709,21 @@ export function InspectionsBookingCalendar() {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="location">Where is the car? *</Label>
-              <Input id="location" value={form.location} onChange={set("location")} placeholder="Postcode or dealer name" required />
+              <Input id="location" value={form.location} onChange={set("location")} placeholder={mechanical ? "Postcode where the car will be" : "Postcode or dealer name"} required />
             </div>
+            {mechanical ? (
+              <>
+                <div className="space-y-1.5 sm:col-span-2">
+                  <Label htmlFor="sellerName">Garage that did the work</Label>
+                  <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Garage name and town" autoComplete="off" />
+                </div>
+                <div className="space-y-1.5 sm:col-span-2">
+                  <Label htmlFor="notes">What work was done, and what has gone wrong since? *</Label>
+                  <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="e.g. Cambelt changed in August, a tensioner failed three weeks later. Dates, mileage and any warning lights help." rows={4} maxLength={400} required />
+                </div>
+              </>
+            ) : (
+            <>
             <div className="space-y-1.5">
               <Label htmlFor="sellerName">Seller&apos;s name</Label>
               <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Private seller or dealership" autoComplete="off" />
@@ -705,6 +756,8 @@ export function InspectionsBookingCalendar() {
               <Label htmlFor="advertUrl">Link to the advert</Label>
               <Input id="advertUrl" type="text" value={form.advertUrl} onChange={set("advertUrl")} placeholder="AutoTrader, eBay, Facebook Marketplace, dealer advert..." />
             </div>
+            </>
+            )}
           </div>
         </div>
 
@@ -729,10 +782,12 @@ export function InspectionsBookingCalendar() {
               <Label htmlFor="email">Email address *</Label>
               <Input id="email" type="email" value={form.email} onChange={set("email")} placeholder="you@example.com" required autoComplete="email" />
             </div>
-            <div className="space-y-1.5 sm:col-span-2">
-              <Label htmlFor="notes">Anything you&apos;re already concerned about?</Label>
-              <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="Any noises, warning lights, seller comments or access details..." rows={2} maxLength={400} />
-            </div>
+            {!mechanical && (
+              <div className="space-y-1.5 sm:col-span-2">
+                <Label htmlFor="notes">Anything you&apos;re already concerned about?</Label>
+                <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="Any noises, warning lights, seller comments or access details..." rows={2} maxLength={400} />
+              </div>
+            )}
           </div>
         </div>
 
@@ -758,7 +813,9 @@ export function InspectionsBookingCalendar() {
                 <p className="text-sm text-muted-foreground">
                   {evOnly
                     ? "Battery test and State of Health report, without an inspection"
-                    : withEvSoh
+                    : mechanical
+                      ? "Diagnostic scan with live data, photos, video and a written report"
+                      : withEvSoh
                       ? "Includes EV Battery State of Health Report (+£49.99)"
                       : "Inspection only, no optional battery State of Health report"}
                 </p>

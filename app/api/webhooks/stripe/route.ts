@@ -187,16 +187,21 @@ export async function POST(request: NextRequest) {
       const hasEvSoh = includeEvSoh === "yes"
       // The EV battery health check on its own: no inspection, just the battery test and report.
       const evOnly = packageKey === "ev"
+      // The mechanical inspection: an independent report on a fault after garage work, on a car the customer owns.
+      const mechanical = packageKey === "mechanical"
+      const bookingKind = evOnly ? "EV battery health check" : mechanical ? "Mechanical inspection" : "Vehicle inspection"
       const visitDetails = evOnly
         ? "Henry will call or message you beforehand to confirm the details. He will then meet you at the car, run the CARA Approved® Autel EV Battery Health Test and talk you through the battery's State of Health before you hand over any money to the seller. Vehicle compatibility will be confirmed from the car details."
-        : "Henry will call or message you beforehand to confirm the details. He will then meet you at the car, complete the full inspection and talk you through everything found before you hand over any money to the seller."
+        : mechanical
+          ? "Henry will call or message you beforehand to confirm the details. He will then meet you at the car, run a full diagnostic scan with live data and photograph and video the work and the fault. Nothing is taken apart. Your written report, with a signed statement of truth, follows after the visit, and Henry is on hand to make sure you understand it and to answer any questions."
+          : "Henry will call or message you beforehand to confirm the details. He will then meet you at the car, complete the full inspection and talk you through everything found before you hand over any money to the seller."
       const amountPaid = `£${((session.amount_total || 0) / 100).toFixed(2)}`
       const slotFull = new Date(slotStart).toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })
       const slotEndTime = new Date(slotEnd).toLocaleString("en-GB", { timeZone: "Europe/London", timeStyle: "short" })
       const evSohLine = hasEvSoh ? "\nEV Battery SOH add on: YES. CARA Approved® Autel EV Battery Health Test report required" : ""
 
       const internalEmail = `
-New PAID ${evOnly ? "EV Battery Health Check" : "Vehicle Inspection"} Booking (${BRAND.name})
+New PAID ${evOnly ? "EV Battery Health Check" : mechanical ? "Mechanical Inspection" : "Vehicle Inspection"} Booking (${BRAND.name})
 
 Package: ${packageName}${evSohLine}
 Slot: ${slotFull} to ${slotEndTime}
@@ -204,9 +209,11 @@ Slot: ${slotFull} to ${slotEndTime}
 Vehicle Details:
 Registration: ${registration}
 Where the car is: ${location}
-Seller name: ${sellerName || "Not provided"}
+${mechanical
+  ? `Garage that did the work: ${sellerName || "Not provided"}`
+  : `Seller name: ${sellerName || "Not provided"}
 Seller contact number: ${sellerPhone || "Not provided"}
-Advert link: ${advertUrl || "Not provided"}
+Advert link: ${advertUrl || "Not provided"}`}
 
 Customer Details:
 Name: ${customerName}
@@ -217,7 +224,7 @@ How they found us:
 ${trafficSource || "Direct / unknown"}${trafficDetail ? ` (${trafficDetail})` : ""}
 Landing page: ${landingPage || "Unknown"}
 
-Additional Notes:
+${mechanical ? "Work done and what has gone wrong" : "Additional Notes"}:
 ${notes || "None provided"}
 
 Amount paid: ${amountPaid}
@@ -242,7 +249,7 @@ Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
       // Set REVIEW_URL on the Worker to the Google Business Profile review link; until then the line is left out.
       const reviewUrl = process.env.REVIEW_URL || ""
       const customerHtml = brandedEmail(
-        evOnly ? "Your EV battery health check is confirmed" : "Your vehicle inspection is confirmed",
+        `Your ${bookingKind.toLowerCase()} is confirmed`,
         `<div style="font-family:${FONT_STACK};font-size:16px;line-height:1.7;color:#342c38;">Hi ${escapeHtml(firstName)},</div>
          <div style="font-family:${FONT_STACK};font-size:16px;line-height:1.7;color:#342c38;margin-top:12px;">Your <strong>${escapeHtml(packageName)}</strong> is booked and paid for. Thank you.</div>
          ${hasEvSoh ? `<div style="font-family:${FONT_STACK};margin:20px 0 0;background:#eef9f5;border:1px solid #bfe8d7;border-radius:12px;padding:15px 16px;color:#145c48;font-size:14px;line-height:1.6;"><strong>EV Battery SOH included</strong><br>Your £49.99 CARA Approved® Autel EV Battery Health Test has been added to the booking. Vehicle compatibility will be confirmed from the car details.</div>` : ""}
@@ -261,7 +268,7 @@ Questions in the meantime? WhatsApp Henry directly on ${BRAND.whatsappDisplay}.
 
       const subjectSuffix = hasEvSoh ? " + EV Battery SOH" : ""
       // Henry's inbox also gets Epping's and Stamford's bookings, so the brand goes first in the subject.
-      const internalSubject = `Pro Vehicle Inspections: ${evOnly ? "EV battery health check" : "Vehicle inspection"} request: ${registration} (${packageName}${subjectSuffix}) PAID`
+      const internalSubject = `Pro Vehicle Inspections: ${bookingKind} request: ${registration} (${packageName}${subjectSuffix}) PAID`
       const [internalOk, customerOk] = await Promise.all([
         sendEmail(
           BRAND.inbox,

@@ -7,7 +7,7 @@ export const leicestershire: Area = {
   h1: "Mobile Car Inspection Leicestershire and Rutland",
   title: "Mobile Car Inspection Leicestershire and Rutland",
   description:
-    "Independent mobile car inspections across Leicestershire and Rutland from £149.99: Loughborough, Hinckley, Market Harborough, Melton Mowbray, Oakham, Uppingham and Castle Donington.",
+    "Independent mobile car inspections across Leicestershire and Rutland from £199.99: Loughborough, Hinckley, Market Harborough, Melton Mowbray, Oakham, Uppingham and Castle Donington.",
   schemaType: "AdministrativeArea",
   intro:
     "Buying a used car in Leicestershire or Rutland? From Available Car at Castle Donington and Motorline Direct in Loughborough to the dealers in Hinckley, Market Harborough and Melton Mowbray and private sellers across Rutland, we come to the car and inspect it before you commit: full diagnostics, a road test, a history check and a video report the same day.",
@@ -63,7 +63,7 @@ export const leicestershire: Area = {
     {
       question: "Do you cover Market Harborough, Melton Mowbray and Hinckley at the same price as Leicester?",
       answer:
-        "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £149.99, Premium £199.99, and the EV battery check £99.99.",
+        "Yes. The price is the same anywhere in Leicestershire, with no call-out or mileage charge: Standard £199.99, Premium £249.99, and the EV battery check £149.99.",
     },
   ],
   related: ["vehicle-inspection-leicester", "vehicle-inspection-nottinghamshire", "vehicle-inspection-northamptonshire", "vehicle-inspection-warwickshire", "vehicle-inspection-west-midlands", "vehicle-inspection-lincolnshire"],
