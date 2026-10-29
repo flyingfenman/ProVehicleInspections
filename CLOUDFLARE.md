@@ -19,6 +19,7 @@ Worker's name in the dashboard). It needs no database or storage bucket.
    - `STRIPE_SECRET_KEY`: the live secret key of the Pro Vehicle Inspections Stripe account
    - `STRIPE_WEBHOOK_SECRET`: the signing secret of the webhook in step 6
    - `RESEND_API_KEY`: a send-only Resend key, for the contact form and booking emails
+   - `LEAD_TOOL_INBOUND_URL` (optional): the lead tool's inbound address (Lead Tool > Settings > Your inbound address). Paid bookings are sent there so each one appears as an inspection
 5. **Domain.** Deploying adds `www.provehicleinspections.com` to the Worker (it is in `wrangler.jsonc`). Then add a
    redirect for the bare domain: the domain's Rules > Redirect Rules > Create rule > "Redirect from root to WWW"
    template, status 301. In DNS, the bare domain needs a proxied (orange cloud) record for the rule to catch it, for
