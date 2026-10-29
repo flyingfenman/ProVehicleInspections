@@ -14,10 +14,11 @@ const BRAND = {
   name: "Pro Vehicle Inspections",
   tagline: "Independent mobile pre-purchase car inspections",
   // Sent from Epping Car Buyer's address under this site's name until provehicleinspections.com is added to Resend
-  // (the Resend plan is at its domain limit). Change the address here when it is.
+  // (the Resend plan is at its domain limit). Change the address here when it is. Replies and Henry's copy go to the
+  // site's own Zoho inbox.
   from: "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
-  replyTo: "henry@eppingcarbuyer.com",
-  inbox: "henry@eppingcarbuyer.com",
+  replyTo: "henry@provehicleinspections.com",
+  inbox: "henry@provehicleinspections.com",
   whatsappLink: "441992245660",
   whatsappDisplay: "+44 1992 245660",
   site: "www.provehicleinspections.com",
