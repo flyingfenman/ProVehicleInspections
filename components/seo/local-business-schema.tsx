@@ -84,7 +84,7 @@ const localBusinessSchema = {
     },
     {
       "@type": "Offer",
-      url: "https://www.provehicleinspections.com/#mechanical-inspection",
+      url: "https://www.provehicleinspections.com/mechanical-inspection",
       itemOffered: {
         "@type": "Service",
         name: "Mechanical Inspection",

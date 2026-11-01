@@ -23,6 +23,9 @@ export function Footer() {
             <Link href="/inspection-notes" className="inline-flex min-h-11 items-center text-sm hover:underline">
               Inspection Notes
             </Link>
+            <Link href="/mechanical-inspection" className="inline-flex min-h-11 items-center text-sm hover:underline">
+              Mechanical Inspection
+            </Link>
             <Link href="/ev-battery-health-check" className="inline-flex min-h-11 items-center text-sm hover:underline">
               EV &amp; Hybrid Battery Health Check
             </Link>
