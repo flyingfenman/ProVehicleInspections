@@ -16,7 +16,7 @@ export function Header() {
             Pro Vehicle Inspections
           </Link>
 
-          <nav className="hidden md:flex items-center gap-4">
+          <nav className="hidden lg:flex items-center gap-3">
             <Button
               asChild
               size="lg"
@@ -33,6 +33,13 @@ export function Header() {
             </Button>
             <Button
               asChild
+              size="lg"
+              className="text-base font-semibold bg-[#dc2626] text-white hover:bg-[#b91c1c] border-2 border-[#b91c1c] shadow-md"
+            >
+              <Link href="/mechanical-inspection">Mechanical Inspection</Link>
+            </Button>
+            <Button
+              asChild
               variant="outline"
               size="lg"
               className="text-base bg-[#6711a4] text-white hover:bg-[#6711a4]/90 border-[#6711a4]"
@@ -43,7 +50,7 @@ export function Header() {
 
           <button
             type="button"
-            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-md md:hidden"
+            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-md lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -54,7 +61,7 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <nav id="mobile-menu" className="md:hidden mt-4 pb-4 space-y-2">
+          <nav id="mobile-menu" className="lg:hidden mt-4 pb-4 space-y-2">
             <Button asChild className="flex h-12 w-full font-semibold bg-[#0d9488] text-white hover:bg-[#0b7a70]" size="lg">
               <Link href="/book" onClick={() => setIsMenuOpen(false)}>
                 Book an Inspection
@@ -63,6 +70,11 @@ export function Header() {
             <Button asChild className="flex h-12 w-full font-semibold bg-[#2563eb] text-white hover:bg-[#1d4ed8]" size="lg">
               <Link href="/ev-battery-health-check" onClick={() => setIsMenuOpen(false)}>
                 EV Battery Check
+              </Link>
+            </Button>
+            <Button asChild className="flex h-12 w-full font-semibold bg-[#dc2626] text-white hover:bg-[#b91c1c]" size="lg">
+              <Link href="/mechanical-inspection" onClick={() => setIsMenuOpen(false)}>
+                Mechanical Inspection
               </Link>
             </Button>
             <Button asChild className="flex h-12 w-full bg-[#6711a4] text-white hover:bg-[#6711a4]/90" size="lg">
