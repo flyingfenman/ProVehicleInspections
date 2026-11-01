@@ -2,7 +2,7 @@ import { Check, MessageCircle } from "lucide-react"
 import { SITE } from "./site"
 
 const POINTS = [
-  "Independent of the seller, with no commission from the car you're buying",
+  "Independent of the seller",
   "The person who inspects the car is the person you talk to",
   "Straight answers in plain English, good news and bad",
 ]
@@ -11,10 +11,23 @@ const POINTS = [
 export function MeetHenry() {
   return (
     <section className="overflow-hidden border-t bg-white py-12 sm:py-16">
-      <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-border bg-white shadow-md md:max-w-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element -- the same photo the home page uses */}
-          <img src="/henry.webp" alt={`Henry from ${SITE.brand}`} width={750} height={1000} loading="lazy" className="h-auto w-full object-contain" />
+      <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[1fr_1fr] lg:gap-14">
+        <div className="mx-auto grid w-full max-w-md grid-cols-2 gap-3 sm:gap-4 md:max-w-none">
+          <div className="overflow-hidden rounded-[2rem] border border-border bg-white shadow-md">
+            {/* eslint-disable-next-line @next/next/no-img-element -- the same photo the home page uses */}
+            <img src="/henry.webp" alt={`Henry from ${SITE.brand}`} width={750} height={1000} loading="lazy" className="h-full w-full object-contain" />
+          </div>
+          <div className="overflow-hidden rounded-[2rem] border border-border bg-white shadow-md">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static photo, already sized and compressed */}
+            <img
+              src="/images/polo-inspection.webp"
+              alt={`Black Volkswagen Polo on ramps with the bonnet up during a ${SITE.brand} inspection`}
+              width={750}
+              height={1000}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
 
         <div>
