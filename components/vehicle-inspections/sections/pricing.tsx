@@ -134,7 +134,8 @@ function BatteryAddOn() {
   )
 }
 
-const MECHANICAL_ITEMS: Item[] = [
+// Shared with the /mechanical-inspection page, so the tab and the page always say the same thing.
+export const MECHANICAL_ITEMS: Item[] = [
   { label: "Full Autel diagnostic scan of every module", note: "Fault codes with their freeze-frame data, and live data read with the engine running" },
   { label: "Photos and video of the work and the fault", note: "Everything that can be seen without taking anything apart" },
   { label: "Written report of the findings and the likely cause", note: "Laid out so a garage, or a judge, can follow it" },
@@ -142,7 +143,14 @@ const MECHANICAL_ITEMS: Item[] = [
   { label: "On hand to explain the report", note: "To make sure you understand it and to answer any questions" },
 ]
 
-const MECHANICAL_LIMITS: Item[] = [
+export const MECHANICAL_JOBS = [
+  "A tensioner, pulley or water pump failing soon after a cambelt change",
+  "Timing chain noise or faults after a repair",
+  "Warning lights, misfires or running faults that started after a service or repair",
+  "A garage saying the fault is nothing to do with their work",
+]
+
+export const MECHANICAL_LIMITS: Item[] = [
   { label: "Non-invasive only", note: "Nothing is stripped down or taken apart, so the findings cover what the scan, live data and a visual inspection show" },
   { label: "No court attendance", note: "The signed statement goes with your claim; we don't attend hearings" },
 ]
@@ -178,11 +186,13 @@ function MechanicalInspection() {
         <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-7">
           <h3 className="text-xl font-bold">Typical jobs</h3>
           <ul className="mt-3 space-y-2 text-muted-foreground">
-            <li>A tensioner, pulley or water pump failing soon after a cambelt change</li>
-            <li>Timing chain noise or faults after a repair</li>
-            <li>Warning lights, misfires or running faults that started after a service or repair</li>
-            <li>A garage saying the fault is nothing to do with their work</li>
+            {MECHANICAL_JOBS.map((job) => (
+              <li key={job}>{job}</li>
+            ))}
           </ul>
+          <Link href="/mechanical-inspection" className="mt-3 inline-flex min-h-11 items-center font-bold text-primary underline underline-offset-4">
+            More about the mechanical inspection
+          </Link>
         </div>
 
         <div className="rounded-3xl border border-border bg-white p-6 shadow-sm sm:p-7">
