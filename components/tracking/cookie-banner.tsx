@@ -130,12 +130,21 @@ export function CookieBanner() {
     >
       {view === "banner" ? (
         <>
-          <p id="cookie-banner-title" className="flex items-center gap-2 text-lg font-bold">
-            <Cookie className="h-5 w-5 text-primary" aria-hidden="true" /> Can we use cookies?
-          </p>
+          {/* On a phone the card is kept short: two lines of text and the privacy link beside the title. */}
+          <div className="flex items-center justify-between gap-3">
+            <p id="cookie-banner-title" className="flex items-center gap-2 text-lg font-bold">
+              <Cookie className="h-5 w-5 text-primary" aria-hidden="true" /> Can we use cookies?
+            </p>
+            <Link href="/privacy-policy" className={`${textLink} shrink-0 sm:hidden`}>
+              Privacy policy
+            </Link>
+          </div>
           <p className="mt-1 text-sm leading-snug text-muted-foreground">
-            Cookies from us, Google and Meta help us see how people find and use the site, measure our adverts and
-            show them to past visitors. None of them are on unless you say yes.
+            <span className="sm:hidden">Cookies from us, Google and Meta measure our adverts. None are on unless you say yes.</span>
+            <span className="hidden sm:inline">
+              Cookies from us, Google and Meta help us see how people find and use the site, measure our adverts and
+              show them to past visitors. None of them are on unless you say yes.
+            </span>
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button type="button" className={solidButton} onClick={() => save(ALL_ON)}>
@@ -154,9 +163,11 @@ export function CookieBanner() {
               Confirm choices
             </button>
           </div>
-          <Link href="/privacy-policy" className={`${textLink} mt-1`}>
-            Privacy policy
-          </Link>
+          <div className="mt-1 hidden sm:block">
+            <Link href="/privacy-policy" className={textLink}>
+              Privacy policy
+            </Link>
+          </div>
         </>
       ) : (
         <>

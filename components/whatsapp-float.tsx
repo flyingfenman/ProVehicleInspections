@@ -26,9 +26,11 @@ export function WhatsAppFloat() {
   }
 
   // While the cookie banner is open (components/tracking/cookie-banner.tsx) this button sits just above it and its
-  // message is hidden, so the two don't pile up over the page. It hides behind the cookie settings panel.
+  // message is hidden, so the two don't pile up over the page. It hides behind the cookie settings panel. On the
+  // booking page (components/vehicle-inspections/booking-calendar.tsx) the message stays off, and the button hides
+  // while the booking bar is across the bottom of the screen.
   return (
-    <div className="fixed bottom-[calc(1rem_+_var(--cookie-banner-space,0px))] right-4 z-40 h-14 w-14 transition-[bottom] duration-300 motion-reduce:transition-none sm:bottom-[calc(1.5rem_+_var(--cookie-banner-space,0px))] sm:right-6 [html[data-cookie-banner=settings]_&]:hidden">
+    <div className="fixed bottom-[calc(1rem_+_var(--cookie-banner-space,0px))] right-4 z-40 h-14 w-14 transition-[bottom] duration-300 motion-reduce:transition-none sm:bottom-[calc(1.5rem_+_var(--cookie-banner-space,0px))] sm:right-6 [html[data-cookie-banner=settings]_&]:hidden [html[data-booking-bar]_&]:hidden">
       <a
         href="https://wa.me/441992245660"
         target="_blank"
@@ -39,7 +41,7 @@ export function WhatsAppFloat() {
         <MessageCircle className="w-7 h-7" aria-hidden="true" />
       </a>
       {showMessage && (
-        <div className="absolute right-full top-1/2 mr-3 w-max max-w-[calc(100vw-7rem)] -translate-y-[66%] px-7 py-6 text-center text-sm leading-snug text-gray-900 drop-shadow-lg [html[data-cookie-banner]_&]:hidden">
+        <div className="absolute right-full top-1/2 mr-3 w-max max-w-[calc(100vw-7rem)] -translate-y-[66%] px-7 py-6 text-center text-sm leading-snug text-gray-900 drop-shadow-lg [html[data-cookie-banner]_&]:hidden [html[data-booking-page]_&]:hidden">
           <svg
             aria-hidden="true"
             className="absolute inset-0 h-full w-full"

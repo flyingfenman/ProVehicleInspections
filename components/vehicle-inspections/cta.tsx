@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { InspectionsBookingCalendar } from "./booking-calendar"
 
 // The booking page: the title, then straight into choosing a package and a time.
@@ -15,11 +14,6 @@ export function InspectionsCta() {
           </div>
 
           <InspectionsBookingCalendar />
-          <p className="mt-7 text-center">
-            <Link href="/" className="text-sm font-bold text-primary underline underline-offset-4">
-              Want to know more first? See what each inspection includes
-            </Link>
-          </p>
 
           <p className="mt-7 text-center text-sm text-muted-foreground">
             You&apos;ll deal directly with Henry from booking through to your inspection findings, with no call centre and no sales commission from the car.
