@@ -7,9 +7,12 @@ export type CheckItem = {
   label: string
   /** The inspector's own note, as recorded. */
   note?: string
-  result: CheckResult
-  /** The recorded wording for a satisfactory result, such as "No damage found". */
+  /** Left out where the report shows no result pill, as on the repair cost summary. */
+  result?: CheckResult
+  /** The recorded wording for the pill, such as "No damage found". Defaults to "Satisfactory", "Minor" and so on. */
   status?: string
+  /** Photos from this report shown under the point, as the report shows them. */
+  photos?: string[]
 }
 
 export type CheckSection = {
@@ -35,8 +38,18 @@ export type ScanGroup = {
 export type ReportPhoto = {
   src: string
   caption: string
-  /** Where to anchor the crop in the square-ish gallery tile. */
+  /** Where to anchor the crop in the gallery tile. */
   position?: string
+}
+
+/** A row of the history check: a label, an optional line of detail and an optional pill or value on the right. */
+export type HistoryRow = {
+  label: string
+  detail?: string
+  /** A value shown on the right. null means it was taken out for privacy. */
+  value?: string | null
+  /** A green pill on the right, such as "Pass". */
+  pill?: string
 }
 
 export type RealReport = {
@@ -48,23 +61,20 @@ export type RealReport = {
   mileage: string
   inspector: string
   where: { label: string; href: string }
-  hero: { src: string; alt: string; position?: string }
+  hero: { src: string; alt: string; width: number; height: number }
   summary: {
     overallScore: number
     verdict: string
     history: string
     faultCodes: number
-    stats: { value: string; label: string }[]
+    evidence: string[]
     positives: string[]
     negotiation: { point: string; estimate: string }[]
-    repairs: { label: string; priority: string; detail: string; estimate: string }[]
-    combinedEstimate: string
-    maintenance: string
-    repairNote: string
   }
   categories: { name: "Mechanical" | "Body & Chassis" | "Interior"; score: number; reasons: string[] }[]
   scan: {
     tool: string
+    software: string
     date: string
     systems: number
     odometer: string
@@ -76,15 +86,13 @@ export type RealReport = {
     note: string
   }
   history: {
-    details: { label: string; value: string | null }[]
-    passed: string[]
-    noted: string[]
-    mileageAtInspection: string
-    mot: { date: string; mileage: string; result: string; note: string }[]
-    motValidUntil: string
-    valuation: { label: string; value: string }
-    runningCosts: { total: string; items: { label: string; detail: string; value: string }[] }
-    specification: { label: string; value: string }[]
+    details: HistoryRow[]
+    checks: HistoryRow[]
+    cards: { title: string; rows: HistoryRow[] }[]
+    runningCosts: { total: string; items: { label: string; detail: string; value: number }[] }
+    otherResults: HistoryRow[]
+    specification: HistoryRow[]
+    source: string
   }
   checklist: { recorded: number; total: number; sections: CheckSection[] }
   photos: ReportPhoto[]
