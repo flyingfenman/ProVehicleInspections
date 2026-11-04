@@ -253,3 +253,30 @@
 #book .shadow-xl {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08) !important;
 }
+
+/* Sliding reviews strip (components/reviews-slider.tsx): the track holds the list twice, so moving it by half its
+   width loops without a jump. Paused under a finger or mouse; still for reduced motion, where it scrolls by hand. */
+@keyframes reviews-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.reviews-slider-track {
+  animation: reviews-slide 70s linear infinite;
+}
+
+.reviews-slider:hover .reviews-slider-track,
+.reviews-slider:focus-within .reviews-slider-track,
+.reviews-slider:active .reviews-slider-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-slider-track {
+    animation: none;
+  }
+}

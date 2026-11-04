@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { ReviewsSlider } from "@/components/reviews-slider"
 import Link from "next/link"
 import { BatteryCharging, BadgeCheck, Gauge, FileCheck2, MapPin, ShieldCheck, ArrowRight, Info, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -313,6 +314,7 @@ export default function EvBatteryHealthCheckPage() {
           </div>
         </div>
       </section>
+      <ReviewsSlider />
     </main>
   )
 }

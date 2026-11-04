@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { ReviewsSlider } from "@/components/reviews-slider"
 import Link from "next/link"
 import { ArrowRight, Camera, ClipboardList, FileSignature, Gauge, MapPin, MessageCircle, Minus, ScanLine, Wrench } from "lucide-react"
 import { MECHANICAL_ITEMS, MECHANICAL_JOBS, MECHANICAL_LIMITS } from "@/components/vehicle-inspections/sections/pricing"
@@ -311,6 +312,7 @@ export default function MechanicalInspectionPage() {
           </div>
         </div>
       </section>
+      <ReviewsSlider />
     </main>
   )
 }

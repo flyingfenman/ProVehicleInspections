@@ -23,7 +23,7 @@ import { bedfordshire } from "./bedfordshire"
 import { westMidlands } from "./west-midlands"
 import { warwickshire } from "./warwickshire"
 
-export type { Area, AreaFaq, AreaPlace } from "./types"
+export type { Area, AreaFaq } from "./types"
 
 // Cities first, then counties, in the order they are listed on the site.
 export const areas: Area[] = [
@@ -72,3 +72,8 @@ export const AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Rutland" },
   ...cityAreas.map((area) => ({ "@type": "City", name: area.name })),
 ]
+
+/** Meta description, under 160 characters for every area. */
+export function areaDescription(area: Area) {
+  return `Henry comes to the car anywhere in ${area.name}: diagnostics, road test, history check and a same-day video report. From £199.99, no mileage charge.`
+}

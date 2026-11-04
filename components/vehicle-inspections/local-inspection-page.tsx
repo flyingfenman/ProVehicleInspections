@@ -1,12 +1,14 @@
+import Image from "next/image"
 import Link from "next/link"
+import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
 import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
+import { inspectionPhotos } from "@/lib/inspection-photos"
 import {
   ArrowRight,
   BatteryCharging,
-  Car,
   Check,
   ChevronDown,
   FileText,
@@ -18,27 +20,43 @@ import {
 const BRAND = "Pro Vehicle Inspections"
 const SITE_URL = "https://www.provehicleinspections.com"
 
-// Questions every area page answers the same way, after the ones written for the place.
-const SHARED_FAQS = [
-  {
-    question: "Do I need to be there?",
-    answer:
-      "No. We can inspect the car directly with the seller or dealer and send you the video review, photos and report afterwards, then talk it through with you on the phone.",
-  },
-  {
-    question: "Will you tell me whether to buy the car?",
-    answer:
-      "We give you the findings, point out what matters and what it is likely to cost, and talk it through so you can make your own decision. We have no commission from the sale, so the advice is straight.",
-  },
-]
+// The same answers on every area page, in Henry's words, with the place name filled in.
+function areaFaqs(name: string) {
+  return [
+    {
+      question: `Do you charge extra to come out to ${name}?`,
+      answer: `No. It's the same price anywhere in ${name}: £199.99 for a Standard inspection, £249.99 for Premium, and £49.99 on top if you want the EV battery health check. No mileage or call-out charge.`,
+    },
+    {
+      question: "Can you inspect a car at a dealer?",
+      answer:
+        "Yes. Tell the dealer an independent inspector is coming and I'll sort the time out with them. I inspect it on their site and road test it where they allow it.",
+    },
+    {
+      question: "What about a private seller's driveway?",
+      answer:
+        "Yes, I do plenty of those. Ask the seller to have the keys, the V5C and any service history ready, and somewhere level to park. If you give me their number I can arrange it with them myself.",
+    },
+    {
+      question: "Do I need to be there?",
+      answer:
+        "No. Most people aren't. I inspect the car with the seller or dealer, send you the video, photos and report afterwards, and then we go through it together.",
+    },
+    {
+      question: "Will you tell me whether to buy it?",
+      answer:
+        "I'll tell you what I found, what matters, what doesn't, and roughly what it'll cost to put right. The decision is yours, but you'll get my honest view. I get nothing from the sale either way.",
+    },
+  ]
+}
 
 function formatUpdated(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
 }
 
-export function LocalInspectionPage({ area, localProof }: { area: Area; localProof?: React.ReactNode }) {
+export function LocalInspectionPage({ area }: { area: Area }) {
   const url = `${SITE_URL}${areaPath(area)}`
-  const faqs = [...area.faqs, ...SHARED_FAQS]
+  const faqs = areaFaqs(area.name)
   const related = area.related.map((slug) => areas.find((other) => other.slug === slug)).filter((other): other is Area => Boolean(other))
 
   const structuredData = [
@@ -86,7 +104,8 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
               Vehicle inspections
             </Link>
             <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">{area.h1}</h1>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{area.intro}</p>
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">Buying a used car in {area.name}? I&apos;ll come to the car, go over it properly and tell you straight what I find, before you hand any money over.
+            </p>
 
             <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm font-semibold">
               <span className="rounded-full border bg-white px-4 py-2">Standard £199.99</span>
@@ -94,7 +113,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
               <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-primary">EV battery check £149.99</span>
             </div>
             <p className="mx-auto mt-4 inline-flex max-w-2xl items-center gap-2 text-sm font-semibold text-muted-foreground">
-              <Route className="h-4 w-4 shrink-0 text-primary" /> {area.travel.summary}
+              <Route className="h-4 w-4 shrink-0 text-primary" /> Same price anywhere in {area.name}, no mileage charge
             </p>
 
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
@@ -117,20 +136,28 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
 
       <section className="py-10 sm:py-14">
         <div className="container mx-auto px-4">
-          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
+          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[0.75fr_1.25fr] md:items-center lg:gap-12">
+            <div className="mx-auto w-full max-w-[280px] overflow-hidden rounded-[2rem] border border-border bg-white shadow-md md:max-w-none">
+              {/* eslint-disable-next-line @next/next/no-img-element -- the same photo the home page uses */}
+              <img src="/henry.webp" alt={`Henry from ${BRAND}`} width={750} height={1000} loading="lazy" className="h-auto w-full object-contain" />
+            </div>
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-sm font-bold text-primary">
-                <MapPin className="h-4 w-4" /> Mobile inspection service
+                <MapPin className="h-4 w-4" /> Mobile inspections in {area.name}
               </div>
-              <h2 className="mt-4 text-3xl font-bold">Pre-purchase car inspections in {area.name}</h2>
-              {area.local.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  {paragraph}
-                </p>
-              ))}
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{area.travel.detail}</p>
+              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">I&apos;m Henry. I&apos;ll be the one looking at the car.</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I inspect used cars for people buying in {area.name}. I come to the car, whether it&apos;s on a dealer&apos;s forecourt or on someone&apos;s driveway, and I check it properly before you pay for it.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I scan every module with my diagnostic tablet, look underneath, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I don&apos;t work for the seller and I get nothing from the sale. If the car is good, I&apos;ll say so. If it isn&apos;t, I&apos;ll tell you that too, and roughly what it&apos;ll cost to put right.
+              </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <p className="mt-6 text-sm font-semibold">Places I cover in and around {area.name}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
                 {area.nearby.map((place) => (
                   <span key={place} className="rounded-full border border-border bg-slate-50 px-3 py-1.5 text-sm font-medium">
                     {place}
@@ -139,8 +166,28 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
               </div>
               {area.postcodes && <p className="mt-3 text-sm text-muted-foreground">Postcodes {area.postcodes}.</p>}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="rounded-3xl border border-border bg-slate-50 p-5 sm:p-6">
+      <section className="bg-slate-50 py-10 sm:py-14">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+            <figure>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
+                <Image
+                  src={inspectionPhotos.rangeRover.src}
+                  alt={inspectionPhotos.rangeRover.alt}
+                  fill
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  className="object-cover"
+                  style={{ objectPosition: inspectionPhotos.rangeRover.position }}
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before I inspected it.</figcaption>
+            </figure>
+
+            <div className="rounded-3xl border border-border bg-white p-5 sm:p-6">
               <h3 className="text-xl font-bold">Every inspection includes</h3>
               <div className="mt-4 space-y-3 text-sm">
                 {[
@@ -149,9 +196,9 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
                   "History check: finance, write-off, stolen and mileage",
                   "Body, chassis, tyres and interior checks",
                   "Powertrain-specific checks for petrol, diesel, hybrid or EV",
-                  "Easy-to-understand video review in both packages",
-                  "Photo evidence and same-day digital report",
-                  "Personal call and buying guidance",
+                  "Video review of the car",
+                  "Photos and a written report the same day",
+                  "We go through the findings together",
                   "No call-out or mileage charge: the price is the price",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
@@ -165,29 +212,6 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
         </div>
       </section>
 
-      <section className="bg-slate-50 py-10 sm:py-14">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold">Where we inspect in {area.name}</h2>
-            <p className="mt-2 text-muted-foreground">
-              Any dealer forecourt, car supermarket, auction collection or private seller&apos;s driveway. These are the main places people in {area.name} buy from.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {area.places.map((place) => (
-                <div key={place.name} className="flex gap-3 rounded-2xl border border-border bg-white p-4 sm:p-5">
-                  <Car className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">{place.name}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{place.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {localProof}
 
       <MechanicalReportOverview />
 
@@ -196,7 +220,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold">Choose the inspection that suits the car</h2>
-              <p className="mt-2 text-muted-foreground">Clear pricing, the same anywhere in {area.name}, with no quote to request first.</p>
+              <p className="mt-2 text-muted-foreground">The same price anywhere in {area.name}. No quote to ask for first.</p>
             </div>
 
             <div className="mt-7 grid gap-4 md:grid-cols-2">
@@ -264,10 +288,10 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
             <h2 className="text-center text-3xl font-bold">What happens after you book?</h2>
             <div className="mt-7 space-y-3">
               {[
-                ["1", "Choose a package and appointment", "Book online, pick your time and tell us where the car is being sold."],
-                ["2", "We drive to the car", `We come to the seller or dealer anywhere in ${area.name}, at the same price with no mileage or call-out charge.`],
-                ["3", "We inspect and test", "We carry out the physical, diagnostic, history and road-test checks, and film the video review at the car."],
-                ["4", "Understand before you decide", "You get the video review, photos and digital report the same day, then we talk through the findings and the buying decision with you. Keep the evidence for future reference."],
+                ["1", "Choose a package and appointment", "Book online, pick a time and tell me where the car is."],
+                ["2", "I come to the car", `At the dealer or the seller's house, anywhere in ${area.name}, for the same price.`],
+                ["3", "I inspect it and drive it", "The physical checks, the diagnostic scan, the history check and a road test, and I film the video at the car."],
+                ["4", "Understand before you decide", "You get the video, photos and report the same day, and we go through what I found so you can decide."],
               ].map(([number, title, text]) => (
                 <div key={number} className="flex gap-4 rounded-2xl border border-border bg-white p-4 sm:p-5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">{number}</span>
@@ -301,7 +325,7 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
               </Link>
             </div>
 
-            <h2 className="mt-10 text-3xl font-bold">Questions from {area.name} buyers</h2>
+            <h2 className="mt-10 text-3xl font-bold">Questions people ask me</h2>
             <div className="mt-5 space-y-3">
               {faqs.map((faq) => (
                 <details key={faq.question} className="group rounded-2xl border bg-white">
@@ -345,6 +369,8 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
           </div>
         </section>
       )}
+
+      <ReviewsSlider className="bg-slate-50" />
 
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">

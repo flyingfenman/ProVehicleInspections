@@ -1,12 +1,10 @@
-// One entry per area page (/vehicle-inspection-<place> and the two original pages). Each page is written for a buyer
-// in that place: where cars are sold there and the questions buyers from there ask. Nothing about our own journey,
-// mileage or scheduling, and no local statistics stretched into claims about cars (floods, employers, coastlines):
-// a local reader sees through them. Plain, true and useful only.
+// One entry per area page (/vehicle-inspection-<place> and the two original pages). The words on the page are
+// Henry's, written once in components/vehicle-inspections/local-inspection-page.tsx and the same for every place:
+// who he is, what he does at the car, the price. Henry (4 Nov 2026) rejected per-place copy about car supermarkets,
+// dealer strips and auctions as "AI slop", so an area holds only what genuinely differs: its name, the towns and
+// postcodes it covers, and its neighbours. Do not add dealer lists, routes, mileage or local facts back.
 
 export type AreaFaq = { question: string; answer: string }
-
-// A real place buyers get cars from in the area: a car supermarket, a dealer strip (named by road), an auction site.
-export type AreaPlace = { name: string; note: string }
 
 export type Area = {
   /** URL path without the leading slash, e.g. "vehicle-inspection-luton". */
@@ -14,29 +12,17 @@ export type Area = {
   kind: "city" | "county"
   /** The place as written in sentences: "Luton", "Hertfordshire". */
   name: string
-  /** The page heading, e.g. "Pre-Purchase Car Inspection Luton & Dunstable". */
+  /** The page heading, e.g. "Pre-Purchase Car Inspection Luton". */
   h1: string
   /** The browser title without the brand, which the page adds. */
   title: string
-  /** Meta description, 150 characters or fewer. */
-  description: string
   schemaType: "City" | "AdministrativeArea"
-  /** The sentence under the heading. */
-  intro: string
-  /** Coverage, not route: a short chip ("Covering the whole county at one price, no mileage charge") and a short paragraph on how booking works. */
-  travel: { summary: string; detail: string }
-  /** Two or three paragraphs about buying a used car in this area and how the inspection fits. */
-  local: string[]
-  places: AreaPlace[]
   /** Towns or districts covered, shown as chips. */
   nearby: string[]
   /** e.g. "LU1 to LU7" */
   postcodes?: string
-  faqs: AreaFaq[]
   /** Slugs of neighbouring area pages. */
   related: string[]
   /** ISO date the page content was last checked, for the sitemap and the "last checked" line. */
   updated: string
-  /** Show the customer reviews on this page (only where a reviewed car was inspected in the area). */
-  showTestimonials?: boolean
 }
