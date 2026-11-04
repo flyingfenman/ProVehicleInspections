@@ -7,6 +7,7 @@ import type { RealReport, ScanModule } from "./types"
 // with the Pro Vehicle Inspections plate in the photos, as in Henry's photo of the same car.
 
 const PHOTO_DIR = "/images/sample-report/range-rover-sport"
+const photo = (name: string) => `${PHOTO_DIR}/${name}.webp`
 
 const noFaults = (name: string, role?: string): ScanModule => ({ name, role, codes: [] })
 
@@ -23,7 +24,8 @@ export const rangeRoverSportReport: RealReport = {
   hero: {
     src: inspectionPhotos.rangeRover.src,
     alt: "Black 2023 Range Rover Sport on ramps with a Pro Vehicle Inspections plate, at the dealer during its Premium Inspection",
-    position: inspectionPhotos.rangeRover.position,
+    width: 1200,
+    height: 900,
   },
 
   summary: {
@@ -31,11 +33,12 @@ export const rangeRoverSportReport: RealReport = {
     verdict: "Good Buy",
     history: "Clear",
     faultCodes: 23,
-    stats: [
-      { value: "48", label: "electronic systems scanned" },
-      { value: "260", label: "point inspection, 192 points recorded" },
-      { value: "23", label: "points needing attention" },
-      { value: "63", label: "inspection photos" },
+    evidence: [
+      "2 data sources reviewed",
+      "48 electronic systems scanned",
+      "260-point inspection",
+      "23 points needing attention",
+      "63 inspection photos",
     ],
     positives: [
       "Full set of Pirelli Scorpion tyres at 4mm all round and wearing evenly",
@@ -76,25 +79,6 @@ export const rangeRoverSportReport: RealReport = {
         estimate: "£50 to £120 to clean out",
       },
     ],
-    repairs: [
-      {
-        label: "Immediate",
-        priority: "Driver assistance safety items: before relying on these features",
-        detail: "Intermittent steering wheel hands on detection fault and forward looking sensor fault",
-        estimate: "£200 to £1,500",
-      },
-      {
-        label: "Secondary",
-        priority: "Not urgent: within the next few months",
-        detail:
-          "Front parking sensor fault, door handle motor codes, seat switch pack code, rear bumper scratches, wheel lacquer peel and polish residue",
-        estimate: "£630 to £2,820",
-      },
-    ],
-    combinedEstimate: "£830 to £4,320",
-    maintenance: "No maintenance due, no cost expected",
-    repairNote:
-      "The total covers the driver assistance, parking sensor and door handle faults plus the cosmetic points, as estimates at UK independent garage prices for parts and labour rather than quotes.",
   },
 
   categories: [
@@ -113,7 +97,8 @@ export const rangeRoverSportReport: RealReport = {
   ],
 
   scan: {
-    tool: "Autel MaxiCheck MX900, software V1.93",
+    tool: "Autel MaxiCheck MX900",
+    software: "software V1.93",
     date: "November 2026",
     systems: 48,
     odometer: "31,864 miles (51,280 km)",
@@ -321,59 +306,91 @@ export const rangeRoverSportReport: RealReport = {
 
   history: {
     details: [
-      { label: "Make", value: "Land Rover" },
-      { label: "Model", value: "Range Rover Sport Dynamic SE D300 MHEV" },
-      { label: "Body type", value: "5 door estate" },
       { label: "Colour", value: "Black" },
       { label: "Fuel type", value: "Diesel" },
       { label: "Transmission", value: "Automatic" },
+      { label: "Body type", value: "5 door estate" },
       { label: "First registered", value: "March 2023" },
-      { label: "Keepers", value: "3 on record (2 previous)" },
+      { label: "MOT expiry", value: "October 2027" },
       { label: "Registration", value: null },
       { label: "VIN", value: null },
     ],
-    passed: [
-      "No outstanding finance recorded",
-      "No write-off or category marker recorded",
-      "Not recorded as stolen",
-      "No mileage discrepancies recorded",
-      "Not scrapped, no vehicle identity check record",
-      "No risk marker recorded",
-      "No condition alerts recorded",
-      "No colour changes recorded",
-      "No prior use recorded",
-      "Not imported or exported, origin United Kingdom",
+    checks: [
+      { label: "Outstanding finance", detail: "No outstanding finance recorded", pill: "✓ Pass" },
+      { label: "Write-off record", detail: "No write-off or category marker recorded", pill: "✓ Pass" },
+      { label: "Stolen check", detail: "Not recorded as stolen", pill: "✓ Pass" },
+      { label: "Mileage history", detail: "No mileage discrepancies recorded", pill: "✓ Pass" },
+      { label: "Previous keepers", detail: "3 keepers on record, 2 of them previous", pill: "Recorded" },
+      { label: "Import / export status", detail: "Not imported, not exported, origin United Kingdom", pill: "Checked" },
     ],
-    noted: [
-      "One private plate change on record: the car carried a private plate for about a year and is back on its original registration",
-      "Road tax expired October 2026, not SORN",
+    cards: [
+      {
+        title: "Plate changes",
+        rows: [
+          { label: "Original registration", detail: "On the car from new, and back on it now", value: null },
+          { label: "Private plate", detail: "Carried for about a year, then taken off", value: null },
+        ],
+      },
+      {
+        title: "Other mileage readings",
+        rows: [{ label: "31,864 miles", detail: "November 2026, read at this inspection" }],
+      },
+      {
+        title: "MOT history",
+        rows: [
+          {
+            label: "October 2026, 31,851 miles",
+            detail: "No advisories or minor defects. Expiry October 2027",
+            pill: "Pass",
+          },
+          {
+            label: "February 2026, 26,164 miles",
+            detail: "No advisories or minor defects. Expiry March 2027",
+            pill: "Pass",
+          },
+        ],
+      },
+      {
+        title: "Valuation at 31,864 miles",
+        rows: [{ label: "Retail valuation", value: "£56,206" }],
+      },
     ],
-    mileageAtInspection: "31,864 miles",
-    mot: [
-      { date: "October 2026", mileage: "31,851 miles", result: "Pass", note: "No advisories or minor defects" },
-      { date: "February 2026", mileage: "26,164 miles", result: "Pass", note: "No advisories or minor defects" },
-    ],
-    motValidUntil: "October 2027",
-    valuation: { label: "Retail valuation at 31,864 miles", value: "£56,206" },
     runningCosts: {
-      total: "£2,708 a year",
+      total: "£2,708",
       items: [
-        { label: "Insurance", detail: "Estimated annual cost, group 48 of 50", value: "£969" },
-        { label: "Fuel", detail: "Based on 8,300 miles a year", value: "£1,544" },
-        { label: "Road tax", detail: "Band K, 202 g/km CO2", value: "£195" },
+        { label: "Insurance", detail: "Estimated annual cost, group 48 of 50", value: 969 },
+        { label: "Fuel", detail: "Based on 8,300 miles a year", value: 1544 },
+        { label: "Road tax", detail: "Band K, 202 g/km CO2", value: 195 },
       ],
     },
+    otherResults: [
+      { label: "Finance", detail: "No finance agreement recorded" },
+      { label: "Stolen", detail: "No stolen record" },
+      { label: "Scrapped", detail: "Not scrapped, no vehicle identity check record" },
+      { label: "At risk", detail: "No risk marker recorded" },
+      { label: "Condition alerts", detail: "None recorded at the time of the check" },
+      { label: "Colour changes", detail: "None recorded" },
+      { label: "Prior use", detail: "None recorded" },
+      { label: "Import and export", detail: "Not imported, not exported, origin United Kingdom" },
+      { label: "Recall check", detail: "Not checked" },
+      { label: "MOT", detail: "Valid until October 2027" },
+      { label: "Road tax", detail: "Expired October 2026, not SORN" },
+    ],
     specification: [
       { label: "Power", value: "295 bhp" },
       { label: "0 to 60 mph", value: "6.6 seconds" },
       { label: "Top speed", value: "135 mph" },
       { label: "Engine size", value: "2,997 cc" },
       { label: "Gears", value: "8" },
+      { label: "Body", value: "5 door estate" },
       { label: "Seats", value: "5" },
       { label: "Boot capacity", value: "522 litres" },
       { label: "Engine code", value: "D300 RDE2" },
+      { label: "Engine number", value: null },
+      { label: "Registration date", value: "March 2023" },
       { label: "Type approval", value: "M1" },
     ],
+    source: "Source: full vehicle history check, November 2026.",
   },
 
   checklist: {
@@ -398,11 +415,27 @@ export const rangeRoverSportReport: RealReport = {
         score: 95,
         items: [
           { label: "Bonnet condition", note: "Very minor stone chips", result: "good", status: "No damage found" },
-          { label: "Roof condition", note: "Sunroof fully operational", result: "good", status: "No damage found" },
-          { label: "Rear bumper", note: "Minor scratches on rear bumper", result: "minor" },
+          {
+            label: "Roof condition",
+            note: "Sunroof fully operational",
+            result: "good",
+            status: "No damage found",
+            photos: [photo("panoramic-roof")],
+          },
+          {
+            label: "Rear bumper",
+            note: "Minor scratches on rear bumper",
+            result: "minor",
+            photos: [photo("rear-bumper-scratches")],
+          },
           { label: "Front-left wing", result: "good", status: "No damage found" },
           { label: "Front-right wing", result: "good", status: "No damage found" },
-          { label: "Panel alignment", result: "good", status: "Panels aligned correctly" },
+          {
+            label: "Panel alignment",
+            result: "good",
+            status: "Panels aligned correctly",
+            photos: [photo("rear-three-quarter")],
+          },
           { label: "Panel gaps", result: "good", status: "Panel gaps even" },
           { label: "Visible dents", result: "good", status: "No dents found" },
           { label: "Visible scratches", result: "minor" },
@@ -415,7 +448,12 @@ export const rangeRoverSportReport: RealReport = {
           { label: "Door handles", result: "good", status: "All handles work" },
           { label: "Door operation", result: "good", status: "All doors open and close" },
           { label: "Bonnet operation", result: "good", status: "Opens, closes and latches" },
-          { label: "Boot / tailgate operation", result: "good", status: "Opens, closes and latches" },
+          {
+            label: "Boot / tailgate operation",
+            result: "good",
+            status: "Opens, closes and latches",
+            photos: [photo("boot-and-tailgate")],
+          },
         ],
       },
       {
@@ -527,7 +565,13 @@ export const rangeRoverSportReport: RealReport = {
         name: "Engine & Fluids",
         score: 95,
         items: [
-          { label: "Engine oil level", note: "Oil level slightly high", result: "good", status: "Oil level correct" },
+          {
+            label: "Engine oil level",
+            note: "Oil level slightly high",
+            result: "good",
+            status: "Oil level correct",
+            photos: [photo("engine-oil-dipstick")],
+          },
           { label: "Engine oil visible condition", result: "good", status: "Oil clean" },
           { label: "Coolant level", result: "good", status: "Coolant level correct" },
           { label: "Coolant visible condition", result: "good", status: "Coolant clean" },
@@ -551,24 +595,44 @@ export const rangeRoverSportReport: RealReport = {
       {
         name: "Underbody Inspection",
         score: 95,
-        intro: "The underbody photos are in the photo report below.",
+        intro: "More underbody photos are in the photo report at the bottom.",
         items: [
           { label: "Front underbody condition", result: "good", status: "No damage or corrosion" },
           { label: "Centre underbody condition", result: "good", status: "No damage or corrosion" },
           { label: "Rear underbody condition", result: "good", status: "No damage or corrosion" },
           { label: "Visible chassis / subframe condition", result: "good", status: "No damage or corrosion" },
-          { label: "Front subframe", result: "good", status: "No damage or corrosion" },
-          { label: "Rear subframe where visible", result: "good", status: "No damage or corrosion" },
+          {
+            label: "Front subframe",
+            result: "good",
+            status: "No damage or corrosion",
+            photos: [photo("front-subframe")],
+          },
+          {
+            label: "Rear subframe where visible",
+            result: "good",
+            status: "No damage or corrosion",
+            photos: [photo("rear-subframe")],
+          },
           { label: "Left sill underside", result: "good", status: "No damage or corrosion" },
           { label: "Right sill underside", result: "good", status: "No damage or corrosion" },
           { label: "Visible floor-pan condition", result: "good", status: "No damage or corrosion" },
           { label: "Visible structural corrosion", result: "good", status: "No structural corrosion" },
-          { label: "Visible suspension components", result: "good", status: "No wear or damage" },
+          {
+            label: "Visible suspension components",
+            result: "good",
+            status: "No wear or damage",
+            photos: [photo("front-suspension-arm"), photo("rear-air-spring")],
+          },
           { label: "Visible steering components", result: "good", status: "No wear or damage" },
           { label: "Visible brake pipes", result: "good", status: "No corrosion or damage" },
           { label: "Visible brake hoses", result: "good", status: "No cracks or leaks" },
           { label: "Visible fuel lines", result: "good", status: "No damage or leaks" },
-          { label: "Visible exhaust system", result: "good", status: "No leaks or damage" },
+          {
+            label: "Visible exhaust system",
+            result: "good",
+            status: "No leaks or damage",
+            photos: [photo("rear-underbody-exhaust"), photo("exhaust-tailpipes")],
+          },
           { label: "Exhaust mountings", result: "good", status: "Mountings secure" },
           { label: "Visible driveshaft / CV components", result: "good", status: "Boots intact, no play" },
           { label: "Visible underbody fluid leaks", result: "good", status: "No leaks found" },
@@ -579,14 +643,24 @@ export const rangeRoverSportReport: RealReport = {
         name: "Interior & Safety Equipment",
         score: 88,
         items: [
-          { label: "Driver's seat condition", note: "Seat bolster slightly worn", result: "minor" },
-          { label: "Rear seat condition", note: "Marks from child seat", result: "minor" },
+          {
+            label: "Driver's seat condition",
+            note: "Seat bolster slightly worn",
+            result: "minor",
+            photos: [photo("drivers-seat")],
+          },
+          {
+            label: "Rear seat condition",
+            note: "Marks from child seat",
+            result: "minor",
+            photos: [photo("rear-seats"), photo("rear-footwell")],
+          },
           { label: "Driver's seat adjustment", result: "good", status: "Adjusts fully" },
           { label: "Passenger seat adjustment", result: "good", status: "Adjusts fully" },
           { label: "Driver's seat belt", result: "good", status: "Retracts and latches" },
           { label: "Front passenger seat belt", result: "good", status: "Retracts and latches" },
           { label: "Rear seat belts", result: "good", status: "All retract and latch" },
-          { label: "Dashboard condition", result: "good", status: "No damage found" },
+          { label: "Dashboard condition", result: "good", status: "No damage found", photos: [photo("dashboard")] },
           { label: "Instrument cluster", result: "good", status: "All gauges working" },
           { label: "Warning lights on ignition", result: "good", status: "All illuminate and clear" },
           { label: "Warning lights after start", result: "good", status: "No warning lights" },
@@ -681,6 +755,44 @@ export const rangeRoverSportReport: RealReport = {
           { label: "Temperature behaviour", result: "good", status: "Temperature normal" },
           { label: "Warning lights during road test", result: "good", status: "No warning lights" },
           { label: "General road-test behaviour", result: "good", status: "Drove as expected" },
+        ],
+      },
+      {
+        name: "Estimated Repair Cost Guidance",
+        items: [
+          {
+            label: "Immediate defect identification",
+            note: "Intermittent steering wheel hands on detection fault and forward looking sensor fault",
+            result: "minor",
+          },
+          {
+            label: "Immediate defect priority",
+            note: "Driver assistance safety items: before relying on these features",
+            result: "minor",
+          },
+          {
+            label: "Immediate repair-cost estimate",
+            note: "Estimated £200 to £1,500 to diagnose and repair",
+            result: "minor",
+          },
+          {
+            label: "Secondary defect identification",
+            note: "Front parking sensor fault, door handle motor codes, seat switch pack code, rear bumper scratches, wheel lacquer peel and polish residue",
+            result: "issue",
+          },
+          { label: "Secondary defect priority", note: "Not urgent: within the next few months", result: "minor" },
+          { label: "Secondary repair-cost estimate", note: "Estimated £630 to £2,820", result: "issue" },
+          { label: "Maintenance item identification", result: "good", status: "No maintenance due" },
+          { label: "Future maintenance estimate", result: "good", status: "No cost expected" },
+          {
+            label: "Estimated combined repair requirement",
+            note: "Estimated £830 to £4,320 in total",
+            result: "issue",
+          },
+          {
+            label: "Repair-cost summary",
+            note: "The total covers the driver assistance, parking sensor and door handle faults plus the cosmetic points, as estimates at UK independent garage prices for parts and labour rather than quotes.",
+          },
         ],
       },
       {
