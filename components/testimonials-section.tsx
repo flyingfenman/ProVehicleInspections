@@ -39,6 +39,11 @@ export function TestimonialsSection({ className = "bg-gray-50" }: { className?: 
                     className="object-cover"
                     style={{ objectPosition: t.imagePosition ?? "center" }}
                   />
+                {t.pictured && (
+                  <span className="absolute bottom-2 left-2 max-w-[calc(100%-1rem)] rounded-full bg-white/95 px-2.5 py-1 text-balance text-xs font-bold leading-tight text-primary shadow-sm">
+                    Pictured: {t.pictured}
+                  </span>
+                )}
                 </div>
                 <div className="flex flex-col justify-center gap-6 p-6 sm:p-8 lg:p-10">
                   <Quote className="h-10 w-10 text-primary" aria-hidden="true" />

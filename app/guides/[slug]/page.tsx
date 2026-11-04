@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       publishedTime: guide.published,
       modifiedTime: guide.updated,
-      images: ["/images/inspection-car.jpg"],
+      images: ["/images/share-inspection.jpg"],
     },
   }
 }

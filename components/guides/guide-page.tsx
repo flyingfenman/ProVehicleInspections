@@ -88,7 +88,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
       mainEntityOfPage: url,
       datePublished: guide.published,
       dateModified: guide.updated,
-      image: `${SITE_URL}/images/inspection-car.jpg`,
+      image: `${SITE_URL}/images/share-inspection.jpg`,
       author: { "@type": "Person", name: AUTHOR.name, jobTitle: AUTHOR.role, url: `${SITE_URL}/#business` },
       publisher: { "@id": `${SITE_URL}/#business` },
       inLanguage: "en-GB",

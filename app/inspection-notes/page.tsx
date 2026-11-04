@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/inspection-notes" },
-  openGraph: { title, description, url: "/inspection-notes", type: "website", images: ["/images/inspection-car.jpg"] },
+  openGraph: { title, description, url: "/inspection-notes", type: "website", images: ["/images/share-inspection.jpg"] },
 }
 
 function formatMonth(iso: string) {

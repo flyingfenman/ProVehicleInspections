@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { ArrowLeft, CalendarCheck } from "lucide-react"
+import { RecentInspections } from "@/components/vehicle-inspections/sections/recent-inspections"
 import { InspectionsWhatWeInspect } from "@/components/vehicle-inspections/what-we-inspect"
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function WhatWeInspectPage() {
         </div>
       </div>
       <InspectionsWhatWeInspect headingLevel="h1" />
+      <RecentInspections />
     </main>
   )
 }

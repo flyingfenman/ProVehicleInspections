@@ -9,7 +9,7 @@ const localBusinessSchema = {
   url: "https://www.provehicleinspections.com",
   logo: "https://www.provehicleinspections.com/images/pvi-logo-512.png",
   telephone: "+441992245660",
-  image: "https://www.provehicleinspections.com/images/inspection-car.jpg",
+  image: "https://www.provehicleinspections.com/images/share-inspection.jpg",
   description: `Independent mobile pre-purchase vehicle inspections and EV battery State of Health checks across ${SERVICE_AREA.long}.`,
   priceRange: "££",
   address: {
