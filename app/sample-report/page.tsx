@@ -6,6 +6,7 @@ import { CategoryScores } from "@/components/vehicle-inspections/sample-report/c
 import { ReportChecklist } from "@/components/vehicle-inspections/sample-report/checklist"
 import { ReportPhotoGallery } from "@/components/vehicle-inspections/sample-report/photo-gallery"
 import { ReportTerms } from "@/components/vehicle-inspections/sample-report/terms"
+import { RealReportBanner } from "@/components/vehicle-inspections/sample-report/real-report-banner"
 
 export const metadata: Metadata = {
   title: "Sample Inspection Report - Pro Vehicle Inspections",
@@ -18,6 +19,7 @@ export default function SampleReportPage() {
   return (
     <div className="min-h-screen">
       <ReportHeader />
+      <RealReportBanner />
       <VehicleCheckReport />
       <CategoryScores />
       <ReportSummary />
