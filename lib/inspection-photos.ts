@@ -1,6 +1,6 @@
 export type InspectionPhoto = {
   src: string
-  /** The car as it reads on the "Pictured" label. */
+  /** The car in the photo. */
   car: string
   alt: string
   /** Where to anchor the crop when the photo fills a box of a different shape. */

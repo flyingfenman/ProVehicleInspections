@@ -13,8 +13,6 @@ export type Testimonial = {
   image: string
   imageAlt: string
   imagePosition?: string
-  /** Set when the photo is another car Henry inspected rather than the customer's own, so the card says so. */
-  pictured?: string
 }
 
 export const testimonials: Testimonial[] = [
@@ -37,7 +35,6 @@ export const testimonials: Testimonial[] = [
     image: inspectionPhotos.grandland.src,
     imageAlt: inspectionPhotos.grandland.alt,
     imagePosition: inspectionPhotos.grandland.position,
-    pictured: inspectionPhotos.grandland.car,
   },
   {
     name: "Dave",
@@ -50,6 +47,5 @@ export const testimonials: Testimonial[] = [
     image: inspectionPhotos.rangeRover.src,
     imageAlt: inspectionPhotos.rangeRover.alt,
     imagePosition: inspectionPhotos.rangeRover.position,
-    pictured: inspectionPhotos.rangeRover.car,
   },
 ]
