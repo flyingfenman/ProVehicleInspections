@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { SERVICE_AREA } from "@/lib/areas/service-area"
 import { CalendarDays, Clock, MapPin, MessageCircle, Phone } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
+import { inspectionPhotos } from "@/lib/inspection-photos"
 
 const title = "Contact Us | Pro Vehicle Inspections"
 const description =
@@ -80,6 +81,19 @@ export default function ContactPage() {
                 </div>
               </li>
             </ul>
+
+            <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element -- static photo, already sized and compressed */}
+              <img
+                src={inspectionPhotos.grandlandWheel.src}
+                alt={inspectionPhotos.grandlandWheel.alt}
+                width={900}
+                height={675}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+                style={{ objectPosition: inspectionPhotos.grandlandWheel.position }}
+              />
+            </div>
           </aside>
         </div>
       </div>

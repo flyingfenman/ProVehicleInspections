@@ -36,9 +36,6 @@ export function Reviews() {
               <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-2xl lg:mt-2 lg:text-base xl:text-lg">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="mt-4 lg:mt-3">
                 <p className="text-lg font-bold text-primary lg:text-base">{t.name}</p>
-                <p className="text-sm text-muted-foreground">
-                  {t.vehicle} · {t.service}
-                </p>
               </figcaption>
             </div>
           </figure>

@@ -56,9 +56,6 @@ export function TestimonialsSection({ className = "bg-gray-50" }: { className?: 
                   </blockquote>
                   <figcaption>
                     <p className="text-lg font-bold text-primary">{t.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {t.vehicle} · {t.service}
-                    </p>
                     <p className="mt-1 flex items-start gap-1.5 text-sm text-muted-foreground">
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                       Inspected at {t.location}
