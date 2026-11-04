@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -14,13 +15,12 @@ import {
   Phone,
   MessageCircle,
   BatteryCharging,
-  BadgeCheck,
   Check,
   Wrench,
   CalendarDays,
 } from "lucide-react"
 import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
-import { INSPECTION_GROUPS, INSPECTION_PACKAGES as PACKAGES, type InspectionGroup } from "@/lib/inspection-packages"
+import { INSPECTION_PACKAGES as PACKAGES, type InspectionGroup } from "@/lib/inspection-packages"
 import { trackWhatsAppClick } from "@/lib/tracking"
 import { getTrafficSource } from "@/lib/traffic-source"
 import { scrollToAnchorWhileLoading } from "@/lib/scroll-to-anchor"
@@ -102,10 +102,11 @@ export function InspectionsBookingCalendar() {
   const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null)
   const [shortNoticeCandidate, setShortNoticeCandidate] = useState<Slot | null>(null)
   const [shortNoticeConfirmed, setShortNoticeConfirmed] = useState(false)
-  const [packageChoicesOpen, setPackageChoicesOpen] = useState(true)
   // Set once the customer clicks an inspection (or a link chose one), so the bottom bar shows the price straight away.
   const [packagePicked, setPackagePicked] = useState(false)
   const [detailsUnlocked, setDetailsUnlocked] = useState(false)
+  // On a phone the seller's details and the advert link start folded away, so the form is five boxes to the pay button.
+  const [sellerOpen, setSellerOpen] = useState(false)
   const [viewDate, setViewDate] = useState(() => {
     const d = new Date()
     return { year: d.getFullYear(), month: d.getMonth() }
@@ -137,7 +138,6 @@ export function InspectionsBookingCalendar() {
     if (isPackageKey(requestedPackage)) {
       setPackageKey(requestedPackage)
       setGroup(PACKAGES.find((p) => p.key === requestedPackage)?.group || "pre-purchase")
-      setPackageChoicesOpen(false)
       setPackagePicked(true)
     }
     // The battery add-on box on the inspections page comes here with ?battery=1, with the report already ticked.
@@ -225,7 +225,6 @@ export function InspectionsBookingCalendar() {
 
   const choosePackage = (key: PackageKey) => {
     setPackageKey(key)
-    setPackageChoicesOpen(false)
     setPackagePicked(true)
     setSelectedDate(null)
     setSelectedSlot(null)
@@ -234,13 +233,16 @@ export function InspectionsBookingCalendar() {
     setError("")
   }
 
-  // Switching tab picks that tab's first package, so the calendar always matches what is showing.
+  // The link under the inspections swaps between buying a car and a fault after garage work. Switching picks that
+  // group's first package, so the calendar always matches what is showing.
   const chooseGroup = (key: InspectionGroup) => {
     setGroup(key)
     if (selectedPackage.group === key) return
     const first = PACKAGES.find((p) => p.group === key)
     if (!first) return
     setPackageKey(first.key)
+    // The mechanical inspection is the only choice in its group, so arriving there counts as choosing it.
+    setPackagePicked(key === "mechanical")
     setSelectedDate(null)
     setSelectedSlot(null)
     setDetailsUnlocked(false)
@@ -313,6 +315,30 @@ export function InspectionsBookingCalendar() {
 
   const showTimes = () => timeRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 
+  // Once an inspection is picked, the bar at the bottom of the screen carries the price, then the chosen time, until
+  // the customer continues to their details.
+  const barShowing = (packagePicked || selectedSlot !== null) && !detailsUnlocked
+  // With the details open, the inspections and the calendar fold into one line with a Change link, so the form
+  // starts near the top of the screen instead of three screens down.
+  const changeAppointment = () => {
+    setDetailsUnlocked(false)
+    requestAnimationFrame(() => timeRef.current?.scrollIntoView({ block: "start" }))
+  }
+
+  // The WhatsApp button (components/whatsapp-float.tsx) reads these: its speech bubble stays off on the booking
+  // page, and the button itself hides while the bar is showing, so the bottom of a phone screen isn't a pile-up.
+  useEffect(() => {
+    const root = document.documentElement
+    root.setAttribute("data-booking-page", "")
+    return () => root.removeAttribute("data-booking-page")
+  }, [])
+  useEffect(() => {
+    const root = document.documentElement
+    if (barShowing) root.setAttribute("data-booking-bar", "")
+    else root.removeAttribute("data-booking-bar")
+    return () => root.removeAttribute("data-booking-bar")
+  }, [barShowing])
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!selectedSlot) {
@@ -374,6 +400,22 @@ export function InspectionsBookingCalendar() {
           <p className="text-sm font-semibold text-foreground">Added to your booking. You can change it below, with the rest of the details.</p>
         </div>
       )}
+      {detailsUnlocked && selectedSlot ? (
+        <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 sm:p-5">
+          <div className="min-w-0">
+            <p className="font-bold">
+              {selectedPackage.name}{withEvSoh ? " + battery report" : ""} · £{totalPrice.toFixed(2)}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {new Date(selectedSlot.start).toLocaleString("en-GB", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" })}
+            </p>
+          </div>
+          <button type="button" onClick={changeAppointment} className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
+            Change
+          </button>
+        </div>
+      ) : (
+      <>
       <div className="mb-7 hidden gap-3 sm:grid sm:grid-cols-3">
         <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
           <BatteryCharging className="h-6 w-6 shrink-0 text-primary" />
@@ -391,7 +433,6 @@ export function InspectionsBookingCalendar() {
 
       <div className="mb-8">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">1</span>
           <div>
             <h3 className="text-xl font-bold">Your inspection</h3>
             <p className="hidden text-sm text-muted-foreground sm:block">
@@ -402,139 +443,91 @@ export function InspectionsBookingCalendar() {
           </div>
         </div>
 
-        {packageChoicesOpen ? (
-          <>
-          <div role="tablist" aria-label="Type of inspection" className="mb-4 grid grid-cols-2 gap-1 rounded-2xl border border-primary/20 bg-primary/5 p-1">
-            {INSPECTION_GROUPS.map((tab) => {
-              const active = group === tab.key
-              return (
-                <button key={tab.key} type="button" role="tab" aria-selected={active} onClick={() => chooseGroup(tab.key)} className={`min-h-12 rounded-xl px-3 text-sm font-bold transition sm:text-base ${active ? "bg-primary text-primary-foreground shadow-md" : "text-primary hover:bg-white"}`}>
-                  {tab.name}
+        {/* One row per inspection. The chosen one opens to show what it includes, so the page stays short on a phone
+            and nothing collapses or jumps when the customer taps. */}
+        <div className="space-y-3">
+          {PACKAGES.filter((pkg) => pkg.group === group).map((pkg) => {
+            const active = packageKey === pkg.key
+            return (
+              <button
+                key={pkg.key}
+                type="button"
+                onClick={() => choosePackage(pkg.key)}
+                aria-pressed={active}
+                className={`flex w-full items-start gap-3 rounded-2xl border-2 p-4 text-left transition-all sm:p-5 ${active ? "border-primary bg-primary/5 shadow-md" : "border-border bg-white hover:border-primary/40 hover:shadow-sm"}`}
+              >
+                <span aria-hidden="true" className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 bg-white ${active ? "border-primary" : "border-muted-foreground/40"}`}>
+                  {active && <span className="h-3 w-3 rounded-full bg-primary" />}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-baseline justify-between gap-3">
+                    <span className="text-lg font-bold leading-tight sm:text-xl">{pkg.name}</span>
+                    <span className="shrink-0 text-xl font-bold sm:text-2xl">{pkg.price}</span>
+                  </span>
+                  <span className="mt-1 block text-sm text-muted-foreground">
+                    {pkg.popular && <span className="mr-2 inline-block rounded-full bg-primary px-2 py-0.5 align-middle text-[11px] font-bold uppercase tracking-wide text-primary-foreground">Most thorough</span>}
+                    {pkg.points} · {pkg.strapline}
+                  </span>
+                  {active && (
+                    <span className="mt-3 grid gap-1.5 sm:grid-cols-2">
+                      {pkg.features.map((feature, i) => (
+                        <span key={feature} className={`${i >= PHONE_FEATURE_LIMIT ? "hidden sm:flex" : "flex"} items-start gap-2 text-sm font-medium sm:text-xs`}><Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" /> {feature}</span>
+                      ))}
+                    </span>
+                  )}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+        <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+          {group === "mechanical" ? (
+            <p>
+              Buying a car instead?{" "}
+              <button type="button" onClick={() => chooseGroup("pre-purchase")} className="font-bold text-primary underline underline-offset-4">
+                See the pre-purchase inspections
+              </button>
+            </p>
+          ) : (
+            <>
+              <p>
+                <Link href="/" className="font-bold text-primary underline underline-offset-4">See what each inspection includes</Link>
+              </p>
+              <p>
+                Had garage work go wrong?{" "}
+                <button type="button" onClick={() => chooseGroup("mechanical")} className="font-bold text-primary underline underline-offset-4">
+                  Book a mechanical inspection instead
                 </button>
-              )
-            })}
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {PACKAGES.filter((pkg) => pkg.group === group).map((pkg) => {
-              const active = packageKey === pkg.key
-              return (
-                <button key={pkg.key} type="button" onClick={() => choosePackage(pkg.key)} aria-pressed={active} className={`relative rounded-2xl border-2 p-5 text-left transition-all ${pkg.key === "ev" || pkg.key === "mechanical" ? "md:col-span-2" : ""} ${active ? "border-primary bg-primary/5 shadow-md" : "border-border bg-white hover:border-primary/40 hover:shadow-sm"}`}>
-                  {pkg.popular && <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">Most thorough</span>}
-                  <p className="text-sm font-semibold text-muted-foreground">{pkg.points}</p>
-                  <div className="mt-1 flex items-end gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <span aria-hidden="true" className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 bg-white ${active ? "border-primary" : "border-muted-foreground/40"}`}>
-                        {active && <span className="h-3 w-3 rounded-full bg-primary" />}
-                      </span>
-                      <h4 className="text-xl font-bold">{pkg.name}</h4>
-                    </div>
-                    <p className="ml-auto text-3xl font-bold">{pkg.price}</p>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">{pkg.strapline}</p>
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                    {pkg.features.map((feature, i) => (
-                      <span key={feature} className={`${i >= PHONE_FEATURE_LIMIT ? "hidden sm:flex" : "flex"} items-center gap-2 text-sm font-medium sm:text-xs`}><Check className="h-4 w-4 shrink-0 text-emerald-600" /> {feature}</span>
-                    ))}
-                  </div>
-                  {active && <div className="mt-4 flex items-center gap-2 text-sm font-bold text-primary"><Check className="h-4 w-4" /> Selected</div>}
-                </button>
-              )
-            })}
-          </div>
-          </>
-        ) : (
-          <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 sm:p-5">
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-muted-foreground">{selectedPackage.points}</p>
-              <p className="text-lg font-bold sm:text-xl">{selectedPackage.name}: {selectedPackage.price}</p>
-              <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-primary"><Check className="h-4 w-4" /> Selected</p>
-            </div>
-            <button type="button" onClick={() => setPackageChoicesOpen(true)} className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
-              Change inspection
-            </button>
-          </div>
-        )}
+              </p>
+            </>
+          )}
+        </div>
       </div>
 
       {!evOnly && !mechanical && (
-        <div className="rounded-3xl border border-border bg-white p-4 shadow-sm sm:p-6">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground sm:h-12 sm:w-12">
-              <BatteryCharging className="h-6 w-6" />
+        <label
+          htmlFor="includeEvSoh"
+          className={`mb-8 flex cursor-pointer items-start gap-3 rounded-2xl border-2 bg-white p-4 shadow-sm transition sm:items-center sm:p-5 ${includeEvSoh ? "border-primary shadow-md" : "border-border hover:border-primary/50"}`}
+        >
+          <input id="includeEvSoh" type="checkbox" checked={includeEvSoh} onChange={(e) => setIncludeEvSoh(e.target.checked)} className="mt-0.5 h-6 w-6 shrink-0 rounded border-border accent-primary sm:mt-0" />
+          <span className="min-w-0 flex-1">
+            <span className="block font-bold leading-tight sm:text-lg">
+              Buying an electric or plug-in hybrid? Add the battery health report
             </span>
-            <div>
-              <h3 className="text-xl font-bold leading-tight sm:text-2xl">Buying an electric or plug-in hybrid?</h3>
-              <p className="mt-1 text-lg font-bold sm:text-xl">
-                Add the battery report for <span className="whitespace-nowrap text-primary">+£49.99</span>
-              </p>
-            </div>
-          </div>
-
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start gap-2.5 font-semibold">
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" strokeWidth={3} />
-              The battery&apos;s State of Health as a percentage, with its own report
-            </li>
-            <li className="flex items-start gap-2.5 font-semibold">
-              <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
-              CARA Approved® Autel EV Battery Health Test
-            </li>
-          </ul>
-          <p className="mt-3 font-semibold">Not included in Standard or Premium.</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Both inspections already include electric and hybrid fault checks; this adds the battery health test. For fully electric and plug-in hybrid cars only, and compatibility varies by make and model.
-          </p>
-
-          <label
-            htmlFor="includeEvSoh"
-            className={`mt-4 flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 bg-white p-4 transition ${includeEvSoh ? "border-primary shadow-md" : "border-border hover:border-primary/50"}`}
-          >
-            <input id="includeEvSoh" type="checkbox" checked={includeEvSoh} onChange={(e) => setIncludeEvSoh(e.target.checked)} className="h-6 w-6 shrink-0 rounded border-border accent-primary" />
-            <span className="flex-1">
-              <span className="block text-lg font-bold leading-tight">{includeEvSoh ? "Battery report added" : "Add the battery report"}</span>
-              <span className="block text-sm text-muted-foreground">
-                {includeEvSoh
-                  ? `Your total is now £${totalPrice.toFixed(2)}`
-                  : `${selectedPackage.name} £${selectedPackage.amount.toFixed(2)}, or £${(selectedPackage.amount + EV_SOH_PRICE).toFixed(2)} with the report`}
-              </span>
+            <span className="mt-1 block text-sm text-muted-foreground">
+              CARA Approved® Autel test. The battery&apos;s State of Health as a percentage, with its own report. Fully electric and plug-in hybrid cars only.
             </span>
-            <span className="text-xl font-bold text-primary">+£49.99</span>
-          </label>
-        </div>
+          </span>
+          <span className="shrink-0 text-lg font-bold text-primary sm:text-xl">+£49.99</span>
+        </label>
       )}
-
-      <div className="my-6 hidden items-center justify-between gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:flex" aria-live="polite">
-        <div>
-          <p className="font-bold">{selectedPackage.name}</p>
-          <p className="text-sm text-muted-foreground">
-            {evOnly
-              ? "Battery test and State of Health report, without an inspection"
-              : mechanical
-                ? "Diagnostic scan with live data, photos, video and a written report"
-              : withEvSoh
-                ? "Includes EV Battery State of Health Report (+£49.99)"
-                : "No optional battery State of Health report selected"}
-          </p>
-        </div>
-        <p className="shrink-0 text-2xl font-bold">£{totalPrice.toFixed(2)}</p>
-      </div>
 
       <div ref={timeRef} className="scroll-mt-24">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">2</span>
           <div>
             <h3 className="text-xl font-bold">Choose your appointment</h3>
             <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
           </div>
-        </div>
-
-        <div className="mb-4 flex flex-wrap gap-3 text-sm font-semibold sm:text-xs">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-primary">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary" /> Book online
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-3 py-1.5 text-foreground">
-            <span className="h-2.5 w-2.5 rounded-full border-2 border-primary bg-white" /> Within 24 hours, message first
-          </span>
         </div>
 
         {loadingSlots ? (
@@ -673,10 +666,12 @@ export function InspectionsBookingCalendar() {
 
         {error && <p className="mt-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
       </div>
+      </>
+      )}
       {/* Once an inspection is picked, keep it and its price visible at the bottom of the screen, then the chosen
           appointment, until the customer continues to their details. While the cookie banner is open it sets
           --cookie-banner-space, so this bar sits just above it instead of underneath. */}
-      {(packagePicked || selectedSlot) && !detailsUnlocked && (
+      {barShowing && (
         <div className="sticky bottom-[var(--cookie-banner-space,0px)] z-[45] -mx-4 mt-5 border-t border-primary/20 bg-white px-4 py-3 pb-[max(.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.10)] sm:mx-0 sm:rounded-2xl sm:border sm:px-6 sm:py-4">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 sm:gap-6">
             <div role="status" aria-live="polite" className="min-w-0">
@@ -718,7 +713,6 @@ export function InspectionsBookingCalendar() {
         <form onSubmit={handleSubmit} className="mt-10 space-y-10">
         <div ref={detailsRef} tabIndex={-1} aria-label="Tell us about the car" className="scroll-mt-24 outline-none">
           <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">3</span>
             <div>
               <h3 className="text-xl font-bold">Tell us about the car</h3>
               <p className="text-sm text-muted-foreground">{mechanical ? "Tell us what was done and what has happened since, so we know what to look for." : "This lets us prepare before we arrive."}</p>
@@ -746,6 +740,17 @@ export function InspectionsBookingCalendar() {
               </>
             ) : (
             <>
+            {/* On a phone these three start folded away; on a wider screen there is room, so they always show. */}
+            <button
+              type="button"
+              onClick={() => setSellerOpen((open) => !open)}
+              aria-expanded={sellerOpen}
+              className="flex min-h-11 items-center gap-1.5 text-left text-sm font-bold text-primary sm:hidden"
+            >
+              <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${sellerOpen ? "rotate-90" : ""}`} />
+              {sellerOpen ? "Hide the seller's details" : "Add the seller's details and the advert link (optional)"}
+            </button>
+            <div className={`${sellerOpen ? "grid" : "hidden sm:grid"} gap-4 sm:col-span-2 sm:grid-cols-2`}>
             <div className="space-y-1.5">
               <Label htmlFor="sellerName">Seller&apos;s name</Label>
               <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Private seller or dealership" autoComplete="off" />
@@ -778,6 +783,7 @@ export function InspectionsBookingCalendar() {
               <Label htmlFor="advertUrl">Link to the advert</Label>
               <Input id="advertUrl" type="text" value={form.advertUrl} onChange={set("advertUrl")} placeholder="AutoTrader, eBay, Facebook Marketplace, dealer advert..." />
             </div>
+            </div>
             </>
             )}
           </div>
@@ -785,7 +791,6 @@ export function InspectionsBookingCalendar() {
 
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">4</span>
             <div>
               <h3 className="text-xl font-bold">Your details</h3>
               <p className="text-sm text-muted-foreground">We&apos;ll send the booking confirmation and report here.</p>
