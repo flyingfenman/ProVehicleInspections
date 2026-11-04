@@ -103,6 +103,8 @@ export function InspectionsBookingCalendar() {
   const [shortNoticeCandidate, setShortNoticeCandidate] = useState<Slot | null>(null)
   const [shortNoticeConfirmed, setShortNoticeConfirmed] = useState(false)
   const [packageChoicesOpen, setPackageChoicesOpen] = useState(true)
+  // Set once the customer clicks an inspection (or a link chose one), so the bottom bar shows the price straight away.
+  const [packagePicked, setPackagePicked] = useState(false)
   const [detailsUnlocked, setDetailsUnlocked] = useState(false)
   const [viewDate, setViewDate] = useState(() => {
     const d = new Date()
@@ -136,6 +138,7 @@ export function InspectionsBookingCalendar() {
       setPackageKey(requestedPackage)
       setGroup(PACKAGES.find((p) => p.key === requestedPackage)?.group || "pre-purchase")
       setPackageChoicesOpen(false)
+      setPackagePicked(true)
     }
     // The battery add-on box on the inspections page comes here with ?battery=1, with the report already ticked.
     if (params.get("battery") === "1") setIncludeEvSoh(true)
@@ -223,6 +226,7 @@ export function InspectionsBookingCalendar() {
   const choosePackage = (key: PackageKey) => {
     setPackageKey(key)
     setPackageChoicesOpen(false)
+    setPackagePicked(true)
     setSelectedDate(null)
     setSelectedSlot(null)
     setDetailsUnlocked(false)
@@ -669,12 +673,15 @@ export function InspectionsBookingCalendar() {
 
         {error && <p className="mt-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
       </div>
-      {/* Keep the selected appointment visible until the customer continues to their details. While the cookie banner is
-          open it sets --cookie-banner-space, so this bar sits just above it instead of underneath. */}
-      {selectedSlot && !detailsUnlocked && (
+      {/* Once an inspection is picked, keep it and its price visible at the bottom of the screen, then the chosen
+          appointment, until the customer continues to their details. While the cookie banner is open it sets
+          --cookie-banner-space, so this bar sits just above it instead of underneath. */}
+      {(packagePicked || selectedSlot) && !detailsUnlocked && (
         <div className="sticky bottom-[var(--cookie-banner-space,0px)] z-[45] -mx-4 mt-5 border-t border-primary/20 bg-white px-4 py-3 pb-[max(.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.10)] sm:mx-0 sm:rounded-2xl sm:border sm:px-6 sm:py-4">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 sm:gap-6">
             <div role="status" aria-live="polite" className="min-w-0">
+              {selectedSlot ? (
+              <>
               <p className="truncate text-sm font-bold sm:hidden">
                 {selectedPackage.name.replace(" Inspection", "")} · {new Date(selectedSlot.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" })} · {formatSlotTime(selectedSlot)} · £{totalPrice.toFixed(2)}
               </p>
@@ -684,10 +691,25 @@ export function InspectionsBookingCalendar() {
                 </p>
                 <p className="text-sm text-muted-foreground">£{totalPrice.toFixed(2)} · Booking confirmed after payment.</p>
               </div>
+              </>
+              ) : (
+              <>
+                <p className="truncate text-sm font-bold sm:text-base">
+                  {selectedPackage.name}{withEvSoh ? " + EV battery" : ""} · £{totalPrice.toFixed(2)}
+                </p>
+                <p className="text-xs text-muted-foreground sm:text-sm">Now pick a date and time.</p>
+              </>
+              )}
             </div>
-            <Button type="button" onClick={goToDetails} className="h-11 shrink-0 bg-primary px-4 font-bold text-primary-foreground hover:bg-primary/90 sm:min-w-40">
-              Continue <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
+            {selectedSlot ? (
+              <Button type="button" onClick={goToDetails} className="h-11 shrink-0 bg-primary px-4 font-bold text-primary-foreground hover:bg-primary/90 sm:min-w-40">
+                Continue <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            ) : (
+              <Button type="button" onClick={showTimes} className="h-11 shrink-0 bg-primary px-4 font-bold text-primary-foreground hover:bg-primary/90 sm:min-w-40">
+                Choose a time <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            )}
           </div>
         </div>
       )}

@@ -5,6 +5,7 @@ import { ArrowRight, Camera, ClipboardList, FileSignature, Gauge, MapPin, Messag
 import { MECHANICAL_ITEMS, MECHANICAL_JOBS, MECHANICAL_LIMITS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
 import { AREA_SERVED } from "@/lib/areas"
+import { inspectionPhotos } from "@/lib/inspection-photos"
 import { SERVICE_AREA } from "@/lib/areas/service-area"
 
 const SITE_URL = "https://www.provehicleinspections.com"
@@ -28,6 +29,8 @@ export const metadata: Metadata = {
     images: ["/images/share-inspection.jpg"],
   },
 }
+
+const VAN = inspectionPhotos.van
 
 // Icons for the five things the report gives you, in the same order as MECHANICAL_ITEMS.
 const ITEM_ICONS = [ScanLine, Camera, ClipboardList, FileSignature, MessageCircle]
@@ -200,13 +203,28 @@ export default function MechanicalInspectionPage() {
               <h2 className="text-balance text-3xl font-bold sm:text-4xl">When you need one</h2>
               <p className="mt-3 text-lg text-muted-foreground">Typical jobs we look at.</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {MECHANICAL_JOBS.map((job) => (
-                <div key={job} className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-5">
-                  <Gauge className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
-                  <p className="font-semibold leading-snug">{job}</p>
-                </div>
-              ))}
+            <div className="grid items-center gap-6 lg:grid-cols-[1fr_380px]">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {MECHANICAL_JOBS.map((job) => (
+                  <div key={job} className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-5">
+                    <Gauge className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
+                    <p className="font-semibold leading-snug">{job}</p>
+                  </div>
+                ))}
+              </div>
+              {/* Henry's own photo from a real job. */}
+              <div className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-border bg-white shadow-sm lg:max-w-none">
+                {/* eslint-disable-next-line @next/next/no-img-element -- static photo, already sized and compressed */}
+                <img
+                  src={VAN.src}
+                  alt={VAN.alt}
+                  width={900}
+                  height={675}
+                  loading="lazy"
+                  className="aspect-[4/3] h-full w-full object-cover"
+                  style={{ objectPosition: VAN.position }}
+                />
+              </div>
             </div>
           </div>
         </div>
