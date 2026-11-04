@@ -11,7 +11,7 @@ const PHOTO_DIR = "/images/sample-report/range-rover-sport"
 const noFaults = (name: string, role?: string): ScanModule => ({ name, role, codes: [] })
 
 export const rangeRoverSportReport: RealReport = {
-  path: "/sample-report/range-rover-sport",
+  path: "/sample-report",
   vehicle: "2023 Range Rover Sport Dynamic SE D300",
   intro:
     "A real Premium Inspection we carried out at a dealer in Essex in November 2026. This is the customer's report in full, with their name, the registration and the VIN taken out.",
