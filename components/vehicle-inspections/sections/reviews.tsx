@@ -2,8 +2,8 @@ import Image from "next/image"
 import { Quote } from "lucide-react"
 import { testimonials } from "@/lib/testimonials"
 
-// "What our customers say about us": real customers, with photos of their own cars, all on show with
-// nothing to click. Rendered inside the hero: the right-hand column on a laptop, compact cards stacked
+// "What our customers say about us": real customers, all on show with nothing to click. The photos are Henry's
+// own inspection photos, labelled with the car shown. Rendered inside the hero: the right-hand column on a laptop, compact cards stacked
 // beside the headline; full-width cards under the hero on a phone or tablet.
 export function Reviews() {
   return (
@@ -25,6 +25,11 @@ export function Reviews() {
                 className="object-cover"
                 style={{ objectPosition: t.imagePosition ?? "center" }}
               />
+              {t.pictured && (
+                <span className="absolute bottom-2 left-2 max-w-[calc(100%-1rem)] rounded-full bg-white/95 px-2.5 py-1 text-balance text-xs font-bold leading-tight text-primary shadow-sm">
+                  Pictured: {t.pictured}
+                </span>
+              )}
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-5">
               <Quote className="h-9 w-9 text-primary lg:h-6 lg:w-6" aria-hidden="true" />

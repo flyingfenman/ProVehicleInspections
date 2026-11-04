@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description,
     url: "/mechanical-inspection",
     type: "website",
-    images: ["/images/inspection-car.jpg"],
+    images: ["/images/share-inspection.jpg"],
   },
 }
 

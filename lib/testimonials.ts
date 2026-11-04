@@ -1,3 +1,5 @@
+import { inspectionPhotos } from "@/lib/inspection-photos"
+
 export type Testimonial = {
   name: string
   vehicle: string
@@ -11,6 +13,8 @@ export type Testimonial = {
   image: string
   imageAlt: string
   imagePosition?: string
+  /** Set when the photo is another car Henry inspected rather than the customer's own, so the card says so. */
+  pictured?: string
 }
 
 export const testimonials: Testimonial[] = [
@@ -30,9 +34,10 @@ export const testimonials: Testimonial[] = [
       "I really appreciated the level of care and professionalism throughout the whole process. As someone who doesn't know much about cars, I felt completely supported and confident in my decision.",
       "I would absolutely recommend you and your service to anyone looking to buy a car. Thank you again for helping me find the right car with peace of mind!",
     ],
-    image: "/images/testimonials/lina-toyota-yaris.jpg",
-    imageAlt: "Lina's red Toyota Yaris at a car dealer in Southend-on-Sea, Essex, after its Premium pre-purchase inspection",
-    imagePosition: "center 70%",
+    image: inspectionPhotos.grandland.src,
+    imageAlt: inspectionPhotos.grandland.alt,
+    imagePosition: inspectionPhotos.grandland.position,
+    pictured: inspectionPhotos.grandland.car,
   },
   {
     name: "Dave",
@@ -42,8 +47,9 @@ export const testimonials: Testimonial[] = [
     location: "a prestige car dealer in Wickford, Essex",
     headline: "I am very happy with the service. Value for money was great.",
     quote: "I am very happy with the service. Value for money was great.",
-    image: "/images/testimonials/dave-land-rover-discovery.jpg",
-    imageAlt:
-      "Dave's Land Rover Discovery on ramps during its Premium pre-purchase inspection at a prestige car dealer in Wickford, Essex",
+    image: inspectionPhotos.rangeRover.src,
+    imageAlt: inspectionPhotos.rangeRover.alt,
+    imagePosition: inspectionPhotos.rangeRover.position,
+    pictured: inspectionPhotos.rangeRover.car,
   },
 ]

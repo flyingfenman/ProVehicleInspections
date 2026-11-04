@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/guides" },
-  openGraph: { title, description, url: "/guides", type: "website", images: ["/images/inspection-car.jpg"] },
+  openGraph: { title, description, url: "/guides", type: "website", images: ["/images/share-inspection.jpg"] },
 }
 
 export default function GuidesIndexPage() {

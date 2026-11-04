@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
     description:
       "Mobile pre-purchase car inspections from £199.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
-    images: ["/images/inspection-car.jpg"],
+    images: ["/images/share-inspection.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pro Vehicle Inspections | Mobile Pre-Purchase Car Inspections",
     description:
       "Mobile pre-purchase car inspections from £199.99 across London, Essex, East Anglia and the Midlands. Diagnostics, road test, video review and EV battery checks.",
-    images: ["/images/inspection-car.jpg"],
+    images: ["/images/share-inspection.jpg"],
   },
 }
 

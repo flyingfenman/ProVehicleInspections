@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Understand the car before you commit. Both packages include a video review, documented findings and personal buying guidance. Inspections from £199.99.",
     url: "/",
     type: "website",
-    images: ["/images/inspection-car.jpg"],
+    images: ["/images/share-inspection.jpg"],
   },
 }
 

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: area.description,
       url: path,
       type: "website",
-      images: ["/images/inspection-car.jpg"],
+      images: ["/images/share-inspection.jpg"],
     },
   }
 }
