@@ -391,7 +391,6 @@ export function InspectionsBookingCalendar() {
 
       <div className="mb-8">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">1</span>
           <div>
             <h3 className="text-xl font-bold">Your inspection</h3>
             <p className="hidden text-sm text-muted-foreground sm:block">
@@ -521,7 +520,6 @@ export function InspectionsBookingCalendar() {
 
       <div ref={timeRef} className="scroll-mt-24">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">2</span>
           <div>
             <h3 className="text-xl font-bold">Choose your appointment</h3>
             <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
@@ -718,7 +716,6 @@ export function InspectionsBookingCalendar() {
         <form onSubmit={handleSubmit} className="mt-10 space-y-10">
         <div ref={detailsRef} tabIndex={-1} aria-label="Tell us about the car" className="scroll-mt-24 outline-none">
           <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">3</span>
             <div>
               <h3 className="text-xl font-bold">Tell us about the car</h3>
               <p className="text-sm text-muted-foreground">{mechanical ? "Tell us what was done and what has happened since, so we know what to look for." : "This lets us prepare before we arrive."}</p>
@@ -785,7 +782,6 @@ export function InspectionsBookingCalendar() {
 
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">4</span>
             <div>
               <h3 className="text-xl font-bold">Your details</h3>
               <p className="text-sm text-muted-foreground">We&apos;ll send the booking confirmation and report here.</p>
