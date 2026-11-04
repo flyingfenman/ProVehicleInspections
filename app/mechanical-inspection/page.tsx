@@ -3,7 +3,6 @@ import Link from "next/link"
 import { ArrowRight, Camera, ClipboardList, FileSignature, Gauge, MapPin, MessageCircle, Minus, ScanLine, Wrench } from "lucide-react"
 import { MECHANICAL_ITEMS, MECHANICAL_JOBS, MECHANICAL_LIMITS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
-import { RecentInspections } from "@/components/vehicle-inspections/sections/recent-inspections"
 import { AREA_SERVED } from "@/lib/areas"
 import { SERVICE_AREA } from "@/lib/areas/service-area"
 
@@ -234,8 +233,6 @@ export default function MechanicalInspectionPage() {
           </div>
         </div>
       </section>
-
-      <RecentInspections />
 
       <section className="bg-primary/5 py-12 sm:py-16">
         <div className="container mx-auto px-4">

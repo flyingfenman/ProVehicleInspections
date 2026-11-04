@@ -5,7 +5,6 @@ import { InspectionsHero } from "@/components/vehicle-inspections/sections/hero"
 import { Pricing } from "@/components/vehicle-inspections/sections/pricing"
 import { WhatWeCheck } from "@/components/vehicle-inspections/sections/what-we-check"
 import { ReportStrip } from "@/components/vehicle-inspections/sections/report-strip"
-import { RecentInspections } from "@/components/vehicle-inspections/sections/recent-inspections"
 import { MeetHenry } from "@/components/vehicle-inspections/sections/meet-henry"
 import { InspectionsFAQ } from "@/components/vehicle-inspections/sections/faq"
 import { FinalCta } from "@/components/vehicle-inspections/sections/final-cta"
@@ -38,7 +37,6 @@ export default function HomePage() {
       <WhatWeCheck />
       <ReportStrip />
       <MeetHenry />
-      <RecentInspections />
       <section className="border-t bg-white py-12 sm:py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <LocalAreaLinks />

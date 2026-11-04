@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
-import { RecentInspections } from "@/components/vehicle-inspections/sections/recent-inspections"
 import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
@@ -189,8 +188,6 @@ export function LocalInspectionPage({ area, localProof }: { area: Area; localPro
       </section>
 
       {localProof}
-
-      <RecentInspections />
 
       <MechanicalReportOverview />
 
