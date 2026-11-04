@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowRight, BatteryCharging, Check, Minus, Plus, Wrench } from "lucide-react"
 import { IN_BOTH, PREMIUM_ADDS, type Item } from "../whats-included"
 import { PricingTabs } from "./pricing-tabs"
+import { inspectionPhotos } from "@/lib/inspection-photos"
 
 type Plan = {
   key: "standard" | "premium" | "ev"
@@ -217,14 +218,28 @@ function MechanicalInspection() {
 }
 
 // Standard and Premium side by side, the battery add-on directly under them, and the battery check on its own
-// beside them. On phones they stack in that order.
+// beside them, with Henry's Polo photo filling the space under it on a laptop. On phones they stack in that order.
 function PrePurchaseInspections() {
   return (
     <div className="mx-auto mt-10 grid max-w-6xl gap-x-5 gap-y-8 lg:grid-cols-3">
       <PlanCard plan={STANDARD} />
       <PlanCard plan={PREMIUM} />
       <BatteryAddOn />
-      <PlanCard plan={EV_ONLY} className="lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:self-start" />
+      <div className="flex flex-col gap-8 lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:gap-5">
+        <PlanCard plan={EV_ONLY} />
+        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-white shadow-sm lg:aspect-auto lg:min-h-[280px] lg:flex-1">
+          {/* eslint-disable-next-line @next/next/no-img-element -- static photo, already sized and compressed */}
+          <img
+            src={inspectionPhotos.polo.src}
+            alt={inspectionPhotos.polo.alt}
+            width={750}
+            height={1000}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: inspectionPhotos.polo.position }}
+          />
+        </div>
+      </div>
     </div>
   )
 }
