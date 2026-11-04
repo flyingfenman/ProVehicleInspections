@@ -1,32 +1,40 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import { ReviewsSlider } from "@/components/reviews-slider"
-import { ReportHeader } from "@/components/vehicle-inspections/sample-report/report-header"
-import { VehicleCheckReport } from "@/components/vehicle-inspections/sample-report/vehicle-check-report"
-import { ReportSummary } from "@/components/vehicle-inspections/sample-report/summary"
-import { CategoryScores } from "@/components/vehicle-inspections/sample-report/category-scores"
-import { ReportChecklist } from "@/components/vehicle-inspections/sample-report/checklist"
-import { ReportPhotoGallery } from "@/components/vehicle-inspections/sample-report/photo-gallery"
-import { ReportTerms } from "@/components/vehicle-inspections/sample-report/terms"
-import { RealReportBanner } from "@/components/vehicle-inspections/sample-report/real-report-banner"
+import { RealReportHero } from "@/components/vehicle-inspections/real-report/report-hero"
+import { RealReportSummary } from "@/components/vehicle-inspections/real-report/executive-summary"
+import { RealReportCategoryScores } from "@/components/vehicle-inspections/real-report/category-scores"
+import { RealReportDiagnosticScan } from "@/components/vehicle-inspections/real-report/diagnostic-scan"
+import { RealReportHistoryCheck } from "@/components/vehicle-inspections/real-report/history-check"
+import { RealReportChecklist } from "@/components/vehicle-inspections/real-report/inspection-checklist"
+import { RealReportPhotos } from "@/components/vehicle-inspections/real-report/photo-report"
+import { RealReportClose } from "@/components/vehicle-inspections/real-report/report-close"
+import { rangeRoverSportReport as report } from "@/lib/sample-reports/range-rover-sport"
+
+// The sample report is a real one: Henry's Premium inspection of a Range Rover Sport, customer details removed
+// (see lib/sample-reports/range-rover-sport.ts). The made-up Hyundai Ioniq 5 that used to be here was taken off on
+// 4 Nov 2026 at Henry's request, and /sample-report/range-rover-sport now redirects here.
+const title = "Sample Inspection Report: a real Range Rover Sport | Pro Vehicle Inspections"
+const description =
+  "A real Premium pre-purchase inspection of a 2023 Range Rover Sport D300: 93/100, Good Buy, a full scan of 48 systems, the history check, 192 recorded checks and the photos. Customer details removed."
 
 export const metadata: Metadata = {
-  title: "Sample Inspection Report - Pro Vehicle Inspections",
-  description:
-    "See exactly what you get with a Pro Vehicle Inspections inspection: a sample report for a fictional example vehicle.",
-  robots: { index: false, follow: true },
+  title,
+  description,
+  alternates: { canonical: report.path },
+  openGraph: { title, description, url: report.path, type: "article", images: [report.hero.src] },
 }
 
 export default function SampleReportPage() {
   return (
     <div className="min-h-screen">
-      <ReportHeader />
-      <RealReportBanner />
-      <VehicleCheckReport />
-      <CategoryScores />
-      <ReportSummary />
-      <ReportChecklist />
-      <ReportPhotoGallery />
-      <ReportTerms />
+      <RealReportHero report={report} />
+      <RealReportSummary report={report} />
+      <RealReportCategoryScores report={report} />
+      <RealReportDiagnosticScan report={report} />
+      <RealReportHistoryCheck report={report} />
+      <RealReportChecklist report={report} />
+      <RealReportPhotos report={report} />
+      <RealReportClose report={report} />
       <ReviewsSlider />
     </div>
   )
