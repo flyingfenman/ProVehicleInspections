@@ -30,7 +30,7 @@ export function WhatsAppFloat() {
   // booking page (components/vehicle-inspections/booking-calendar.tsx) the message stays off, and the button hides
   // while the booking bar is across the bottom of the screen.
   return (
-    <div className="fixed bottom-[calc(1rem_+_var(--cookie-banner-space,0px))] right-4 z-40 h-14 w-14 transition-[bottom] duration-300 motion-reduce:transition-none sm:bottom-[calc(1.5rem_+_var(--cookie-banner-space,0px))] sm:right-6 [html[data-cookie-banner=settings]_&]:hidden [html[data-booking-bar]_&]:hidden">
+    <div className="fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))_+_var(--cookie-banner-space,0px))] right-4 z-40 h-14 w-14 transition-[bottom] duration-300 motion-reduce:transition-none sm:bottom-[calc(max(1.5rem,env(safe-area-inset-bottom))_+_var(--cookie-banner-space,0px))] sm:right-6 [html[data-cookie-banner=settings]_&]:hidden [html[data-booking-bar]_&]:hidden">
       <a
         href="https://wa.me/441992245660"
         target="_blank"

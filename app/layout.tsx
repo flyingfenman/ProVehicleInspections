@@ -65,6 +65,11 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  // Lay the page out right to the edges of a phone screen, so the booking bar and the cookie card can sit flush
+  // with the bottom of the screen: without this, in-app browsers and home-screen web apps leave a 34px band below
+  // anything fixed or sticky at the bottom, with the page showing through it. The bottom-of-screen elements add
+  // env(safe-area-inset-bottom) themselves so they stay clear of the home indicator.
+  viewportFit: "cover",
 }
 
 export default function RootLayout({

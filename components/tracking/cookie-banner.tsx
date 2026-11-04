@@ -126,7 +126,7 @@ export function CookieBanner() {
       role="dialog"
       aria-modal="false"
       aria-labelledby="cookie-banner-title"
-      className="fixed bottom-3 left-3 right-3 z-[60] max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-2xl border border-primary/15 bg-white p-4 text-foreground shadow-xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-300 md:bottom-6 md:left-auto md:right-6 md:max-h-[calc(100dvh-3rem)] md:w-full md:max-w-md md:p-5"
+      className="fixed bottom-[max(.75rem,env(safe-area-inset-bottom))] left-3 right-3 z-[60] max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-2xl border border-primary/15 bg-white p-4 text-foreground shadow-xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-300 md:bottom-[max(1.5rem,env(safe-area-inset-bottom))] md:left-auto md:right-6 md:max-h-[calc(100dvh-3rem)] md:w-full md:max-w-md md:p-5"
     >
       {view === "banner" ? (
         <>
