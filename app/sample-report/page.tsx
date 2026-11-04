@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { ReviewsSlider } from "@/components/reviews-slider"
 import { ReportHeader } from "@/components/vehicle-inspections/sample-report/report-header"
 import { VehicleCheckReport } from "@/components/vehicle-inspections/sample-report/vehicle-check-report"
 import { ReportSummary } from "@/components/vehicle-inspections/sample-report/summary"
@@ -24,6 +25,7 @@ export default function SampleReportPage() {
       <ReportChecklist />
       <ReportPhotoGallery />
       <ReportTerms />
+      <ReviewsSlider />
     </div>
   )
 }

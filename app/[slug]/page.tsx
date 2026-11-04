@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { LocalInspectionPage } from "@/components/vehicle-inspections/local-inspection-page"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { areaPath, areas, getArea } from "@/lib/areas"
+import { areaDescription, areaPath, areas, getArea } from "@/lib/areas"
 
 // The area pages: one per city and county we cover, all from lib/areas. Only the slugs listed there exist; anything
 // else at the top level is a 404.
@@ -24,11 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const path = areaPath(area)
   return {
     title: `${area.title} | Pro Vehicle Inspections`,
-    description: area.description,
+    description: areaDescription(area),
     alternates: { canonical: path },
     openGraph: {
       title: `${area.title} | Pro Vehicle Inspections`,
-      description: area.description,
+      description: areaDescription(area),
       url: path,
       type: "website",
       images: ["/images/share-inspection.jpg"],
@@ -41,5 +40,5 @@ export default async function AreaPage({ params }: Props) {
   const area = getArea(slug)
   if (!area) notFound()
 
-  return <LocalInspectionPage area={area} localProof={area.showTestimonials ? <TestimonialsSection /> : undefined} />
+  return <LocalInspectionPage area={area} />
 }

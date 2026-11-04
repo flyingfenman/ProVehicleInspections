@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { ReviewsSlider } from "@/components/reviews-slider"
 import Link from "next/link"
 import { ArrowLeft, CalendarCheck } from "lucide-react"
 import { InspectionsWhatWeInspect } from "@/components/vehicle-inspections/what-we-inspect"
@@ -34,6 +35,7 @@ export default function WhatWeInspectPage() {
         </div>
       </div>
       <InspectionsWhatWeInspect headingLevel="h1" />
+      <ReviewsSlider />
     </main>
   )
 }
