@@ -83,7 +83,11 @@ export default function TermsOfServicePage() {
                 planned the day, bought the vehicle history check and started your report
               </li>
               <li>Instead of cancelling, you can ask us to move your booking to another date or another car, subject to availability</li>
-              <li>To cancel or move a booking, message us on WhatsApp before the 48 hour cut-off. The time of your message counts</li>
+              <li>
+                If you cancel or ask to move less than 3 hours before the appointment, the booking is not refunded and cannot be
+                moved for free. By then we may already be on our way. A new appointment is a new booking at the full price
+              </li>
+              <li>To cancel or move a booking, message us on WhatsApp. The time of your message counts</li>
               <li>If we have to cancel, we will offer you a new appointment or a full refund</li>
               <li>
                 By booking, you ask us to start preparing your inspection straight away. Your 14 day right to cancel under the
