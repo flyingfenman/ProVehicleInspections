@@ -96,13 +96,16 @@ function InspectionIcon({ item }: { item: CheckItem }) {
   )
 }
 
-export function WhatWeCheck() {
+export function WhatWeCheck({
+  title = "Bumper to bumper, and underneath",
+  className = "border-t bg-white",
+}: { title?: string; className?: string } = {}) {
   return (
-    <section className="border-t bg-white py-12 sm:py-16">
+    <section className={`py-12 sm:py-16 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">What we check</p>
-          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">Bumper to bumper, and underneath</h2>
+          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">260 points, adapted to petrol, diesel, hybrid and electric cars.</p>
         </div>
 
