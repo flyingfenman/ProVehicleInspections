@@ -1,6 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, MessageCircle } from "lucide-react"
-import { SITE } from "./site"
+import { ArrowRight, FileText } from "lucide-react"
 
 // The last push to book, for anyone who has read this far.
 export function FinalCta() {
@@ -16,9 +15,9 @@ export function FinalCta() {
             <Link href="/book" className="inline-flex h-14 items-center justify-center rounded-xl bg-primary px-8 text-lg font-bold text-primary-foreground shadow-md transition hover:bg-primary/90">
               Book Now <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white px-8 text-lg font-bold text-primary transition hover:bg-primary/5">
-              <MessageCircle className="h-5 w-5" /> Ask Henry a question
-            </a>
+            <Link href="/sample-report" className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-primary/30 bg-white px-8 text-lg font-bold text-primary transition hover:bg-primary/5">
+              <FileText className="h-5 w-5" /> View an example report
+            </Link>
           </div>
           <p className="mt-6 font-semibold text-muted-foreground">Standard £199.99 · Premium £249.99 · EV battery check £149.99</p>
         </div>
