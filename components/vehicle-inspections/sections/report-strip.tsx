@@ -7,10 +7,10 @@ const ITEMS: Array<{ icon: LucideIcon; title: string; text: string }> = [
   { icon: PhoneCall, title: "A call with Henry", text: "Talk through what it means before you decide." },
 ]
 
-// What the customer receives, in four tiles.
+// What the customer receives, in four tiles. Hidden on phones (Henry, 5 Nov).
 export function ReportStrip() {
   return (
-    <section className="border-t bg-white py-12 sm:py-16">
+    <section className="hidden border-t bg-white py-12 sm:block sm:py-16">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Your report</p>
