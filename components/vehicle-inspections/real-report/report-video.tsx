@@ -1,7 +1,10 @@
+import Image from "next/image"
 import s from "./report.module.css"
 
 // Where the customer report has its inspection video. Henry asked (5 Nov 2026) for the video itself not to be shown
 // on the sample for privacy, with a mock player and a line making clear every report comes with an informative video.
+// The still behind the play button is Henry's own road-test photo (5 Nov 2026), cropped to the windscreen and dashboard,
+// with the number plates ahead and a windscreen reflection blurred.
 export function RealReportVideo() {
   return (
     <section className={s.section} id="inspection-video">
@@ -12,6 +15,13 @@ export function RealReportVideo() {
         </div>
         <div className={`${s.card} ${s.videoCard}`}>
           <div className={s.videoMock} role="img" aria-label="Inspection video, not shown on this sample for privacy">
+            <Image
+              src="/images/sample-report/range-rover-sport/video-still.webp"
+              alt=""
+              fill
+              sizes="(max-width: 700px) 100vw, 640px"
+              className={s.videoStill}
+            />
             <span className={s.videoPlay} aria-hidden="true" />
             <span className={s.videoMockText}>Your inspection video plays here</span>
           </div>
