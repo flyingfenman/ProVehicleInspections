@@ -1,4 +1,4 @@
-import { Check, ShieldCheck } from "lucide-react"
+import { Check } from "lucide-react"
 import { BookNowButton } from "../book-now-button"
 import { Reviews } from "./reviews"
 
@@ -6,7 +6,7 @@ const IN_BOTH = ["We come to the car", "History check", "Full diagnostics", "Roa
 
 // The title, the prices, what both inspections include and the first Book Now, with what customers say
 // beside it on a laptop and straight after it on a phone or tablet. The heading says what people searched
-// for (pre-purchase car inspection, independent, mobile car inspection service): Google rated the landing
+// for (pre-purchase car inspection, independent): Google rated the landing
 // page below average on every PVI ad keyword while the heading was the "own money" line alone, so that
 // line now sits under the heading instead.
 export function InspectionsHero() {
@@ -15,12 +15,7 @@ export function InspectionsHero() {
       <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-10 xl:py-14">
         <div className="mx-auto max-w-4xl lg:grid lg:max-w-none lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10 xl:gap-14">
           <div>
-            <div className="hidden items-center gap-2 rounded-full border border-primary/30 bg-white px-4 py-2 text-sm font-bold text-primary sm:inline-flex">
-              <ShieldCheck className="h-4 w-4" />
-              Mobile car inspection service
-            </div>
-
-            <h1 className="text-4xl font-bold leading-[1.06] sm:mt-5 sm:text-5xl xl:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.06] sm:text-5xl xl:text-6xl">
               Independent <span className="whitespace-nowrap">pre-purchase</span> car inspection, <span className="text-primary">wherever the car is.</span>
             </h1>
 
