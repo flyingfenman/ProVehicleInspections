@@ -267,15 +267,18 @@ export function InspectionsBookingCalendar() {
     setSelectedSlot(slot)
   }
 
+  // With the details open, everything above the form folds into one summary line, so going back to the top of the
+  // page shows the "Book Your Vehicle Inspection" title, the summary and the start of the form together. Scrolling
+  // to the form itself pushed the title off the top of a phone screen.
+  const showPageTop = () => window.scrollTo({ top: 0 })
+
   // The details stay hidden until the customer has chosen a valid appointment and presses Continue.
   const goToDetails = () => {
     if (!selectedSlot) return
     setDetailsUnlocked(true)
     requestAnimationFrame(() => {
-      const details = detailsRef.current
-      if (!details) return
-      details.scrollIntoView({ behavior: "smooth", block: "start" })
-      details.focus({ preventScroll: true })
+      showPageTop()
+      detailsRef.current?.focus({ preventScroll: true })
     })
   }
 
@@ -307,7 +310,7 @@ export function InspectionsBookingCalendar() {
   useEffect(() => {
     if (!detailsUnlocked || !scrollToDetailsOnOpen.current) return
     scrollToDetailsOnOpen.current = false
-    detailsRef.current?.scrollIntoView({ block: "start" })
+    showPageTop()
   }, [detailsUnlocked])
 
   const showTimes = () => timeRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
