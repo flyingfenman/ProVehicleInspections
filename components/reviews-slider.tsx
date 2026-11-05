@@ -1,5 +1,6 @@
 import { Quote } from "lucide-react"
 import { reviews } from "@/lib/reviews"
+import { FullReviewButton } from "@/components/full-review-button"
 
 // A strip of every real review that slides slowly past on its own: the name and what they said (no star ratings: only one review came with one). It stops
 // while a finger or mouse is on it, can be swiped by hand, and stands still for anyone who has asked their device
@@ -28,6 +29,7 @@ export function ReviewsSlider({ className = "bg-white" }: { className?: string }
                 >
                   <Quote className="h-7 w-7 text-primary" aria-hidden="true" />
                   <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">&ldquo;{review.quote}&rdquo;</blockquote>
+                  {review.full && <FullReviewButton name={review.name} paragraphs={review.full} hiddenCopy={copy === 1} />}
                   <p className="mt-4 text-lg font-bold text-primary">{review.name}</p>
                 </li>
               ))}
