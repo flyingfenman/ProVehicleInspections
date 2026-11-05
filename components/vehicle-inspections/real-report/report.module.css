@@ -752,8 +752,10 @@ a.heroBadge:hover {
 }
 .videoMock {
   position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.12);
   background: linear-gradient(135deg, #2a1640, #6711a4);
   display: flex;
   flex-direction: column;
@@ -764,9 +766,24 @@ a.heroBadge:hover {
   text-align: center;
   padding: 16px;
 }
+/* Henry's road-test still fills the whole box, darkened so the play button and the line under it stand out */
+.videoStill {
+  object-fit: cover;
+}
+.videoMock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 6, 16, 0.45);
+}
+.videoPlay,
+.videoMockText {
+  position: relative;
+  z-index: 1;
+}
 .videoPlay {
-  width: 64px;
-  height: 64px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
   display: flex;
@@ -777,12 +794,13 @@ a.heroBadge:hover {
   content: "";
   margin-left: 6px;
   border-style: solid;
-  border-width: 13px 0 13px 21px;
+  border-width: 15px 0 15px 25px;
   border-color: transparent transparent transparent #6711a4;
 }
 .videoMockText {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 .videoNote {
   margin: 16px 0 0;

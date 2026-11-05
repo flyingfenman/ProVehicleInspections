@@ -6,6 +6,8 @@ import type { RealReport, ScanModule } from "./types"
 // the keeper and V5C dates and the history check reference are left out on purpose. Every photo from the report is
 // here (photo-NNN, numbered in the report's order) apart from the VIN plate and the service history printout, with all
 // number plates, the sat-nav screen and a bystander blurred. Henry's branded photo of the car stays the header photo.
+// The example previous advert uses previous-advert.webp, an advert photo Henry supplied, with the dealer's name
+// cropped off the top.
 
 const PHOTO_DIR = "/images/sample-report/range-rover-sport"
 const photo = (name: string) => `${PHOTO_DIR}/${name}.webp`
@@ -403,7 +405,7 @@ export const rangeRoverSportReport: RealReport = {
           lastSeen: "March 2025",
           days: 26,
           mileage: "21,300",
-          image: photo("photo-074"),
+          image: photo("previous-advert"),
         },
         {
           seller: "Private seller",

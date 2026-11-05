@@ -54,7 +54,7 @@ function ExampleAdverts({ note, adverts }: { note: string; adverts: PreviousAdve
                   src={advert.image}
                   alt={`Example photo from the ${advert.listed} advert`}
                   width={420}
-                  height={315}
+                  height={234}
                   className={s.advertImage}
                 />
               )}
