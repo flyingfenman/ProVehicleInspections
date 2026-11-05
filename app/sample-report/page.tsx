@@ -6,6 +6,7 @@ import { RealReportCategoryScores } from "@/components/vehicle-inspections/real-
 import { RealReportDiagnosticScan } from "@/components/vehicle-inspections/real-report/diagnostic-scan"
 import { RealReportHistoryCheck } from "@/components/vehicle-inspections/real-report/history-check"
 import { RealReportChecklist } from "@/components/vehicle-inspections/real-report/inspection-checklist"
+import { RealReportVideo } from "@/components/vehicle-inspections/real-report/report-video"
 import { RealReportPhotos } from "@/components/vehicle-inspections/real-report/photo-report"
 import { RealReportClose } from "@/components/vehicle-inspections/real-report/report-close"
 import reportStyles from "@/components/vehicle-inspections/real-report/report.module.css"
@@ -17,7 +18,7 @@ import { rangeRoverSportReport as report } from "@/lib/sample-reports/range-rove
 // styled like the customer report the lead tool sends, in the same order, at Henry's request.
 const title = "Sample Inspection Report: a real Range Rover Sport | Pro Vehicle Inspections"
 const description =
-  "A real Premium pre-purchase inspection of a 2023 Range Rover Sport D300: 93/100, Good Buy, a full scan of 48 systems, the history check, 192 recorded checks and the photos. Customer details removed."
+  "A real Premium pre-purchase inspection of a 2023 Range Rover Sport D300: 93/100, Good Buy, a full scan of 48 systems, the history check, 192 recorded checks and all the photos. Customer details removed."
 
 export const metadata: Metadata = {
   title,
@@ -36,6 +37,7 @@ export default function SampleReportPage() {
         <RealReportHistoryCheck report={report} />
         <RealReportCategoryScores report={report} />
         <RealReportChecklist report={report} />
+        <RealReportVideo />
         <RealReportPhotos photos={report.photos} photoCount={report.photoCount} />
         <RealReportClose report={report} />
       </div>

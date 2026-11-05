@@ -1,4 +1,6 @@
-import type { HistoryRow, RealReport } from "@/lib/sample-reports/types"
+import Image from "next/image"
+import { Fragment } from "react"
+import type { HistoryRow, PreviousAdvert, RealReport } from "@/lib/sample-reports/types"
 import { Removed } from "./removed"
 import s from "./report.module.css"
 
@@ -24,6 +26,42 @@ function Rows({ rows }: { rows: HistoryRow[] }) {
       {rows.map((row) => (
         <Row key={row.label} row={row} />
       ))}
+    </div>
+  )
+}
+
+// The report's "Previous adverts" card. On the sample it is an example, so it carries a badge and a line saying so.
+function ExampleAdverts({ note, adverts }: { note: string; adverts: PreviousAdvert[] }) {
+  return (
+    <div className={s.card}>
+      <h3 className={s.cardTitle}>
+        Previous adverts <span className={s.exampleBadge}>Example</span>
+      </h3>
+      <p className={s.exampleNote}>{note}</p>
+      <div className={s.details}>
+        {adverts.map((advert) => (
+          <div key={advert.listed} className={s.row}>
+            <div className={s.rowCopy}>
+              <strong className={s.rowLabel}>
+                {advert.seller}
+                {advert.sellerType && ` (${advert.sellerType})`}, {advert.price}
+              </strong>
+              <small className={s.rowDetail}>
+                Listed {advert.listed}, last seen {advert.lastSeen}, {advert.days} days on sale, {advert.mileage} miles
+              </small>
+              {advert.image && (
+                <Image
+                  src={advert.image}
+                  alt={`Example photo from the ${advert.listed} advert`}
+                  width={420}
+                  height={315}
+                  className={s.advertImage}
+                />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -63,10 +101,14 @@ export function RealReportHistoryCheck({ report }: { report: RealReport }) {
           </div>
 
           {history.cards.map((card) => (
-            <div key={card.title} className={s.card}>
-              <h3 className={s.cardTitle}>{card.title}</h3>
-              <Rows rows={card.rows} />
-            </div>
+            <Fragment key={card.title}>
+              <div className={s.card}>
+                <h3 className={s.cardTitle}>{card.title}</h3>
+                <Rows rows={card.rows} />
+              </div>
+              {/* The report puts previous adverts straight after the MOT history. */}
+              {card.title === "MOT history" && history.exampleAdverts && <ExampleAdverts {...history.exampleAdverts} />}
+            </Fragment>
           ))}
 
           <div className={s.card}>

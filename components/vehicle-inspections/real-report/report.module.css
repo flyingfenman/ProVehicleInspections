@@ -739,6 +739,80 @@ a.heroBadge:hover {
   display: block;
 }
 
+/* Inspection video */
+.videoCard {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.videoMock {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2a1640, #6711a4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+}
+.videoPlay {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.videoPlay::after {
+  content: "";
+  margin-left: 6px;
+  border-style: solid;
+  border-width: 13px 0 13px 21px;
+  border-color: transparent transparent transparent #6711a4;
+}
+.videoMockText {
+  font-size: 14px;
+  font-weight: 600;
+}
+.videoNote {
+  margin: 16px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Example "Previous adverts" card */
+.exampleBadge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #f3e8ff;
+  color: #6711a4;
+  font-size: 11px;
+  font-weight: 700;
+}
+.exampleNote {
+  margin: 8px 0 4px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.advertImage {
+  display: block;
+  margin-top: 10px;
+  max-width: 100%;
+  width: 420px;
+  height: auto;
+  border-radius: 10px;
+}
+
 /* Photo report */
 .photos {
   max-width: 1040px;
