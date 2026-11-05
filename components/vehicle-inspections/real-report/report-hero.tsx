@@ -4,8 +4,8 @@ import type { RealReport } from "@/lib/sample-reports/types"
 import { Removed } from "./removed"
 import s from "./report.module.css"
 
-// The top of the customer report, as the lead tool lays it out: the purple band, the car in a white frame and the key
-// facts bar sitting across the bottom edge.
+// The top of the customer report, as the lead tool lays it out: the car in a framed photo and the key facts bar sitting
+// across the bottom edge. The band is white here, not the lead tool's purple, at Henry's request.
 export function RealReportHero({ report }: { report: RealReport }) {
   const facts = [
     { label: "Registration", value: null },
