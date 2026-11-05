@@ -8,6 +8,7 @@ import { ReportStrip } from "@/components/vehicle-inspections/sections/report-st
 import { MeetHenry } from "@/components/vehicle-inspections/sections/meet-henry"
 import { InspectionsFAQ } from "@/components/vehicle-inspections/sections/faq"
 import { FinalCta } from "@/components/vehicle-inspections/sections/final-cta"
+import { ReviewsSlider } from "@/components/reviews-slider"
 
 export const metadata: Metadata = {
   title: "Pre-Purchase Car Inspection Service | Pro Vehicle Inspections",
@@ -37,6 +38,7 @@ export default function HomePage() {
       <WhatWeCheck />
       <ReportStrip />
       <MeetHenry />
+      <ReviewsSlider className="bg-slate-50" />
       <section className="border-t bg-white py-12 sm:py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <LocalAreaLinks />

@@ -3,10 +3,11 @@ import { reviews } from "@/lib/reviews"
 
 // A strip of every real review that slides slowly past on its own: the name and what they said (no star ratings: only one review came with one). It stops
 // while a finger or mouse is on it, can be swiped by hand, and stands still for anyone who has asked their device
-// for less motion. The list is repeated so the strip is never empty on a wide screen, and the copy that makes the
-// loop seamless is hidden from screen readers.
+// for less motion. A short list is repeated so the strip is never empty on a wide screen, and the copy that makes
+// the loop seamless is hidden from screen readers. The loop time grows with the number of cards (about 8 seconds
+// a card), so adding reviews never makes the strip move faster.
 export function ReviewsSlider({ className = "bg-white" }: { className?: string }) {
-  const run = Array.from({ length: Math.max(2, Math.ceil(8 / reviews.length)) }, () => reviews).flat()
+  const run = Array.from({ length: Math.max(1, Math.ceil(8 / reviews.length)) }, () => reviews).flat()
 
   return (
     <section className={`overflow-hidden border-t py-10 sm:py-14 ${className}`} aria-labelledby="reviews-slider-heading">
@@ -17,7 +18,7 @@ export function ReviewsSlider({ className = "bg-white" }: { className?: string }
       </div>
 
       <div className="reviews-slider mt-7 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-9">
-        <div className="reviews-slider-track flex w-max">
+        <div className="reviews-slider-track flex w-max" style={{ animationDuration: `${run.length * 8}s` }}>
           {[0, 1].map((copy) => (
             <ul key={copy} className="flex shrink-0 gap-4 pr-4 sm:gap-5 sm:pr-5" aria-hidden={copy === 1 || undefined}>
               {run.map((review, i) => (
