@@ -21,10 +21,12 @@
 }
 
 /* Header */
+/* White, not the lead tool's purple band: Henry asked for a white top on 5 Nov 2026. */
 .hero {
-  background: var(--p);
-  color: #fff;
+  background: #fff;
+  color: #171717;
   padding: 48px 20px 0;
+  border-bottom: 1px solid var(--line);
 }
 .inner {
   width: min(1040px, 100%);
@@ -37,7 +39,7 @@
 }
 .eyebrow {
   display: inline-block;
-  background: #fff;
+  background: var(--ps);
   color: var(--p);
   padding: 8px 16px;
   border-radius: 999px;
@@ -53,7 +55,7 @@
   font-weight: 700;
 }
 .heroText {
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--muted);
   font-size: 17px;
   margin: 0;
 }
@@ -65,27 +67,30 @@
   margin-top: 20px;
 }
 .heroBadge {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #374151;
   padding: 7px 13px;
   border-radius: 999px;
   font-size: 12px;
 }
 a.heroBadge:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--ps);
 }
 .heroBadgeStrong {
-  background: #fff;
-  color: var(--p);
+  background: var(--p);
+  border-color: var(--p);
+  color: #fff;
+  font-weight: 700;
 }
 .heroCar {
   max-width: 560px;
   margin: 28px auto 6px;
   background: #fff;
+  border: 1px solid var(--line);
   border-radius: 18px;
   padding: 14px;
-  box-shadow: 0 16px 45px rgba(34, 16, 46, 0.18);
+  box-shadow: 0 16px 45px rgba(34, 16, 46, 0.1);
 }
 .heroCarImage {
   display: block;
@@ -99,12 +104,13 @@ a.heroBadge:hover {
   transform: translateY(34px);
   background: #fff;
   color: #171717;
+  border: 1px solid var(--line);
   border-radius: 18px;
   padding: 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  box-shadow: 0 16px 45px rgba(34, 16, 46, 0.18);
+  box-shadow: 0 16px 45px rgba(34, 16, 46, 0.1);
 }
 .fact {
   text-align: center;
