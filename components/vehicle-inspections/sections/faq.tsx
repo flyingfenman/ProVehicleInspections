@@ -29,18 +29,9 @@ const faqs = [
     answer: `Yes, wherever the car is: a dealer, a private seller's address or your own home. We cover ${SITE.serves}.`,
   },
   {
-    question: "How long does it take and when do I get the report?",
-    answer:
-      "Around 40 to 60 minutes on site for Standard and 70 to 90 minutes for Premium. You get the video review, photos and written report the same day, plus a personal call to talk it through.",
-  },
-  {
     question: "Is it worth paying for an inspection before buying a used car?",
     answer:
       "Yes. It can uncover expensive problems before you hand over any money. You get finance, write-off, stolen and mileage checks, a full diagnostic scan, a road test and a detailed report.",
-  },
-  {
-    question: "How do I book, and how do I get in touch?",
-    answer: `Book online and pick a time, or message us on WhatsApp, the fastest way to reach ${SITE.brand}.`,
   },
 ]
 

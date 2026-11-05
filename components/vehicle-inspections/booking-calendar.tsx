@@ -10,13 +10,10 @@ import {
   Loader2,
   ChevronRight,
   ChevronLeft,
-  Clock,
   TriangleAlert,
   Phone,
   MessageCircle,
-  BatteryCharging,
   Check,
-  Wrench,
   CalendarDays,
 } from "lucide-react"
 import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
@@ -416,21 +413,6 @@ export function InspectionsBookingCalendar() {
         </div>
       ) : (
       <>
-      <div className="mb-7 hidden gap-3 sm:grid sm:grid-cols-3">
-        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
-          <BatteryCharging className="h-6 w-6 shrink-0 text-primary" />
-          <div><p className="text-sm font-bold">Specialists in EV</p><p className="text-xs text-muted-foreground">EV diagnostics &amp; optional battery health reports</p></div>
-        </div>
-        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
-          <Clock className="h-6 w-6 shrink-0 text-primary" />
-          <div><p className="text-sm font-bold">Short-notice availability</p><p className="text-xs text-muted-foreground">Message first inside 24 hours</p></div>
-        </div>
-        <div className="flex items-center gap-3 rounded-2xl border bg-white p-4">
-          <Wrench className="h-6 w-6 shrink-0 text-primary" />
-          <div><p className="text-sm font-bold">Most thorough mechanical checks available</p><p className="text-xs text-muted-foreground">In-depth findings, video &amp; buying guidance</p></div>
-        </div>
-      </div>
-
       <div className="mb-8">
         <div className="mb-4 flex items-center gap-3">
           <div>
