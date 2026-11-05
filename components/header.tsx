@@ -34,7 +34,7 @@ export function Header() {
             <Button
               asChild
               size="lg"
-              className="text-base font-semibold bg-[#d9a900] text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)] hover:bg-[#c29700] border-2 border-[#c29700] shadow-md"
+              className="text-base font-semibold bg-[#ffd500] text-black hover:bg-[#ffdb1a] border-2 border-[#e6c000] shadow-md"
             >
               <Link href="/mechanical-inspection">Mechanical Inspection</Link>
             </Button>
@@ -72,7 +72,7 @@ export function Header() {
                 EV Battery Check
               </Link>
             </Button>
-            <Button asChild className="flex h-12 w-full font-semibold bg-[#d9a900] text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.45)] hover:bg-[#c29700]" size="lg">
+            <Button asChild className="flex h-12 w-full font-semibold bg-[#ffd500] text-black hover:bg-[#ffdb1a]" size="lg">
               <Link href="/mechanical-inspection" onClick={() => setIsMenuOpen(false)}>
                 Mechanical Inspection
               </Link>
