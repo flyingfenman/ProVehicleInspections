@@ -2,23 +2,85 @@ import Image from "next/image"
 import Link from "next/link"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
-import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
+import { ReportStrip } from "@/components/vehicle-inspections/sections/report-strip"
+import { WhatWeCheck } from "@/components/vehicle-inspections/sections/what-we-check"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
 import { inspectionPhotos } from "@/lib/inspection-photos"
 import {
   ArrowRight,
   BatteryCharging,
-  Check,
+  CalendarCheck,
+  Car,
   ChevronDown,
   FileText,
+  Gauge,
+  Handshake,
+  History,
   MapPin,
+  PaintBucket,
   Route,
+  ScanLine,
+  Search,
   ShieldCheck,
+  Video,
+  type LucideIcon,
 } from "lucide-react"
 
 const BRAND = "Pro Vehicle Inspections"
 const SITE_URL = "https://www.provehicleinspections.com"
+
+const HENRY_POINTS: Array<{ icon: LucideIcon; label: string }> = [
+  { icon: Car, label: "I come to the car" },
+  { icon: ScanLine, label: "Full diagnostic scan" },
+  { icon: Handshake, label: "Fully independent" },
+]
+
+const PACKAGES: Array<{
+  name: string
+  slug: string
+  price: string
+  points: number
+  featured?: boolean
+  note?: string
+  items: Array<{ icon: LucideIcon; label: string }>
+}> = [
+  {
+    name: "Standard",
+    slug: "standard",
+    price: "£199.99",
+    points: 160,
+    items: [
+      { icon: Gauge, label: "Engine, gearbox, brakes and suspension" },
+      { icon: ScanLine, label: "Full diagnostic scan" },
+      { icon: Route, label: "Road test" },
+      { icon: History, label: "Full vehicle history check" },
+      { icon: Video, label: "Video, photos and report" },
+    ],
+  },
+  {
+    name: "Premium",
+    slug: "premium",
+    price: "£249.99",
+    points: 260,
+    featured: true,
+    note: "Searches depend on the records available. Road tests need the seller's permission.",
+    items: [
+      { icon: ShieldCheck, label: "Everything in Standard" },
+      { icon: PaintBucket, label: "Paint depth on every panel" },
+      { icon: Route, label: "Extended road test" },
+      { icon: Search, label: "Auction, salvage and old advert searches" },
+      { icon: Handshake, label: "Checks for hidden trade sellers" },
+    ],
+  },
+]
+
+const STEPS: Array<{ icon: LucideIcon; title: string; text: string }> = [
+  { icon: CalendarCheck, title: "Book online", text: "Pick a time and tell me where the car is." },
+  { icon: Car, title: "I come to the car", text: "Dealer or driveway, same price." },
+  { icon: ScanLine, title: "I inspect and drive it", text: "Scan, checks and a road test." },
+  { icon: Video, title: "You get the evidence", text: "Video, photos and report the same day." },
+]
 
 // The same answers on every area page, in Henry's words, with the place name filled in.
 function areaFaqs(name: string) {
@@ -147,14 +209,19 @@ export function LocalInspectionPage({ area }: { area: Area }) {
               </div>
               <h2 className="mt-4 text-3xl font-bold sm:text-4xl">I&apos;m Henry. I&apos;ll be the one looking at the car.</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I inspect used cars for people buying in {area.name}. I come to the car, whether it&apos;s on a dealer&apos;s forecourt or on someone&apos;s driveway, and I check it properly before you pay for it.
+                I come to the car, on a forecourt or a driveway, and check it properly before you pay. I don&apos;t work for the seller and I get nothing from the sale.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I scan every module with my diagnostic tablet, look underneath, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I don&apos;t work for the seller and I get nothing from the sale. If the car is good, I&apos;ll say so. If it isn&apos;t, I&apos;ll tell you that too, and roughly what it&apos;ll cost to put right.
-              </p>
+
+              <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+                {HENRY_POINTS.map(({ icon: Icon, label }) => (
+                  <div key={label} className="rounded-2xl border border-border bg-white p-3 text-center shadow-sm">
+                    <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <p className="mt-2 text-[13px] font-bold leading-tight sm:text-sm">{label}</p>
+                  </div>
+                ))}
+              </div>
 
               <p className="mt-6 text-sm font-semibold">Places I cover in and around {area.name}</p>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -170,104 +237,55 @@ export function LocalInspectionPage({ area }: { area: Area }) {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-10 sm:py-14">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
-            <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
-                <Image
-                  src={inspectionPhotos.rangeRover.src}
-                  alt={inspectionPhotos.rangeRover.alt}
-                  fill
-                  sizes="(min-width: 1024px) 560px, 100vw"
-                  className="object-cover"
-                  style={{ objectPosition: inspectionPhotos.rangeRover.position }}
-                />
-              </div>
-              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before I inspected it.</figcaption>
-            </figure>
+      <WhatWeCheck title={`What I check on a car in ${area.name}`} />
 
-            <div className="rounded-3xl border border-border bg-white p-5 sm:p-6">
-              <h3 className="text-xl font-bold">Every inspection includes</h3>
-              <div className="mt-4 space-y-3 text-sm">
-                {[
-                  "Full-system diagnostic scan",
-                  "Road test",
-                  "History check: finance, write-off, stolen and mileage",
-                  "Body, chassis, tyres and interior checks",
-                  "Powertrain-specific checks for petrol, diesel, hybrid or EV",
-                  "Video review of the car",
-                  "Photos and a written report the same day",
-                  "We go through the findings together",
-                  "No call-out or mileage charge: the price is the price",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <MechanicalReportOverview />
+      <ReportStrip />
 
       <section className="bg-slate-50 py-10 sm:py-14">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold">Choose the inspection that suits the car</h2>
-              <p className="mt-2 text-muted-foreground">The same price anywhere in {area.name}. No quote to ask for first.</p>
+              <p className="mt-2 text-muted-foreground">The same price anywhere in {area.name}.</p>
             </div>
 
             <div className="mt-7 grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl border border-border bg-white p-6 shadow-sm">
-                <p className="text-sm font-bold text-primary">Standard Inspection</p>
-                <p className="mt-2 text-4xl font-bold">£199.99</p>
-                <p className="mt-2 font-semibold">160-point pre-purchase inspection</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  An in-depth mechanical inspection of the relevant engine and drivetrain, brakes, steering, suspension and diagnostics. Includes road test, vehicle history, a clear video review, photo evidence and personal buying guidance.
-                </p>
-                <Link href="/book?package=standard" className="mt-4 inline-flex min-h-11 items-center font-bold text-primary hover:underline">
-                  Book Standard <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </div>
-
-              <div className="rounded-3xl border-2 border-primary/30 bg-white p-6 shadow-sm">
-                <p className="text-sm font-bold text-primary">Premium Inspection</p>
-                <p className="mt-2 text-4xl font-bold">£249.99</p>
-                <p className="mt-2 font-semibold">260-point pre-purchase inspection</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Everything in Standard, including the video review, plus deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
-                </p>
-                <Link href="/book?package=premium" className="mt-4 inline-flex min-h-11 items-center font-bold text-primary hover:underline">
-                  Book Premium <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-2xl border border-primary/20 bg-primary/5 p-5">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex gap-3">
-                  <BatteryCharging className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Buying an electric or plug-in hybrid car in {area.name}?</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Add a CARA Approved® Autel EV Battery State of Health report to either inspection for £49.99, or book the battery check on its own for £149.99. It isn&apos;t included in Standard or Premium.
-                    </p>
+              {PACKAGES.map((pkg) => (
+                <div key={pkg.name} className={`rounded-3xl bg-white p-6 shadow-sm ${pkg.featured ? "border-2 border-primary/30" : "border border-border"}`}>
+                  <p className="text-sm font-bold text-primary">{pkg.name} Inspection</p>
+                  <p className="mt-2 text-4xl font-bold">{pkg.price}</p>
+                  <p className="mt-1 font-semibold">{pkg.points}-point pre-purchase inspection</p>
+                  <div className="mt-4 space-y-2.5">
+                    {pkg.items.map(({ icon: Icon, label }) => (
+                      <div key={label} className="flex items-center gap-3">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                          <Icon className="h-[18px] w-[18px]" />
+                        </span>
+                        <span className="text-sm font-semibold">{label}</span>
+                      </div>
+                    ))}
                   </div>
-                </div>
-                <div className="shrink-0 sm:text-right">
-                  <p className="text-2xl font-bold">+£49.99</p>
-                  <Link href="/ev-battery-health-check" className="-my-3.5 inline-block py-3.5 text-sm font-bold text-primary hover:underline">
-                    EV battery details
+                  {pkg.note && <p className="mt-3 text-xs text-muted-foreground">{pkg.note}</p>}
+                  <Link href={`/book?package=${pkg.slug}`} className="mt-4 inline-flex min-h-11 items-center font-bold text-primary hover:underline">
+                    Book {pkg.name} <ArrowRight className="ml-1.5 h-4 w-4" />
                   </Link>
                 </div>
-              </div>
+              ))}
             </div>
+
+            <Link
+              href="/ev-battery-health-check"
+              className="mt-4 flex items-center gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-4 transition hover:bg-primary/10 sm:p-5"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <BatteryCharging className="h-5 w-5" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-bold">Electric or plug-in hybrid?</span>
+                <span className="block text-sm text-muted-foreground">Add the battery health check for £49.99, or book it on its own for £149.99.</span>
+              </span>
+              <ArrowRight className="h-5 w-5 shrink-0 text-primary" />
+            </Link>
 
             <details className="group mt-4 overflow-hidden rounded-2xl border border-border bg-white">
               <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-bold text-primary [&::-webkit-details-marker]:hidden">
@@ -284,23 +302,36 @@ export function LocalInspectionPage({ area }: { area: Area }) {
 
       <section className="py-10 sm:py-14">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-5xl">
             <h2 className="text-center text-3xl font-bold">What happens after you book?</h2>
-            <div className="mt-7 space-y-3">
-              {[
-                ["1", "Choose a package and appointment", "Book online, pick a time and tell me where the car is."],
-                ["2", "I come to the car", `At the dealer or the seller's house, anywhere in ${area.name}, for the same price.`],
-                ["3", "I inspect it and drive it", "The physical checks, the diagnostic scan, the history check and a road test, and I film the video at the car."],
-                ["4", "Understand before you decide", "You get the video, photos and report the same day, and we go through what I found so you can decide."],
-              ].map(([number, title, text]) => (
-                <div key={number} className="flex gap-4 rounded-2xl border border-border bg-white p-4 sm:p-5">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">{number}</span>
-                  <div>
-                    <h3 className="font-bold">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{text}</p>
-                  </div>
+            <div className="mt-7 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-center">
+              <figure className="order-2 lg:order-1">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
+                  <Image
+                    src={inspectionPhotos.rangeRover.src}
+                    alt={inspectionPhotos.rangeRover.alt}
+                    fill
+                    sizes="(min-width: 1024px) 480px, 100vw"
+                    className="object-cover"
+                    style={{ objectPosition: inspectionPhotos.rangeRover.position }}
+                  />
                 </div>
-              ))}
+                <figcaption className="mt-2 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer.</figcaption>
+              </figure>
+              <div className="order-1 grid grid-cols-2 gap-3 lg:order-2">
+                {STEPS.map(({ icon: Icon, title, text }, index) => (
+                  <div key={title} className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="text-sm font-bold text-primary">{index + 1}</span>
+                    </div>
+                    <h3 className="mt-3 font-bold leading-snug">{title}</h3>
+                    <p className="mt-1 text-sm leading-snug text-muted-foreground">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -309,23 +340,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
       <section className="bg-slate-50 py-10 sm:py-14">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Link href="/sample-report" className="group rounded-3xl border bg-white p-6 shadow-sm transition hover:shadow-md">
-                <FileText className="h-7 w-7 text-primary" />
-                <h2 className="mt-4 text-xl font-bold">See a sample inspection report</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">See the level of detail, findings and checklist before you book.</p>
-                <span className="mt-4 inline-flex items-center font-bold text-primary">View sample report <ArrowRight className="ml-2 h-4 w-4" /></span>
-              </Link>
-
-              <Link href="/ev-battery-health-check" className="group rounded-3xl border bg-white p-6 shadow-sm transition hover:shadow-md">
-                <BatteryCharging className="h-7 w-7 text-primary" />
-                <h2 className="mt-4 text-xl font-bold">EV battery health checks</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">What the State of Health assessment checks on compatible electric and plug-in hybrid cars.</p>
-                <span className="mt-4 inline-flex items-center font-bold text-primary">EV battery health <ArrowRight className="ml-2 h-4 w-4" /></span>
-              </Link>
-            </div>
-
-            <h2 className="mt-10 text-3xl font-bold">Questions people ask me</h2>
+            <h2 className="text-3xl font-bold">Questions people ask me</h2>
             <div className="mt-5 space-y-3">
               {faqs.map((faq) => (
                 <details key={faq.question} className="group rounded-2xl border bg-white">
