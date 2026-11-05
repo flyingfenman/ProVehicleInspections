@@ -52,6 +52,19 @@ export type HistoryRow = {
   pill?: string
 }
 
+/** An advert the history check found for the car, as the report lists it under "Previous adverts". */
+export type PreviousAdvert = {
+  seller: string
+  /** Shown in brackets after the seller, as the report does, such as "trade". */
+  sellerType?: string
+  price: string
+  listed: string
+  lastSeen: string
+  days: number
+  mileage: string
+  image?: string
+}
+
 export type RealReport = {
   path: string
   vehicle: string
@@ -93,9 +106,15 @@ export type RealReport = {
     otherResults: HistoryRow[]
     specification: HistoryRow[]
     source: string
+    /**
+     * A made-up "Previous adverts" card, clearly marked as an example, for a car that had none, so readers can see the
+     * report lists them when a car has been advertised before.
+     */
+    exampleAdverts?: { note: string; adverts: PreviousAdvert[] }
   }
   checklist: { recorded: number; total: number; sections: CheckSection[] }
   photos: ReportPhoto[]
+  /** Every photo the inspection took, including the ones shown on checklist points and any left out for privacy. */
   photoCount: number
   limitations: string
 }

@@ -43,8 +43,9 @@ export function RealReportPhotos({ photos, photoCount }: { photos: ReportPhoto[]
         <div className={s.head}>
           <h2 className={s.headTitle}>Photo Report</h2>
           <p className={s.headText}>
-            {photos.length} of the {photoCount} photos from this inspection. Tap any photo to enlarge it, then
-            swipe through the gallery.
+            {photoCount} photos were taken on this inspection. {photos.length} are here and the rest sit on their
+            checklist points above, apart from the VIN plate and the service history printout. Tap any photo to enlarge
+            it, then swipe through the gallery.
           </p>
         </div>
 
@@ -73,8 +74,8 @@ export function RealReportPhotos({ photos, photoCount }: { photos: ReportPhoto[]
         </div>
 
         <p className={s.galleryHint}>
-          The car&apos;s registration is covered with our own plate, and other cars&apos; plates and signs in the
-          background are blurred. The customer also had the inspection video, which isn&apos;t shown here.
+          Number plates, the sat-nav screen and anything else that could identify the customer or the dealer are
+          blurred. The VIN plate photo and the service history printout are left out.
         </p>
       </div>
 
