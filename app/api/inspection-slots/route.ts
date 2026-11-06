@@ -32,6 +32,8 @@ export async function GET(request: NextRequest) {
     if (packageParam === "all") {
       return NextResponse.json({
         slotsByPackage: Object.fromEntries(PACKAGE_KEYS.map((key) => [key, available(key)])),
+        // The booking page sets its clock by this, so its 24 hour rule matches the checkout's.
+        now: now.getTime(),
       })
     }
 

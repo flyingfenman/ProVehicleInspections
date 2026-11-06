@@ -25,12 +25,30 @@ function cleanText(value: unknown, maxLength: number): string {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : ""
 }
 
+// Stripe refuses any metadata value over 500 characters, which would stop the checkout opening at all.
+const METADATA_MAX = 500
+
+// The customer's own earlier checkout for this booking, left open when they came back from the Stripe page.
+// It would otherwise hold their time for 30 minutes and tell them it was "just booked by someone else".
+async function releaseEarlierCheckout(sessionId: unknown) {
+  if (typeof sessionId !== "string" || !/^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) return
+  try {
+    const stripe = getStripe()
+    const earlier = await stripe.checkout.sessions.retrieve(sessionId)
+    if (earlier.status === "open" && earlier.metadata?.type === "inspection_booking") {
+      await stripe.checkout.sessions.expire(sessionId)
+    }
+  } catch (error) {
+    console.error("Couldn't release an earlier inspection checkout:", error)
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const {
       packageKey, slotStart, slotEnd, registration, location, sellerName, sellerPhone, advertUrl,
-      name, phone, email, notes, includeEvSoh, shortNoticeConfirmed, trafficSource,
+      name, phone, email, notes, includeEvSoh, shortNoticeConfirmed, trafficSource, previousSessionId,
     } = body as {
       packageKey: unknown
       slotStart: string
@@ -47,10 +65,26 @@ export async function POST(request: NextRequest) {
       includeEvSoh?: boolean
       shortNoticeConfirmed?: boolean
       trafficSource?: { label?: unknown; detail?: unknown; landingPage?: unknown } | null
+      previousSessionId?: unknown
     }
 
-    if (!isPackageKey(packageKey) || !slotStart || !slotEnd || !registration || !location || !name || !phone || !email) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    const missing = [
+      [registration, "the registration"],
+      [location, "where the car is"],
+      [name, "your name"],
+      [phone, "your phone number"],
+      [email, "your email address"],
+    ]
+      .filter(([value]) => typeof value !== "string" || !value.trim())
+      .map(([, label]) => label)
+    if (!isPackageKey(packageKey) || !slotStart || !slotEnd) {
+      return NextResponse.json(
+        { error: "Please choose your inspection and a time again.", code: "invalid_slot" },
+        { status: 400 },
+      )
+    }
+    if (missing.length > 0) {
+      return NextResponse.json({ error: `Please fill in ${missing.join(", ")}.`, code: "missing_fields" }, { status: 400 })
     }
 
     const start = new Date(slotStart)
@@ -66,15 +100,20 @@ export async function POST(request: NextRequest) {
       Number.isNaN(end.getTime()) ||
       actualDurationMin !== expectedDurationMin
     ) {
-      return NextResponse.json({ error: "Invalid time slot" }, { status: 400 })
+      return NextResponse.json({ error: "Please choose your time again.", code: "invalid_slot" }, { status: 400 })
     }
 
     if (isShortNotice && !hasShortNoticeConfirmation) {
       return NextResponse.json(
-        { error: `Appointments inside ${MIN_BOOKING_NOTICE_HOURS} hours must be confirmed with Henry before online booking.` },
+        {
+          error: `Appointments inside ${MIN_BOOKING_NOTICE_HOURS} hours must be confirmed with Henry before online booking.`,
+          code: "short_notice",
+        },
         { status: 400 },
       )
     }
+
+    await releaseEarlierCheckout(previousSessionId)
 
     // Taken here, or taken on one of Henry's other inspection sites, which book into their own Stripe account.
     const [occupied, otherDiaries] = await Promise.all([getOccupiedRanges(LOOKBACK_DAYS), fetchOtherDiaries()])
@@ -82,7 +121,10 @@ export async function POST(request: NextRequest) {
       occupied.some((range) => rangesOverlap(slotStart, slotEnd, range.start, range.end)) ||
       !isFreeElsewhere(otherDiaries, packageKey, { start: slotStart, end: slotEnd })
     if (alreadyTaken) {
-      return NextResponse.json({ error: "That slot was just booked by someone else. Please pick another." }, { status: 409 })
+      return NextResponse.json(
+        { error: "Sorry, that time has just been booked. Please pick another below. Your details are saved.", code: "slot_taken" },
+        { status: 409 },
+      )
     }
 
     const { name: packageName, amountPence } = PACKAGE_INFO[packageKey]
@@ -101,7 +143,7 @@ export async function POST(request: NextRequest) {
           unit_amount: amountPence,
           product_data: {
             name: evOnly ? packageName : mechanical ? "Mechanical Inspection Report" : `${packageName} Vehicle Inspection`,
-            description: `${registration} · ${start.toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })}`,
+            description: `${cleanText(registration, 20)} · ${start.toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })}`,
           },
         },
         quantity: 1,
@@ -125,7 +167,7 @@ export async function POST(request: NextRequest) {
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
-      customer_email: email,
+      customer_email: cleanText(email, 200),
       expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
       line_items: lineItems,
       // brand and site say whose booking this is, in the Stripe dashboard and to the payment webhook
@@ -140,14 +182,14 @@ export async function POST(request: NextRequest) {
         shortNoticeConfirmed: isShortNotice && hasShortNoticeConfirmation ? "yes" : "no",
         slotStart,
         slotEnd,
-        registration,
-        location,
+        registration: cleanText(registration, 20),
+        location: cleanText(location, METADATA_MAX),
         sellerName: (sellerName || "").slice(0, 200),
         sellerPhone: (sellerPhone || "").slice(0, 50),
         advertUrl: (advertUrl || "").slice(0, 400),
-        customerName: name,
-        customerPhone: phone,
-        customerEmail: email,
+        customerName: cleanText(name, 200),
+        customerPhone: cleanText(phone, 50),
+        customerEmail: cleanText(email, 200),
         notes: trimmedNotes,
         trafficSource: cleanText(trafficSource?.label, 60),
         trafficDetail: cleanText(trafficSource?.detail, 120),
@@ -157,9 +199,12 @@ export async function POST(request: NextRequest) {
       cancel_url: `${origin}/book?booking=cancelled`,
     })
 
-    return NextResponse.json({ url: session.url })
+    return NextResponse.json({ url: session.url, sessionId: session.id })
   } catch (error) {
     console.error("Error creating inspection checkout session:", error)
-    return NextResponse.json({ error: "Failed to start checkout" }, { status: 500 })
+    return NextResponse.json(
+      { error: "We couldn't open the payment page. Please try again, or WhatsApp Henry and he'll book it in for you." },
+      { status: 500 },
+    )
   }
 }

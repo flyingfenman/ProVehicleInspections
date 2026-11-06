@@ -35,6 +35,21 @@ const EV_SOH_PRICE = 49.99
 const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 const SHORT_NOTICE_MS = MIN_BOOKING_NOTICE_HOURS * 60 * 60 * 1000
 const DEFAULT_CALENDAR_START_HOURS = 25
+// How often the page rechecks the time, so a slot that slips inside 24 hours while the page is open is shown as
+// "Message first" before the customer tries to pay for it.
+const CLOCK_TICK_MS = 30 * 1000
+// The booking in progress, kept for the visit so pressing back on the Stripe page brings it all back.
+const DRAFT_KEY = "pvi-booking-draft"
+const WHATSAPP_HELP_URL = `https://wa.me/441992245660?text=${encodeURIComponent("Hi Henry, I'm having trouble booking an inspection on the website. Can you help?")}`
+
+// A reply that isn't JSON (a timeout page, a lost connection) still gives the customer a plain message.
+async function readJson(res: Response): Promise<Record<string, unknown>> {
+  try {
+    return (await res.json()) as Record<string, unknown>
+  } catch {
+    return {}
+  }
+}
 
 function dateKey(isoString: string) {
   return isoString.slice(0, 10)
@@ -108,7 +123,15 @@ export function InspectionsBookingCalendar() {
     const d = new Date()
     return { year: d.getFullYear(), month: d.getMonth() }
   })
-  const [nowMs] = useState(() => Date.now())
+  // The customer's clock can be wrong, and the page can sit open for an hour, so "now" follows the server's
+  // clock and moves on while the page is open. The checkout uses the same 24 hour rule.
+  const clockOffsetMs = useRef(0)
+  const [nowMs, setNowMs] = useState(() => Date.now())
+  const refreshNow = useCallback(() => {
+    const current = Date.now() + clockOffsetMs.current
+    setNowMs(current)
+    return current
+  }, [])
   const [form, setForm] = useState({
     registration: "",
     location: "",
@@ -126,7 +149,10 @@ export function InspectionsBookingCalendar() {
   const [prefilledReg, setPrefilledReg] = useState("")
   // A link Henry sends for one appointment: ?date=2026-10-13&time=09:00 (London time).
   const scrollToDetailsOnOpen = useRef(false)
-  const [requestedSlot, setRequestedSlot] = useState<{ date: string; time: string } | null>(null)
+  // confirmed: a time inside 24 hours already counts as agreed with Henry (his own links, or a booking the
+  // customer had already confirmed before they pressed back on the payment page).
+  const [requestedSlot, setRequestedSlot] = useState<{ date: string; time: string; confirmed: boolean } | null>(null)
+  const [restoredDraft, setRestoredDraft] = useState(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -142,7 +168,32 @@ export function InspectionsBookingCalendar() {
     const requestedDate = params.get("date")
     const requestedTime = params.get("time")
     if (requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate) && requestedTime && /^\d{1,2}:\d{2}$/.test(requestedTime)) {
-      setRequestedSlot({ date: requestedDate, time: requestedTime.padStart(5, "0") })
+      setRequestedSlot({ date: requestedDate, time: requestedTime.padStart(5, "0"), confirmed: true })
+    }
+    // Back from the Stripe page without paying: put the booking back as it was, so nothing is typed twice.
+    if (params.get("booking") === "cancelled") {
+      try {
+        const draft = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null")
+        if (draft && isPackageKey(draft.packageKey)) {
+          setPackageKey(draft.packageKey)
+          setGroup(PACKAGES.find((p) => p.key === draft.packageKey)?.group || "pre-purchase")
+          setPackagePicked(true)
+          setIncludeEvSoh(draft.includeEvSoh === true)
+          if (draft.form && typeof draft.form === "object") {
+            setForm((current) => {
+              const next = { ...current }
+              for (const key of Object.keys(current) as (keyof typeof current)[]) {
+                if (typeof draft.form[key] === "string") next[key] = draft.form[key]
+              }
+              return next
+            })
+          }
+          if (typeof draft.date === "string" && typeof draft.time === "string") {
+            setRequestedSlot({ date: draft.date, time: draft.time, confirmed: draft.shortNoticeConfirmed === true })
+          }
+          setRestoredDraft(true)
+        }
+      } catch {}
     }
     const registration = params.get("reg")?.trim().toUpperCase()
     if (registration) {
@@ -168,8 +219,10 @@ export function InspectionsBookingCalendar() {
     setError("")
     try {
       const res = await fetch("/api/inspection-slots?package=all", { cache: "no-store" })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Couldn't load availability")
+      const data = (await readJson(res)) as { error?: string; now?: number; slotsByPackage?: Partial<Record<PackageKey, Slot[]>> }
+      if (!res.ok || !data.slotsByPackage) throw new Error(data.error || "Couldn't load availability")
+      if (typeof data.now === "number") clockOffsetMs.current = data.now - Date.now()
+      refreshNow()
       setSlotsByPackage({
         standard: data.slotsByPackage?.standard || [],
         premium: data.slotsByPackage?.premium || [],
@@ -181,11 +234,34 @@ export function InspectionsBookingCalendar() {
     } finally {
       setLoadingSlots(false)
     }
-  }, [])
+  }, [refreshNow])
 
   useEffect(() => {
     void loadAvailability()
   }, [loadAvailability])
+
+  // The phone's back button from the Stripe page can bring this page back exactly as it was left, spinner and all.
+  // Put the button back so the customer can try again.
+  useEffect(() => {
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) setSubmitting(false)
+    }
+    window.addEventListener("pageshow", onPageShow)
+    return () => window.removeEventListener("pageshow", onPageShow)
+  }, [])
+
+  // Keep the clock moving, and catch up straight away when the customer comes back to the tab.
+  useEffect(() => {
+    const timer = window.setInterval(refreshNow, CLOCK_TICK_MS)
+    const onVisible = () => {
+      if (document.visibilityState === "visible") refreshNow()
+    }
+    document.addEventListener("visibilitychange", onVisible)
+    return () => {
+      window.clearInterval(timer)
+      document.removeEventListener("visibilitychange", onVisible)
+    }
+  }, [refreshNow])
 
   useEffect(() => {
     if (loadingSlots || requestedSlot || selectedDate || slots.length === 0) return
@@ -300,6 +376,12 @@ export function InspectionsBookingCalendar() {
     setViewDate(setViewFromDateKey(requestedSlot.date))
     if (isShortNotice(match, nowMs)) {
       setShortNoticeCandidate(match)
+      if (!requestedSlot.confirmed) {
+        // Now inside 24 hours and not agreed with Henry: show the WhatsApp step rather than the details.
+        setShortNoticeConfirmed(false)
+        setError(`${formatSlotTime(match)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. Your details are saved.`)
+        return
+      }
       setShortNoticeConfirmed(true)
     }
     setSelectedSlot(match)
@@ -339,6 +421,33 @@ export function InspectionsBookingCalendar() {
     return () => root.removeAttribute("data-booking-bar")
   }, [barShowing])
 
+  // A time that has slipped inside 24 hours can't be paid for online until Henry has confirmed it. Instead of
+  // sending the customer back to the calendar to pick the same time again, show it as "Message first" with the
+  // WhatsApp button and the tick box. Everything typed in the details form stays as it is.
+  const moveToShortNotice = useCallback((slot: Slot) => {
+    setSelectedSlot(null)
+    setDetailsUnlocked(false)
+    setShortNoticeCandidate(slot)
+    setShortNoticeConfirmed(false)
+    setSelectedDate(dateKey(slot.start))
+    setViewDate(setViewFromDateKey(dateKey(slot.start)))
+    setError(
+      `${formatSlotTime(slot)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. ` +
+        "Message him below, or pick a later time. Your details are saved.",
+    )
+    // Straight to the WhatsApp box under the times, once it has drawn.
+    window.setTimeout(() => {
+      const box = document.getElementById("short-notice-box") || timeRef.current
+      box?.scrollIntoView({ behavior: "smooth", block: "center" })
+    }, 50)
+  }, [])
+
+  // The same check while the customer is still on the calendar: a chosen time that the clock has overtaken.
+  useEffect(() => {
+    if (!selectedSlot || detailsUnlocked || shortNoticeConfirmed) return
+    if (isShortNotice(selectedSlot, nowMs)) moveToShortNotice(selectedSlot)
+  }, [nowMs, selectedSlot, detailsUnlocked, shortNoticeConfirmed, moveToShortNotice])
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!selectedSlot) {
@@ -348,10 +457,34 @@ export function InspectionsBookingCalendar() {
       showTimes()
       return
     }
+    const slotIsShortNotice = isShortNotice(selectedSlot, refreshNow())
+    if (slotIsShortNotice && !shortNoticeConfirmed) {
+      moveToShortNotice(selectedSlot)
+      return
+    }
     setSubmitting(true)
     setError("")
     setFormError("")
 
+    const bookedSlot = selectedSlot
+    // Kept for this visit only, so the back button on the Stripe page brings the booking back as it was.
+    let previousSessionId: string | undefined
+    try {
+      previousSessionId = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null")?.sessionId
+    } catch {}
+    const saveDraft = (sessionId?: string) => {
+      try {
+        sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+          packageKey,
+          includeEvSoh,
+          date: dateKey(bookedSlot.start),
+          time: formatSlotTime(bookedSlot),
+          shortNoticeConfirmed: slotIsShortNotice && shortNoticeConfirmed,
+          form,
+          sessionId,
+        }))
+      } catch {}
+    }
     try {
       const res = await fetch("/api/create-inspection-checkout", {
         method: "POST",
@@ -359,29 +492,42 @@ export function InspectionsBookingCalendar() {
         body: JSON.stringify({
           packageKey,
           includeEvSoh: withEvSoh,
-          shortNoticeConfirmed: isShortNotice(selectedSlot, nowMs) && shortNoticeConfirmed,
-          slotStart: selectedSlot.start,
-          slotEnd: selectedSlot.end,
+          shortNoticeConfirmed: slotIsShortNotice && shortNoticeConfirmed,
+          slotStart: bookedSlot.start,
+          slotEnd: bookedSlot.end,
           trafficSource: getTrafficSource(),
+          // An earlier unpaid checkout of theirs is let go first, so it doesn't block this one.
+          previousSessionId,
           ...form,
         }),
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Something went wrong")
-      window.location.href = data.url
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Something went wrong. Please try again."
-      // The time has gone meanwhile: refresh the times and send the customer back up to pick another.
-      if (message.includes("just booked") || message.includes("confirmed")) {
-        setSelectedSlot(null)
-        resetShortNotice()
-        await loadAvailability()
-        setError(message)
-        showTimes()
-      } else {
-        setFormError(message)
+      const data = (await readJson(res)) as { error?: string; code?: string; url?: string; sessionId?: string }
+      if (res.ok && data.url) {
+        saveDraft(data.sessionId)
+        window.location.href = data.url
+        return
       }
       setSubmitting(false)
+      if (data.code === "short_notice") {
+        // The server's clock says the time is inside 24 hours. Catch the page's clock up and ask for a message.
+        await loadAvailability()
+        moveToShortNotice(bookedSlot)
+        return
+      }
+      if (data.code === "slot_taken" || data.code === "invalid_slot" || res.status === 409) {
+        // The time has gone meanwhile: refresh the times and send the customer back up to pick another.
+        setSelectedSlot(null)
+        setDetailsUnlocked(false)
+        resetShortNotice()
+        await loadAvailability()
+        setError(data.error || "Sorry, that time has just been booked. Please pick another below. Your details are saved.")
+        showTimes()
+        return
+      }
+      setFormError(data.error || "We couldn't open the payment page. Please try again, or WhatsApp Henry and he'll book it in for you.")
+    } catch {
+      setSubmitting(false)
+      setFormError("We couldn't reach the booking system. Please check your connection and try again, or WhatsApp Henry and he'll book it in for you.")
     }
   }
 
@@ -389,6 +535,11 @@ export function InspectionsBookingCalendar() {
 
   return (
     <div className="mx-auto max-w-5xl">
+      {restoredDraft && (
+        <div className="mb-6 rounded-2xl border border-primary/20 bg-white p-4" role="status">
+          <p className="text-sm font-semibold text-foreground">No payment was taken. Your booking details are still here, so you can carry on where you left off.</p>
+        </div>
+      )}
       {prefilledReg && (
         <div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-primary/20 bg-white p-4" role="status">
           <span
@@ -614,7 +765,7 @@ export function InspectionsBookingCalendar() {
                       })}
                     </div>
                     {shortNoticeCandidate && dateKey(shortNoticeCandidate.start) === selectedDate && (
-                      <div className="mt-4 rounded-2xl border-2 border-primary/20 bg-white p-4">
+                      <div id="short-notice-box" className="mt-4 scroll-mt-24 rounded-2xl border-2 border-primary/20 bg-white p-4">
                         <p className="font-bold text-foreground">This appointment is within 24 hours</p>
                         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                           Please WhatsApp Henry to confirm availability before paying.
@@ -649,7 +800,7 @@ export function InspectionsBookingCalendar() {
           </div>
         )}
 
-        {error && <p className="mt-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
+        {error && <p role="alert" className="mt-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>}
       </div>
       </>
       )}
@@ -710,7 +861,8 @@ export function InspectionsBookingCalendar() {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="location">Where is the car? *</Label>
-              <Input id="location" value={form.location} onChange={set("location")} placeholder={mechanical ? "Postcode where the car will be" : "Postcode or dealer name"} required />
+              <Input id="location" value={form.location} onChange={set("location")} placeholder={mechanical ? "Postcode or address where the car will be" : "Postcode, address or dealer name"} required maxLength={200} autoComplete="off" />
+              <p className="text-xs text-muted-foreground">A postcode is fine, or the full address.</p>
             </div>
             {mechanical ? (
               <>
@@ -804,7 +956,14 @@ export function InspectionsBookingCalendar() {
         </div>
 
         <div className="space-y-4">
-          {formError && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">{formError}</p>}
+          {formError && (
+            <div role="alert" className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
+              <p>{formError}</p>
+              <a href={WHATSAPP_HELP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick("booking_error")} className="mt-2 inline-flex items-center gap-1.5 font-semibold text-primary underline underline-offset-4">
+                <MessageCircle className="h-4 w-4" /> WhatsApp Henry
+              </a>
+            </div>
+          )}
           <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
             <div className="flex items-center justify-between gap-4">
               <div className="min-w-0">
