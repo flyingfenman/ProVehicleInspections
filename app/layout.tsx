@@ -72,6 +72,11 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 }
 
+// The usual fix for React and page translation (github.com/facebook/react/issues/11538): when the node React wants to
+// remove has been moved by the translator, skip it, and insert next to the translated text (or at the end) instead of
+// throwing, so nothing new goes missing from the page.
+const TRANSLATE_GUARD = `(function(){if(typeof Node!=="function"||!Node.prototype)return;var r=Node.prototype.removeChild;Node.prototype.removeChild=function(c){if(c&&c.parentNode!==this){return c}return r.apply(this,arguments)};var i=Node.prototype.insertBefore;Node.prototype.insertBefore=function(n,ref){if(ref&&ref.parentNode!==this){var a=ref;while(a&&a.parentNode!==this)a=a.parentNode;return i.call(this,n,a||null)}return i.apply(this,arguments)}})();`
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,6 +85,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={charlesWright.variable}>
       <head>
+        {/* Chrome and Safari translate the page for visitors whose phone is in another language (7 Nov: a Russian
+            speaking customer on Chrome for iPhone). The translator swaps React's text for its own, and the next time
+            the booking page changed, such as tapping a time, React could not find its text and the whole page fell
+            over with "Application error: a client-side exception has occurred". This lets React carry on instead of
+            crashing. It changes nothing on the page itself and runs before React starts. */}
+        <script dangerouslySetInnerHTML={{ __html: TRANSLATE_GUARD }} />
         <LocalBusinessSchema />
       </head>
       <body className={fredoka.className}>
