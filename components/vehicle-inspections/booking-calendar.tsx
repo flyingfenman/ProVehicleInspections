@@ -533,8 +533,11 @@ export function InspectionsBookingCalendar() {
 
   const daySlots = selectedDate ? slotsByDate.get(selectedDate) || [] : []
 
+  // Kept in English when a phone translates the page. The translator can't follow text that changes as the customer
+  // taps (prices, times, the Continue button), so a translated calendar showed old labels and, before the guard in
+  // app/layout.tsx, crashed the page. The rest of the site still translates.
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="notranslate mx-auto max-w-5xl" translate="no">
       {restoredDraft && (
         <div className="mb-6 rounded-2xl border border-primary/20 bg-white p-4" role="status">
           <p className="text-sm font-semibold text-foreground">No payment was taken. Your booking details are still here, so you can carry on where you left off.</p>
