@@ -1,5 +1,5 @@
 // Shared slot logic for the inspection booking calendar.
-// Business hours: every day, 9am-6pm Europe/London wall-clock time.
+// Appointments: every day at three fixed times, 9am, 12pm and 3pm Europe/London wall-clock time.
 
 export const PACKAGE_DURATIONS_MIN = {
   standard: 60,
@@ -21,11 +21,10 @@ export function isPackageKey(value: unknown): value is PackageKey {
   return PACKAGE_KEYS.includes(value as PackageKey)
 }
 
-const BUSINESS_START_HOUR = 9
-const BUSINESS_END_HOUR = 18
+// The only start times customers can book (London time). Every package, the 90 minute ones included, is done well
+// before the next start, so one booking never blocks the next time on the same day.
+export const SLOT_START_HOURS = [9, 12, 15] as const
 const LOOKAHEAD_DAYS = 30
-// Appointments start on the hour.
-const SLOT_INTERVAL_MIN = 60
 const LONDON_TZ = "Europe/London"
 
 export interface Slot {
@@ -74,13 +73,11 @@ export function generateAllSlots(packageKey: PackageKey, fromDate: Date = new Da
   for (let dayOffset = 0; dayOffset < LOOKAHEAD_DAYS; dayOffset++) {
     const probe = new Date(fromDate.getTime() + dayOffset * 24 * 60 * 60 * 1000)
     const { year, month, day } = londonDateParts(probe)
-    const closing = londonWallTimeToUTC(year, month, day, BUSINESS_END_HOUR, 0)
 
-    for (let minutesFromStart = 0; ; minutesFromStart += SLOT_INTERVAL_MIN) {
-      const slotStart = londonWallTimeToUTC(year, month, day, BUSINESS_START_HOUR, minutesFromStart)
+    for (const hour of SLOT_START_HOURS) {
+      const slotStart = londonWallTimeToUTC(year, month, day, hour, 0)
       const slotEnd = new Date(slotStart.getTime() + durationMin * 60000)
 
-      if (slotEnd > closing) break
       if (slotStart.getTime() > fromDate.getTime()) {
         slots.push({ start: slotStart.toISOString(), end: slotEnd.toISOString() })
       }
@@ -88,4 +85,28 @@ export function generateAllSlots(packageKey: PackageKey, fromDate: Date = new Da
   }
 
   return slots
+}
+
+// Is this instant one of the fixed start times (9am, 12pm or 3pm London time)?
+export function isFixedStartTime(iso: string): boolean {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: LONDON_TZ,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date(iso))
+  const get = (type: string) => Number(parts.find((p) => p.type === type)?.value)
+  return (SLOT_START_HOURS as readonly number[]).includes(get("hour")) && get("minute") === 0 && get("second") === 0
+}
+
+// "09:00" (London time), the form booking links and the times list use.
+export const FIXED_START_TIMES = SLOT_START_HOURS.map((hour) => `${String(hour).padStart(2, "0")}:00`)
+
+// "9:00am", "12:00pm", "3:00pm": how a start time is shown to customers.
+export function friendlyTime(hhmm: string): string {
+  const [h, m] = hhmm.split(":").map(Number)
+  const suffix = h >= 12 ? "pm" : "am"
+  const hour12 = h % 12 === 0 ? 12 : h % 12
+  return `${hour12}:${String(m).padStart(2, "0")}${suffix}`
 }

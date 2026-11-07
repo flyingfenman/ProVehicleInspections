@@ -16,7 +16,7 @@ import {
   Check,
   CalendarDays,
 } from "lucide-react"
-import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
+import { FIXED_START_TIMES, MIN_BOOKING_NOTICE_HOURS, friendlyTime, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
 import { INSPECTION_PACKAGES as PACKAGES, type InspectionGroup } from "@/lib/inspection-packages"
 import { trackWhatsAppClick } from "@/lib/tracking"
 import { getTrafficSource } from "@/lib/traffic-source"
@@ -81,24 +81,41 @@ function isShortNotice(slot: Slot, nowMs: number) {
 }
 
 function shortNoticeWhatsAppUrl(slot: Slot, packageName: string) {
-  const when = new Date(slot.start).toLocaleString("en-GB", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-    timeZone: "Europe/London",
-  })
+  const when = formatSlotWhen(slot, "long")
   const message = `Hi Henry, I can see the ${packageName} slot at ${when}. Is this short-notice appointment still available?`
   return `https://wa.me/441992245660?text=${encodeURIComponent(message)}`
 }
 
+// "09:00" (London time): what booking links carry and what times are matched on.
 function formatSlotTime(slot: Slot) {
   return new Date(slot.start).toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
     timeZone: "Europe/London",
   })
+}
+
+// "9:00am": how a time is shown to the customer.
+function displaySlotTime(slot: Slot) {
+  return friendlyTime(formatSlotTime(slot))
+}
+
+// "Mon, 16 Nov at 9:00am" (short) or "Monday 16 November at 9:00am" (long).
+function formatSlotWhen(slot: Slot, style: "short" | "long") {
+  const day = new Date(slot.start).toLocaleDateString("en-GB", {
+    weekday: style,
+    day: "numeric",
+    month: style,
+    timeZone: "Europe/London",
+  })
+  return `${day} at ${displaySlotTime(slot)}`
+}
+
+// Today's date and the time now in London, to leave out today's times that have already gone.
+function londonNowParts(nowMs: number) {
+  const date = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit" }).format(nowMs)
+  const time = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(nowMs)
+  return { date, time }
 }
 
 export function InspectionsBookingCalendar() {
@@ -379,7 +396,7 @@ export function InspectionsBookingCalendar() {
       if (!requestedSlot.confirmed) {
         // Now inside 24 hours and not agreed with Henry: show the WhatsApp step rather than the details.
         setShortNoticeConfirmed(false)
-        setError(`${formatSlotTime(match)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. Your details are saved.`)
+        setError(`${displaySlotTime(match)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. Your details are saved.`)
         return
       }
       setShortNoticeConfirmed(true)
@@ -432,7 +449,7 @@ export function InspectionsBookingCalendar() {
     setSelectedDate(dateKey(slot.start))
     setViewDate(setViewFromDateKey(dateKey(slot.start)))
     setError(
-      `${formatSlotTime(slot)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. ` +
+      `${displaySlotTime(slot)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. ` +
         "Message him below, or pick a later time. Your details are saved.",
     )
     // Straight to the WhatsApp box under the times, once it has drawn.
@@ -558,7 +575,7 @@ export function InspectionsBookingCalendar() {
               {selectedPackage.name}{withEvSoh ? " + battery report" : ""} · £{totalPrice.toFixed(2)}
             </p>
             <p className="text-sm text-muted-foreground">
-              {new Date(selectedSlot.start).toLocaleString("en-GB", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" })}
+              {formatSlotWhen(selectedSlot, "long")}
             </p>
           </div>
           <button type="button" onClick={changeAppointment} className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
@@ -662,7 +679,7 @@ export function InspectionsBookingCalendar() {
         <div className="mb-4 flex items-center gap-3">
           <div>
             <h3 className="text-xl font-bold">Choose your appointment</h3>
-            <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
+            <p className="text-sm text-muted-foreground">Appointments are at 9am, 12pm or 3pm. Pick a day, then tap a time. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
           </div>
         </div>
 
@@ -733,12 +750,28 @@ export function InspectionsBookingCalendar() {
                     <p className="mb-4 font-bold">
                       {new Date(selectedDate + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}
                     </p>
-                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-1">
-                      {daySlots.map((slot) => {
+                    <div className="grid grid-cols-3 gap-2 md:grid-cols-1">
+                      {FIXED_START_TIMES.map((fixedTime) => {
+                        const slot = daySlots.find((s) => formatSlotTime(s) === fixedTime)
+                        if (!slot) {
+                          // Today's times that have already gone are left out; any other missing time is taken.
+                          const london = londonNowParts(nowMs)
+                          if (selectedDate < london.date || (selectedDate === london.date && fixedTime <= london.time)) return null
+                          return (
+                            <div
+                              key={fixedTime}
+                              aria-disabled="true"
+                              className="cursor-not-allowed rounded-xl border border-border bg-muted/40 px-2 py-2.5 text-center text-sm font-bold text-muted-foreground/60 md:px-4 md:py-3"
+                            >
+                              <span className="block text-base line-through">{friendlyTime(fixedTime)}</span>
+                              <span className="mt-0.5 block text-[12px] font-semibold md:text-[11px]">Booked</span>
+                            </div>
+                          )
+                        }
                         const shortNotice = isShortNotice(slot, nowMs)
                         const isCandidate = shortNoticeCandidate?.start === slot.start
                         const isSelected = selectedSlot?.start === slot.start
-                        const time = formatSlotTime(slot)
+                        const time = displaySlotTime(slot)
                         return (
                           <button
                             key={slot.start}
@@ -814,11 +847,11 @@ export function InspectionsBookingCalendar() {
               {selectedSlot ? (
               <>
               <p className="truncate text-sm font-bold sm:hidden">
-                {selectedPackage.name.replace(" Inspection", "")} · {new Date(selectedSlot.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" })} · {formatSlotTime(selectedSlot)} · £{totalPrice.toFixed(2)}
+                {selectedPackage.name.replace(" Inspection", "")} · {formatSlotWhen(selectedSlot, "short")} · £{totalPrice.toFixed(2)}
               </p>
               <div className="hidden sm:block">
                 <p className="font-semibold">
-                  {selectedPackage.name} · {new Date(selectedSlot.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" })} · {formatSlotTime(selectedSlot)}
+                  {selectedPackage.name} · {formatSlotWhen(selectedSlot, "short")}
                 </p>
                 <p className="text-sm text-muted-foreground">£{totalPrice.toFixed(2)} · Booking confirmed after payment.</p>
               </div>
@@ -970,11 +1003,7 @@ export function InspectionsBookingCalendar() {
                 <p className="font-bold">{selectedPackage.name}</p>
                 {selectedSlot ? (
                   <p className="text-sm font-semibold text-foreground">
-                    {new Date(selectedSlot.start).toLocaleString("en-GB", {
-                      dateStyle: "full",
-                      timeStyle: "short",
-                      timeZone: "Europe/London",
-                    })}
+                    {formatSlotWhen(selectedSlot, "long")}
                   </p>
                 ) : (
                   <button type="button" onClick={showTimes} className="text-sm font-semibold text-primary underline underline-offset-4">

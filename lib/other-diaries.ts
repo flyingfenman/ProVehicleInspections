@@ -24,7 +24,8 @@ export interface OtherDiary {
   free: Record<PackageKey, Set<string>>
 }
 
-// Both sites offer the same grid of times, so a time is free on the other site exactly when it is in its list.
+// Our 9am, 12pm and 3pm times are all on the other sites' hourly grid, so a time is free there exactly when it is in its
+// list. The other sites read our list the same way, so their own times outside 9am, 12pm and 3pm drop out too.
 // Keyed by the instant rather than the ISO string, so the same moment written two ways still matches.
 function slotKey(slot: Slot) {
   return `${new Date(slot.start).getTime()}|${new Date(slot.end).getTime()}`

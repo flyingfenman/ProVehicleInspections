@@ -4,6 +4,7 @@ import { getStripe } from "@/lib/stripe"
 import {
   MIN_BOOKING_NOTICE_HOURS,
   PACKAGE_DURATIONS_MIN,
+  isFixedStartTime,
   isPackageKey,
   rangesOverlap,
   type PackageKey,
@@ -98,7 +99,8 @@ export async function POST(request: NextRequest) {
     if (
       Number.isNaN(start.getTime()) ||
       Number.isNaN(end.getTime()) ||
-      actualDurationMin !== expectedDurationMin
+      actualDurationMin !== expectedDurationMin ||
+      !isFixedStartTime(slotStart)
     ) {
       return NextResponse.json({ error: "Please choose your time again.", code: "invalid_slot" }, { status: 400 })
     }
