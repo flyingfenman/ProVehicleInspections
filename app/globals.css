@@ -187,10 +187,9 @@
     animation: float 4s ease-in-out infinite;
   }
 
-  /* Smooth, professional transitions throughout */
-  html {
-    scroll-behavior: smooth;
-  }
+  /* No scroll-behavior: smooth on <html>. On iPhones, moving to a new page started a smooth scroll back to the top
+     that stopped dead as the new page loaded, which left Book now landing at the bottom of the booking page. The
+     few scrolls that should glide ask for it themselves with behavior: "smooth". */
 
   *:focus-visible {
     outline: 2px solid var(--primary);
