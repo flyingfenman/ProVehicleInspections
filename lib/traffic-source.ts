@@ -52,6 +52,20 @@ export function classifyVisit(referrer: string, search: string): { label: string
   return { label: known ? known[1] : host, detail: known ? "referral" : "link from another site" }
 }
 
+// The source the server saw on this page load (middleware.ts), for when the browser hides document.referrer from the
+// page, as iPhone Safari does since iOS 26. Read from the page's own Server-Timing header; nothing is stored.
+function sourceSeenByServer(): { label: string; detail: string } | null {
+  try {
+    const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined
+    const entry = nav?.serverTiming?.find((timing) => timing.name === "pvi-src")
+    if (!entry?.description) return null
+    const [label, detail] = decodeURIComponent(entry.description).split("|")
+    return label ? { label, detail: detail || "referral" } : null
+  } catch {
+    return null
+  }
+}
+
 // This visit's source is kept in memory, so every page of the visit knows it without storing anything on the device.
 // It is only written to the browser, to be remembered on a later visit, once the visitor has agreed to analytics or
 // advertising cookies in the cookie banner (UK cookie rules: remembering which advert someone clicked needs a yes).
@@ -62,7 +76,7 @@ let mayStore = false
 // the real source of a visitor who comes back later to book.
 export function captureTrafficSource() {
   try {
-    const visit = classifyVisit(document.referrer, window.location.search)
+    const visit = classifyVisit(document.referrer, window.location.search) ?? sourceSeenByServer()
     if (visit) thisVisit = { ...visit, landingPage: window.location.pathname, capturedAt: Date.now() }
   } catch {
     // Unknown source: the booking is simply recorded as direct/unknown.
@@ -112,7 +126,8 @@ export function addSourceNoteToWhatsAppLink(link: HTMLAnchorElement) {
     const url = new URL(link.href)
     const text = url.searchParams.get("text") || ""
     if (text.startsWith(NOTE_START)) return
-    const source = getTrafficSource() ?? classifyVisit(document.referrer, window.location.search)
+    const source =
+      getTrafficSource() ?? classifyVisit(document.referrer, window.location.search) ?? sourceSeenByServer()
     const note = source ? `${NOTE_START}, ${Array.from(source.label).slice(0, 40).join("")})` : `${NOTE_START})`
     link.href = `${url.origin}${url.pathname}?text=${encodeURIComponent(`${note}\n${text || "Hi!"}`)}`
   } catch {
