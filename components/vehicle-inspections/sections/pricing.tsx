@@ -28,7 +28,7 @@ const BATTERY_ITEMS: Item[] = [
 const STANDARD: Plan = {
   key: "standard",
   name: "Standard",
-  price: "£199.99",
+  price: "£249.99",
   points: "160-point inspection",
   forWho: "A thorough mechanical and condition check, with the history check, diagnostics and road test.",
   items: IN_BOTH,
@@ -39,7 +39,7 @@ const STANDARD: Plan = {
 const PREMIUM: Plan = {
   key: "premium",
   name: "Premium",
-  price: "£249.99",
+  price: "£299.99",
   points: "260-point inspection",
   forWho: "Our deepest inspection, with paint readings, repair costs and research into the car and seller.",
   lead: "Everything in Standard, plus:",
@@ -166,7 +166,7 @@ function MechanicalInspection() {
           <h3 className="text-2xl font-bold">Mechanical Inspection</h3>
         </div>
         <p className="mt-1 text-sm font-semibold text-primary">Independent fault report after garage work</p>
-        <p className="mt-4 text-5xl font-bold tracking-tight">£399.99</p>
+        <p className="mt-4 text-5xl font-bold tracking-tight">£499.99</p>
         <p className="mt-3 text-muted-foreground">
           A garage has worked on your car and something has gone wrong since. We inspect it independently and write up what we find, so you have evidence to take back to the garage, or to a Small Claims case if it comes to that.
         </p>

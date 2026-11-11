@@ -15,10 +15,10 @@ const LOOKBACK_DAYS = 45
 const EV_SOH_AMOUNT_PENCE = 4999
 
 const PACKAGE_INFO: Record<PackageKey, { name: string; amountPence: number }> = {
-  standard: { name: "Standard Inspection", amountPence: 19999 },
-  premium: { name: "Premium Inspection", amountPence: 24999 },
+  standard: { name: "Standard Inspection", amountPence: 24999 },
+  premium: { name: "Premium Inspection", amountPence: 29999 },
   ev: { name: "EV Battery Health Check", amountPence: 14999 },
-  mechanical: { name: "Mechanical Inspection", amountPence: 39999 },
+  mechanical: { name: "Mechanical Inspection", amountPence: 49999 },
 }
 
 function cleanText(value: unknown, maxLength: number): string {

@@ -75,5 +75,5 @@ export const AREA_SERVED = [
 
 /** Meta description, under 160 characters for every area. */
 export function areaDescription(area: Area) {
-  return `Henry comes to the car anywhere in ${area.name}: diagnostics, road test, history check and a same-day video report. From £199.99, no mileage charge.`
+  return `Henry comes to the car anywhere in ${area.name}: diagnostics, road test, history check and a same-day video report. From £249.99, no mileage charge.`
 }

@@ -13,14 +13,14 @@ import { ReviewsSlider } from "@/components/reviews-slider"
 export const metadata: Metadata = {
   title: "Pre-Purchase Car Inspection Service | Pro Vehicle Inspections",
   description:
-    "Independent mobile pre-purchase car inspections from £199.99. We come to the car: full diagnostics, road test, history check and a same-day video report across London, Essex, East Anglia and the Midlands.",
+    "Independent mobile pre-purchase car inspections from £249.99. We come to the car: full diagnostics, road test, history check and a same-day video report across London, Essex, East Anglia and the Midlands.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Pre-Purchase Car Inspection Service | Pro Vehicle Inspections",
     description:
-      "Understand the car before you commit. Both packages include a video review, documented findings and personal buying guidance. Inspections from £199.99.",
+      "Understand the car before you commit. Both packages include a video review, documented findings and personal buying guidance. Inspections from £249.99.",
     url: "/",
     type: "website",
     images: ["/images/share-inspection.jpg"],
