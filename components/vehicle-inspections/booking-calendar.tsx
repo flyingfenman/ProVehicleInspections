@@ -203,6 +203,9 @@ export function InspectionsBookingCalendar() {
     // Arriving on a #book link: the browser's own jump gets undone during page load, so retry briefly
     // until the section is in view.
     if (window.location.hash === "#book") return scrollToAnchorWhileLoading("book")
+    // Every other arrival starts at the top of the page. Coming from a long page such as the home page, a phone
+    // could otherwise keep the old scroll position and open the booking page at its footer.
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" })
   }, [])
 
   const selectedPackage = PACKAGES.find((p) => p.key === packageKey) || PACKAGES[0]
