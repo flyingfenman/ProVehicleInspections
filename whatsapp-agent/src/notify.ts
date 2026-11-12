@@ -2,6 +2,13 @@ import type { ChatState } from "./chat"
 import type { Env } from "./env"
 import { escapeHtml } from "./pages"
 
+// Henry's own address under the business name, as on the website (lib/email.ts there). The second is used only when
+// Resend refuses the first (provehicleinspections.com not verified with Resend).
+const SENDERS = [
+  "Pro Vehicle Inspections <henry@provehicleinspections.com>",
+  "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
+]
+
 export function chatLink(env: Env, waId: string) {
   return `${env.AGENT_URL}/chat/${waId}?k=${encodeURIComponent(env.ADMIN_KEY)}`
 }
@@ -31,16 +38,15 @@ ${draft?.note ? `<p style="margin:12px 0;color:#7c2d12"><b>Note:</b> ${escapeHtm
 <p><a href="${link}" style="display:inline-block;background:#6d28d9;color:#fff;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:bold">Send, edit or skip</a></p>
 </div>`
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
-      to: [env.NOTIFY_EMAIL],
-      subject,
-      text,
-      html,
-    }),
-  })
+  let res!: Response
+  for (const from of SENDERS) {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from, to: [env.NOTIFY_EMAIL], subject, text, html }),
+    })
+    // Only a refusal (4xx) is worth the second sender.
+    if (res.status < 400 || res.status >= 500) break
+  }
   if (!res.ok) throw new Error(`Resend ${res.status}: ${await res.text()}`)
 }

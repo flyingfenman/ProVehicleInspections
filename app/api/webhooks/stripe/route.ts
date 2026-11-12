@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
+import { sendSiteEmail } from "@/lib/email"
 import { getStripe } from "@/lib/stripe"
 
 // Stripe calls this for every completed checkout in the Pro Vehicle Inspections Stripe account (the endpoint is
@@ -13,10 +14,8 @@ const FONT_STACK = "'Fredoka','Trebuchet MS',Arial,Helvetica,sans-serif"
 const BRAND = {
   name: "Pro Vehicle Inspections",
   tagline: "Independent mobile pre-purchase car inspections",
-  // Sent from Epping Car Buyer's address under this site's name until provehicleinspections.com is added to Resend
-  // (the Resend plan is at its domain limit). Change the address here when it is.
-  from: "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
-  replyTo: "henry@eppingcarbuyer.com",
+  // The sender is lib/email.ts: henry@provehicleinspections.com, the address replies go to as well.
+  replyTo: "henry@provehicleinspections.com",
   inbox: "henry@eppingcarbuyer.com",
   whatsappLink: "441992245660",
   whatsappDisplay: "+44 1992 245660",
@@ -117,20 +116,12 @@ function infoTable(rows: Array<[string, string]>) {
 }
 
 async function sendEmail(to: string, subject: string, text: string, html?: string): Promise<boolean> {
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: BRAND.from,
-      reply_to: BRAND.replyTo,
-      to: [to],
-      subject,
-      text,
-      html: html || brandedEmail(subject, textToHtml(text)),
-    }),
+  const resendResponse = await sendSiteEmail({
+    reply_to: BRAND.replyTo,
+    to: [to],
+    subject,
+    text,
+    html: html || brandedEmail(subject, textToHtml(text)),
   })
   if (resendResponse.ok) return true
   console.error(`Resend error sending "${subject}" to ${to}:`, await resendResponse.text())
