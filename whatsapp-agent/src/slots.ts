@@ -1,4 +1,4 @@
-import { MIN_BOOKING_NOTICE_HOURS, PACKAGE_KEYS, type PackageKey } from "../../lib/inspection-slots"
+import { MIN_BOOKING_NOTICE_HOURS, PACKAGE_KEYS, isSundaySlot, type PackageKey } from "../../lib/inspection-slots"
 
 type Slot = { start: string; end: string }
 export type FreeTimes = Record<PackageKey, Slot[]>
@@ -53,6 +53,12 @@ export function isShortNotice(date: string, time: string, free: FreeTimes, packa
   return !!slot && new Date(slot.start).getTime() - now.getTime() < MIN_BOOKING_NOTICE_HOURS * 60 * 60 * 1000
 }
 
+// Sundays are by request on the booking page: Henry agrees the time before the customer pays.
+export function isSunday(date: string, time: string, free: FreeTimes, packageKey: PackageKey): boolean {
+  const slot = free[packageKey].find((s) => londonDate(new Date(s.start)) === date && londonTime(new Date(s.start)) === time)
+  return !!slot && isSundaySlot(slot.start)
+}
+
 // The free times as lines Claude can read, one line per day, with the date the booking link needs.
 export function describeFreeTimes(free: FreeTimes, now: Date): string {
   const names: Record<PackageKey, string> = {
@@ -70,7 +76,7 @@ export function describeFreeTimes(free: FreeTimes, now: Date): string {
       if (start.getTime() > cutoff) continue
       const date = londonDate(start)
       const day = byDay.get(date) ?? { label: londonDayName(start), times: [] }
-      day.times.push(londonTime(start) + (start.getTime() < noticeEnds ? " (short notice)" : ""))
+      day.times.push(londonTime(start) + (start.getTime() < noticeEnds ? " (short notice)" : isSundaySlot(slot.start) ? " (Sunday, by request)" : ""))
       byDay.set(date, day)
     }
     const lines = [...byDay.entries()].map(([date, day]) => `- ${day.label} (${date}): ${day.times.join(", ")}`)

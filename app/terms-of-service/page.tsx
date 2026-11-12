@@ -48,7 +48,7 @@ export default function TermsOfServicePage() {
           <CardContent className="prose prose-sm max-w-none">
             <ul className="list-disc pl-6 space-y-2">
               <li>Inspections are booked and paid for online. Payments are taken securely by Stripe, in GBP (British Pounds Sterling)</li>
-              <li>Appointments less than 24 hours away must be agreed with us by WhatsApp before booking</li>
+              <li>Sunday appointments, and appointments less than 24 hours away, must be agreed with us by WhatsApp before booking</li>
               <li>We will contact you before the appointment to confirm the details</li>
               <li>You are responsible for arranging access to the vehicle with the seller at the booked time</li>
             </ul>
