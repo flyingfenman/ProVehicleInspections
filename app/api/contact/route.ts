@@ -2,6 +2,24 @@ import { type NextRequest, NextResponse } from "next/server"
 import { parseContactDetail } from "@/lib/contact"
 import { sendEmail } from "@/lib/email-sender"
 
+// The Epping site relays an enquiry to Henry's inbox when this site can't send (the same relay the Stamford site uses).
+const RELAY_URL = "https://www.eppingcarbuyer.com/api/stamford-enquiry"
+
+async function relayThroughEpping(subject: string, text: string, replyTo?: string): Promise<boolean> {
+  try {
+    const response = await fetch(RELAY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ subject, text, replyTo }),
+    })
+    if (response.ok) return true
+    console.error("Contact form: the Epping site couldn't send it either:", response.status, await response.text())
+  } catch (error) {
+    console.error("Contact form: could not reach the Epping site:", error)
+  }
+  return false
+}
+
 function clean(value: unknown, maxLength: number): string {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : ""
 }
@@ -51,15 +69,20 @@ Landing page: ${landingPage || "Unknown"}
 Sent: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
   `.trim()
 
+  const subject = `Pro Vehicle Inspections: website message from ${name}`
   const resendResponse = await sendEmail({
     to: ["henry@eppingcarbuyer.com"],
     ...(contact.kind === "email" ? { reply_to: contact.email } : {}),
-    subject: `Pro Vehicle Inspections: website message from ${name}`,
+    subject,
     text,
   })
 
   if (!resendResponse.ok) {
     console.error("Resend error sending contact form message:", await resendResponse.text())
+    // This site's key refused, so the Epping site sends it to the same inbox rather than the message being lost.
+    if (await relayThroughEpping(subject, text, contact.kind === "email" ? contact.email : undefined)) {
+      return NextResponse.json({ success: true })
+    }
     return NextResponse.json({ error: "Your message didn't send." }, { status: 502 })
   }
 
