@@ -16,7 +16,7 @@ import {
   Check,
   CalendarDays,
 } from "lucide-react"
-import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, type PackageKey, type Slot } from "@/lib/inspection-slots"
+import { MIN_BOOKING_NOTICE_HOURS, isPackageKey, isSundaySlot, type PackageKey, type Slot } from "@/lib/inspection-slots"
 import { INSPECTION_PACKAGES as PACKAGES, type InspectionGroup } from "@/lib/inspection-packages"
 import { trackWhatsAppClick } from "@/lib/tracking"
 import { getTrafficSource } from "@/lib/traffic-source"
@@ -80,7 +80,28 @@ function isShortNotice(slot: Slot, nowMs: number) {
   return new Date(slot.start).getTime() < nowMs + SHORT_NOTICE_MS
 }
 
-function shortNoticeWhatsAppUrl(slot: Slot, packageName: string) {
+// A time that can't be paid for until Henry has agreed it by message: anything inside 24 hours, and every Sunday
+// (Sundays are by request). Both go through the same "Message first" step, so the short notice names further down
+// (the candidate, the tick box, the checkout's shortNoticeConfirmed) cover Sundays as well.
+type MessageFirstReason = "short-notice" | "sunday"
+
+function messageFirstReason(slot: Slot, nowMs: number): MessageFirstReason | null {
+  if (isShortNotice(slot, nowMs)) return "short-notice"
+  return isSundaySlot(slot.start) ? "sunday" : null
+}
+
+function needsMessageFirst(slot: Slot, nowMs: number) {
+  return messageFirstReason(slot, nowMs) !== null
+}
+
+// Said in the red message above the times when a chosen time turns out to need a message first.
+function messageFirstNotice(slot: Slot, reason: MessageFirstReason) {
+  return reason === "sunday"
+    ? `Sunday appointments are by request, so ${formatSlotTime(slot)} needs a quick WhatsApp to Henry before you pay.`
+    : `${formatSlotTime(slot)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay.`
+}
+
+function shortNoticeWhatsAppUrl(slot: Slot, packageName: string, reason: MessageFirstReason) {
   const when = new Date(slot.start).toLocaleString("en-GB", {
     weekday: "long",
     day: "numeric",
@@ -89,7 +110,9 @@ function shortNoticeWhatsAppUrl(slot: Slot, packageName: string) {
     minute: "2-digit",
     timeZone: "Europe/London",
   })
-  const message = `Hi Henry, I can see the ${packageName} slot at ${when}. Is this short-notice appointment still available?`
+  const message = reason === "sunday"
+    ? `Hi Henry, I can see the ${packageName} slot at ${when}. Is this Sunday appointment available?`
+    : `Hi Henry, I can see the ${packageName} slot at ${when}. Is this short-notice appointment still available?`
   return `https://wa.me/441992245660?text=${encodeURIComponent(message)}`
 }
 
@@ -266,7 +289,9 @@ export function InspectionsBookingCalendar() {
   useEffect(() => {
     if (loadingSlots || requestedSlot || selectedDate || slots.length === 0) return
     const defaultStartMs = nowMs + DEFAULT_CALENDAR_START_HOURS * 60 * 60 * 1000
-    const firstDefaultSlot = slots.find((slot) => new Date(slot.start).getTime() >= defaultStartMs) || slots[0]
+    // Open on the first day that can be booked online, so not a Sunday when there is another day to show.
+    const laterSlots = slots.filter((slot) => new Date(slot.start).getTime() >= defaultStartMs)
+    const firstDefaultSlot = laterSlots.find((slot) => !isSundaySlot(slot.start)) || laterSlots[0] || slots[0]
     const firstDate = dateKey(firstDefaultSlot.start)
     setSelectedDate(firstDate)
     setViewDate(setViewFromDateKey(firstDate))
@@ -334,7 +359,7 @@ export function InspectionsBookingCalendar() {
     setSelectedSlot(null)
     setDetailsUnlocked(false)
     setError("")
-    if (isShortNotice(slot, nowMs)) {
+    if (needsMessageFirst(slot, nowMs)) {
       setShortNoticeCandidate(slot)
       setShortNoticeConfirmed(false)
       return
@@ -359,7 +384,7 @@ export function InspectionsBookingCalendar() {
   }
 
   // A link for one appointment opens with that time chosen and the details form showing. Henry sends
-  // these himself, so a time inside 24 hours counts as already confirmed with him.
+  // these himself, so a time inside 24 hours, or on a Sunday, counts as already confirmed with him.
   useEffect(() => {
     if (loadingSlots || !requestedSlot) return
     setRequestedSlot(null)
@@ -374,12 +399,13 @@ export function InspectionsBookingCalendar() {
     }
     setSelectedDate(requestedSlot.date)
     setViewDate(setViewFromDateKey(requestedSlot.date))
-    if (isShortNotice(match, nowMs)) {
+    const reason = messageFirstReason(match, nowMs)
+    if (reason) {
       setShortNoticeCandidate(match)
       if (!requestedSlot.confirmed) {
-        // Now inside 24 hours and not agreed with Henry: show the WhatsApp step rather than the details.
+        // Needs a message first and not agreed with Henry: show the WhatsApp step rather than the details.
         setShortNoticeConfirmed(false)
-        setError(`${formatSlotTime(match)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. Your details are saved.`)
+        setError(`${messageFirstNotice(match, reason)} Your details are saved.`)
         return
       }
       setShortNoticeConfirmed(true)
@@ -421,10 +447,10 @@ export function InspectionsBookingCalendar() {
     return () => root.removeAttribute("data-booking-bar")
   }, [barShowing])
 
-  // A time that has slipped inside 24 hours can't be paid for online until Henry has confirmed it. Instead of
-  // sending the customer back to the calendar to pick the same time again, show it as "Message first" with the
-  // WhatsApp button and the tick box. Everything typed in the details form stays as it is.
-  const moveToShortNotice = useCallback((slot: Slot) => {
+  // A time that has slipped inside 24 hours (or a Sunday) can't be paid for online until Henry has confirmed it.
+  // Instead of sending the customer back to the calendar to pick the same time again, show it as "Message first"
+  // with the WhatsApp button and the tick box. Everything typed in the details form stays as it is.
+  const moveToShortNotice = useCallback((slot: Slot, reason: MessageFirstReason) => {
     setSelectedSlot(null)
     setDetailsUnlocked(false)
     setShortNoticeCandidate(slot)
@@ -432,8 +458,8 @@ export function InspectionsBookingCalendar() {
     setSelectedDate(dateKey(slot.start))
     setViewDate(setViewFromDateKey(dateKey(slot.start)))
     setError(
-      `${formatSlotTime(slot)} is now less than ${MIN_BOOKING_NOTICE_HOURS} hours away, so it needs a quick WhatsApp to Henry before you pay. ` +
-        "Message him below, or pick a later time. Your details are saved.",
+      `${messageFirstNotice(slot, reason)} ` +
+        `Message him below, or pick ${reason === "sunday" ? "another day" : "a later time"}. Your details are saved.`,
     )
     // Straight to the WhatsApp box under the times, once it has drawn.
     window.setTimeout(() => {
@@ -445,21 +471,23 @@ export function InspectionsBookingCalendar() {
   // The same check while the customer is still on the calendar: a chosen time that the clock has overtaken.
   useEffect(() => {
     if (!selectedSlot || detailsUnlocked || shortNoticeConfirmed) return
-    if (isShortNotice(selectedSlot, nowMs)) moveToShortNotice(selectedSlot)
+    const reason = messageFirstReason(selectedSlot, nowMs)
+    if (reason) moveToShortNotice(selectedSlot, reason)
   }, [nowMs, selectedSlot, detailsUnlocked, shortNoticeConfirmed, moveToShortNotice])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!selectedSlot) {
       setError(shortNoticeCandidate
-        ? "That time is within 24 hours. Message Henry first, then tick the box once he's confirmed it."
+        ? `${messageFirstReason(shortNoticeCandidate, nowMs) === "sunday" ? "Sunday appointments are by request" : "That time is within 24 hours"}. Message Henry first, then tick the box once he's confirmed it.`
         : "Please choose a date and time for your appointment.")
       showTimes()
       return
     }
-    const slotIsShortNotice = isShortNotice(selectedSlot, refreshNow())
-    if (slotIsShortNotice && !shortNoticeConfirmed) {
-      moveToShortNotice(selectedSlot)
+    const slotReason = messageFirstReason(selectedSlot, refreshNow())
+    const slotIsShortNotice = slotReason !== null
+    if (slotReason && !shortNoticeConfirmed) {
+      moveToShortNotice(selectedSlot, slotReason)
       return
     }
     setSubmitting(true)
@@ -508,10 +536,10 @@ export function InspectionsBookingCalendar() {
         return
       }
       setSubmitting(false)
-      if (data.code === "short_notice") {
-        // The server's clock says the time is inside 24 hours. Catch the page's clock up and ask for a message.
+      if (data.code === "short_notice" || data.code === "sunday") {
+        // The server says the time is inside 24 hours, or on a Sunday. Catch the page's clock up and ask for a message.
         await loadAvailability()
-        moveToShortNotice(bookedSlot)
+        moveToShortNotice(bookedSlot, data.code === "sunday" ? "sunday" : "short-notice")
         return
       }
       if (data.code === "slot_taken" || data.code === "invalid_slot" || res.status === 409) {
@@ -532,6 +560,9 @@ export function InspectionsBookingCalendar() {
   }
 
   const daySlots = selectedDate ? slotsByDate.get(selectedDate) || [] : []
+  // Why the time in the "Message first" box needs a message: it only ever holds a short-notice or a Sunday time.
+  const candidateReason: MessageFirstReason =
+    shortNoticeCandidate && messageFirstReason(shortNoticeCandidate, nowMs) === "sunday" ? "sunday" : "short-notice"
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -662,7 +693,7 @@ export function InspectionsBookingCalendar() {
         <div className="mb-4 flex items-center gap-3">
           <div>
             <h3 className="text-xl font-bold">Choose your appointment</h3>
-            <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s within 24 hours, message us first so we can confirm travel and access.</p>
+            <p className="text-sm text-muted-foreground">All open times are shown. If it&apos;s a Sunday or within 24 hours, message us first so we can confirm travel and access.</p>
           </div>
         </div>
 
@@ -701,7 +732,7 @@ export function InspectionsBookingCalendar() {
                     const key = toDateKey(date)
                     const dateSlots = slotsByDate.get(key) || []
                     const hasSlots = dateSlots.length > 0
-                    const onlyShortNotice = hasSlots && dateSlots.every((slot) => isShortNotice(slot, nowMs))
+                    const onlyShortNotice = hasSlots && dateSlots.every((slot) => needsMessageFirst(slot, nowMs))
                     const isSelected = key === selectedDate
                     return (
                       <button
@@ -735,7 +766,7 @@ export function InspectionsBookingCalendar() {
                     </p>
                     <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-1">
                       {daySlots.map((slot) => {
-                        const shortNotice = isShortNotice(slot, nowMs)
+                        const shortNotice = needsMessageFirst(slot, nowMs)
                         const isCandidate = shortNoticeCandidate?.start === slot.start
                         const isSelected = selectedSlot?.start === slot.start
                         const time = formatSlotTime(slot)
@@ -756,7 +787,7 @@ export function InspectionsBookingCalendar() {
                             }`}
                           >
                             <span className="block text-base">{time}</span>
-                            {/* On phones only short-notice times carry a label; the legend above explains the rest. */}
+                            {/* On phones only message-first times carry a label; the legend above explains the rest. */}
                             <span className={`mt-0.5 text-[12px] font-semibold md:text-[11px] ${shortNotice ? "block text-muted-foreground" : "hidden opacity-70 md:block"}`}>
                               {shortNotice ? "Message first" : "Book online"}
                             </span>
@@ -766,12 +797,12 @@ export function InspectionsBookingCalendar() {
                     </div>
                     {shortNoticeCandidate && dateKey(shortNoticeCandidate.start) === selectedDate && (
                       <div id="short-notice-box" className="mt-4 scroll-mt-24 rounded-2xl border-2 border-primary/20 bg-white p-4">
-                        <p className="font-bold text-foreground">This appointment is within 24 hours</p>
+                        <p className="font-bold text-foreground">{candidateReason === "sunday" ? "Sunday appointments are by request" : "This appointment is within 24 hours"}</p>
                         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                           Please WhatsApp Henry to confirm availability before paying.
                         </p>
                         <Button asChild className="mt-3 w-full bg-[#25D366] font-bold text-white hover:bg-[#1da851]">
-                          <a href={shortNoticeWhatsAppUrl(shortNoticeCandidate, selectedPackage.name)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick("short_notice_slot")}>
+                          <a href={shortNoticeWhatsAppUrl(shortNoticeCandidate, selectedPackage.name, candidateReason)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(candidateReason === "sunday" ? "sunday_slot" : "short_notice_slot")}>
                             <MessageCircle className="mr-2 h-4 w-4" /> Message Henry on WhatsApp
                           </a>
                         </Button>
@@ -990,9 +1021,9 @@ export function InspectionsBookingCalendar() {
                       ? "Includes EV Battery State of Health Report (+£49.99)"
                       : "Inspection only, no optional battery State of Health report"}
                 </p>
-                {selectedSlot && shortNoticeConfirmed && isShortNotice(selectedSlot, nowMs) && (
+                {selectedSlot && shortNoticeConfirmed && needsMessageFirst(selectedSlot, nowMs) && (
                   <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    <Check className="h-4 w-4" /> Short-notice slot confirmed with Henry
+                    <Check className="h-4 w-4" /> {isShortNotice(selectedSlot, nowMs) ? "Short-notice slot" : "Sunday appointment"} confirmed with Henry
                   </p>
                 )}
               </div>

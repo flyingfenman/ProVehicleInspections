@@ -4,7 +4,7 @@ import { z } from "zod"
 import { INSPECTION_PACKAGES } from "../../lib/inspection-packages"
 import { PACKAGE_DURATIONS_MIN } from "../../lib/inspection-slots"
 import { SERVICE_AREA } from "../../lib/areas/service-area"
-import { describeFreeTimes, isFree, isShortNotice, londonNow, type FreeTimes } from "./slots"
+import { describeFreeTimes, isFree, isShortNotice, isSunday, londonNow, type FreeTimes } from "./slots"
 
 const MODEL = "claude-opus-5-5"
 // The battery report added to an inspection. The booking page has the same figure.
@@ -88,7 +88,7 @@ SET needs_henry TO TRUE (still write your best reply) WHEN
 - They ask about anything not covered above: vans, motorbikes, motorhomes, classic or modified cars, commercial vehicles, diagnosing a fault on their own car, repairs, selling a car, discounts.
 - It is about an existing booking or report, a complaint, a refund, cancelling or moving a booking.
 - The car is outside the area, or you can't tell where it is and it may be far.
-- They want a short notice time (marked in the list) or any time not in the list. Say Henry will confirm.
+- They want a short notice time or a Sunday (both marked in the list), or any time not in the list. Say Henry will confirm.
 - They sent a voice note, video or document you cannot read.
 - Anything else you are not sure about. Never guess a fact.
 
@@ -173,6 +173,9 @@ export function finishReply(answer: Answer, siteUrl: string, free: FreeTimes, no
         if (isShortNotice(link.date, link.time, free, link.package, now)) {
           needsHenry = true
           notes.push("Short notice time, confirm you can do it.")
+        } else if (isSunday(link.date, link.time, free, link.package)) {
+          needsHenry = true
+          notes.push("Sunday time, confirm you can do it.")
         }
       } else {
         needsHenry = true
