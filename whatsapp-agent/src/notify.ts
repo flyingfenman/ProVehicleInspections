@@ -35,7 +35,7 @@ ${draft?.note ? `<p style="margin:12px 0;color:#7c2d12"><b>Note:</b> ${escapeHtm
     method: "POST",
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: "Pro Vehicle Inspections <noreply@eppingcarbuyer.com>",
+      from: "Pro Vehicle Inspections <henry@provehicleinspections.com>",
       to: [env.NOTIFY_EMAIL],
       subject,
       text,
