@@ -19,7 +19,7 @@ export function FinalCta() {
               <FileText className="h-5 w-5" /> View an example report
             </Link>
           </div>
-          <p className="mt-6 font-semibold text-muted-foreground">Standard £199.99 · Premium £249.99 · EV battery check £149.99</p>
+          <p className="mt-6 font-semibold text-muted-foreground">Standard £249.99 · Premium £299.99 · EV battery check £149.99</p>
         </div>
       </div>
     </section>

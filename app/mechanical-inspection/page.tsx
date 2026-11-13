@@ -13,7 +13,7 @@ const BOOK_HREF = "/book?package=mechanical"
 const WHATSAPP_HREF = `${SITE.whatsapp}?text=${encodeURIComponent("Hi, I'd like a mechanical inspection after garage work. What was done and what has happened since: ")}`
 
 const description =
-  "Independent mechanical inspection after garage work, £399.99. Full diagnostic scan with live data, photos and video, a written report on the likely cause and a signed statement of truth."
+  "Independent mechanical inspection after garage work, £499.99. Full diagnostic scan with live data, photos and video, a written report on the likely cause and a signed statement of truth."
 
 export const metadata: Metadata = {
   title: "Mechanical Inspection After Garage Work | Pro Vehicle Inspections",
@@ -57,7 +57,7 @@ const STEPS = [
 const faqs = [
   {
     question: "How much is a mechanical inspection?",
-    answer: `£399.99, paid when you book. The price is the same wherever the car is across ${SERVICE_AREA.short}, with no call-out or mileage charge.`,
+    answer: `£499.99, paid when you book. The price is the same wherever the car is across ${SERVICE_AREA.short}, with no call-out or mileage charge.`,
   },
   {
     question: "When would I need one?",
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: "Is this the same as a pre-purchase inspection?",
     answer:
-      "No. The mechanical inspection is for a car you already own that has a problem after garage work. If you're buying a used car, book a Standard (£199.99) or Premium (£249.99) pre-purchase inspection instead.",
+      "No. The mechanical inspection is for a car you already own that has a problem after garage work. If you're buying a used car, book a Standard (£249.99) or Premium (£299.99) pre-purchase inspection instead.",
   },
 ]
 
@@ -104,7 +104,7 @@ const serviceSchema = {
   offers: {
     "@type": "Offer",
     name: "Mechanical Inspection",
-    price: "399.99",
+    price: "499.99",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: `${SITE_URL}${BOOK_HREF}`,
@@ -137,7 +137,7 @@ function BookButtons({ centred = false }: { centred?: boolean }) {
         href={BOOK_HREF}
         className="inline-flex h-14 items-center justify-center rounded-xl bg-primary px-8 text-lg font-bold text-primary-foreground shadow-md transition hover:bg-primary/90"
       >
-        Book Mechanical: £399.99 <ArrowRight className="ml-2 h-5 w-5" />
+        Book Mechanical: £499.99 <ArrowRight className="ml-2 h-5 w-5" />
       </Link>
       <a
         href={WHATSAPP_HREF}
@@ -181,7 +181,7 @@ export default function MechanicalInspectionPage() {
 
             <div className="rounded-3xl border border-border bg-white p-6 shadow-sm sm:p-7">
               <p className="text-sm font-bold text-primary">Mechanical Inspection</p>
-              <p className="mt-1 text-5xl font-bold tracking-tight">£399.99</p>
+              <p className="mt-1 text-5xl font-bold tracking-tight">£499.99</p>
               <p className="mt-2 text-sm text-muted-foreground">One price, no call-out or mileage charge.</p>
               <ul className="mt-5 space-y-3 border-t border-border pt-5">
                 {MECHANICAL_ITEMS.map((item) => (
@@ -294,7 +294,7 @@ export default function MechanicalInspectionPage() {
               <p className="mt-3 text-muted-foreground">
                 The mechanical inspection is for a car you already own. If you&apos;re about to buy one, our pre-purchase inspections check the whole car before you pay.
               </p>
-              <p className="mt-3 font-semibold">Standard £199.99 · Premium £249.99</p>
+              <p className="mt-3 font-semibold">Standard £249.99 · Premium £299.99</p>
               <Link href="/book" className="mt-4 inline-flex min-h-11 items-center font-bold text-primary underline underline-offset-4">
                 See the pre-purchase inspections
               </Link>
