@@ -5,6 +5,7 @@ import {
   MIN_BOOKING_NOTICE_HOURS,
   PACKAGE_DURATIONS_MIN,
   isPackageKey,
+  isBlockedSlot,
   isSundaySlot,
   clashesWithBooking,
   type PackageKey,
@@ -102,6 +103,15 @@ export async function POST(request: NextRequest) {
       actualDurationMin !== expectedDurationMin
     ) {
       return NextResponse.json({ error: "Please choose your time again.", code: "invalid_slot" }, { status: 400 })
+    }
+
+    // A time Henry has taken out of the diary. The calendar no longer lists it, so this only catches a page that was
+    // already open, or an old link. Answered like a time that has gone, which sends the customer back to pick another.
+    if (isBlockedSlot(slotStart, slotEnd)) {
+      return NextResponse.json(
+        { error: "Sorry, that time isn't available any more. Please pick another below. Your details are saved.", code: "slot_taken" },
+        { status: 409 },
+      )
     }
 
     if (isShortNotice && !hasShortNoticeConfirmation) {
