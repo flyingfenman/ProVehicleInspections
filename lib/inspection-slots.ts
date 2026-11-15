@@ -58,6 +58,31 @@ export function clashesWithBooking(slotStart: string, slotEnd: string, bookingSt
   )
 }
 
+// Times Henry has taken out of the diary, in Europe/London wall-clock time. An appointment is only offered (and only
+// sold) if it is finished before a blocked stretch starts, or starts after it ends, so the block works like an early
+// close or a late start on that day. No travel gap is added around it.
+//
+// The other inspection sites read this site's free times before they offer one, so a block here takes the same times
+// off Epping Car Buyer and Stamford Car Buyer too. To open a time again, delete its line.
+const BLOCKED_TIMES: { date: string; from: string; to: string }[] = [
+  // Monday 16 and Tuesday 17 November 2026, 9am until 11:30 (Henry, 15 Nov 2026). First time offered is 12pm.
+  { date: "2026-11-16", from: "09:00", to: "11:30" },
+  { date: "2026-11-17", from: "09:00", to: "11:30" },
+  // Thursday 19 November 2026, 12pm onwards (Henry, 14 Nov 2026).
+  { date: "2026-11-19", from: "12:00", to: "18:00" },
+]
+
+export function isBlockedSlot(slotStart: string, slotEnd: string): boolean {
+  return BLOCKED_TIMES.some((block) => {
+    const [year, month, day] = block.date.split("-").map(Number)
+    const [fromHour, fromMinute] = block.from.split(":").map(Number)
+    const [toHour, toMinute] = block.to.split(":").map(Number)
+    const blockStart = londonWallTimeToUTC(year, month - 1, day, fromHour, fromMinute)
+    const blockEnd = londonWallTimeToUTC(year, month - 1, day, toHour, toMinute)
+    return rangesOverlap(slotStart, slotEnd, blockStart.toISOString(), blockEnd.toISOString())
+  })
+}
+
 function londonOffsetMinutes(instant: Date): number {
   const asUTC = new Date(instant.toLocaleString("en-US", { timeZone: "UTC" }))
   const asLondon = new Date(instant.toLocaleString("en-US", { timeZone: LONDON_TZ }))
@@ -102,6 +127,7 @@ export function generateAllSlots(packageKey: PackageKey, fromDate: Date = new Da
       const slotEnd = new Date(slotStart.getTime() + durationMin * 60000)
 
       if (slotEnd > closing) break
+      if (isBlockedSlot(slotStart.toISOString(), slotEnd.toISOString())) continue
       if (slotStart.getTime() > fromDate.getTime()) {
         slots.push({ start: slotStart.toISOString(), end: slotEnd.toISOString() })
       }
