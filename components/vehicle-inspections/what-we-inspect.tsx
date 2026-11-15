@@ -224,6 +224,7 @@ const inspectionSections: InspectionSection[] = [
   {
     title: "Underbody Inspection",
     description: "Accessible underside areas are visually reviewed for damage, corrosion, leaks and component condition.",
+    premiumHighlight: true,
     items: [
       "Front underbody condition",
       "Centre underbody condition",
@@ -443,7 +444,7 @@ export function InspectionsWhatWeInspect({ headingLevel = "h2" }: { headingLevel
             </div>
             <p className="mt-1 text-3xl font-bold">{premiumTotal} points</p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              The extensive checklist below, including paint-depth assessment, deeper body checks, repair-cost guidance, enhanced reporting and seller / vehicle provenance.
+              The extensive checklist below, including the underbody inspection, paint-depth assessment, deeper body checks, repair-cost guidance, enhanced reporting and seller / vehicle provenance.
             </p>
           </div>
         </div>

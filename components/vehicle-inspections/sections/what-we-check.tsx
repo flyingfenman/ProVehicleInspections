@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react"
 type CheckItem = {
   title: string
   icon: string
+  // Only in the Premium inspection: shown with a small Premium tag under the label.
+  premium?: boolean
 }
 
 type CheckGroup = {
@@ -17,6 +19,7 @@ const GROUPS: CheckGroup[] = [
     title: "Mechanical",
     subtitle: "Mechanical, running gear and under-bonnet checks",
     items: [
+      { title: "Underbody checks", icon: "underbody", premium: true },
       { title: "Battery", icon: "battery" },
       { title: "Fuel system operation", icon: "fuel-system" },
       { title: "CV Joint / boots, drive-shaft and universal joints", icon: "cv-joints" },
@@ -48,7 +51,7 @@ const GROUPS: CheckGroup[] = [
       { title: "Scratches and Dints", icon: "scratches-dints" },
       { title: "Hazard", icon: "hazard" },
       { title: "Headlights", icon: "headlights" },
-      { title: "Paint depth testing to all panels", icon: "paint-depth" },
+      { title: "Paint depth testing to all panels", icon: "paint-depth", premium: true },
       { title: "Fog Lamp condition and operation", icon: "fog-lamp" },
       { title: "Tail Lights", icon: "tail-lights" },
       { title: "Door operations", icon: "door-operations" },
@@ -91,18 +94,30 @@ function InspectionIcon({ item }: { item: CheckItem }) {
         decoding="async"
         className="h-16 w-16 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"
       />
-      <p className="min-w-0 text-[13px] font-bold leading-[1.2] text-foreground sm:text-sm">{item.title}</p>
+      <p className="min-w-0 text-[13px] font-bold leading-[1.2] text-foreground sm:text-sm">
+        {item.title}
+        {item.premium && (
+          <span className="mt-1 block w-fit rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold uppercase leading-tight tracking-wide text-primary-foreground">
+            Premium
+          </span>
+        )}
+      </p>
     </div>
   )
 }
 
-export function WhatWeCheck() {
+// The home page uses the defaults. The area pages pass their own heading, with the place name in it.
+export function WhatWeCheck({
+  eyebrow = "What we check",
+  title = "Bumper to bumper, and underneath",
+  className = "border-t bg-white",
+}: { eyebrow?: string; title?: string; className?: string } = {}) {
   return (
-    <section className="border-t bg-white py-12 sm:py-16">
+    <section className={`py-12 sm:py-16 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">What we check</p>
-          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">Bumper to bumper, and underneath</h2>
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
+          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">260 points, adapted to petrol, diesel, hybrid and electric cars.</p>
         </div>
 

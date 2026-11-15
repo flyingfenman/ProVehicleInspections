@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "What does Premium add to the Standard inspection?",
     answer:
-      "A deeper 260-point inspection with paint-depth readings, repair-cost guidance and an action plan, an extended road test and the extra research above. Searches depend on the records available.",
+      "A deeper 260-point inspection with underbody checks, paint-depth readings, repair-cost guidance and an action plan, an extended road test and the extra research above. Searches depend on the records available.",
   },
   {
     question: "Does Premium include the EV battery State of Health report?",

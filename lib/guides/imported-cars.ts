@@ -76,7 +76,7 @@ export const importedCars: Guide = {
         "The conversion: headlamps, rear fog, speedometer units, and anything the IVA will fail.",
         "Paint depth on every panel, because body filler is the cheapest way to hide a foreign accident that no UK database knows about.",
         "The fault memory in every module, and the distance driven since any codes were cleared.",
-        "Corrosion and heat damage: rubber, plastics and hoses on a Gulf car, underbody on a car from a salted winter state, and the condition of the cooling system.",
+        "Corrosion and heat damage: rubber, plastics and hoses on a Gulf car, the condition of the cooling system and, in a Premium inspection, the underbody on a car from a salted winter state.",
         "Mileage against wear: pedals, seats, steering wheel and tyres, because an odometer in kilometres converted on paper proves nothing.",
         "The seller, in a Premium inspection: whether they are a trader, how long they have had the car, and what their previous adverts said.",
       ],

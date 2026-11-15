@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
-import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
+import { WhatWeCheck } from "@/components/vehicle-inspections/sections/what-we-check"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
 import { inspectionPhotos } from "@/lib/inspection-photos"
@@ -150,7 +150,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                 I inspect used cars for people buying in {area.name}. I come to the car, whether it&apos;s on a dealer&apos;s forecourt or on someone&apos;s driveway, and I check it properly before you pay for it.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I scan every module with my diagnostic tablet, look underneath, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
+                I scan every module with my diagnostic tablet, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                 I don&apos;t work for the seller and I get nothing from the sale. If the car is good, I&apos;ll say so. If it isn&apos;t, I&apos;ll tell you that too, and roughly what it&apos;ll cost to put right.
@@ -184,7 +184,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                   style={{ objectPosition: inspectionPhotos.rangeRover.position }}
                 />
               </div>
-              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before I inspected it.</figcaption>
+              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before its Premium inspection.</figcaption>
             </figure>
 
             <div className="rounded-3xl border border-border bg-white p-5 sm:p-6">
@@ -194,7 +194,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                   "Full-system diagnostic scan",
                   "Road test",
                   "History check: finance, write-off, stolen and mileage",
-                  "Body, chassis, tyres and interior checks",
+                  "Body, tyres and interior checks",
                   "Powertrain-specific checks for petrol, diesel, hybrid or EV",
                   "Video review of the car",
                   "Photos and a written report the same day",
@@ -212,8 +212,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
         </div>
       </section>
 
-
-      <MechanicalReportOverview />
+      <WhatWeCheck eyebrow="What's covered" title={`What I check on a car in ${area.name}`} className="bg-white" />
 
       <section className="bg-slate-50 py-10 sm:py-14">
         <div className="container mx-auto px-4">
@@ -241,7 +240,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                 <p className="mt-2 text-4xl font-bold">£299.99</p>
                 <p className="mt-2 font-semibold">260-point pre-purchase inspection</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Everything in Standard, including the video review, plus deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
+                  Everything in Standard, including the video review, plus underbody checks, deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
                 </p>
                 <Link href="/book?package=premium" className="mt-4 inline-flex min-h-11 items-center font-bold text-primary hover:underline">
                   Book Premium <ArrowRight className="ml-1.5 h-4 w-4" />

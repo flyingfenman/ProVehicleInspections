@@ -66,6 +66,7 @@ export const whatItChecks: Guide = {
     {
       type: "ul",
       items: [
+        "Underbody checks: damage, corrosion and leaks underneath the car.",
         "Paint depth readings on every suitable panel and a deeper bodywork and condition assessment.",
         "Repair cost guidance and an action plan: what to fix now, within three months and later.",
         "Seller and logbook (V5C) checks, where the documents are available.",
@@ -109,7 +110,7 @@ export const whatItChecks: Guide = {
     {
       question: "Do you put the car on a ramp?",
       answer:
-        "No. We are mobile, like every inspector who comes to the car, so the underside is checked from the ground as far as access allows, and where a seller's workshop has a ramp we use it. The AA and RAC work the same way, and the RAC charges extra when a ramp is needed.",
+        "No. We are mobile, like every inspector who comes to the car. The underbody check is part of the Premium inspection, so in a Premium the underside is checked from the ground as far as access allows, and where a seller's workshop has a ramp we use it. The AA and RAC work the same way, and the RAC charges extra when a ramp is needed.",
     },
     {
       question: "Do you check whether the mileage is genuine?",
