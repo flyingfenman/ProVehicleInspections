@@ -150,6 +150,10 @@ export function EvModelPage({ model }: { model: EvModel }) {
               <Link href="/book" className="font-semibold text-primary underline underline-offset-4">
                 Standard or Premium inspection
               </Link>
+              . See{" "}
+              <Link href="/ev-battery-health-check/sample-report" className="font-semibold text-primary underline underline-offset-4">
+                an example battery report
+              </Link>
               .
             </p>
 
