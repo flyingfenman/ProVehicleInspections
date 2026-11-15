@@ -18,6 +18,7 @@ export const IN_BOTH: Item[] = [
 ]
 
 export const PREMIUM_ADDS: Item[] = [
+  { label: "Underbody checks", note: "Damage, corrosion and leaks underneath the car" },
   { label: "Paint-depth readings on suitable panels" },
   { label: "Deeper bodywork and condition assessment" },
   { label: "Repair-cost guidance and an action plan", note: "What to fix now, within three months and later" },

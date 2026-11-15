@@ -42,7 +42,7 @@ export const INSPECTION_PACKAGES: InspectionPackage[] = [
     amount: 299.99,
     points: "260-point inspection",
     strapline: "Deeper inspection and vehicle and seller research",
-    features: ["Everything in Standard, including history check and video review", "Paint-depth readings and deeper bodywork checks", "Auction, salvage and previous advert searches", "Repair-cost guidance and action plan", "Extended road test", "Checks for signs of undisclosed motor trading"],
+    features: ["Everything in Standard, including history check and video review", "Paint depth, underbody and deeper bodywork checks", "Auction, salvage and previous advert searches", "Repair-cost guidance and action plan", "Extended road test", "Checks for signs of undisclosed motor trading"],
     popular: true,
     group: "pre-purchase",
   },

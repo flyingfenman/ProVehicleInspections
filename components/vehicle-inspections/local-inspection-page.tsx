@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
-import { MechanicalReportOverview } from "@/components/vehicle-inspections/mechanical-report-overview"
+import { WhatWeCheck } from "@/components/vehicle-inspections/sections/what-we-check"
 import { WhatsIncluded } from "@/components/vehicle-inspections/whats-included"
 import { areaPath, areas, type Area } from "@/lib/areas"
 import { inspectionPhotos } from "@/lib/inspection-photos"
@@ -212,8 +212,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
         </div>
       </section>
 
-
-      <MechanicalReportOverview />
+      <WhatWeCheck eyebrow="What's covered" title={`What I check on a car in ${area.name}`} className="bg-white" />
 
       <section className="bg-slate-50 py-10 sm:py-14">
         <div className="container mx-auto px-4">
@@ -241,7 +240,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                 <p className="mt-2 text-4xl font-bold">£299.99</p>
                 <p className="mt-2 font-semibold">260-point pre-purchase inspection</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Everything in Standard, including the video review, plus deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
+                  Everything in Standard, including the video review, plus underbody checks, deeper condition checks, paint-depth readings, an extended road test, available auction, salvage and previous advert searches, and checks for indicators of undisclosed motor trading. Subject to available records, seller cooperation and road-test permission.
                 </p>
                 <Link href="/book?package=premium" className="mt-4 inline-flex min-h-11 items-center font-bold text-primary hover:underline">
                   Book Premium <ArrowRight className="ml-1.5 h-4 w-4" />
