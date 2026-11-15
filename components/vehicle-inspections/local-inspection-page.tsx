@@ -150,7 +150,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                 I inspect used cars for people buying in {area.name}. I come to the car, whether it&apos;s on a dealer&apos;s forecourt or on someone&apos;s driveway, and I check it properly before you pay for it.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I scan every module with my diagnostic tablet, look underneath, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
+                I scan every module with my diagnostic tablet, go over the body, tyres and interior, and take it for a road test. You get a video of me walking round the car explaining what I found, plus photos and a written report, the same day. Then we go through it together.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                 I don&apos;t work for the seller and I get nothing from the sale. If the car is good, I&apos;ll say so. If it isn&apos;t, I&apos;ll tell you that too, and roughly what it&apos;ll cost to put right.
@@ -184,7 +184,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                   style={{ objectPosition: inspectionPhotos.rangeRover.position }}
                 />
               </div>
-              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before I inspected it.</figcaption>
+              <figcaption className="mt-3 text-sm text-muted-foreground">A Range Rover Sport up on my ramps at a dealer, before its Premium inspection.</figcaption>
             </figure>
 
             <div className="rounded-3xl border border-border bg-white p-5 sm:p-6">
@@ -194,7 +194,7 @@ export function LocalInspectionPage({ area }: { area: Area }) {
                   "Full-system diagnostic scan",
                   "Road test",
                   "History check: finance, write-off, stolen and mileage",
-                  "Body, chassis, tyres and interior checks",
+                  "Body, tyres and interior checks",
                   "Powertrain-specific checks for petrol, diesel, hybrid or EV",
                   "Video review of the car",
                   "Photos and a written report the same day",

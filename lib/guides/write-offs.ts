@@ -70,7 +70,7 @@ export const writeOffs: Guide = {
         "The history check, included in both packages, for the category, the date and any finance, theft or mileage flags.",
         "In a Premium inspection, the salvage auction and previous advert searches, which usually show photographs of the damage before repair.",
         "Paint depth on every panel and the fit of every panel, light and bumper.",
-        "The underside, chassis legs, inner wings and the welds and seams a structural repair touches.",
+        "In a Premium inspection, the underside, chassis legs, inner wings and the welds and seams a structural repair touches.",
         "The fault memory in every module, especially the airbag, body and driver assistance systems, and the date any codes were cleared.",
         "A road test for tracking, pulling, noises and whether the car drives straight.",
       ],
