@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/guides", 0.8],
     ...guides.map((guide): [string, number, string] => [guidePath(guide), 0.8, guide.updated]),
     ...areas.map((area): [string, number, string] => [areaPath(area), 0.9, area.updated]),
+    ["/about", 0.6],
     ["/contact", 0.6],
   ]
 

@@ -1,4 +1,5 @@
-import { Check, MessageCircle } from "lucide-react"
+import Link from "next/link"
+import { Check, MessageCircle, User } from "lucide-react"
 import { SITE } from "./site"
 
 const POINTS = [
@@ -7,11 +8,12 @@ const POINTS = [
   "Straight answers in plain English, good news and bad",
 ]
 
-// The person behind the inspection, and how to reach him directly.
+// The person behind the inspection, and how to reach him directly. Portrait on the left, the words in the middle, a photo
+// of a real inspection on the right (below the words on phones and tablets so nothing gets squeezed).
 export function MeetHenry() {
   return (
     <section className="overflow-hidden border-t bg-white py-12 sm:py-16">
-      <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+      <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[0.8fr_1.2fr] lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)_minmax(0,0.85fr)] lg:gap-10 xl:gap-12">
         <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-border bg-white shadow-md md:max-w-sm">
           {/* eslint-disable-next-line @next/next/no-img-element -- the same photo the home page uses */}
           <img src="/henry.webp" alt={`Henry from ${SITE.brand}`} width={750} height={1000} loading="lazy" className="h-auto w-full object-contain" />
@@ -37,7 +39,15 @@ export function MeetHenry() {
             <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-lg font-bold text-white transition hover:bg-[#1da851]">
               <MessageCircle className="h-5 w-5" /> Message Henry
             </a>
+            <Link href="/about" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-lg font-bold text-white transition hover:bg-primary/90">
+              <User className="h-5 w-5" /> About me
+            </Link>
           </div>
+        </div>
+
+        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-border bg-white shadow-md md:col-span-2 md:max-w-sm lg:col-span-1 lg:max-w-none">
+          {/* eslint-disable-next-line @next/next/no-img-element -- a plain static photo, like the portrait */}
+          <img src="/images/polestar-on-ramps.webp" alt={`A Polestar 2 on ramps with a ${SITE.brand} plate on the front, ready to be inspected`} width={960} height={1200} loading="lazy" className="h-auto w-full object-cover" />
         </div>
       </div>
     </section>
