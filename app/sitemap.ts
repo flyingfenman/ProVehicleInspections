@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...inspectionNotes.map((note): [string, number, string] => [inspectionNotePath(note), 0.7, note.published]),
     ["/mechanical-inspection", 0.9],
     ["/ev-battery-health-check", 0.9],
+    ["/ev-battery-health-check/sample-report", 0.8, "2026-11-15"],
     ...evModels.map((model): [string, number, string] => [evModelPath(model), 0.8, model.updated]),
     ["/guides", 0.8],
     ...guides.map((guide): [string, number, string] => [guidePath(guide), 0.8, guide.updated]),

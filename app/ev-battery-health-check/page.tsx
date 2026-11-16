@@ -197,6 +197,27 @@ export default function EvBatteryHealthCheckPage() {
                 </p>
               </div>
             </div>
+
+            {/* A real report, so buyers can see what they get before they book. */}
+            <div className="mt-5 flex flex-col gap-5 rounded-2xl border border-primary/15 bg-primary/5 p-5 sm:flex-row sm:items-center sm:gap-6 sm:p-6">
+              <div className="shrink-0 self-start rounded-xl border-2 border-emerald-200 bg-white px-5 py-3 sm:self-center">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">High voltage battery</p>
+                <p className="text-4xl font-bold leading-none text-emerald-700">
+                  91<span className="text-lg">% SOH</span>
+                </p>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold">See a real battery report</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  A 2022 Polestar 2 we tested: 91% State of Health, no battery fault codes, and the voltage of all 108 cells. Customer details removed.
+                </p>
+              </div>
+              <Button asChild size="lg" className="h-12 w-full shrink-0 bg-primary px-6 font-bold text-primary-foreground hover:bg-primary/90 sm:w-auto">
+                <Link href="/ev-battery-health-check/sample-report">
+                  See the example report <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
