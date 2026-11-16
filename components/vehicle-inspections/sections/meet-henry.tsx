@@ -13,7 +13,7 @@ const POINTS = [
 export function MeetHenry() {
   return (
     <section className="overflow-hidden border-t bg-white py-12 sm:py-16">
-      <div className="container mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[0.8fr_1.2fr] lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)_minmax(0,0.85fr)] lg:gap-10 xl:gap-12">
+      <div className="container mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[0.8fr_1.2fr] lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.05fr)_minmax(0,1.1fr)] lg:gap-8 xl:gap-12">
         <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-border bg-white shadow-md md:max-w-sm">
           {/* eslint-disable-next-line @next/next/no-img-element -- the same photo the home page uses */}
           <img src="/henry.webp" alt={`Henry from ${SITE.brand}`} width={750} height={1000} loading="lazy" className="h-auto w-full object-contain" />
@@ -35,19 +35,19 @@ export function MeetHenry() {
               </li>
             ))}
           </ul>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-lg font-bold text-white transition hover:bg-[#1da851]">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-[#25D366] px-6 lg:px-4 xl:px-6 text-lg font-bold text-white transition hover:bg-[#1da851]">
               <MessageCircle className="h-5 w-5" /> Message Henry
             </a>
-            <Link href="/about" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-lg font-bold text-white transition hover:bg-primary/90">
+            <Link href="/about" className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-primary px-6 lg:px-4 xl:px-6 text-lg font-bold text-white transition hover:bg-primary/90">
               <User className="h-5 w-5" /> About me
             </Link>
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-border bg-white shadow-md md:col-span-2 md:max-w-sm lg:col-span-1 lg:max-w-none">
+        <div className="w-full overflow-hidden rounded-[2rem] border border-border bg-white shadow-md md:col-span-2 md:mx-auto md:max-w-xl lg:col-span-1 lg:max-w-none">
           {/* eslint-disable-next-line @next/next/no-img-element -- a plain static photo, like the portrait */}
-          <img src="/images/polestar-on-ramps.webp" alt={`A Polestar 2 on ramps with a ${SITE.brand} plate on the front, ready to be inspected`} width={960} height={1200} loading="lazy" className="h-auto w-full object-cover" />
+          <img src="/images/polestar-on-ramps.webp" alt={`A Polestar 2 on ramps with a ${SITE.brand} plate on the front, ready to be inspected`} width={1000} height={1250} loading="lazy" className="h-auto w-full object-cover" />
         </div>
       </div>
     </section>
