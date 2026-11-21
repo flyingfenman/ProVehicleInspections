@@ -70,8 +70,10 @@ const BLOCKED_TIMES: { date: string; from: string; to: string }[] = [
   { date: "2026-11-17", from: "09:00", to: "11:30" },
   // Thursday 19 November 2026, 12pm onwards (Henry, 14 Nov 2026).
   { date: "2026-11-19", from: "12:00", to: "18:00" },
-  // Sunday 22 November 2026, all day (Henry, 19 Nov 2026).
-  { date: "2026-11-22", from: "09:00", to: "18:00" },
+  // Sunday 22 November 2026: blocked all day (Henry, 19 Nov 2026) apart from the 10am he agreed with a customer
+  // (Henry, 21 Nov 2026). Only a 10am start is offered, and the day is full again once that is booked.
+  { date: "2026-11-22", from: "09:00", to: "10:00" },
+  { date: "2026-11-22", from: "11:30", to: "18:00" },
 ]
 
 export function isBlockedSlot(slotStart: string, slotEnd: string): boolean {

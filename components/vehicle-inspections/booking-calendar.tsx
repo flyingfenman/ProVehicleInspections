@@ -223,6 +223,23 @@ export function InspectionsBookingCalendar() {
       setPrefilledReg(registration)
       setForm((current) => ({ ...current, registration: current.registration || registration }))
     }
+    // Henry's own links can also carry what he already knows about the car, so the customer doesn't type it again:
+    // where it is, the seller and the advert. Nothing about the customer goes in a link, because the page address is
+    // seen by the ad tracking.
+    const carDetails = {
+      location: params.get("location")?.trim().slice(0, 200),
+      sellerName: params.get("seller")?.trim().slice(0, 200),
+      sellerPhone: params.get("sellerphone")?.trim().slice(0, 50),
+      advertUrl: params.get("advert")?.trim().slice(0, 400),
+    }
+    setForm((current) => {
+      const next = { ...current }
+      for (const key of Object.keys(carDetails) as (keyof typeof carDetails)[]) {
+        const value = carDetails[key]
+        if (value && !next[key]) next[key] = value
+      }
+      return next
+    })
     // Arriving on a #book link: the browser's own jump gets undone during page load, so retry briefly
     // until the section is in view.
     if (window.location.hash === "#book") return scrollToAnchorWhileLoading("book")
