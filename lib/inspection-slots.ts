@@ -65,7 +65,8 @@ export function clashesWithBooking(slotStart: string, slotEnd: string, bookingSt
 // The other inspection sites read this site's free times before they offer one, so a block here takes the same times
 // off Epping Car Buyer and Stamford Car Buyer too. To open a time again, delete its line.
 const BLOCKED_TIMES: { date: string; from: string; to: string }[] = [
-  // Wednesday 25 November to Thursday 3 December 2026, every day, all day (Henry, 23 Nov 2026).
+  // Wednesday 25 November to Wednesday 2 December 2026, every day, all day (Henry, 23 Nov 2026). Thursday 3 December
+  // is the first day back: "taking bookings from next Thursday" (Henry, 26 Nov 2026).
   { date: "2026-11-25", from: "09:00", to: "18:00" },
   { date: "2026-11-26", from: "09:00", to: "18:00" },
   { date: "2026-11-27", from: "09:00", to: "18:00" },
@@ -74,7 +75,6 @@ const BLOCKED_TIMES: { date: string; from: string; to: string }[] = [
   { date: "2026-11-30", from: "09:00", to: "18:00" },
   { date: "2026-12-01", from: "09:00", to: "18:00" },
   { date: "2026-12-02", from: "09:00", to: "18:00" },
-  { date: "2026-12-03", from: "09:00", to: "18:00" },
 ]
 
 export function isBlockedSlot(slotStart: string, slotEnd: string): boolean {
