@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
 import { LayoutWrapper } from "@/components/layout-wrapper"
+import { AwayNotice } from "@/components/away-notice"
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema"
 import Script from "next/script"
 import { SiteTracking } from "@/components/tracking/site-tracking"
@@ -92,7 +93,7 @@ export default function RootLayout({
         <Script src="/cdn-cgi/zaraz/i.js" strategy="afterInteractive" referrerPolicy="origin" />
         {/* Cloudflare Web Analytics goes here once the site is added in Cloudflare (Analytics > Web Analytics > Add a site):
             the token is per site, and Epping's would mix this site's visitors into Epping's numbers. */}
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <LayoutWrapper notice={<AwayNotice />}>{children}</LayoutWrapper>
       </body>
     </html>
   )
