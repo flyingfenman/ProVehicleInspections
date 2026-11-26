@@ -1,10 +1,14 @@
 import Link from "next/link"
 import { MapPin } from "lucide-react"
 import { areaPath, cityAreas, countyAreas } from "@/lib/areas"
+import { mechanicalAreaPath } from "@/lib/areas/mechanical"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
 
 // Every area page on the home page, just above the FAQs: the clickable map, then the same pages as plain links, grouped.
-export function LocalAreaLinks() {
+// The mechanical inspection page shows the same card with `service="mechanical"`, which links to the mechanical page
+// for each area instead.
+export function LocalAreaLinks({ service = "pre-purchase" }: { service?: "pre-purchase" | "mechanical" } = {}) {
+  const pathFor = service === "mechanical" ? mechanicalAreaPath : areaPath
   const groups = [
     ["Cities", cityAreas],
     ["Counties", countyAreas],
@@ -19,7 +23,7 @@ export function LocalAreaLinks() {
       <p className="mt-2 text-sm text-muted-foreground">
         Tap your county or city to see where we inspect there. Same price everywhere we cover, with no mileage or call-out charge.
       </p>
-      <AreaMap className="mt-5" />
+      <AreaMap className="mt-5" service={service} />
       {groups.map(([label, group]) => (
         <div key={label} className="mt-4">
           <p className="text-sm font-bold uppercase tracking-wide text-primary">{label}</p>
@@ -27,7 +31,7 @@ export function LocalAreaLinks() {
             {group.map((area) => (
               <Link
                 key={area.slug}
-                href={areaPath(area)}
+                href={pathFor(area)}
                 className="inline-flex min-h-11 items-center rounded-full border border-primary/30 bg-white px-3 py-2 text-sm font-semibold text-primary transition hover:bg-primary/5"
               >
                 {area.name}

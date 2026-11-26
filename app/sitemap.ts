@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { areaPath, areas } from "@/lib/areas"
+import { MECHANICAL_AREAS_UPDATED, mechanicalAreaPath } from "@/lib/areas/mechanical"
 import { evModelPath, evModels } from "@/lib/ev-models"
 import { guidePath, guides } from "@/lib/guides"
 import { inspectionNotePath, inspectionNotes } from "@/lib/inspection-notes"
@@ -17,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/inspection-notes", 0.8],
     ...inspectionNotes.map((note): [string, number, string] => [inspectionNotePath(note), 0.7, note.published]),
     ["/mechanical-inspection", 0.9],
+    ...areas.map((area): [string, number, string] => [mechanicalAreaPath(area), 0.8, MECHANICAL_AREAS_UPDATED]),
     ["/ev-battery-health-check", 0.9],
     ["/ev-battery-health-check/sample-report", 0.8, "2026-11-15"],
     ...evModels.map((model): [string, number, string] => [evModelPath(model), 0.8, model.updated]),
