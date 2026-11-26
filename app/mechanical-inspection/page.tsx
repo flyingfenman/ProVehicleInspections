@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import Link from "next/link"
 import { ArrowRight, Camera, ClipboardList, FileSignature, Gauge, MapPin, MessageCircle, Minus, ScanLine, Wrench } from "lucide-react"
+import { LocalAreaLinks } from "@/components/vehicle-inspections/local-area-links"
 import { MECHANICAL_ITEMS, MECHANICAL_JOBS, MECHANICAL_LIMITS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
 import { AREA_SERVED } from "@/lib/areas"
@@ -300,6 +301,13 @@ export default function MechanicalInspectionPage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Every area has its own mechanical inspection page: the map and the links to them. */}
+      <section className="border-t border-border bg-white py-12 sm:py-16">
+        <div className="container mx-auto max-w-6xl px-4">
+          <LocalAreaLinks service="mechanical" />
         </div>
       </section>
 

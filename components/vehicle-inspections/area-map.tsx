@@ -1,10 +1,12 @@
-import { areaPath, getArea } from "@/lib/areas"
+import { areaPath, getArea, type Area } from "@/lib/areas"
+import { mechanicalAreaPath } from "@/lib/areas/mechanical"
 import { CITY_PINS, CONTEXT_PATHS, MAP_VIEWBOX, MINOR_LABELS, REGION_LABELS, REGION_PATHS } from "@/lib/areas/map-shapes"
 import { cn } from "@/lib/utils"
 
 // The areas we cover as a map: every county and city page is a link. Plain server-rendered SVG built from ONS
 // boundaries by scripts/build-area-map.mjs, so there are no map tiles, scripts or cookies. `highlight` takes an
-// area slug and marks that county or city, for use on the area pages themselves.
+// area slug and marks that county or city, for use on the area pages themselves. `service="mechanical"` points every
+// county and city at its mechanical inspection page instead of its pre-purchase one.
 
 const PIN_LABEL: Record<"left" | "right" | "below" | "above", { dx: number; dy: string; anchor: "start" | "middle" | "end" }> = {
   left: { dx: -15, dy: "0", anchor: "end" },
@@ -13,7 +15,12 @@ const PIN_LABEL: Record<"left" | "right" | "below" | "above", { dx: number; dy: 
   above: { dx: 0, dy: "-1.05em", anchor: "middle" },
 }
 
-export function AreaMap({ highlight, className }: { highlight?: string; className?: string }) {
+type MapService = "pre-purchase" | "mechanical"
+
+export function AreaMap({ highlight, className, service = "pre-purchase" }: { highlight?: string; className?: string; service?: MapService }) {
+  const mechanical = service === "mechanical"
+  const hrefFor = (area: Area) => (mechanical ? mechanicalAreaPath(area) : areaPath(area))
+  const labelFor = (area: Area) => `${mechanical ? "Mechanical inspections" : "Car inspections"} in ${area.name}`
   const regions = Object.entries(REGION_PATHS).flatMap(([slug, d]) => {
     const area = getArea(slug)
     return area ? [{ slug, d, area }] : []
@@ -40,7 +47,7 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
         {regions.map(({ slug, d, area }) => {
           const on = slug === highlight
           return (
-            <a key={slug} href={areaPath(area)} aria-label={`Car inspections in ${area.name}`} className="group cursor-pointer outline-none">
+            <a key={slug} href={hrefFor(area)} aria-label={labelFor(area)} className="group cursor-pointer outline-none">
               <title>{area.name}</title>
               <path
                 d={d}
@@ -115,7 +122,7 @@ export function AreaMap({ highlight, className }: { highlight?: string; classNam
                 ]
               : [{ key: "all", label: PIN_LABEL[pin.side], show: "" }]
           return (
-            <a key={slug} href={areaPath(area)} aria-label={`Car inspections in ${area.name}`} className="group cursor-pointer outline-none">
+            <a key={slug} href={hrefFor(area)} aria-label={labelFor(area)} className="group cursor-pointer outline-none">
               <title>{area.name}</title>
               <circle cx={pin.x} cy={pin.y} r={26} fill="transparent" />
               <circle
