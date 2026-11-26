@@ -41,5 +41,5 @@ export function mechanicalAreaTitle(area: Area) {
 
 /** Meta description, under 160 characters for every area. */
 export function mechanicalAreaDescription(area: Area) {
-  return `Garage work gone wrong in ${inPlace(area)}? Henry comes to the car: diagnostics, live data, photos and a written report. £499.99, no mileage charge.`
+  return `Fault after garage work or a dealer sale in ${inPlace(area)}? Henry comes to the car: diagnostics, live data and a written report. £499.99, no mileage charge.`
 }

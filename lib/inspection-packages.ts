@@ -11,7 +11,7 @@ export type InspectionPackage = {
   strapline: string
   features: string[]
   popular?: boolean
-  // Which tab it sits under: buying a car, or a fault on a car you already own after garage work.
+  // Which tab it sits under: buying a car, or a fault on a car you already own, after garage work or a dealer sale.
   group: InspectionGroup
 }
 
@@ -64,8 +64,8 @@ export const INSPECTION_PACKAGES: InspectionPackage[] = [
     price: "£499.99",
     amount: 499.99,
     points: "Independent fault report",
-    strapline: "Something gone wrong after garage work? An independent, evidence-based report on the fault and its likely cause",
-    features: ["Full Autel diagnostic scan with live data", "Photos and video of the work and the fault", "Written report on the findings and likely cause", "Signed statement of truth for a Small Claims case", "Non-invasive: nothing is taken apart"],
+    strapline: "For a fault after garage work or after buying from a dealer, with the likely cause",
+    features: ["Independent and unbiased: we work for neither side", "Full Autel diagnostic scan with live data", "Written report on the findings and likely cause", "Signed statement of truth for a Small Claims case", "Photos and video of the fault and any work done", "The engine stays sealed, so the evidence is undisturbed"],
     group: "mechanical",
   },
 ]

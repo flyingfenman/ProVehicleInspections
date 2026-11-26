@@ -184,13 +184,13 @@ export async function POST(request: NextRequest) {
       const hasEvSoh = includeEvSoh === "yes"
       // The EV battery health check on its own: no inspection, just the battery test and report.
       const evOnly = packageKey === "ev"
-      // The mechanical inspection: an independent report on a fault after garage work, on a car the customer owns.
+      // The mechanical inspection: an independent report on a fault after garage work or a dealer sale, on a car the customer owns.
       const mechanical = packageKey === "mechanical"
       const bookingKind = evOnly ? "EV battery health check" : mechanical ? "Mechanical inspection" : "Vehicle inspection"
       const visitDetails = evOnly
         ? "Henry will call or message you beforehand to confirm the details. You don't need to be there. He will go to the car, run the CARA Approved® Autel EV Battery Health Test, send you the battery health report and talk you through the battery's State of Health before you hand over any money to the seller. Vehicle compatibility will be confirmed from the car details."
         : mechanical
-          ? "Henry will call or message you beforehand to confirm the details. He will then come to the car, run a full diagnostic scan with live data and photograph and video the work and the fault. Nothing is taken apart. Your written report, with a signed statement of truth, follows after the visit, and Henry is on hand to make sure you understand it and to answer any questions."
+          ? "Henry will call or message you beforehand to confirm the details. He will then come to the car, run a full diagnostic scan with live data and photograph and video the fault and any work that was done. He leaves the engine sealed so nobody can say the evidence was disturbed. Your written report, with a signed statement of truth, follows after the visit, and Henry is on hand to make sure you understand it and to answer any questions."
           : "Henry will call or message you beforehand to confirm the details. You don't need to be there. He will go to the car, complete the full inspection, send you the video, photos and written report, and talk you through everything found before you hand over any money to the seller."
       const amountPaid = `£${((session.amount_total || 0) / 100).toFixed(2)}`
       const slotFull = new Date(slotStart).toLocaleString("en-GB", { timeZone: "Europe/London", dateStyle: "full", timeStyle: "short" })
@@ -207,7 +207,7 @@ Vehicle Details:
 Registration: ${registration}
 Where the car is: ${location}
 ${mechanical
-  ? `Garage that did the work: ${sellerName || "Not provided"}`
+  ? `Garage or dealer involved: ${sellerName || "Not provided"}`
   : `Seller name: ${sellerName || "Not provided"}
 Seller contact number: ${sellerPhone || "Not provided"}
 Advert link: ${advertUrl || "Not provided"}`}

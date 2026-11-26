@@ -1,30 +1,36 @@
 import Link from "next/link"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
-import { MECHANICAL_JOBS } from "@/components/vehicle-inspections/sections/pricing"
+import { MECHANICAL_DEALER_JOBS, MECHANICAL_JOBS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
 import { areaPath, areas, type Area } from "@/lib/areas"
 import { inPlace, MECHANICAL_AREAS_UPDATED, mechanicalAreaH1, mechanicalAreaPath } from "@/lib/areas/mechanical"
 import { inspectionPhotos } from "@/lib/inspection-photos"
-import { ArrowRight, Check, ChevronDown, Gauge, Lock, MapPin, MessageCircle, Route, ShieldCheck, Wrench } from "lucide-react"
+import { ArrowRight, CarFront, Check, ChevronDown, Lock, MapPin, MessageCircle, Route, ShieldCheck, Wrench } from "lucide-react"
 
 // The mechanical inspection page for one area, at /mechanical-inspection/<place>. It follows the layout of the
 // pre-purchase area pages (local-inspection-page.tsx) but none of the wording: this one is for a car the customer
-// already owns that has gone wrong after garage work. In Henry's first person, the same on every area with the place
-// name filled in. Scope, in his words (10 and 12 Nov 2026): in-depth photos, live data and in-depth diagnostics, in a
+// already owns that has gone wrong after garage work or after buying from a dealer, and it leads on Henry being
+// independent of both. In Henry's first person, the same on every area with the place name filled in. Scope, in his words (10 and 12 Nov 2026): in-depth photos, live data and in-depth diagnostics, in a
 // written report, with the engine left sealed. Never promise anything that means opening the car up, and never a
-// conclusion before the car is seen.
+// conclusion before the car is seen, and never say a fault is covered by the Consumer Rights Act.
 
 const BRAND = "Pro Vehicle Inspections"
 const SITE_URL = "https://www.provehicleinspections.com"
 const BOOK_HREF = "/book?package=mechanical"
 const VAN = inspectionPhotos.van
 
+const JOB_GROUPS = [
+  { title: "After garage work", icon: Wrench, jobs: MECHANICAL_JOBS },
+  { title: "After buying from a dealer", icon: CarFront, jobs: MECHANICAL_DEALER_JOBS },
+]
+
 const INCLUDED = [
+  "Independent and unbiased: I work for neither side",
   "Full Autel diagnostic scan of every module",
   "Fault codes with their freeze-frame data",
   "Live data read with the engine running",
-  "In-depth photos and video of the work and the fault",
+  "In-depth photos and video of the fault and any work done",
   "Written report with my findings and the most likely cause",
   "Signed statement of truth",
   "I go through the report with you and answer your questions",
@@ -43,23 +49,28 @@ function mechanicalAreaFaqs(place: string) {
       answer: `Wherever it is in ${place}. Put the postcode or address where the car will be on the booking form and I come to it there.`,
     },
     {
+      question: "Can you tell if the fault was there when I bought the car?",
+      answer:
+        "I can't promise that before I've seen the car. The report sets out what the car has stored, what the live data shows and what can be seen, with my opinion on the most likely cause. If the evidence doesn't show when it started, the report says so.",
+    },
+    {
       question: "Will you take the engine apart?",
       answer:
         "No. I leave the engine sealed so nobody can say the evidence was disturbed. The report covers what the diagnostics, the live data and the photos show, and if something needs opening up to confirm it, the report says exactly what to look for.",
     },
     {
-      question: "Will the report say the garage is at fault?",
+      question: "Will the report say the garage or dealer is at fault?",
       answer:
-        "It sets out what I found and my opinion on the most likely cause. I'm independent, so it says what the evidence shows, whichever way that goes.",
+        "It sets out what I found and my opinion on the most likely cause. I work for neither side, so it says what the evidence shows, whichever way that goes.",
     },
     {
       question: "Can I use the report in a Small Claims case?",
       answer:
-        "Yes. It comes with a signed statement of truth to go with your claim if the garage won't put it right. I don't attend court hearings.",
+        "Yes. It comes with a signed statement of truth to go with your claim if the garage or dealer won't put it right. I don't attend court hearings.",
     },
     {
       question: `I'm buying a car in ${place}. Is this the right inspection?`,
-      answer: `No. This one is for a car you already own that has a problem after garage work. If you're buying a used car in ${place}, book a Standard (£249.99) or Premium (£299.99) pre-purchase inspection instead.`,
+      answer: `No. This one is for a car you already own that has a problem. If you're buying a used car in ${place}, book a Standard (£249.99) or Premium (£299.99) pre-purchase inspection instead.`,
     },
   ]
 }
@@ -74,7 +85,7 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
   const url = `${SITE_URL}${mechanicalAreaPath(area)}`
   const faqs = mechanicalAreaFaqs(place)
   const related = area.related.map((slug) => areas.find((other) => other.slug === slug)).filter((other): other is Area => Boolean(other))
-  const whatsappHref = `${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I'd like a mechanical inspection in ${place}. What was done and what has happened since: `)}`
+  const whatsappHref = `${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I'd like a mechanical inspection in ${place}. What has happened with the car: `)}`
 
   const structuredData = [
     {
@@ -82,7 +93,7 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
       "@type": "Service",
       name: h1,
       serviceType: "Independent vehicle fault inspection",
-      description: `Independent mechanical inspection in ${place} for a fault after garage work: full diagnostic scan with live data, photos and video of the work, a written report on the findings and likely cause, and a signed statement of truth.`,
+      description: `Independent, unbiased mechanical inspection in ${place} for a fault after garage work or after buying from a dealer: full diagnostic scan with live data, photos and video, a written report on the findings and likely cause, and a signed statement of truth.`,
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": area.schemaType, name: area.name },
       url,
@@ -127,12 +138,12 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
             </Link>
             <h1 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">{h1}</h1>
             <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Car in {place} not been right since a garage worked on it? I&apos;ll come to it, run in-depth diagnostics and write up what I find, so you have independent evidence to take back to the garage.
+              Something gone wrong with your car in {place} after garage work, or soon after you bought it from a dealer? I work for neither side. I come to the car, run in-depth diagnostics and write up what the evidence shows.
             </p>
 
             <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm font-semibold">
               <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-primary">Mechanical Inspection £499.99</span>
-              <span className="rounded-full border bg-white px-4 py-2">Written report</span>
+              <span className="rounded-full border bg-white px-4 py-2">Independent and unbiased</span>
               <span className="rounded-full border bg-white px-4 py-2">Signed statement of truth</span>
             </div>
             <p className="mx-auto mt-4 inline-flex max-w-2xl items-center gap-2 text-sm font-semibold text-muted-foreground">
@@ -172,10 +183,10 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
               </div>
               <h2 className="mt-4 text-3xl font-bold sm:text-4xl">I&apos;m Henry. I do every mechanical inspection myself.</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                When a repair goes wrong it often comes down to your word against the garage&apos;s. I&apos;m independent of both. I come to the car wherever it is in {place} and record what it shows.
+                When a repair goes wrong, or a fault shows up soon after you buy a car, it often comes down to your word against the garage&apos;s or the dealer&apos;s. I work for neither side. I come to the car wherever it is in {place} and record what it shows.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                I run in-depth diagnostics on every system with my Autel tablet, read the fault codes with their freeze-frame data, record live data with the engine running, and take in-depth photos and video of the work that was done and of the fault.
+                I run in-depth diagnostics on every system with my Autel tablet, read the fault codes with their freeze-frame data, record live data with the engine running, and take in-depth photos and video of the fault and of any work that was done.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                 It all goes into a written report with my findings and my opinion on the most likely cause, with a signed statement of truth. It says what the evidence shows, whichever way that goes.
@@ -234,13 +245,21 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold">When a mechanical inspection helps</h2>
-              <p className="mt-2 text-muted-foreground">The jobs I&apos;m asked to look at most.</p>
+              <p className="mt-2 text-muted-foreground">When the garage or the dealer says it&apos;s nothing to do with them.</p>
             </div>
-            <div className="mt-7 grid gap-4 sm:grid-cols-2">
-              {MECHANICAL_JOBS.map((job) => (
-                <div key={job} className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-5">
-                  <Gauge className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
-                  <p className="font-semibold leading-snug">{job}</p>
+            <div className="mt-7 grid gap-7 md:grid-cols-2">
+              {JOB_GROUPS.map((group) => (
+                <div key={group.title}>
+                  <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-primary">
+                    <group.icon className="h-5 w-5" /> {group.title}
+                  </h3>
+                  <div className="mt-3 space-y-3">
+                    {group.jobs.map((job) => (
+                      <div key={job} className="rounded-2xl border border-primary/15 bg-primary/5 px-5 py-4">
+                        <p className="font-semibold leading-snug">{job}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -262,7 +281,7 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
                   <Wrench className="h-4 w-4" /> Mechanical Inspection
                 </p>
                 <p className="mt-2 text-4xl font-bold">£499.99</p>
-                <p className="mt-2 font-semibold">Independent fault report after garage work</p>
+                <p className="mt-2 font-semibold">Independent, unbiased fault report</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   In-depth diagnostics, live data, photos and video, written up with my findings and the most likely cause, and a signed statement of truth to go with it.
                 </p>
@@ -303,10 +322,10 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
             <h2 className="text-center text-3xl font-bold">What happens after you book?</h2>
             <div className="mt-7 space-y-3">
               {[
-                ["1", "Book and tell me what happened", "Pick a time and pay online. The form asks which garage did the work, what was done and what has happened since, so I know what to look for."],
+                ["1", "Book and tell me what happened", "Pick a time and pay online. The form asks which garage or dealer is involved and what has happened, so I know what to look for."],
                 ["2", "I come to the car", `Wherever it is in ${place}, for the same price.`],
-                ["3", "Diagnostics, live data, photos and video", "A full scan of every module, live data with the engine running, and photos and video of the work and the fault."],
-                ["4", "Your written report", "My findings and the most likely cause, laid out so a garage, or a judge, can follow it. Then I go through it with you."],
+                ["3", "Diagnostics, live data, photos and video", "A full scan of every module, live data with the engine running, and photos and video of the fault and any work that was done."],
+                ["4", "Your written report", "My findings and the most likely cause, laid out so a garage, a dealer or a judge can follow it. Then I go through it with you."],
               ].map(([number, title, text]) => (
                 <div key={number} className="flex gap-4 rounded-2xl border border-border bg-white p-4 sm:p-5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">{number}</span>
@@ -375,7 +394,7 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl rounded-3xl border border-primary/15 bg-primary/5 p-7 text-center sm:p-10">
             <ShieldCheck className="mx-auto h-9 w-9 text-emerald-600" />
-            <h2 className="mt-4 text-3xl font-bold">Go back to the garage with evidence.</h2>
+            <h2 className="mt-4 text-3xl font-bold">Go back to the garage or dealer with evidence.</h2>
             <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Independent mechanical inspections in {place}, £499.99.</p>
             <Link href={BOOK_HREF} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition hover:bg-primary/90">
               Book Mechanical <ArrowRight className="ml-2 h-4 w-4" />
