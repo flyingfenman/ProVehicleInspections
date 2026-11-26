@@ -128,7 +128,7 @@ export function InspectionsBookingCalendar() {
   const timeRef = useRef<HTMLDivElement>(null)
   const detailsRef = useRef<HTMLDivElement>(null)
   const [packageKey, setPackageKey] = useState<PackageKey>("standard")
-  // The two tabs above the packages: buying a car, or a fault after garage work.
+  // The two tabs above the packages: buying a car, or a fault after garage work or a dealer sale.
   const [group, setGroup] = useState<InspectionGroup>("pre-purchase")
   const [includeEvSoh, setIncludeEvSoh] = useState(false)
   const [slotsByPackage, setSlotsByPackage] = useState<Record<PackageKey, Slot[]>>({ standard: [], premium: [], ev: [], mechanical: [] })
@@ -248,7 +248,7 @@ export function InspectionsBookingCalendar() {
   const selectedPackage = PACKAGES.find((p) => p.key === packageKey) || PACKAGES[0]
   // The battery check on its own already is the battery report, so the add-on only goes with an inspection.
   const evOnly = packageKey === "ev"
-  // A car the customer already owns, after garage work: no seller, no advert and no battery add-on.
+  // A car the customer already owns, after garage work or a dealer sale: no seller, no advert and no battery add-on.
   const mechanical = packageKey === "mechanical"
   const withEvSoh = includeEvSoh && !evOnly && !mechanical
   const totalPrice = selectedPackage.amount + (withEvSoh ? EV_SOH_PRICE : 0)
@@ -348,7 +348,7 @@ export function InspectionsBookingCalendar() {
     setError("")
   }
 
-  // The link under the inspections swaps between buying a car and a fault after garage work. Switching picks that
+  // The link under the inspections swaps between buying a car and a fault on a car the customer owns. Switching picks that
   // group's first package, so the calendar always matches what is showing.
   const chooseGroup = (key: InspectionGroup) => {
     setGroup(key)
@@ -621,7 +621,7 @@ export function InspectionsBookingCalendar() {
             <h3 className="text-xl font-bold">Your inspection</h3>
             <p className="hidden text-sm text-muted-foreground sm:block">
               {group === "mechanical"
-                ? "For a fault after garage work: an independent report on what has gone wrong, with the evidence to back it up."
+                ? "For a fault after garage work or after buying from a dealer: an independent, unbiased report on what has gone wrong, with the evidence to back it up."
                 : "Both inspections include an in-depth mechanical inspection, video review, evidence and personal buying guidance, or you can book the EV battery check on its own."}
             </p>
           </div>
@@ -678,7 +678,7 @@ export function InspectionsBookingCalendar() {
                 <Link href="/" className="font-bold text-primary underline underline-offset-4">See what each inspection includes</Link>
               </p>
               <p>
-                Had garage work go wrong?{" "}
+                Fault after garage work or after buying from a dealer?{" "}
                 <button type="button" onClick={() => chooseGroup("mechanical")} className="font-bold text-primary underline underline-offset-4">
                   Book a mechanical inspection instead
                 </button>
@@ -897,7 +897,7 @@ export function InspectionsBookingCalendar() {
           <div className="mb-4 flex items-center gap-3">
             <div>
               <h3 className="text-xl font-bold">Tell us about the car</h3>
-              <p className="text-sm text-muted-foreground">{mechanical ? "Tell us what was done and what has happened since, so we know what to look for." : "This lets us prepare before we arrive."}</p>
+              <p className="text-sm text-muted-foreground">{mechanical ? "Tell us what happened and what has gone wrong since, so we know what to look for." : "This lets us prepare before we arrive."}</p>
             </div>
           </div>
           <div className="grid gap-4 rounded-3xl border border-border bg-white p-5 shadow-sm sm:grid-cols-2 sm:p-6">
@@ -913,12 +913,12 @@ export function InspectionsBookingCalendar() {
             {mechanical ? (
               <>
                 <div className="space-y-1.5 sm:col-span-2">
-                  <Label htmlFor="sellerName">Garage that did the work</Label>
-                  <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Garage name and town" autoComplete="off" />
+                  <Label htmlFor="sellerName">Garage or dealer involved</Label>
+                  <Input id="sellerName" value={form.sellerName} onChange={set("sellerName")} placeholder="Garage or dealer name and town" autoComplete="off" />
                 </div>
                 <div className="space-y-1.5 sm:col-span-2">
-                  <Label htmlFor="notes">What work was done, and what has gone wrong since? *</Label>
-                  <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="e.g. Cambelt changed in August, a tensioner failed three weeks later. Dates, mileage and any warning lights help." rows={4} maxLength={400} required />
+                  <Label htmlFor="notes">What happened, and what has gone wrong since? *</Label>
+                  <Textarea id="notes" value={form.notes} onChange={set("notes")} placeholder="e.g. Cambelt changed in August and a tensioner failed three weeks later, or bought from a dealer in August and a warning light came on a week later. Dates and mileage help." rows={4} maxLength={400} required />
                 </div>
               </>
             ) : (

@@ -4,7 +4,7 @@ import { useEffect, useState, type ReactNode } from "react"
 import { INSPECTION_GROUPS, type InspectionGroup } from "@/lib/inspection-packages"
 import { scrollToAnchorWhileLoading } from "@/lib/scroll-to-anchor"
 
-// The two tabs over the prices: buying a car, or a fault after garage work. Both panels are in the page for search
+// The two tabs over the prices: buying a car, or a fault after garage work or a dealer sale. Both panels are in the page for search
 // engines; only the chosen one shows. A #mechanical-inspection link opens the mechanical tab.
 export function PricingTabs({ panels }: { panels: Record<InspectionGroup, ReactNode> }) {
   const [group, setGroup] = useState<InspectionGroup>("pre-purchase")

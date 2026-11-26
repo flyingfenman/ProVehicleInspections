@@ -135,12 +135,16 @@ function BatteryAddOn() {
   )
 }
 
-// Shared with the /mechanical-inspection page, so the tab and the page always say the same thing.
+// Shared with the /mechanical-inspection page and the mechanical area pages, so they always say the same thing.
+// The mechanical inspection is for a fault after garage work or after buying from a dealer (Henry, 26 Nov 2026), and
+// the pitch is that Henry is independent of both. Never promise a conclusion before the car is seen, never say a
+// fault is covered by the Consumer Rights Act, and word the sealed engine as a positive.
 export const MECHANICAL_ITEMS: Item[] = [
+  { label: "Independent and unbiased", note: "Working for neither side, so the report says what the evidence shows, whichever way that goes" },
   { label: "Full Autel diagnostic scan of every module", note: "Fault codes with their freeze-frame data, and live data read with the engine running" },
-  { label: "Photos and video of the work and the fault", note: "Everything that can be seen without taking anything apart" },
-  { label: "Written report of the findings and the likely cause", note: "Laid out so a garage, or a judge, can follow it" },
-  { label: "Signed statement of truth", note: "Ready to go with a Small Claims case if the garage won't put it right" },
+  { label: "In-depth photos and video of the fault", note: "And of any work that was done, with the engine left sealed" },
+  { label: "Written report of the findings and the likely cause", note: "Laid out so a garage, a dealer or a judge can follow it" },
+  { label: "Signed statement of truth", note: "Ready to go with a Small Claims case if the garage or dealer won't put it right" },
   { label: "On hand to explain the report", note: "To make sure you understand it and to answer any questions" },
 ]
 
@@ -151,12 +155,18 @@ export const MECHANICAL_JOBS = [
   "A garage saying the fault is nothing to do with their work",
 ]
 
+export const MECHANICAL_DEALER_JOBS = [
+  "A fault that showed up soon after you bought the car",
+  "A dealer saying the fault wasn't there when they sold it, or that it's wear and tear",
+  "A repair by the dealer that hasn't fixed it",
+]
+
 export const MECHANICAL_LIMITS: Item[] = [
-  { label: "Non-invasive only", note: "Nothing is stripped down or taken apart, so the findings cover what the scan, live data and a visual inspection show" },
+  { label: "The engine stays sealed", note: "So nobody can say the evidence was disturbed. If something needs opening up to confirm it, the report says exactly what to look for" },
   { label: "No court attendance", note: "The signed statement goes with your claim; we don't attend hearings" },
 ]
 
-// The mechanical inspection tab: one card for a fault after garage work, with what it covers and what it doesn't.
+// The mechanical inspection tab: one card for a fault after garage work or a dealer sale, with what it covers.
 function MechanicalInspection() {
   return (
     <div id="mechanical-inspection" className="mx-auto mt-10 grid max-w-6xl scroll-mt-24 gap-5 lg:grid-cols-[1.1fr_.9fr]">
@@ -165,10 +175,10 @@ function MechanicalInspection() {
           <Wrench className="h-5 w-5 text-primary" />
           <h3 className="text-2xl font-bold">Mechanical Inspection</h3>
         </div>
-        <p className="mt-1 text-sm font-semibold text-primary">Independent fault report after garage work</p>
+        <p className="mt-1 text-sm font-semibold text-primary">Independent, unbiased fault report</p>
         <p className="mt-4 text-5xl font-bold tracking-tight">£499.99</p>
         <p className="mt-3 text-muted-foreground">
-          A garage has worked on your car and something has gone wrong since. We inspect it independently and write up what we find, so you have evidence to take back to the garage, or to a Small Claims case if it comes to that.
+          Something has gone wrong after a garage worked on your car, or soon after you bought it from a dealer. We work for neither side. We inspect the car and write up what the evidence shows, so you have something solid to put in front of them, or to a Small Claims case if it comes to that.
         </p>
 
         <Link
@@ -186,8 +196,15 @@ function MechanicalInspection() {
       <div className="flex flex-col gap-5">
         <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-7">
           <h3 className="text-xl font-bold">Typical jobs</h3>
-          <ul className="mt-3 space-y-2 text-muted-foreground">
+          <p className="mt-3 text-sm font-bold uppercase tracking-wide text-primary">After garage work</p>
+          <ul className="mt-2 space-y-2 text-muted-foreground">
             {MECHANICAL_JOBS.map((job) => (
+              <li key={job}>{job}</li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm font-bold uppercase tracking-wide text-primary">After buying from a dealer</p>
+          <ul className="mt-2 space-y-2 text-muted-foreground">
+            {MECHANICAL_DEALER_JOBS.map((job) => (
               <li key={job}>{job}</li>
             ))}
           </ul>
@@ -201,9 +218,16 @@ function MechanicalInspection() {
           <ul className="space-y-3">
             {MECHANICAL_LIMITS.map((item) => (
               <li key={item.label} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted-foreground/60">
-                  <Minus className="h-3.5 w-3.5 text-white" strokeWidth={3} />
-                </span>
+                {/* The sealed engine is a plus, so it gets the purple tick; the court line keeps the grey dash. */}
+                {item.label === MECHANICAL_LIMITS[0].label ? (
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary">
+                    <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                  </span>
+                ) : (
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted-foreground/60">
+                    <Minus className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                  </span>
+                )}
                 <span>
                   <span className="block font-semibold leading-snug">{item.label}</span>
                   {item.note && <span className="mt-0.5 block text-sm text-muted-foreground">{item.note}</span>}
@@ -251,7 +275,7 @@ export function Pricing() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-balance text-3xl font-bold sm:text-4xl lg:text-5xl">Choose your inspection</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Buying a car, or a problem after garage work? Everything each one includes is listed below. Pick your exact time when you book.</p>
+          <p className="mt-4 text-lg text-muted-foreground">Buying a car, or a problem with one you own? Everything each one includes is listed below. Pick your exact time when you book.</p>
         </div>
 
         <PricingTabs panels={{ "pre-purchase": <PrePurchaseInspections />, mechanical: <MechanicalInspection /> }} />
