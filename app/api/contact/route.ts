@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { parseContactDetail } from "@/lib/contact"
-import { INBOX, sendEmail } from "@/lib/email-sender"
+import { NOTICE_TO, sendEmail } from "@/lib/email-sender"
 
 // The Epping site relays an enquiry to Henry when this site can't send (the same relay the Stamford site uses).
 const RELAY_URL = "https://www.eppingcarbuyer.com/api/stamford-enquiry"
@@ -71,7 +71,7 @@ Sent: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
 
   const subject = `Pro Vehicle Inspections: website message from ${name}`
   const resendResponse = await sendEmail({
-    to: [INBOX],
+    to: NOTICE_TO,
     ...(contact.kind === "email" ? { reply_to: contact.email } : {}),
     subject,
     text,

@@ -29,8 +29,8 @@ WhatsApp catalogue links only need the domain changing.
 - When a booking is paid, Stripe calls `/api/webhooks/stripe`, which emails Henry the job details and the customer
   their confirmation (through Resend, from henry@provehicleinspections.com). The webhook endpoint is registered in
   the Stripe account; see [CLOUDFLARE.md](CLOUDFLARE.md).
-- The contact form emails Henry through Resend. Both notices to Henry go to henry@provehicleinspections.com
-  (`INBOX` in `lib/email-sender.ts`).
+- The contact form emails Henry through Resend. Both notices to Henry go to henry@provehicleinspections.com, with a
+  copy to henry@eppingcarbuyer.com as a backup for now (`NOTICE_TO` in `lib/email-sender.ts`).
 
 ## Deploying
 

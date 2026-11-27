@@ -9,8 +9,9 @@ export const SENDER_ADDRESS = "henry@provehicleinspections.com"
 export const SENDERS = [`${SENDER_NAME} <${SENDER_ADDRESS}>`, `${SENDER_NAME} <noreply@eppingcarbuyer.com>`]
 export const REPLY_TO = SENDER_ADDRESS
 // Where this site's own notices to Henry go (contact form messages and paid bookings): his Pro Vehicle Inspections
-// mailbox, so they sit apart from Epping Car Buyer's mail (Henry, 27 Nov 2026).
-export const INBOX = "henry@provehicleinspections.com"
+// mailbox, with a copy to the Epping inbox as a backup for now (Henry, 27 Nov 2026). Remove the second address when
+// he is happy the Pro Vehicle Inspections mailbox receives everything.
+export const NOTICE_TO = ["henry@provehicleinspections.com", "henry@eppingcarbuyer.com"]
 
 export type Email = {
   to: string[]

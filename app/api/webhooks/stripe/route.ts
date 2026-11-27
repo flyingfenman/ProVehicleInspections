@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 import { getStripe } from "@/lib/stripe"
-import { INBOX, REPLY_TO, sendEmail as sendFromHenry } from "@/lib/email-sender"
+import { NOTICE_TO, REPLY_TO, sendEmail as sendFromHenry } from "@/lib/email-sender"
 
 // Stripe calls this for every completed checkout in the Pro Vehicle Inspections Stripe account (the endpoint is
 // registered in that account's Developers > Webhooks, see CLOUDFLARE.md). A paid inspection booking sends the
@@ -16,7 +16,7 @@ const BRAND = {
   tagline: "Independent mobile pre-purchase car inspections",
   // Sender and reply address are Henry's Pro Vehicle Inspections address (lib/email-sender).
   replyTo: REPLY_TO,
-  inbox: INBOX,
+  inbox: NOTICE_TO,
   whatsappLink: "441992245660",
   whatsappDisplay: "+44 1992 245660",
   site: "www.provehicleinspections.com",
@@ -115,16 +115,16 @@ function infoTable(rows: Array<[string, string]>) {
   </table>`
 }
 
-async function sendEmail(to: string, subject: string, text: string, html?: string): Promise<boolean> {
+async function sendEmail(to: string | string[], subject: string, text: string, html?: string): Promise<boolean> {
   const resendResponse = await sendFromHenry({
     reply_to: BRAND.replyTo,
-    to: [to],
+    to: Array.isArray(to) ? to : [to],
     subject,
     text,
     html: html || brandedEmail(subject, textToHtml(text)),
   })
   if (resendResponse.ok) return true
-  console.error(`Resend error sending "${subject}" to ${to}:`, await resendResponse.text())
+  console.error(`Resend error sending "${subject}" to ${[to].flat().join(", ")}:`, await resendResponse.text())
   return false
 }
 
