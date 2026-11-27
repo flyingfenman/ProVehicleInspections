@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { parseContactDetail } from "@/lib/contact"
-import { sendEmail } from "@/lib/email-sender"
+import { INBOX, sendEmail } from "@/lib/email-sender"
 
-// The Epping site relays an enquiry to Henry's inbox when this site can't send (the same relay the Stamford site uses).
+// The Epping site relays an enquiry to Henry when this site can't send (the same relay the Stamford site uses).
 const RELAY_URL = "https://www.eppingcarbuyer.com/api/stamford-enquiry"
 
 async function relayThroughEpping(subject: string, text: string, replyTo?: string): Promise<boolean> {
@@ -71,7 +71,7 @@ Sent: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
 
   const subject = `Pro Vehicle Inspections: website message from ${name}`
   const resendResponse = await sendEmail({
-    to: ["henry@eppingcarbuyer.com"],
+    to: [INBOX],
     ...(contact.kind === "email" ? { reply_to: contact.email } : {}),
     subject,
     text,
@@ -79,7 +79,7 @@ Sent: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
 
   if (!resendResponse.ok) {
     console.error("Resend error sending contact form message:", await resendResponse.text())
-    // This site's key refused, so the Epping site sends it to the same inbox rather than the message being lost.
+    // This site's key refused, so the Epping site sends it rather than the message being lost.
     if (await relayThroughEpping(subject, text, contact.kind === "email" ? contact.email : undefined)) {
       return NextResponse.json({ success: true })
     }

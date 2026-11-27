@@ -27,10 +27,10 @@ WhatsApp catalogue links only need the domain changing.
 - Every checkout from this site is tagged `brand: Pro Vehicle Inspections` and `site: provehicleinspections` in the
   Stripe session's metadata.
 - When a booking is paid, Stripe calls `/api/webhooks/stripe`, which emails Henry the job details and the customer
-  their confirmation (through Resend, from noreply@eppingcarbuyer.com under the Pro Vehicle Inspections name until
-  this domain is added to Resend). The webhook endpoint is registered in the Stripe account; see
-  [CLOUDFLARE.md](CLOUDFLARE.md).
-- The contact form emails henry@eppingcarbuyer.com through Resend.
+  their confirmation (through Resend, from henry@provehicleinspections.com). The webhook endpoint is registered in
+  the Stripe account; see [CLOUDFLARE.md](CLOUDFLARE.md).
+- The contact form emails Henry through Resend. Both notices to Henry go to henry@provehicleinspections.com
+  (`INBOX` in `lib/email-sender.ts`).
 
 ## Deploying
 
