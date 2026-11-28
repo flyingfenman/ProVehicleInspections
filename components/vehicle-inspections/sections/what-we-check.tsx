@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-type CheckItem = {
+export type CheckItem = {
   title: string
   icon: string
   // Only in the Premium inspection: shown with a small Premium tag under the label.
@@ -80,7 +80,8 @@ const GROUPS: CheckGroup[] = [
   },
 ]
 
-function InspectionIcon({ item }: { item: CheckItem }) {
+// Also used by the mechanical inspection page, which picks the closest of these icons and gives them its own labels.
+export function InspectionIcon({ item }: { item: CheckItem }) {
   return (
     <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
       {/* Individual 140px+ source artwork renders at roughly half-size for crisp HiDPI edges. */}
