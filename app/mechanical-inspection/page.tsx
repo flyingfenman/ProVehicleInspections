@@ -3,6 +3,7 @@ import { ReviewsSlider } from "@/components/reviews-slider"
 import Link from "next/link"
 import { ArrowRight, Camera, CarFront, ChevronDown, ClipboardList, FileSignature, Lock, MapPin, MessageCircle, Scale, ScanLine, Wrench } from "lucide-react"
 import { LocalAreaLinks } from "@/components/vehicle-inspections/local-area-links"
+import { MechanicalWhatWeCheck } from "@/components/vehicle-inspections/sections/mechanical-what-we-check"
 import { MECHANICAL_DEALER_JOBS, MECHANICAL_ITEMS, MECHANICAL_JOBS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
 import { AREA_SERVED } from "@/lib/areas"
@@ -290,6 +291,8 @@ export default function MechanicalInspectionPage() {
           </div>
         </div>
       </section>
+
+      <MechanicalWhatWeCheck />
 
       <section className="bg-primary/5 py-12 sm:py-16">
         <div className="container mx-auto px-4">
