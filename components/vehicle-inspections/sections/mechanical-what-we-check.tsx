@@ -18,13 +18,16 @@ const ITEMS: CheckItem[] = [
   { title: "Engine noise on video", icon: "engine-valve-noise" },
 ]
 
-export function MechanicalWhatWeCheck({ className = "border-t bg-slate-50" }: { className?: string } = {}) {
+export function MechanicalWhatWeCheck({
+  className = "border-t bg-slate-50",
+  title = "What I look at on your car",
+}: { className?: string; title?: string } = {}) {
   return (
     <section className={`py-12 sm:py-16 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">What&apos;s covered</p>
-          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl">What I look at on your car</h2>
+          <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl">{title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             A few of the things I look at. The scan covers every module the car has, and the readings, photos and video all go in your report.
           </p>

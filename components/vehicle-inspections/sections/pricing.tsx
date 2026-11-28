@@ -159,6 +159,7 @@ export const MECHANICAL_DEALER_JOBS = [
   "A fault that showed up soon after you bought the car",
   "A dealer saying the fault wasn't there when they sold it, or that it's wear and tear",
   "A repair by the dealer that hasn't fixed it",
+  "A complaint to the finance company that needs independent proof of the fault",
 ]
 
 export const MECHANICAL_LIMITS: Item[] = [

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ReviewsSlider } from "@/components/reviews-slider"
 import { AreaMap } from "@/components/vehicle-inspections/area-map"
+import { MechanicalWhatWeCheck } from "@/components/vehicle-inspections/sections/mechanical-what-we-check"
 import { MECHANICAL_DEALER_JOBS, MECHANICAL_JOBS } from "@/components/vehicle-inspections/sections/pricing"
 import { SITE } from "@/components/vehicle-inspections/sections/site"
 import { areaPath, areas, type Area } from "@/lib/areas"
@@ -240,7 +241,9 @@ export function LocalMechanicalPage({ area }: { area: Area }) {
         </div>
       </section>
 
-      <section className="py-10 sm:py-14">
+      <MechanicalWhatWeCheck title={`What I look at on a car in ${place}`} className="border-t bg-white" />
+
+      <section className="border-t py-10 sm:py-14">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
